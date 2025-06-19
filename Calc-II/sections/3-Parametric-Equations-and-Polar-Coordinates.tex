@@ -1,0 +1,207 @@
+\section{Parametric Equations and Polar Coordinates}
+
+There are great many curves out there that cannot be expressed in a single equation in terms of only $x$ and $y$. To deal with such problems, we introduce \textbf{parametric equations}. Instead of defining $y$ in terms of $x (y=f(x))$ or $x$ in terms of $y (x=h(y))$, we define both $x$ and $y$ in terms of a third variable called a parameter as follows:
+\[ x = f(t) \quad y = g(t) \]
+This third variable is usually denoted byu $t$. Each value of $t$ defines a point $(x,y) = (f(t),g(t))$ that we can plot. The collection of points that we get by letteing $t$ be all possible values if the graph of the parametric equations and is called a \textbf{parametric curve}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Tangents with Parametric Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tangents with Parametric Equations}
+
+\Note[Derivative for Parametric Equations:]{
+    \[ 
+        \dv{y}{x} = \frac{\dv{y}{t}}{\dv{x}{t}} \quad \text{provided } \dv{x}{t} \neq 0
+    \]
+}
+
+\Note[Tangents for Parametric Equations]{
+    \textbf{Horizontal Tangent:} \[ 
+        \dv{y}{t} = 0 , \quad \text{ provided } \dv{x}{t} \neq 0
+     \]
+    \textbf{Vertical Tangent:} \[ 
+        \dv{x}{t} = 0 , \quad \text{ provided } \dv{y}{t} \neq 0
+    \]
+}
+
+\Note[Second Derivative for Parametric Equations]{
+    \[ 
+       \dv[2]{y}{x} = \dv{}{x} \left( \dv{y}{x} \right) = \frac{\dv{}{t}\left( \dv{y}{x} \right)}{\dv{x}{t}}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Area with Parametric Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Area with Parametric Equations}
+
+\Note[Area with Parametric Equations]{
+    \[ 
+        A = \int_{t_1}^{t_2} y(t) \dv{x}{t} \dd{t}
+    \]
+    or
+    \[ 
+       A = \int_{t_1}^{t_2} x(t) \dv{y}{t} \dd{t}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Arc Length with Parametric Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Arc Length with Parametric Equations}
+
+The arc length of a curve is given by \[ 
+    L = \int  \dd{s}
+\] where,
+\begin{align*}
+    \dd{s} &= \sqrt{1 + \left( \dv{y}{x} \right)^2} \dd{x} \quad \text{ if } y = f(x), a \leq x \leq b \\
+    \dd{s} &= \sqrt{1 + \left( \dv{x}{y} \right)^2} \dd{y} \quad \text{ if } x = h(y), c \leq y \leq d
+\end{align*}
+
+Using the first $\dd{s}$, we can write \[ 
+    \dd{x} = \dv{x}{t} \dd{t}
+\]
+Then the arc length formula becomes,
+\begin{align*}
+    L &= \int_{\alpha}^{\beta} \sqrt{1 + \left( \frac{\dv{y}{t}}{\dv{x}{t}} \right)^2} \dv{x}{t} \dd{t} \\ 
+      &= \int_{\alpha}^{\beta} \frac{1}{\lvert \dv{x}{t} \rvert} \sqrt{\left( \dv{x}{t} \right)^2 + \left( \dv{y}{t} \right)^2} \dv{x}{t} \dd{t}
+\end{align*}
+
+\Note[Arc Length with Parametric Equations]{
+    \[ 
+        L = \int_{t_1}^{t_2} \sqrt{\left( \dv{x}{t} \right)^2 + \left( \dv{y}{t} \right)^2} \dd{t}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Surface Area with Parametric Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Surface Area with Parametric Equations}
+
+\Note[Surface Area with Parametric Equations]{
+    \begin{align*}
+        S &= \int 2 \pi y \dd{s} \quad \text{rotation about } x \text{--axis} \\
+        S &= \int 2 \pi x \dd{s} \quad \text{rotation about } y \text{--axis}
+    \end{align*}
+    where,
+    \[ 
+        \dd{s} = \sqrt{\left( \dv{x}{t} \right)^2 + \left( \dv{y}{t} \right)^2} \dd{t}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%  Polar Coordinates  %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Polar Coordinates}
+
+\Note[Polar to Cartesian Conversion]{
+    \[ 
+        x = r \cos \theta \quad y = r \sin \theta
+    \]
+}
+
+\Note[Cartesian to Polar Conversion]{
+    \begin{align*}
+        r^2 &= x^2 + y^2 &&\tan\theta = \frac{y}{x} \\
+        r &= \sqrt{x^2 + y^2} &&\theta = \tan^{-1} \left( \frac{y}{x} \right)
+    \end{align*}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Tangents with Polar Coordinates  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tangents with Polar Coordinates}
+
+\[ 
+    \dv{x}{\theta} = r' \cos \theta - r \sin \theta \quad \dv{y}{\theta} = r' \sin \theta + r \cos \theta
+\]
+\[ 
+    \dv{r}{\theta} = \dv{r}{x} \dv{x}{\theta} + \dv{r}{y} \dv{y}{\theta}
+ \]
+
+\Note[Tangents with Polar Coordinates]{
+    \[ 
+        \dv{y}{x} = \frac{r' \sin \theta + r \cos \theta}{r' \cos \theta - r \sin \theta}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Area with Polar Coordinates  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Area with Polar Coordinates}
+
+\Note[Area with Polar Coordinates]{
+    \[ 
+        A = \frac{1}{2} \int_{\alpha}^{\beta} \left( r_o^2 - r_i^2 \right) \dd{\theta}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Arc Length with Polar Coordinates  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Arc Length with Polar Coordinates}
+
+Let \[ 
+    r = f(\theta) \quad \alpha \leq \theta \leq \beta
+\]
+\begin{align*}
+    x &= r \cos(\theta) && y = r \sin(\theta) \\
+    x &= f(\theta) \cos\theta && y = f(\theta) \sin\theta \\
+    \dv{x}{\theta} &= \dv{r}{\theta}\cos\theta - r \sin\theta && \dv{y}{\theta} = \dv{r}{\theta}\sin\theta + r \cos\theta
+\end{align*}
+
+Now,
+\begin{align*}
+    \left( \dv{x}{\theta} \right)^2 + \left( \dv{y}{\theta} \right)^2 &= \left( \dv{r}{\theta} \cos\theta - r \sin\theta \right)^2 + \left( \dv{r}{\theta} \sin\theta + r \cos\theta \right)^2 \\
+      &= \left( \dv{r}{\theta} \right)^2 \cos^2 \theta - 2r \dv{r}{\theta} \cos \theta \sin \theta + r^2 \sin^2 \theta \\ 
+      &+ \left( \dv{r}{\theta} \right)^2 \sin^2 \theta + 2r \dv{r}{\theta} \sin \theta \cos \theta + r^2 \cos^2 \theta \\
+      &= \left( \dv{r}{\theta} \right)^2 + r^2
+\end{align*}
+
+\Note[Arc Length with Polar Coordinates]{
+    \[ 
+        L = \int_{\alpha}^{\beta} \sqrt{r^2 + \left( \dv{r}{\theta} \right)^2} \dd{\theta}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Surface Area with Polar Coordinates  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Surface Area with Polar Coordinates}
+
+Let \[ 
+    r = f(\theta) \quad \alpha \leq \theta \leq \beta
+\]
+\begin{align*}
+    x &= r \cos(\theta) && y = r \sin(\theta) \\
+    x &= f(\theta) \cos\theta && y = f(\theta) \sin\theta
+\end{align*}
+
+\Note[Surface Area with Polar Coordinates]{
+    \begin{align*}
+        S &= \int 2 \pi y \dd{s} \quad \text{ rotation about } x \text{--axis} \\
+        S &= \int 2 \pi x \dd{s} \quad \text{ rotation about } y \text{--axis}
+    \end{align*}
+    where,
+    \[ 
+        \dd{s} = \sqrt{r^2 + \left( \dv{r}{\theta} \right)^2} \dd{\theta} \qquad r = f(\theta), \alpha \leq \theta \leq \beta
+    \]
+}

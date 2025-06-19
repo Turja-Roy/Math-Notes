@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}3-Dimensional Space}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Equations of Lines}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Equations of Planes}{6}{}%
+\contentsline {subsection}{\numberline {1.3}Quadratic Surfaces}{9}{}%
+\contentsline {subsection}{\numberline {1.4}Calculus with Vector Functions}{10}{}%
+\contentsline {subsection}{\numberline {1.5}Tangent, Normal, and Binormal Vectors}{10}{}%
+\contentsline {subsection}{\numberline {1.6}Arc Length with Vector Functions}{11}{}%
+\contentsline {subsection}{\numberline {1.7}Curvature}{11}{}%
+\contentsline {section}{\numberline {2}Partial Derivatives}{12}{}%
+\contentsline {subsection}{\numberline {2.1}First Order Partial Derivatives}{12}{}%
+\contentsline {subsection}{\numberline {2.2}Interpretations of Partial Derivatives}{12}{}%
+\contentsline {subsection}{\numberline {2.3}Higher Order Partial Derivatives}{14}{}%
+\contentsline {subsection}{\numberline {2.4}Differentials}{16}{}%
+\contentsline {subsection}{\numberline {2.5}Chain Rule}{16}{}%
+\contentsline {subsubsection}{\numberline {2.5.1}Implicit Differentiation}{19}{}%
+\contentsline {subsection}{\numberline {2.6}Directional Derivatives}{20}{}%

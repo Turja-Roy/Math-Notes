@@ -1,0 +1,108 @@
+\section{Applications of Integrals}
+
+%%%%%%%%%%%%%%%%
+%  Arc Length  %
+%%%%%%%%%%%%%%%%
+
+\subsection{Arc Length}
+
+Consider a curve $y=f(x)$. We want to find the length of the curve from $x=a$ to $x=b$. We can approximate the curve by a series of line segments. The length of each line segment is given by the Pythagorean theorem: \[ 
+    \dd{s} = \sqrt{\dd{x}^2 + \dd{y}^2} = \sqrt{1 + \left( \dv{y}{x} \right)^2} \dd{x}
+\]
+The total length of the curve is given by the sum of the lengths of the line segments: \[ 
+    L = \int \dd{s} = \int \sqrt{1 + \left( \dv{y}{x} \right)^2} \dd{x}
+\]
+Similarly, for a curve $x=h(y)$, the length of the curve from $y=c$ to $y=d$ is given by: \[ 
+    L = \int \dd{s} = \int \sqrt{1 + \left( \dv{x}{y} \right)^2} \dd{y}
+\]
+\Note[Arc Length Formula]{
+    \[ 
+        L = \int \dd{s}
+    \] where, 
+    \begin{align*}
+        ds &= \sqrt{1 + \left( \dv{y}{x} \right)^2} \dd{x} \quad \text{for } y = f(x), a \leq x \leq b \\
+        ds &= \sqrt{1 + \left( \dv{x}{y} \right)^2} \dd{y} \quad \text{for } x = h(y), c \leq y \leq d
+    \end{align*}
+}
+
+
+%%%%%%%%%%%%%%%%%%
+%  Surface Area  %
+%%%%%%%%%%%%%%%%%%
+
+\subsection{Surface Area}
+
+Consider a curve $y=f(x)$ rotated about the $x$-axis. We want to find the surface area of the resulting surface. We can approximate the surface by a series of frustums. The surface area of each frustum is given by: \[ 
+    \dd{S} = 2\pi y \dd{s} = 2\pi f(x) \sqrt{1 + \left( \dv{y}{x} \right)^2} \dd{x}
+\]
+The total surface area of the surface is given by the sum of the surface areas of the frustums: \[ 
+    S = \int \dd{S} = \int 2\pi y \dd{s} = \int 2\pi f(x) \sqrt{1 + \left( \dv{y}{x} \right)^2} \dd{x}
+\]
+Similarly, for a curve $x=h(y)$ rotated about the $y$-axis, the surface area of the resulting surface is given by: \[ 
+    A = \int 2\pi x \dd{s} = \int 2\pi h(y) \sqrt{1 + \left( \dv{x}{y} \right)^2} \dd{y}
+\]
+
+\Note[Surface Area Formula]{
+    \begin{align*}
+        S &= \int \dd{S} \\
+          &= \int 2 \pi y \dd{s} \quad \text{rotation about } x \text{--axis} \\
+          &= \int 2 \pi x \dd{s} \quad \text{rotation about } y \text{--axis}
+    \end{align*}
+    where, 
+    \begin{align*}
+        dS &= 2\pi y \dd{s} = 2\pi f(x) \sqrt{1 + \left( \dv{y}{x} \right)^2} \dd{x} \quad \text{for } y = f(x), a \leq x \leq b \\
+        dS &= 2\pi x \dd{s} = 2\pi h(y) \sqrt{1 + \left( \dv{x}{y} \right)^2} \dd{y} \quad \text{for } x = h(y), c \leq y \leq d
+    \end{align*}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%  Center of Mass  %
+%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Center of Mass}
+
+Suppose we want to find the center of mass of a region bounded by two curves $f(x)$ and $g(x)$ on the interval $[a,b]$. \\ 
+The mass is   \[ 
+      M = \rho \int_{a}^{b} \left( f(x) - g(x) \right) \dd{x}
+\]
+Next, we need the \textbf{moments} of the region. There are two moments:
+\begin{align*}
+    M_x &= \rho \int_{a}^{b} \frac{1}{2} \left[ f(x)^2 - g(x)^2 \right] \dd{x} \\
+    M_y &= \rho \int_{a}^{b} x \left[ f(x) - g(x) \right] \dd{x}
+\end{align*}
+The coordinates of the center of mass, $(\bar{x}, \bar{y})$, are given by:
+\Note[Center of Mass Formula]{
+    \[
+        \bar{x} = \frac{M_y}{M} = \frac{1}{A} \int_{a}^{b} x \left[ f(x) - g(x) \right] \dd{x}
+    \]
+    \[
+        \bar{y} = \frac{M_x}{M} = \frac{1}{A} \int_{a}^{b} \frac{1}{2} \left[ f(x)^2 - g(x)^2 \right] \dd{x}
+    \]
+    where,   \[ 
+          A = \int_{a}^{b} \left[ f(x) - g(x) \right] \dd{x}
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%
+%  Probability  %
+%%%%%%%%%%%%%%%%%
+
+\subsection{Probability}
+
+Every continuous random variable $X$, has a probability density function $f(x)$. Probability density functions satisfy the following conditions:
+\begin{enumerate}
+    \item $f(x) \geq 0$ for all $x$. 
+    \item $\displaystyle \int_{-\infty}^{\infty} f(x) \dd{x} = 1$
+\end{enumerate}
+
+Probability density finctions can be used to determine the probability that a continuous random variable lies between two values, say $a$ and $b$. This probability is denoted by $P(a \leq X \leq b)$. 
+\Note{
+    \[ P(a \leq X \leq b) = \int_{a}^{b} f(x) \dd{x} \]
+}
+
+Probability density functions can also be used to determine the mean of a continuous random variable. The mean is given by:
+\Note[Mean of a Continuous Random Variable]{
+    \[ \mu = \int_{-\infty}^{\infty} x f(x) \dd{x} \]
+}

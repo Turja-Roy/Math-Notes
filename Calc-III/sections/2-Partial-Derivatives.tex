@@ -1,0 +1,321 @@
+\section{Partial Derivatives}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  First Order Partial Derivatives  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{First Order Partial Derivatives}
+
+\Definition{First Order Partial Derivative}{
+    The \textbf{first order partial derivative} of a function $f(x,y)$ is the derivative of $f$ with respect to one variable while treating the other variable as a constant.
+    The partial derivative of $f$ wrt $x$ is denoted by:
+    \[ f_x(x,y) = \lim_{h \to 0} \frac{f(x+h,y) - f(x,y)}{h} \]
+    And the partial derivative of $f$ wrt $y$ is denoted by:
+    \[ f_y(x,y) = \lim_{h \to 0} \frac{f(x,y+h) - f(x,y)}{h} \]
+    They can also be written in the following notations:
+    \[ f_x(x,y) = f_x = \pdv{f}{x} = \pdv{}{x} \left(f(x,y)\right) = D_x f \]
+    \[ f_y(x,y) = f_y = \pdv{f}{y} = \pdv{}{y} \left(f(x,y)\right) =  D_y f \]
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Interpretations of Partial Derivatives  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Interpretations of Partial Derivatives}
+
+Much like the first derivative of a function of one variable, the first order partial derivatives of a function of multiple variables can be interpreted as the slope of the tangent line to the surface defined by the function at a point.
+
+\Note[Slopes of Traces]{
+    Partial derivatives are the slopes of traces. The partial derivative $f_x(a,b)$ is the slope of the trace of $f(x,y)$ for the plane $y=b$ at the point $(a,b)$. Likewise, the partial derivative $f_y(x,y)$ is the slope of the trace of $f(x,y)$ for the plane $x=a$ at the point $(a,b)$
+}
+
+\Example{Determine if $f(x,y) = \frac{x^2}{y^3}$ is increasing or decreasing at $(2,5)$, if: \\
+    \quad (a) we allow $x$ to vary and hold $y$ fixed, \\
+    \quad (b) we allow $y$ to vary and hold $x$ fixed. \\
+}{
+    \textbf{(a)} To find the partial derivative with respect to $x$, we treat $y$ as a constant: \[ 
+        f_x(x,y) = \frac{2x}{y^3} \qquad \implies \qquad f_x(2,5) = \frac{4}{125} > 0
+    \]
+    This means that $f$ is increasing in the $x$ direction at the point $(2,5)$. \\
+    \textbf{(b)} To find the partial derivative with respect to $y$, we treat $x$ as a constant: \[ 
+        f_y(x,y) = -\frac{3x^2}{y^4} \qquad \implies \qquad f_y(2,5) = -\frac{12}{625} < 0 
+    \]
+    This means that $f$ is decreasing in the $y$ direction at the point $(2,5)$.
+}
+
+Partial derivatives can also be interpreted as the slope of the tangent plane to the surface defined by the function at a point. The tangent plane is a linear approximation of the surface at that point.
+
+\Example{Find the slopes of the traces to $z = 10 - 4x^2 - y^2$ at the point $(1,2)$.}{
+    The partial derivative with respect to $x$ is:
+    \[
+        f_x(x,y) = -8x \qquad \implies \qquad f_x(1,2) = -8
+    \]
+    The partial derivative with respect to $y$ is:
+    \[
+        f_y(x,y) = -2y \qquad \implies \qquad f_y(1,2) = -4
+    \]
+    Thus, the slope of the trace in the $x$ direction at $(1,2)$ is $-8$, and the slope of the trace in the $y$ direction at $(1,2)$ is $-4$.
+}
+
+We can also use partial derivatives to find the equations of the tangent lines to the traces of a surface at a point.
+
+\Example{Find the vector equations of the tangent lines to the traces to $z = 10 - 4x^2 - y^2$ at the point $(1,2)$}{
+    The point on the trace is \[ 
+        (1, 2, f(1,2)) = (1, 2, 10-4(1)^2 - (2)^2) = (1, 2, 2)
+    \]
+    Hence, the equation of the tangent line to the trace for the plane $y=2$ is: \[ 
+        \vec{r_x}(t) = \langle 1,2,2 \rangle + t \langle 1,0,-8 \rangle = \langle 1+t, 2, 2-8t \rangle
+    \]
+    And the equation of the tangent line to the trace for the plane $x=1$ is: \[ 
+        \vec{r_y}(t) = \langle 1,2,2 \rangle + t \langle 0,1,-4 \rangle = \langle 1, 2+t, 2-4t \rangle
+    \]
+}
+
+\Example{Find the vector equations of the tangent lines to the traces for $f(x,y) = \sin x \cos y$ at $\left( \frac{\pi}{3}, \frac{-\pi}{4} \right)$}{
+    The point on the trace is \[ 
+        \left( \frac{\pi}{3}, - \frac{\pi}{4}, f \left( \frac{\pi}{3}, - \frac{\pi}{4} \right) \right) = \left( \frac{\pi}{3}, - \frac{\pi}{4}, \sin \left( \frac{\pi}{3} \right) \cos \left( - \frac{\pi}{4} \right) \right) = \left( \frac{\pi}{3}, - \frac{\pi}{4}, \frac{\sqrt{6}}{4} \right)
+    \]
+    Hence, the equation of the tangent line to the trace for the plane $y = -\frac{\pi}{4}$ is:
+    \begin{align*}
+        \vec{r_x}(t) &= \Biggl\langle \frac{\pi}{3}, - \frac{\pi}{4}, \frac{\sqrt{6}}{4} \Biggr\rangle + t \Biggl\langle 1, 0, f_x(x,y) \Biggr\rangle \\
+        &= \Biggl\langle \frac{\pi}{3}, - \frac{\pi}{4}, \frac{\sqrt{6}}{4} \Biggr\rangle + t \Biggl\langle 1, 0, \cos \left( \frac{\pi}{3} \right) \cos \left( - \frac{\pi}{4} \right) \Biggr\rangle \\
+        &= \Biggl\langle \frac{\pi}{3}, - \frac{\pi}{4}, \frac{\sqrt{6}}{4} \Biggr\rangle + t \Biggl\langle 1, 0, \frac{1}{2\sqrt{2}} \Biggr\rangle
+    \end{align*}
+    And the equation of the tangent line to the trace for the plane $x = \frac{\pi}{3}$ is: 
+    \begin{align*}
+        \vec{r_y}(t) &= \Biggl\langle \frac{\pi}{3}, - \frac{\pi}{4}, \frac{\sqrt{6}}{4} \Biggr\rangle + t \Biggl\langle 0, 1, f_y(x,y) \Biggr\rangle \\
+           &= \Biggl\langle \frac{\pi}{3}, - \frac{\pi}{4}, \frac{\sqrt{6}}{4} \Biggr\rangle + t \Biggl\langle 0, 1, - \sin \left( \frac{\pi}{3} \right) \sin \left( - \frac{\pi}{4} \right) \Biggr\rangle \\
+           &= \Biggl\langle \frac{\pi}{3}, - \frac{\pi}{4}, \frac{\sqrt{6}}{4} \Biggr\rangle + t \Biggl\langle 0, 1, \frac{\sqrt{6}}{4} \Biggr\rangle
+    \end{align*}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Higher Order Partial Derivatives  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Higher Order Partial Derivatives}
+\Note[Second Order Partial Derivatives]{
+    The \textbf{Second order partial derivatives} of a function $f(x,y)$ are the partial derivatives of the first order partial derivatives. 
+    The second order partial derivatives are denoted by:
+    \[ (f_x)_x = f_{x x} = \pdv{}{x} \left( \pdv{f}{x} \right) = \pdv[2]{f}{x} \]
+    \[ (f_x)_y = f_{x y} = \pdv{}{y} \left( \pdv{f}{x} \right) = \pdv[2]{f}{y}{x} \]
+    \[ (f_y)_x = f_{y x} = \pdv{}{x} \left( \pdv{f}{y} \right) = \pdv[2]{f}{x}{y} \]
+    \[ (f_y)_y = f_{y y} = \pdv{}{y} \left( \pdv{f}{y} \right) = \pdv[2]{f}{y} \]
+}
+
+\Note[Clairaut's Theorem]{
+    If the second order partial derivatives $f_{x y}$ and $f_{y x}$ are continuous at a point, then they are equal at that point:
+    \[ f_{x y} = f_{y x} \]
+}
+
+Like second order derivatives, there are higher order partial derivatives as well. The third order partial derivatives are denoted by:
+\[ f_{x x x} = \pdv[3]{f}{x} \]
+\[ f_{x y x} = (f_{xy})_x = \pdv{}{x} \left( \pdv{f}{y,x} \right) = \pdv{f}{x,y,x} \]
+\[ f_{y x x} = (f_{yx})_x = \pdv{}{x} \left( \pdv{f}{x,y} \right) = \pdv{f}{x^2,y} \]
+This also applies to functions of more than two variables. For example, \[ 
+    f_{xz}(x,y,z) = f_{zx}(x,y,z)
+\]
+
+\Note[Extension of Clairaut's Theorem]{
+    In general, we can extend Clairaut's theorem to any function and mixed partial derivatives. That means: \[ 
+        f_{s s r t s r r} = f_{t r s r s s r} = f_{r r s s s t} = \dots
+     \]
+}
+
+\Example{Find all the second order partial derivatives of function $Q(u,v,w) = u^4 \sin w^2 - \frac{2v}{u^4} + \ln(v^2w)$}{
+    To find the second order partial derivatives, we first find the first order partial derivatives:
+    \begin{align*}
+        Q_u &= 4u^3 \sin w^2 + \frac{8v}{u^5} \\
+        Q_v &= \frac{-2}{u^4} + \frac{2vw}{v^2w} = - \frac{2}{u^4} + \frac{2}{v} \\
+        Q_w &= 2u^4 w \cos w^2 + \frac{1}{w}
+    \end{align*}
+    Now we can find the second order partial derivatives:
+    \begin{align*}
+        Q_{uu} &= 12u^2 \sin w^2 - \frac{40v}{u^6} \\
+        Q_{uv} &= Q_{vu} = \frac{8}{u^5} \\
+        Q_{uw} &= 8u^3 w \cos w^2 \\
+        Q_{vv} &= - \frac{2}{v^2} \\
+        Q_{vw} &= Q_{wv} = 0 \\
+        Q_{ww} &= 2u^4 \cos w^2 - 4u^4 w^2 \sin w^2 - \frac{1}{w^2}
+    \end{align*}
+}
+
+\Example{Given $w = \ln\left(\frac{xy}{z}\right) + 8x^4y^3\sqrt{z}, find \pdv[1,2,1,1]{w}{x,z,y,x}$}{
+    Using Clairaut's theorem, \[ 
+        \pdv[1,2,1,1]{w}{x,z,y,x} = \pdv[2,1,2]{w}{x,y,z}
+    \]
+    Now,
+    \begin{align*}
+        \pdv{w}{x} &= \frac{y}{z} \cdot \frac{z}{xy} + 32x^3y^3\sqrt{z} = \frac{1}{x} + 32x^3y^3\sqrt{z} \\
+        \pdv[2]{w}{x} &= - \frac{1}{x^2} + 96x^2y^3\sqrt{z} \\
+        \pdv[2,1]{w}{x,y} &= 288x^2y^2\sqrt{z} \\
+        \pdv[2,1,1]{w}{x,y,z} &= \frac{144x^2y^2}{\sqrt{z}} \\
+        \pdv[2,1,2]{w}{x,y,z} &= -72x^2y^2z^{-3/2}
+    \end{align*}
+}
+
+\Example{Given $f(x,y) = \frac{x^6}{1+6y} - \cos(x^2) + 6e^{x}\sin(y)$, find $f_{xxyxyx}$}{
+    \begin{align*}
+        f_x &= \frac{6x^5}{1+6y} + 2x\sin(x^2) + 6e^{x}\sin(y) \\
+        f_{xx} &= \frac{30x^4}{1+6y} + 2\sin(x^2) + 4x^2\cos(x^2) + 6e^{x}\sin(y) \\ 
+        f_{xxx} &= \frac{120x^3}{1+6y} + 12x \cos(x^2) - 8x^3 \sin(x^2) + 6e^{x}\sin(y) \\
+        f_{xxxx} &= \frac{360x^2}{1+6y} + 12 \cos(x^2) - 48x^2 \sin(x^2) - 16x^4 \cos(x^2) + 6e^{x}\sin(y) \\
+        f_{xxxxy} &= - \frac{2160x^2}{(1+6y)^2} + 6e^{x}\cos(y) \\
+        f_{xxxxyy} &= \frac{25920x^2}{(1+6y)^3} - 6e^{x}\sin(y)
+    \end{align*}
+}
+
+%%%%%%%%%%%%%%%%%%%
+%  Differentials  %
+%%%%%%%%%%%%%%%%%%%
+
+\subsection{Differentials}
+
+\Note[Differentials]{
+    The \textbf{differential} of a function $f(x,y)$ is a linear approximation of the change in the function at a point. \\
+    The differential of $f$ is denoted by:
+    \[ \dd{f} = f_x \dd{x} + f_y \dd{y} \]
+    where $dx$ and $dy$ are small changes in $x$ and $y$, respectively. \\
+    For a given function $w = g(x,y,z)$, the differential is given by:
+    \[ \dd{w} = g_x \dd{x} + g_y \dd{y} + g_z \dd{z} \]
+}
+
+\Example{Compute the differential for $u = \frac{t^3r^6}{s^2}$}{
+    \[ 
+        \dd{u} = \frac{3t^2r^6}{s^2} \dd{t} + \frac{6t^3r^5}{s^2} \dd{r} - \frac{2t^3r^6}{s^3} \dd{s}
+    \]
+}
+
+%%%%%%%%%%%%%%%%
+%  Chain Rule  %
+%%%%%%%%%%%%%%%%
+
+\subsection{Chain Rule}
+
+\underline{\textbf{Case 1:}}
+    If $z = f(x,y)$, $x = g(t)$, and $y = h(t)$, then the chain rule states that:
+    \[ \dv{z}{t} = \pdv{f}{x} \dv{x}{t} + \pdv{f}{y} \dv{y}{t} \]
+    \[ \text{Or,} \quad \dv{z}{t} = f_x \dv{x}{t} + f_y \dv{y}{t} \]
+
+\Example{Compute $\dv{z}{t}$ for $z=xe^{xy}$, $x=t^2$, $y=t^{-1}$}{
+    \begin{align*}
+        \dv{z}{t} &= \pdv{f}{x} \dv{x}{t} + \pdv{f}{y} \dv{y}{t} \\
+        &= (e^{xy} + yxe^{xy}) (2t) + x^2e^{xy} (-t^{-2}) \\
+        &= 2t (e^{xy} + xy e^{xy}) - x^2e^{xy}t^{-2} \\
+        &= 2t (e^t + te^t) - t^4e^t t^{-2} \\ 
+        &= 2t e^{t} + t^2 e^{t}
+    \end{align*}
+}
+
+\underline{\textbf{Case 2:}}
+    If $z = f(x,y)$, $x = g(s,t)$, and $y = h(s,t)$, then the chain rule states that:
+    \[ \pdv{z}{s} = \pdv{f}{x} \pdv{x}{s} + \pdv{f}{y} \pdv{y}{s} \]
+    \[ \text{Or,} \quad \pdv{z}{s} = f_x \pdv{x}{s} + f_y \pdv{y}{s} \]
+    \[ \pdv{z}{t} = \pdv{f}{x} \pdv{x}{t} + \pdv{f}{y} \pdv{y}{t} \]
+    \[ \text{Or,} \quad \pdv{z}{t} = f_x \pdv{x}{t} + f_y \pdv{y}{t} \]
+
+\Example{Find $\pdv{z}{s}$ and $\pdv{z}{t}$ for $z=e^{2r}\sin(3\theta)$, $r=st-t^2$, $\theta=\sqrt{s^2+t^2}$}{
+    \begin{align*}
+        \pdv{z}{s} &= \pdv{f}{r} \pdv{r}{s} + \pdv{f}{\theta} \pdv{\theta}{s} \\
+        &= (2e^{2r}\sin(3\theta)) (t + 0) + (3e^{2r}\cos(3\theta)) \left(\frac{s}{\sqrt{s^2+t^2}}\right) \\
+        &= 2te^{2r}\sin(3\theta) + 3e^{2r}\cos(3\theta) \frac{s}{\sqrt{s^2+t^2}} \\ 
+        &= 2t e^{2(st-t^2)}\sin(3\sqrt{s^2+t^2}) + 3e^{2(st-t^2)}\cos(3\sqrt{s^2+t^2}) \frac{s}{\sqrt{s^2+t^2}}
+    \end{align*}
+    And,
+    \begin{align*}
+        \pdv{z}{t} &= \pdv{f}{r} \pdv{r}{t} + \pdv{f}{\theta} \pdv{\theta}{t} \\
+        &= (2e^{2r}\sin(3\theta)) (s-2t) + (3e^{2r}\cos(3\theta)) \left(\frac{t}{\sqrt{s^2+t^2}}\right) \\
+        &= 2(s-2t)e^{2r}\sin(3\theta) + 3e^{2r}\cos(3\theta) \frac{t}{\sqrt{s^2+t^2}} \\ 
+        &= 2(s-2t) e^{2(st-t^2)}\sin(3\sqrt{s^2+t^2}) + 3e^{2(st-t^2)}\cos(3\sqrt{s^2+t^2}) \frac{t}{\sqrt{s^2+t^2}}
+    \end{align*}
+}
+
+\Note[Chain Rule]{
+    Given the following conditions:
+    \begin{enumerate}[label=(\roman*)]
+        \item $z = f(x_1, x_2, \dots, x_n)$ is a function of $n$ variables,
+        \item Each variable $x_i(t_1, t_2, \dots, t_m)$ is a function of $m$ variables,
+    \end{enumerate}
+    Then for any variable $t_i$ $(i = 1,2,\dots,m)$, we have the following chain rule:
+    \[ 
+        \boxed{ \pdv{z}{t_i} = \pdv{z}{x_1} \pdv{x_1}{t_i} + \pdv{z}{x_2} \pdv{x_2}{t_i} + \cdots + \pdv{z}{x_n} \pdv{x_n}{t_i} }
+    \]
+}
+
+\Example{Compute $\pdv[2]{f}{\theta}$ for $f(x,y)$ if $x=r\cos\theta$ and $y=r\sin\theta$}{
+    \begin{align*}
+        \pdv{f}{\theta} &= \pdv{f}{x}\pdv{x}{\theta} + \pdv{f}{y}\pdv{y}{\theta} \\
+        &= -r \sin\theta \pdv{f}{x} + r \cos\theta \pdv{f}{y}
+    \end{align*}
+    Now, we know the second derivative is \[ 
+        \pdv[2]{f}{\theta} = \pdv{}{\theta} \left( \pdv{f}{\theta} \right) = \pdv{}{\theta} \left( -r \sin\theta \pdv{f}{x} + r \cos\theta \pdv{f}{y} \right) \\ 
+    \]
+    Now, we can separately compute $\pdv{}{\theta} \left( \pdv{f}{x} \right)$ and $\pdv{}{\theta} \left( \pdv{f}{y} \right)$:
+    \begin{align*}
+        \pdv{}{\theta} \left( \pdv{f}{x} \right) &= -r \sin\theta \pdv{}{x} \left( \pdv{f}{x} \right) + r \cos\theta \pdv{}{y} \left( \pdv{f}{x} \right) \\
+            &= -r \sin\theta \pdv[2]{f}{x} + r \cos\theta \pdv{f}{y,x} \\ 
+        \pdv{}{\theta} \left( \pdv{f}{y} \right) &= -r \sin\theta \pdv{}{x} \left( \pdv{f}{y} \right) + r \cos\theta + \pdv{}{y} \left( \pdv{f}{y} \right) \\
+            &= -r \sin\theta \pdv{f}{x,y} + r \cos\theta \pdv[2]{f}{y}
+    \end{align*}
+    Finally, we can substitute these into the second derivative:
+    \begin{align*}
+        \pdv[2]{f}{\theta} &= \pdv{}{\theta} \left( -r \sin\theta \pdv{f}{x} + r \cos\theta \pdv{f}{y} \right) \\
+        &= -r \cos\theta \pdv{f}{x} - r \sin\theta \left( -r \sin\theta \pdv[2]{f}{x} + r \cos\theta \pdv{f}{y,x} \right) \\
+        &\quad - r \sin\theta \pdv{f}{y} + r \cos\theta \left( -r \sin\theta \pdv{f}{x,y} + r \cos\theta \pdv[2]{f}{y} \right) \\
+        &= -r \cos\theta \pdv{f}{x} + r^2 \sin^2\theta \pdv[2]{f}{x} - r^2 \sin\theta \cos\theta \pdv{f}{y,x} \\
+        &\quad - r \sin\theta \pdv{f}{y} - r^2 \sin\theta \cos\theta \pdv{f}{x,y} + r^2 \cos^2\theta \pdv[2]{f}{y} \\ 
+        &= - r \left( \cos\theta \pdv{f}{x} + \sin\theta \pdv{f}{y} \right) \\ 
+        &\quad + r^2 \left( \sin^2\theta \pdv[2]{f}{x} - 2 \sin\theta \cos\theta \pdv{f}{x,y} + \cos^2\theta \pdv[2]{f}{y} \right)
+    \end{align*}
+}
+
+\subsubsection{Implicit Differentiation}
+
+\Note[Implicit Differentiation]{
+    If $F(x,y)=0$ is a function where $y=y(x)$, then we can use implicit differentiation to find the derivative of $y$ with respect to $x$. The chain rule gives us:
+    \[ 
+        F_x + F_y \frac{dy}{dx} = 0 \quad \implies \quad \frac{dy}{dx} = -\frac{F_x}{F_y}
+    \]
+    This can be extended to functions of more than two variables. We can start by assuming that $z=f(x,y)$ and we want to find $\pdv{z}{x}$ and $\pdv{z}{y}$. \\ 
+    To find $\pdv{z}{x}$, we differentiate both sides wrt $x$: \[ 
+        \pdv{F}{x} \pdv{x}{x} + \pdv{F}{y} \pdv{y}{x} + \pdv{F}{z} \pdv{z}{x} = 0
+    \]
+    Since $\pdv{x}{x} = 1$ and $\pdv{y}{x} = 0$, we get:
+    \[ 
+        \pdv{z}{x} = - \frac{F_x}{F_z} \quad \text{ and } \quad 
+        \pdv{z}{y} = - \frac{F_y}{F_z}
+    \]
+}
+
+\Example{Find $\dv{y}{x}$ for $x \cos(3y) + x^3y^5 = 3x - e^{xy}$}{
+    First, we rearrange the equation in the form $F(x,y) = 0$: \[ 
+        x \cos(3y) + x^3y^5 - 3x + e^{xy} = 0 
+    \]
+    Now, the derivative is: \[ 
+        \dv{y}{x} = - \frac{F_x}{F_y} = - \frac{\cos(3y) + 3x^2y^5 - 3 + ye^{xy}}{-3x \sin(3y) + 5x^3y^4 + xe^{xy}}
+    \]
+}
+
+\Example{Find $\pdv{z}{x}$ and $\pdv{z}{y}$ for $x^2 \sin(2y-5z) = 1 + y \cos(6zx)$}{
+    First, let's rearrange the equation in the form $F(x,y,z) = 0$: \[ 
+        x^2 \sin(2y-5z) - 1 - y \cos(6zx) = 0
+    \]
+    Now, the derivatives are:
+    \begin{align*}
+        \pdv{z}{x} &= - \frac{F_x}{F_z} = - \frac{2x \sin(2y-5z) + 6yz \sin(6zx)}{-5x^2 \cos(2y-5z) + 6xy \sin(6zx)} \\
+        \pdv{z}{y} &= - \frac{F_y}{F_z} = - \frac{2x^2 \cos(2y-5z) - \cos(6zx)}{-5x^2 \cos(2y-5z) + 6xy \sin(6zx)}
+    \end{align*}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Directional Derivatives  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Directional Derivatives}
+
+\Definition{Directional Derivative}{
+    The rate of change of $f(x,y)$ in the direction of the unit vector $\vec{u} = \langle a,b \rangle$ is called the \textbf{directional derivative} of $f$ and is denoted by $D_{\vec{u}} f(x,y)$. The definition of the directional derivative is:
+    \[ 
+        D_{\vec{u}} f(x,y) = \lim_{h \to 0} \frac{f(x+ha,y+hb) - f(x,y)}{h}
+    \]
+}

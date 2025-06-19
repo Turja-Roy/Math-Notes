@@ -1,0 +1,482 @@
+\section{Series}
+
+\Note[Properties of Convergent Series]{
+    If $\sum a_n$ and $\sum b_n$ are both convergent series, then:
+    \begin{enumerate}
+        \item $\sum c a_n$, where $c$ is a constant, is also convergent and \[ 
+            \sum c a_n = c \sum a_n
+        \]
+        \item $\sum (a_n \pm b_n)$ is also convergent and \[ 
+            \sum (a_n \pm b_n) = \sum a_n \pm \sum b_n
+        \]
+    \end{enumerate}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Convergence of Series  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Convergence of Series}
+
+\Theorem{Convergence of Series}{
+    The series $\sum a_n$ converges if and only if the sequence of partial sums $\{ s_n \}$ is convergent. That is, \[ 
+        \sum a_n \text{ converges} \iff \lim_{n \to \infty} s_n \text{ exists}
+    \]
+    If the series $\sum a_n$ converges, then \[ 
+        \lim_{n \to \infty} s_n = s
+    \] where $s$ is the sum of the series.
+}
+
+\Example{\vspace{-0.5cm}}{
+    \begin{align*}
+        &\lim_{n \to \infty} n = \infty && \text{ (diverges) } \\ 
+        &\lim_{n \to \infty} \frac{1}{n^2-1} = 0 && \text{ (converges) } \\ 
+        &\lim_{n \to \infty} (-1)^n \text{ does not exist} && \text{ (diverges) } \\ 
+        &\lim_{n \to \infty} \frac{1}{3^{n-1}} = 0 && \text{ (converges) }
+    \end{align*}
+}
+
+\Theorem{}{
+    If $\sum a_n$ converges, then $\displaystyle \lim_{n \to \infty} a_n = 0$.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Absolute and Conditional Convergence  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Absolute and Conditional Convergence}
+
+\Definition{Absolute and Conditional Convergence}{
+    A series $\sum a_n$ is said to be \textbf{absolutely convergent} if $\sum |a_n|$ converges. A series that converges but not absolutely is said to be \textbf{conditionally convergent}.
+}
+
+\Note{
+    If $\sum a_n$ is absolutely convergent, then $\sum a_n$ is also convergent. But if $\sum a_n$ is conditionally convergent, then $\sum a_n$ is not necessarily absolutely convergent.
+}
+
+\Note{
+    Given the series $\sum a_n$:
+    \begin{enumerate}
+        \item If $\sum a_n$ is absolutely convergent and its value is $s$ then any rearrangement of $\sum a_n$ will also have a value of $s$.
+        \item If $\sum a_n$ is conditionally convergent and $r$ is any real number then there is a rearrangement of $\sum a_n$, say $\sum b_n$, such that $\sum b_n = r$.
+    \end{enumerate}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%  Special Series  %
+%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Special Series}
+
+\subsubsection{Geometric Series}
+\Definition{Geometric Series}{
+    A series of the form \[ 
+        \sum_{n=0}^{\infty} ar^n = a + ar + ar^2 + \cdots
+    \] is called a \textbf{geometric series}. The sum of the series is \[ 
+        \sum_{n=0}^{\infty} ar^n = \frac{a}{1-r} \quad \text{ if } |r| < 1
+    \]
+}
+
+\subsubsection{Telescoping Series}
+\Definition{Telescoping Series}{
+    A series of the form \[ 
+        \sum_{n=1}^{\infty} (a_n - a_{n+1}) = a_1 - a_2 + a_2 - a_3 + \cdots
+    \] is called a \textbf{telescoping series}. The sum of the series is \[ 
+        \sum_{n=1}^{\infty} (a_n - a_{n+1}) = a_1 - \lim_{n \to \infty} a_{n+1}
+    \]
+}
+
+\subsubsection{Harmonic Series}
+\Definition{Harmonic Series}{
+    The series \[ 
+        \sum_{n=1}^{\infty} \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots
+    \] is called the \textbf{harmonic series}. The harmonic series diverges.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Divergence Test  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Divergence Test}
+
+\Theorem{Divergence Test}{
+    If $\displaystyle \lim_{n \to \infty} a_n \neq 0$, then the series $\sum a_n$ diverges.
+}
+
+
+%%%%%%%%%%%%%%%%%%%
+%  Integral Test  %
+%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integral Test}
+
+\Theorem{Integral Test}{
+    Let $f(x)$ be a continuous, positive, and decreasing function for $x \geq 1$. Then the series \[ 
+        \sum_{n=1}^{\infty} f(n)
+    \] converges if and only if the improper integral \[ 
+        \int_{1}^{\infty} f(x) \, dx
+    \] converges. That is, \[ 
+        \sum_{n=1}^{\infty} f(n) \text{ converges} \iff \int_{1}^{\infty} f(x) \, dx \text{ converges}
+    \]
+}
+
+\underline{\textbf{Proof:}} \\ 
+Let $s_n = f(1) + f(2) + \cdots + f(n)$ and $s_{n+1} = f(1) + f(2) + \cdots + f(n) + f(n+1)$. Then \[ 
+    s_{n+1} - s_n = f(n+1) \geq 0 
+\] and \[
+    \int_{n}^{n+1} f(x) \, dx \leq f(n) \leq \int_{n-1}^{n} f(x) \, dx 
+\] Summing from $1$ to $n$ gives \[
+    s_{n+1} - s_1 \leq \int_{0}^{n} f(x) \, dx \leq s_n
+\] Taking the limit as $n \to \infty$ gives \[
+    \lim_{n \to \infty} s_n = \lim_{n \to \infty} s_{n+1} = s 
+\] which implies that the series converges if and only if the integral converges. \qed
+
+
+\subsubsection{The $p$-series Test}
+
+\Theorem{$p$-series Test}{
+    The series \[ 
+        \sum_{n=k}^{\infty} \frac{1}{n^p} \qquad \text{ where } k > 0
+    \] converges if $p > 1$ and diverges if $p \leq 1$.
+}
+
+\underline{\textbf{Proof:}} \\ 
+If $p > 1$, then the integral \[ 
+    \int_{1}^{\infty} \frac{1}{x^p} \, dx = \lim_{b \to \infty} \int_{1}^{b} \frac{1}{x^p} \, dx = \lim_{b \to \infty} \left[ \frac{x^{1-p}}{1-p} \right]_{1}^{b} = \frac{1}{p-1}
+\] converges. If $p \leq 1$, then the integral diverges. \qed
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Limit Comparison Test  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Comparison Test/Limit Comparison Test}
+
+\Theorem{Comparison Test}{
+    Let $\sum a_n$ and $\sum b_n$ are two series with $a_n, b_n \geq 0$ for all $n$ and $a_n \leq b_n$ for all $n$. Then:
+    \begin{enumerate}
+        \item If $\sum b_n$ converges, then $\sum a_n$ converges. 
+        \item If $\sum a_n$ diverges, then $\sum b_n$ diverges.
+    \end{enumerate}
+}
+
+\underline{\textbf{Proof:}} \\ 
+Let the partial sums be \[ 
+    s_n = \sum_{i=1}^{n} a_i \quad \text{ and } \quad t_n = \sum_{i=1}^{n} b_i
+\]
+Since $a_n, b_n \geq 0$, we know that 
+\begin{align*}
+    s_n \leq s_n + a_{n+1} &= \sum_{i=1}^{n} a_i + a_{n+1} = \sum_{i=1}^{n+1} a_i = s_{n+1} && \implies s_n \leq s_{n+1} \\
+    t_n \leq t_n + b_{n+1} &= \sum_{i=1}^{n} b_i + b_{n+1} = \sum_{i=1}^{n+1} b_i = t_{n+1} && \implies t_n \leq t_{n+1}
+\end{align*}
+Also, since $a_n \leq b_n$, we have \[ 
+    s_n = \sum_{i=1}^{n} a_i \leq \sum_{i=1}^{n} b_i = t_n
+\] If $\sum b_n$ converges, then $\{ t_n \}$ is bounded and increasing, so it converges. Since $s_n \leq t_n$, $\{ s_n \}$ is also bounded and increasing, so it converges. \qed
+
+\Theorem{Limit Comparison Test}{
+    Let $\sum a_n$ and $\sum b_n$ be two series with $a_n, b_n > 0$ for all $n$. If \[ 
+        \lim_{n \to \infty} \frac{a_n}{b_n} = c
+    \] where $c \in \R_+$ and $c < \infty$, then $\sum a_n$ and $\sum b_n$ either both converge or both diverge.
+}
+
+\underline{\textbf{Proof:}} \\ 
+Since $0 < c < \infty$, there exists two positive finite numbers $m$ and $M$ such that $m < c < M$. Now we have \[ 
+    m < \frac{a_n}{b_n} < M 
+\] \[ 
+    m b_n < a_n < M b_n
+\]
+Now, if $\sum b_n$ converges, then so does $\sum M b_n$, and since $a_n < M b_n$, for all $n$ by the Comparison Test, $\sum a_n$ also converges. \\
+Similarly, if $\sum b_n$ diverges, then so does $\sum m b_n$, and since $m b_n < a_n$, for all $n$ by the Comparison Test, $\sum a_n$ also diverges. \qed
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Alternating Series Test  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Alternating Series Test}
+
+\Theorem{Alternating Series Test}{
+    Let $\sum a_n$ be an alternating series, that is, $a_n = (-1)^n b_n$ or $a_n = (-1)^{n+1} b_n$ where $b_n > 0$ for all $n$. Then if:
+    \begin{enumerate}
+        \item $\displaystyle \lim_{n \to \infty} b_n = 0$ \\ 
+        \item $\forall n, b_{n+1} \leq b_n$
+    \end{enumerate}
+    the series $\sum a_n$ is convergent.
+}
+
+\underline{\textbf{Proof:}} \\ 
+Let $s_n = \sum_{i=1}^{n} a_i$. Since $b_n$ is decreasing and $\displaystyle \lim_{n \to \infty} b_n = 0$, we can say \[ 
+    \forall n, b_n - b_{n+1} \geq 0
+\]
+Now, we have
+\begin{align*}
+    s_{2n} &= b_1 - b_2 + b_3 - b_4 + b_5 - b_6 + \dots + b_{2n-1} - b_n \\
+           &= b_1 - (b_2-b_3) - (b_4-b_5) - \dots - (b_{2n-2}-b_{2n-1}) - b_{2n}
+\end{align*}
+Since $b_n$ is decreasing, $s_{2n}$ is increasing and bounded above by $b_1$. \\ 
+Let's assume that its limit is $s$, that is \[ 
+    \lim_{n \to \infty} s_{2n} = s
+\]
+Then \[ 
+    \lim_{n \to \infty} s_{2n+1} = \lim_{n \to \infty} (s_{2n} + b_{2n+1}) = \lim_{n \to \infty} s_{2n} + \lim_{n \to \infty} b_{2n+1} = s + 0 = s
+\]
+So, we know that both $\left\{ s_{2n} \right\}$ and $\left\{ s_{2n+1} \right\}$ are convergent sequences and they both have the same limit. \\ 
+We also know that $\left\{ s_n \right\}$ is a convergent sequence with a limit of $s$. This in turn implies that the series $\sum a_n$ is convergent \qed
+
+
+%%%%%%%%%%%%%%%%
+%  Ratio Test  %
+%%%%%%%%%%%%%%%%
+
+\subsection{Ratio Test}
+
+\Theorem{Ratio Test}{
+    Let $\sum a_n$ be a series and let \[ 
+        L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|
+    \] Then:
+    \begin{enumerate}
+        \item If $L < 1$, then $\sum a_n$ is absolutely convergent.
+        \item If $L > 1$ or $L = \infty$, then $\sum a_n$ diverges.
+        \item If $L = 1$, then the test is inconclusive.
+    \end{enumerate}
+}
+
+\underline{\textbf{Proof:}} \\ 
+Let $L < 1$ and $\displaystyle L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|$. Then there exists a number $r$ such that $L < r < 1$. Since $L < r$, there exists a number $N$ such that for all $n > N$, \[ 
+    \left| \frac{a_{n+1}}{a_n} \right| < r 
+\] \[
+    \left| a_{n+1} \right| < r \left| a_n \right|
+\] \[
+    \left| a_{n+1} \right| < r \left| a_n \right| < r^2 \left| a_{n-1} \right| < \cdots < r^{n-N} \left| a_N \right|
+\] \[
+    \left| a_{n+1} \right| < r^{n-N} \left| a_N \right|
+\] Since $r < 1$, the series $\sum r^{n-N} \left| a_N \right|$ converges by the $p$-series test. By the Comparison Test, $\sum a_n$ also converges. \qed
+
+
+%%%%%%%%%%%%%%%
+%  Root Test  %
+%%%%%%%%%%%%%%%
+
+\subsection{Root Test}
+
+\Theorem{Root Test}{
+    Let $\sum a_n$ be a series and let \[ 
+        L = \lim_{n \to \infty} \sqrt[n]{|a_n|} = \lim_{n \to \infty} \lvert a_n \rvert^{\frac{1}{n}}
+    \] Then:
+    \begin{enumerate}
+        \item If $L < 1$, then $\sum a_n$ is absolutely convergent.
+        \item If $L > 1$ or $L = \infty$, then $\sum a_n$ diverges.
+        \item If $L = 1$, then the test is inconclusive.
+    \end{enumerate}
+}
+
+\Note{
+    \[ \lim_{n \to \infty} n^{\frac{1}{n}} = 1 \]
+}
+
+\underline{\textbf{Proof:}} \\ 
+Let $L < 1$ and $\displaystyle L = \lim_{n \to \infty} \sqrt[n]{|a_n|}$. Then there exists a number $r$ such that $L < r < 1$. Since $L < r$, there exists a number $N$ such that for all $n > N$, \[ 
+    \sqrt[n]{|a_n|} < r 
+\] \[
+    |a_n| < r^n 
+\] Since $r < 1$, the series $\sum r^n$ converges by the geometric series test. By the Comparison Test, $\sum a_n$ also converges. \qed
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Strategies for Series Test  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Strategies for Series Test}
+
+\begin{enumerate}[leftmargin=5cm]
+    \item[\textbf{Divergence Test}] If $\displaystyle \lim_{n \to \infty} a_n \neq 0$.
+    \item[\textbf{Geometric Series Test}] If $a_n = ar^n$ or $a_n = ar^{n-1}$ \\
+    \item[\textbf{Integral Test}] If $a_n = f(n)$ and $f(x)$ is continuous, positive, and decreasing \\
+    \item[\textbf{$p$-series Test}] If $a_n = \frac{1}{n^p}$ \\
+    \item[\textbf{Comparison Test}] If $a_n$ is hard to work with, but $b_n$ is easy to work with \\
+    \item[\textbf{Limit Comparison Test}] If $a_n$ is a rational expression involving only polynomials. \\
+    \item[\textbf{Alternating Series Test}] If $a_n = (-1)^n b_n$ or $a_n = (-1)^{n+1} b_n$ \\
+    \item[\textbf{Ratio Test}] If $a_n$ is a product of terms \\
+    \item[\textbf{Root Test}] If $a_n$ is a power of terms
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Estimating the Value of a Series  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Estimating the Value of a Series}
+
+\subsubsection{Integral Test}
+
+\Note[Integral Test]{
+    \[ 
+       s_n + \int_{n+1}^{\infty} f(x) \dd{x} \leq s \leq s_n + \int_{n}^{\infty} f(x) \dd{x}
+    \]
+}
+
+\subsubsection{Comparison Test}
+
+Given a series $\sum a_n$, let's assume that we've used the comparison test to show that it's convergent. Therefore we found a second series $\sum  b_n$ that converged and $a_n \leq b_n$ for all n. \\ 
+Now, let \[ 
+    R_n = \sum_{k=n+1}^{\infty} a_k \quad \text{ and } \quad T_n = \sum_{k=n+1}^{\infty} b_k
+\]
+Since, $a_n \leq b_n$ we also know that $R_n \leq T_n$.
+\Note[Comparison Test]{
+    \[ 
+       R_n \leq T_n \leq \int_{n}^{\infty} g(x) \dd{x}, \qquad \text{ where } g(n) = b_n
+    \]
+}
+
+\subsubsection{Alternating Series Test}
+
+\Note[Alternating Series Test]{
+    \[ 
+       \lvert R_n \rvert = \lvert s - s_n \rvert \leq b_{n+1}
+    \]
+}
+
+\subsubsection{Ratio Test}
+
+\Note[Ratio Test]{
+    To get an estimate of the remainder, let's first define the following sequence, \[ 
+       r_n = \frac{a_{n+1}}{a_n}
+    \]
+    We now have two possible cases:
+    \begin{enumerate}
+        \item If $\left\{ r_n \right\}$ is a decreasing sequence and $r_{n+1} < 1$, then \[ 
+            R_n \leq \frac{a_{n+1}}{1 - r_{n+1}}
+        \]
+        \item If $\left\{ r_n \right\}$ is an increasing sequence, then \[ 
+                R_n \leq \frac{a_{n+1}}{1-L}, \qquad \text{ where } L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|
+        \]
+    \end{enumerate}
+}
+
+
+%%%%%%%%%%%%%%%%%%
+%  Power Series  %
+%%%%%%%%%%%%%%%%%%
+
+\subsection{Power Series}
+
+\Definition{Power Series}{
+    A \textbf{power series} is a series of the form \[ 
+        \sum_{n=0}^{\infty} c_n (x-a)^n = c_0 + c_1 (x-a) + c_2 (x-a)^2 + \cdots
+    \] where $c_n$ are constants and called coefficients and $a$ is a fixed number. The number $a$ is called the \textbf{center} of the power series.
+}
+
+\Theorem{Convergence of Power Series}{
+    Given the power series $\sum c_n (x-a)^n$, the \textbf{radius of convergence} is given by \[ 
+        R = \frac{1}{L}
+    \] where \[ 
+        L = \lim_{n \to \infty} \left| \frac{c_{n+1}}{c_n} \right|
+    \]
+    The power series converges absolutely for all $x$ such that $|x-a| < R$ and diverges for all $x$ such that $|x-a| > R, x \neq a$. \\ 
+    \textbf{N.B:} the series always converges at $x = a$.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Power Series and Functions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Power Series and Functions}
+
+\Theorem{Power Series and Functions}{
+    Let $f(x) = \sum c_n (x-a)^n$ be a power series with radius of convergence $R$. Then:
+    \begin{enumerate}
+        \item $f(x)$ is continuous and differentiable on the interval $(-R, R)$ \\ 
+        \item $\displaystyle f'(x) = \sum n c_n (x-a)^{n-1}$ \\ 
+        \item $\displaystyle \int f(x) \dd{x} = C + \sum_{n=0}^{\infty} c_n \frac{(x-a)^{n+1}}{n+1}$ \\
+        \item The radius of convergence of $f'(x)$ and $\int f(x) \dd{x}$ are also $R$.
+    \end{enumerate}
+}
+
+
+%%%%%%%%%%%%%%%%%%%
+%  Taylor Series  %
+%%%%%%%%%%%%%%%%%%%
+
+\subsection{Taylor Series}
+
+\Definition{Taylor Series}{
+    The \textbf{Taylor series} of a function $f(x)$ about $x=a$ is given by \[ 
+        \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n
+    \] where $f^{(n)}(a)$ is the $n$th derivative of $f(x)$ evaluated at $x=a$.
+}
+
+To determine a condition that must be true in order for a Taylor series to exist for a function let's first define the \textbf{n-th degree Taylor polynomial} of $f(x)$ as
+\[ 
+    T_n(x) = \sum_{i=0}^{n} \frac{f^{(i)}(a)}{i!} (x-a)^i
+\]
+Notice that for the full Taylor Series, \[ 
+    \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n
+\] the n-th degree Taylor polynomial is just the partial sum for the series. \\ 
+The \textbf{remainder} is defined to be 
+\[ 
+    R_n(x) = f(x) - T_n(x)
+\]
+So, the remainder is just the \textit{error} between the function $f(x)$ and the n-th degree Taylor polynomial $T_n(x)$ for a given $n$. \\
+With this definition, we can then write the function as \[ 
+    f(x) = T_n(x) + R_n(x)
+\]
+
+\Theorem{}{
+    Suppose that $f(x) = T_n(x) + R_n(x)$. Then if \[ 
+        \lim_{n \to \infty} R_n(x) = 0
+    \] for $\lvert x-a \rvert < R$, then \[ 
+        f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n
+    \] on $\lvert x-a \rvert < R$.
+}
+
+\subsubsection{Maclaurin Series}
+
+\Definition{Maclaurin Series}{
+    The \textbf{Maclaurin series} of a function $f(x)$ is the Taylor series of $f(x)$ about $x=0$. That is \[ 
+        \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!} x^n
+    \]
+}
+
+\Note{
+    \[ e^{x} = \sum_{n=0}^{\infty} \frac{x^n}{n!} \]
+    \[ \sin(x) = \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{(2n+1)!} \]
+    \[ \cos(x) = \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n}}{(2n)!} \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Binomial Series  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Binomial Series}
+
+\Theorem{Binomial Theorem}{
+    If $n$ is a positive integer, then 
+    \begin{align*}
+        (a+b)^n &= \sum_{i=0}^{n} \binom{n}{i} a^{n-i}b^i \\
+        &= a^n + na^{n-1}b + \frac{n(n-1)}{2!} a^{n-2}b^2 + \dots + nab^{n-1} + b^n
+    \end{align*}
+    where,
+    \begin{align*}
+        \binom{n}{i} &= \frac{n!}{i!(n-i)!} = \frac{n(n-1)(n-2) \cdots (n-i+1)}{i!} \\
+        \binom{n}{0} &= 1
+    \end{align*}
+}
+
+\Note[Binomial Series]{
+    If $k$ is a number and $\lvert x \rvert < 1$, then
+    \begin{align*}
+        (1+x)^k &= \sum_{n=0}^{\infty} \binom{k}{n} x^n \\ 
+                &= 1 + kx + \frac{k(k-1)}{2!} x^2 + \cdots + \binom{k}{n} x^n
+    \end{align*}
+    where,
+    \begin{align*}
+        \binom{k}{n} &= \frac{k!}{n!(k-n)!} = \frac{k(k-1)(k-2) \cdots (k-n+1)}{n!} \\
+        \binom{k}{0} &= 1
+    \end{align*}
+}
