@@ -316,6 +316,143 @@ This also applies to functions of more than two variables. For example, \[
 \Definition{Directional Derivative}{
     The rate of change of $f(x,y)$ in the direction of the unit vector $\vec{u} = \langle a,b \rangle$ is called the \textbf{directional derivative} of $f$ and is denoted by $D_{\vec{u}} f(x,y)$. The definition of the directional derivative is:
     \[ 
-        D_{\vec{u}} f(x,y) = \lim_{h \to 0} \frac{f(x+ha,y+hb) - f(x,y)}{h}
+        D_{\vec{u}} f(x,y) = \lim_{h \to 0} \frac{f(x+ah,y+bh) - f(x,y)}{h}
     \]
 }
+
+Now, in practice, finding this limit can be difficult. We can derive an equivalent formula for taking directional derivatives.
+
+Let's define a new function of one variable: \[ 
+    g(z) = f(x_0+az, y_0+bz)
+\]
+where $x_0$, $y_0$, $a$, $b$ are constants. Then, by the definition of the derivative, we have \[ 
+    g'(z) = \lim_{h \to 0} \frac{g(z+h) - g(z)}{h}
+\]
+For $z=0$, we have: \[
+    g'(0) = \lim_{h \to 0} \frac{g(h)-g(0)}{h} = \lim_{h \to 0} \frac{f(x_0+ah, y_0+bh) - f(x_0,y_0)}{h} = D_{\vec{u}} f(x_0,y_0)
+\]
+Thus, we have the following relationship: \[ 
+    g'(0) = D_{\vec{u} f(x_0,y_0)}
+\]
+
+Now, let's rewrite $g(z)$ as follows: \[ 
+    g(z) = f(x,y) \quad \text{where } x = x_0 + az \text{ and } y = y_0 + bz
+\]
+We can now apply the chain rule to find $g'(z)$: \[ 
+    g'(z) = \dv{g}{z} = \pdv{f}{x} \dv{x}{z} + \pdv{f}{y} \dv{y}{z} = f_x(x,y) a + f_x(x,y) b
+\]
+
+If we take $z=0$, we get $x=x_0$ and $y=y_0$, and finally we have: \[ 
+    D_{\vec{u}} f(x_0,y_0) = g'(0) = f_x(x_0,y_0) a + f_y(x_0,y_0) b
+\]
+
+\Note{
+    \[ D_{\vec{u}} f(x,y) = f_x(x,y) a + f_y(x,y) b \]
+    \[ D_{\vec{u}} f(x,y,z) = f_x(x,y,z)a + f_y(x,y,z)b + f_z(x,y,z)c \]
+}
+
+\Example{Find each of the directional derivatives: \\ 
+    \quad (a) $D_{\vec{u}}f(8,1,2)$ where $f(x,y,z) = \ln \frac{x}{z} + \ln \frac{z}{y} + xy^2$ in the direction of $\vec{v} = \langle 1,5,2 \rangle$ \\ 
+    \quad (b) $D_{\vec{u}} f(x,y)$ where $f(x,y)=xe^{xy}+y$ and $\vec{u}$ is the unit vector in the direction of $\theta=\frac{2\pi}{3}$
+}{
+    \textbf{(a)} First, the unit vector in the direction of $\vec{v}$ is: \[ 
+        \vec{u} = \frac{\vec{v}}{||\vec{v}||} = \frac{\langle 1,5,2 \rangle}{\sqrt{1^2+5^2+2^2}} = \frac{\langle 1,5,2 \rangle}{\sqrt{30}}
+    \]
+    Simplifying the function, we have: \[ 
+        f(x,y,z) = \ln(x) - \ln(z) + \ln(z) - \ln(y) + xy^2 = \ln(x) - \ln(y) + xy^2
+    \]
+    The directional derivative is then,
+    \begin{align*}
+        D_{\vec{u}}f(x,y,z) &= \frac{1}{\sqrt{30}} \left[ f_x(x,y,z) + 5f_y(x,y,z) + 2f_z(x,y,z) \right] \\
+        D_{\vec{u}}f(8,1,2) &= \frac{1}{\sqrt{30}} \left[ 1 \left( \frac{1}{x} + y^2 \right) + 5 \left( -\frac{1}{y} + 2xy \right) + 2\cdot0 \right]_{(8,1,2)} \\
+        &= \frac{1}{\sqrt{30}} \left( \frac{1}{8} + 1 - 5 + 80 \right) \\ 
+        &= \frac{609}{8 \sqrt{30}}
+    \end{align*}
+    \textbf{(b)} The unit vector in the direction of $\theta = \frac{2\pi}{3}$ is: \[ 
+        \vec{u} = \Biggl\langle \cos( \frac{2\pi}{3} ), \sin( \frac{2\pi}{3} ) \Biggr\rangle = \Biggl\langle - \frac{1}{2}, \frac{\sqrt{3}}{2} \Biggr\rangle
+    \]
+    So, the directional derivative is:
+    \begin{align*}
+        D_{\vec{u}} f(x,y) &= \left( - \frac{1}{2} \right) \left( e^{xy} + xy e^{xy} \right) + \left( \frac{\sqrt{3}}{2} \right) \left( x^2 e^{xy} + 1 \right) \\
+        D_{\vec{u}} f(2,0) &= \left( - \frac{1}{2} \right) (1) + \left( \frac{\sqrt{3}}{2} \right) (5) \\ 
+           &= \frac{5 \sqrt{3} - 1}{2}
+    \end{align*}
+}
+
+Notice, the directional derivative can also be written in the following way:
+\begin{align*}
+    D_{\vec{u}}f(x,y,z) &= f_x(x,y,z)a + f_y(x,y,z)b + f_z(x,y,z) \\
+        &= \langle f_x,f_y,f_z \rangle \cdot \langle a,b,c \rangle 
+\end{align*}
+
+In other words, the directional derivative is the dot product of the gradient vector and the unit vector in the direction of interest.
+
+\Note[Gradient Vector]{
+    The \textbf{gradient vector} of a function $f(x,y)$ is denoted by $\nabla f$ and is defined as:
+    \[ 
+        \nabla f = \langle f_x, f_y \rangle = \Biggl\langle \pdv{f}{x}, \pdv{f}{y} \Biggr\rangle
+    \]
+    For a function $f(x,y,z)$, the gradient vector is:
+    \[ 
+        \nabla f = \langle f_x, f_y, f_z \rangle = \Biggl\langle \pdv{f}{x}, \pdv{f}{y}, \pdv{f}{z} \Biggr\rangle
+    \]
+}
+
+\Note[Directional Derivative]{
+    The directional derivative can also be expressed in terms of the gradient vector: \[ 
+        D_{\vec{u}} f(\vec{x}) = \nabla f \cdot \vec{u}
+    \]
+    where $\vec{x} = \langle x,y,z \rangle$ or $\vec{x} = \langle x,y \rangle$ depending on the function and $\vec{u}$ is the unit vector in the direction of interest. \\
+}
+
+\Example{Find the directional derivative \[ 
+    D_{\vec{u}}f(\vec{x}) \text{ for } f(x,y,z) = \sin(yz) + \ln(x^2) \text{ at } (1,1,\pi) \text{ in the direction of } \vec{v} = \langle 1,1,-1 \rangle
+\]}{
+    The gradient vector is: 
+    \begin{align*}
+        \nabla f(x,y,z) &= \Biggl\langle \frac{2}{x}, z \cos(yz), y \cos(yz) \Biggr\rangle \\
+        \nabla f(1,1,\pi) &= \Biggl\langle \frac{2}{1}, \pi \cos(\pi), \cos(\pi) \Biggr\rangle = \langle 2, -\pi, -1 \rangle
+    \end{align*}
+    The unit vector in the direction of $\vec{v}$ is: \[ 
+        \vec{u} = \frac{\vec{v}}{||\vec{v}||} = \frac{\langle 1,1,-1 \rangle}{\sqrt{3}} = \Biggl\langle \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}}, -\frac{1}{\sqrt{3}} \Biggr\rangle
+    \]
+    Hence, the directional derivative is:
+    \begin{align*}
+        D_{\vec{u}}f(1,1,\pi) &= \nabla f \cdot \vec{u} \\
+        &= \Biggl\langle 2, -\pi, -1 \Biggr\rangle \cdot \Biggl\langle \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}}, -\frac{1}{\sqrt{3}} \Biggr\rangle \\
+        &= 2 \cdot \frac{1}{\sqrt{3}} - \pi \cdot \frac{1}{\sqrt{3}} + 1 \cdot \frac{1}{\sqrt{3}} = \frac{3 - \pi}{\sqrt{3}}
+    \end{align*}
+}
+
+\Theorem{}{
+    The maximum value of $D_{\vec{u}}f(\vec{x})$ (and hence then the maximum rate of change of the function $f(\vec{x})$) is given by $||\nabla f(\vec{x})||$ and will occur in the direction given by $\nabla f(\vec{x})$.
+}
+
+\underline{\textbf{Proof:}} \\
+We can use a nice fact about dot products as well as the fact that $\vec{u}$ is a unit vector to proof this theorem:
+\[ D_{\vec{u}}f = \nabla f \cdot \vec{u} = ||\nabla f|| \; ||\vec{u}|| \cos\theta = ||\nabla f|| \cos\theta \]
+where $\theta$ is the angle between the gradient and $\vec{u}$. \\
+Now, the largest possible value of $\cos\theta$ is $1$, which occurs at $\theta=0$. Therefore, the maximum value of $D_{\vec{u}} f(\vec{x})$ is $||\nabla f(\vec{x})||$. Also, the maximum value occurs when the angle between the gradient and $\vec{u}$ is zero, or in other words, when $\vec{u}$ is pointing in the same direction as the gradient.
+
+\Note{
+    The gradient vector $\nabla f(x_0,y_0)$ is orthogonal (or perpendicular) to the level curve/contour curve $f(x,y)=k$ at the point $(x_0,y_0)$. Likewise, the gradient vector $\nabla f(x_0,y_0,z_0)$ is orthogonal to the level surface $f(x,y,z)=k$ at the point $(x_0,y_0,z_0)$.
+}
+
+\underline{\textbf{Proof:}} \\
+Let $S$ be the level surface given by $f(x,y,z)=k$ and let $P(x_0,y_0,z_0)$ be a point on the surface $S$.
+
+Now, let $C$ be any curve on the surface $S$ that contains the point $P$. Let $\vec{r}(t) = \langle x(t), y(t), z(t) \rangle$ be the vector equation for $C$ and suppose that $t_0$ is the value of $t$ such that $\vec{r}(t_0) = \langle x_0,y_0,z_0 \rangle$. In other words, $t_0$ is the value of $t$ that gives $P$.
+
+Since $C$ lies on $S$, we know that the points on $C$ must satisfy the equation for $S$. That is \[ 
+    f(x(t),y(t),z(t)) = k
+\]
+Using the chain rule, we get: \[ 
+    \pdv{f}{x} \dv{x}{t} + \pdv{f}{y} \dv{y}{t} + \pdv{f}{z} \dv{z}{t} = 0
+\]
+Notice that $\nabla f = \langle f_x,f_y,f_z \rangle$ and $\vec{r}'(t) = \langle x'(t),y'(t),z'(t) \rangle$ so this becomes: \[ 
+    \nabla f \cdot \vec{r}'(t) = 0
+\]
+At $t = t_0$, \[ 
+    \nabla f(x_0,y_0,z_0) \cdot \vec{r}'(t_0) = 0
+\]
+This then tells us that the gradient vector at $P$ (i.e. $\nabla f(x_0,y_0,z_0)$) is orthogonal to the tangent vector $\vec{r}'(t_0)$ to any curve $C$ that passes through $P$ and on the surface $S$ and su must also be orthogonal to the surface S.
