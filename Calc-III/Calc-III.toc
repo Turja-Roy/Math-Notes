@@ -14,3 +14,11 @@
 \contentsline {subsection}{\numberline {2.5}Chain Rule}{16}{}%
 \contentsline {subsubsection}{\numberline {2.5.1}Implicit Differentiation}{19}{}%
 \contentsline {subsection}{\numberline {2.6}Directional Derivatives}{20}{}%
+\contentsline {section}{\numberline {3}Applications of Partial Derivatives}{24}{}%
+\contentsline {subsection}{\numberline {3.1}Tangent Planes and Linear Approximations}{24}{}%
+\contentsline {subsection}{\numberline {3.2}Gradient Vector, Tangent Planes, and Normal Lines}{25}{}%
+\contentsline {subsection}{\numberline {3.3}Relative Minimums and Maximums}{28}{}%
+\contentsline {subsection}{\numberline {3.4}Absolute Extrema}{31}{}%
+\contentsline {subsection}{\numberline {3.5}Lagrange Multipliers}{36}{}%
+\contentsline {section}{\numberline {4}Multiple Integrals}{39}{}%
+\contentsline {subsection}{\numberline {4.1}Double Integrals}{39}{}%

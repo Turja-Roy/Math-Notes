@@ -15,6 +15,12 @@
 \usepackage{xparse}
 \usepackage{cleveref}
 
+%%%%%%%%%%%%%%%
+%  Numbering  %
+%%%%%%%%%%%%%%%
+
+\counterwithin{figure}{subsection}
+\renewcommand{\thefigure}{\thesubsection.\arabic{figure}}
 
 %%%%%%%%%%%%%%%%
 %  Definition  %

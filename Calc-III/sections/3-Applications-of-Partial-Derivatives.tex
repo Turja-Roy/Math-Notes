@@ -1,0 +1,667 @@
+\section{Applications of Partial Derivatives}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Tangent Planes and Linear Approximations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tangent Planes and Linear Approximations}
+
+Let there be a point $(x_0,y_0)$ on function $z=f(x,y)$ in $\R^3$. Let $C_1$ be the trace to $f(x,y)$ for plane $y=y_0$ and $C_2$ be the trace to $f(x,y)$ for plane $x=x_0$. Now, let $L_1$ and $L_2$ be the tangent lines to $C_1$ and $C_2$ at point $(x_0,y_0)$, respectively. The tangent plane to $f(x,y)$ at point $(x_0,y_0)$ is defined as the plane that contains both lines $L_1$ and $L_2$.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.6\textwidth]{3.1.1.png}
+    \caption{Tangent plane}
+\end{figure}
+
+Now, we need to find the equation of the tangent plane. The general equation of a plane is given by \[ 
+    a(x-x_0) + v(y-y_0) + c(z-z_0) = 0
+\]
+where $(x_0,y_0,z_0)$ is a point on the plane and $a$, $b$, and $c$ are the coefficients of the plane. The equation can be rewritten as \[ 
+    z-z_0 = - \frac{a}{c}(x-x_0) - \frac{b}{c}(y-y_0)
+\]
+Let's rename the constants as follows: \[ 
+    A = -\frac{a}{c}, \qquad B = -\frac{b}{c}
+\]
+Thus we get \[ 
+    z-z_0 = A(x-x_0) + B(y-y_0)
+\]
+
+Now, assuming $y=y_0$ (i.e., $y$ is fixed) and $x=x_0$ (i.e., $x$ is fixed) we get respectively
+\[ 
+    z-z_0 = A(x-x_0) \qquad \text{and} \qquad z-z_0 = B(y-y_0)
+\]
+Note, these are the equations for the tangent lines $L_1$ and $L_2$ respectively, where the slopes are respectively $A=f_x(x_0,y_0)$ and $B=f_y(x_0,y_0)$. We also know $z_0=f(x_0,y_0)$.
+
+Hence, the equation of the tangent plane is given by
+\[ 
+    \boxed{ z = f(x_0,y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0) }
+\]
+
+The linear approximation for a surface "near" the point $(x_0,y_0)$ is given then \[ 
+    L(x,y) = f(x_0,y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)
+\]
+
+\Example{Find the linear approximation to $z = \frac{10x^2}{x-y}$ at $(4,-1)$}{
+    The linear approximation is given by \[ 
+        L(x,y) = z(4,-1) + z_x(4,-1)(x-4) + z_y(4,-1)(y+1)
+    \]
+    Here,
+    \begin{align*}
+        z(4,-1) &= \frac{10 \times 4^2}{4 - (-1)} \\
+                &= \frac{160}{5} = 32 \\
+        z_x(4,-1) &= \frac{\partial}{\partial x} \left( \frac{10x^2}{x-y} \right) \bigg|_{(4,-1)} \\
+                &= \frac{20x(x-y) - 10x^2}{(x-y)^2} \bigg|_{(4,-1)} \\
+                &= \frac{20 \times 4 (4 - (-1)) - 10 \times 4^2}{(4 - (-1))^2} \\
+                &= \frac{80 \times 5 - 160}{25} = \frac{400 - 160}{25} = \frac{240}{25} = 9.6 \\
+        z_y(4,-1) &= \frac{\partial}{\partial y} \left( \frac{10x^2}{x-y} \right) \bigg|_{(4,-1)} \\ 
+                &= \frac{10x^2}{(x-y)^2} \bigg|_{(4,-1)} \\
+                &= \frac{10 \times 4^2}{(4 - (-1))^2} = \frac{160}{25} = 6.4
+    \end{align*}
+    Hence, the linear approximation is given by \[ 
+        \boxed{ L(x,y) = 32 + 9.6(x-4) + 6.4(y+1) }
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Gradient Vector, Tangent Planes, and Normal Lines  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Gradient Vector, Tangent Planes, and Normal Lines}
+
+\Note{
+    The gradient vector $\nabla f(x_0,y_0)$ is orthogonal to the level curve $f(x,y)=k$ at the point $(x_0,y_0)$. Likewise, the gradient vector $\nabla f(x_0,y_0,z_0)$ is orthogonal to the level surface $f(x,y,z)=k$ at the point $(x_0,y_0,z_0)$.
+}
+
+We know, the gradient vector is \[ 
+    \nabla f = \langle f_x, f_y, f_z \rangle
+\]
+So, the tangent plane to the surface $f(x,y,z)=k$ at $(x_0,y_0,z_0)$ is given by the equation \[ 
+    f_x(x_0,y_0,z_0)(x-x_0) + f_y(x_0,y_0,z_0)(y-y_0) + f_z(x_0,y_0,z_0)(z-z_0) = 0
+\]
+This is a general form of the equation of a tangent plane than that of the previous section.
+
+However, we can also write the equation in the previous form. For that, we need to find the tangent plane to the surface given by $z=f(x,y)$ at the point $(x_0,y_0,z_0)$, where $z_0=f(x_0,y_0)$. We can rewrite as \[ 
+    f(x,y) - z = 0
+\]
+Now, defining a new function as \[ 
+    F(x,y,z) = f(x,y) - z
+\]
+
+The surface given by $z=f(x,y)$ is identical to the surface given by $F(x,y,z)=0$. Now, the gradient vector for $F$ is \[ 
+    \nabla F = \langle F_x, F_y, F_z \rangle = \langle f_x, f_y, -1 \rangle
+\]
+Note:
+\begin{align*}
+    F_x &= \pdv{}{x} \left[ f(x,y) - z \right] = f_x \\
+    F_y &= \pdv{}{y} \left[ f(x,y) - z \right] = f_y \\
+    F_z &= \pdv{}{z} \left[ f(x,y) - z \right] = -1
+\end{align*}
+
+Hence, the tangent plane is then
+    \[ F_x (x-x_0) + F_y (y-y_0) + F_z (z-z_0) = 0 \]
+    \[ f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0) - (z-z_0) = 0 \]
+    \[ \boxed{ z = f(x_0,y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0) } \]
+
+We can also find the normal line to the surface $f(x,y,z)=k$ at the point $(x_0,y_0,z_0)$. The equation of line requires a point and a parallel vector, which is given by the gradient vector. Hence, the equation of the normal line is given by
+\[ 
+    \boxed{ \vec{r}(t) = \langle x_0,y_0,z_0 \rangle + t \nabla f(x_0,y_0,z_0) }
+\]
+
+\Note[Tangent Plane]{
+    The tangent plane to the surface given by $F(x,y,z)=f(x,y)-z$ at the point $(x_0,y_0,z_0)$ is given by
+    \[ 
+        F_x(x_0,y_0,z_0)(x-x_0) + F_y(x_0,y_0,z_0)(y-y_0) + F_z(x_0,y_0,z_0)(z-z_0) = 0
+    \]
+}
+
+\Note[Normal Line]{
+    The normal line to the surface given by $F(x,y,z)=f(x,y)-z$ at the point $(x_0,y_0,z_0)$ is given by
+    \[ 
+        \vec{r}(t) = \langle x_0,y_0,z_0 \rangle + t \nabla F(x_0,y_0,z_0)
+    \]
+}
+
+\Example{Find the tangent plane and normal line to $9yz - \sqrt{x^2-8z} = xy^2 - 26$ at $(3,1,-2)$}{
+    Rearranging the equation, we get \[ 
+        xy^2 + \sqrt{x^2-8z} - 9yz - 26 = 0
+    \]
+    The gradient vector is given by
+    \begin{align*}
+        \nabla F &= \langle y^2 + \frac{x}{\sqrt{x^2-8z}}, 2xy - 9z, - \frac{4}{\sqrt{x^2-8z}} - 9y \rangle \\
+        \nabla F(3,1,-2) &= \langle 1 + \frac{3}{5}, 6+18, - \frac{4}{5} - 9 \rangle \\ 
+                         &= \langle \frac{8}{5}, 24, \frac{-49}{5} \rangle
+    \end{align*}
+    The tangent plane, hence, would be 
+    \begin{align*}
+        \frac{8}{5}(x-3) + 24(y-1) - \frac{49}{5}(z+2) &= 0 \\
+        8x - 24 + 120y - 120 - 49z - 98 &= 0 \\ 
+        8x + 120y - 49z &= 242
+    \end{align*}
+    And the normal line is given by the equation 
+    \[ \frac{x-3}{ \frac{8}{5} } = \frac{y-1}{24} = \frac{z+2}{ - \frac{49}{g} } \]
+    \[ \frac{x-3}{8} = \frac{y-1}{120} = -\frac{z+2}{49} \]
+}
+
+\Example{Find the point(s) on $6x^2+y^2-3z^2=4$ where the tangent plane to the surface is parallel to the plane given by $2x+7y-z=6$.}{
+    The gradient vector of the surface is given by \[ 
+        \nabla F = \langle 12x, 2y, -6z \rangle
+    \]
+    The normal vector to the parallel plane is \[ 
+        \vec{n} = \langle 2,7,-1 \rangle
+    \]
+    Since the planes are parallel, the gradient vector must be a scalar multiple of the normal vector, i.e., \[ 
+        \langle 12x, 2y, -6z \rangle = k \langle 2,7,-1 \rangle
+    \]
+    This gives us the following equations:
+    \[ 12x = 2k \implies k = 6x \]
+    \[ 2y = 7k = 42x \implies y = 21x \]
+    \[ -6z = -k \implies z = x \]
+    Now, substituting these values in the equation of the surface, we get 
+    \begin{align*}
+        6x^2 + (21x)^2 - 3x^2 &= 4 \\
+        6x^2 + 441x^2 - 3x^2 &= 4 \\
+        x^2 &= \frac{4}{444}
+    \end{align*}
+    \[ \therefore x = \pm \frac{1}{\sqrt{111}}, \qquad y = \pm \frac{21}{\sqrt{111}}, \qquad z = \pm \frac{1}{\sqrt{111}} \]
+    Hence, the points are \[ 
+        \left( \frac{1}{\sqrt{111}}, \frac{21}{\sqrt{111}}, \frac{1}{\sqrt{111}} \right) \text{ and } \left( -\frac{1}{\sqrt{111}}, - \frac{21}{\sqrt{111}}, -\frac{1}{\sqrt{111}} \right)
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Relative Minimums and Maximums  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Relative Minimums and Maximums}
+
+\Definition{Relative Minimum and Maximum}{
+    A function $f(x,y)$ has a \textbf{relative minimum} at the point $(a,b)$ if $f(x,y) \geq f(a,b)$ for all points $x(,y)$ in some region around $(a,b)$. \\~\\
+    A function $f(x,y)$ has a \textbf{relative maximum} at the point $(a,b)$ if $f(x,y) \leq f(a,b)$ for all points $x(,y)$ in some region around $(a,b)$.
+}
+
+\Definition{Critical Point}{
+    The point $(a,b)$ is a \textbf{critical point} (or a \textbf{stationary point}) of the function $f(x,y)$ provided one of the following is true:
+    \begin{enumerate}
+        \item $\nabla f(a,b) = \vec{0}$ (i.e., $f_x(a,b)=0$ and $f_y(a,b)=0$)
+        \item $f_x(a,b)$ and/or $f_y(a,b)$ do not exist
+    \end{enumerate}
+}
+
+\Note{
+    If the point $(a,b)$ is a relative extrema of the function $f(x,y)$ and the first order derivative of $f(x,y)$ exists at $(a,b)$, then $(a,b)$ is a critical point of $f(x,y)$. However, the converse is not true. That is, a critical point need not be a relative extrema.
+}
+
+\underline{\textbf{Proof:}} \\ 
+Let $g(x) = f(x,y)$ and suppose that $f(x,y)$ has a relative extrema at $(a,b)$. However, this also means that $g(x)$ also has a relative extrema at $x=a$. By Fermat's theorem, we know that $g'(a)=0$. But we also know that $g'(a)=f_x(a,b)$ and so we have that $f_x(a,b)=0$. 
+
+If we now define $h(y)=f(a,b)$, then we can similarly show that $f_y(a,b)=0$.
+
+So, putting all these together means that $\nabla f(a,b)=\vec{0}$ and so $f(x,y)$ has a critical point at $(a,b)$.
+
+\begin{minipage}{0.6\textwidth}
+    Example of a point that is a critical point but not a relative extrema is the point $(0,0)$ for the function $f(x,y)=x^2-y^2$. In the $x$-axis, the function becomes $f(x,0)=x^2$, which is a parabola opening upwards. So, the point $(0,0)$ looks like a minimum along this path. In the $y$-axis, the function becomes $f(0,y)=-y^2$, which is a parabola opening downwards. So, the point $(0,0)$ looks like a maximum along this path. Since the point $(0,0)$ is a minimum in one direction and a maximum in another, it's neither a relative minimum nor a relative maximum. This type of critical point is also called a \textbf{saddle point}.
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{3.3.1.png}
+    \end{center}
+    \captionof{figure}{Saddle point}
+\end{minipage}
+
+\Definition{Saddle Point}{
+    A point $(a,b)$ is a \textbf{saddle point} of the function $f(x,y)$ if it is a critical point but neither a relative minimum nor a relative maximum.
+}
+
+\Definition{Hessian Matrix}{
+    The Hessian matrix of a function $f(x,y)$ is given by \[ 
+        H = \begin{bmatrix}
+            f_{xx} & f_{xy} \\
+            f_{xy} & f_{yy}
+        \end{bmatrix}
+    \]
+    where $f_{xx}$, $f_{yy}$, and $f_{xy}$ are the second order partial derivatives of $f(x,y)$. \\
+    The Hessian matrix is used in the second derivative test to classify critical points of the function $f(x,y)$. 
+}
+
+\Note[Relative Extrema]{
+    Suppose that $(a,b)$ is a critical point of $f(x,y)$ and that the second order partial derivatives are continuous in some region that contains $(a,b)$. Next, let's use the determinant of the Hessian matrix, denoted by $D$, to classify the critical point $(a,b)$.
+    \[ 
+        D = D(a,b) = f_{xx}(a,b)f_{yy}(a,b) - \left[ f_{xy}(a,b) \right]^2
+    \]
+    We then have the following classifications of the critical point:
+    \begin{enumerate}
+        \item If $D>0$ and $f_{xx}(a,b)>0$ then there is a relative minimum at $(a,b)$. 
+        \item If $D>0$ and $f_{xx}(a,b)<0$ then there is a relative maximum at $(a,b)$. 
+        \item If $D<0$ then there is a saddle point at $(a,b)$. 
+        \item If $D=0$ then the test is inconclusive. In this case, we need to use other methods to determine the nature of the critical point.
+    \end{enumerate}
+}
+
+Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same sign and so in the first two cases, we can conclude that both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ are either both positive or both negative.
+
+\Example{Find and classify all the critical points for $f(x,y) = 3x^2y + y^3 - 3x^2 - 3y^2 + 2$}{
+    First, we need to find the first and second order partial derivatives of the function: \[ 
+        f_x = 6xy - 6x, \qquad f_y = 3x^2 + 3y^2 - 6y
+    \] \[ 
+        f_{xx} = 6y - 6, \qquad f_{yy} = 6y - 6, \qquad f_{xy} = 6x
+    \]
+    Now, we need to find the critical points by solving the equations $f_x=0$ and $f_y=0$ simultaneously:
+    \begin{align*}
+        6xy - 6x &= 0 \\
+        3x^2 + 3y^2 - 6y = 0
+    \end{align*}
+    From the first equation, \[ 
+        6x(y-1) = 0 \implies x=0, y=1
+    \]
+    For $x=0$:
+    \[ 3y^2 - 6y = 3y(y-2) = 0 \implies y = 0,2 \]
+    For $y=1$:
+    \[ 3x^2 + 3 - 6 = 0 \implies x^2 = 1 \implies x = 1,-1 \]
+    Hence, the critical points are $(0,0)$, $(0,2)$, $(1,1)$, and $(-1,1)$.
+    Now, we need to classify these critical points using the second derivative test: \[ 
+        D(x,y) = f_{xx}(x,y)f_{yy}(x,y) - \left[ f_{xy}(x,y) \right]^2 = (6y-6)^2 - 36x^2
+    \]
+    For $(0,0)$:
+    \[ D(0,0) = 36 > 0 \qquad f_{xx}(0,0) = -6 < 0 \]
+    For $(0,2)$:
+    \[ D(0,2) = 36 > 0 \qquad f_{xx}(0,2) = 6 > 0 \]
+    For $(1,1)$:
+    \[ D(1,1) = -36 < 0 \]
+    For $(-1,1)$:
+    \[ D(-1,1) = -36 < 0 \]
+    So, we have the following classifications:
+    \begin{itemize}
+        \item $(0,0)$ is a relative maximum.
+        \item $(0,2)$ is a relative minimum.
+        \item $(1,1)$ and $(-1,1)$ are saddle points. 
+    \end{itemize}
+}
+
+\Example{Determine the point on the plane $4x-2y+z=1$ that is closest to the point $(-2,-1,5)$}{
+    We can rewrite the equation of the plane as \[ 
+        z = 1 - 4x + 2y
+    \]
+    The distance between a point $(x,y,z)$ on the plane and the point $(-2,-1,5)$ is given by \[ 
+        d = \sqrt{(x+2)^2 + (y+1)^2 + (2y-4x-4)^2}
+    \]
+    Now, since the finding the mininmum value of $d$ is equivalent to finding the minimum value of $d^2$, let
+    \begin{align*}
+        f(x,y) &= d^2 = (x+2)^2 + (y+1)^2 + (2y-4x-4)^2 \\
+        &= (x^2 + 4x + 4) + (y^2 + 2y + 1) + (16x^2 + 4y^2 - 16xy + 32x - 16y + 16) \\
+        f(x,y) &= 17x^2 + 5y^2 - 16xy + 36x - 14y + 21
+    \end{align*}
+    We can now find the derivatives:
+    \[ f_x(x,y) = 34x-16y+36, \qquad f_y(x,y) = 10y-16x-14 \]
+    \[ f_{xx}(x,y) = 34, \qquad f_{yy}(x,y) = 10, \qquad f_{xy} = -16 \]
+    Before finding the critical points, notice that
+    \begin{align*}
+        D(x,y) &= f_{xx}f_{yy} - f_{xy}^2 \\
+        &= 34 \times 10 - (-16)^2 \\
+        &= 340 - 256 = 84 > 0
+    \end{align*}
+    Since $D>0$ and $f_{xx}>0$, all the critical points will be relative minimums. Now, to find the critical points, solve the equations
+    \begin{align*}
+        f_x &= 34x - 16y + 36 = 0 \\
+        f_y &= 10y - 16x - 14 = 0
+    \end{align*}
+    From the first equation, we get \[ 
+        x = \frac{1}{34}(16y - 36) = \frac{1}{17}(8y-18)
+    \]
+    Substituting this in the second equation, we get
+    \begin{align*}
+        10y - \frac{16}{17}(8y-18) - 14 &= 0 \\
+        170y - 16(8y-18) - 238 &= 0 \\ 
+        42y + 50 &= 0 \\ 
+        \therefore y &= -\frac{25}{21}
+    \end{align*}
+    And substituting this value in the equation for $x$, we get
+    \begin{align*}
+        x &= \frac{1}{17} \left( \frac{-200}{21} - 18 \right) \\
+        &= \frac{-200-378}{17 \times 21} \\
+        \therefore x &= -\frac{34}{21}
+    \end{align*}
+    Finally, substituting these values in the equation of the plane, we get \[ 
+        z = 1 + 4 \times \frac{34}{21} - 2 \times \frac{25}{21} = \frac{107}{21}
+    \]
+    So, the point on the plane that is closest to the point $(-2,-1,5)$ is $\displaystyle \left( -\frac{34}{21}, -\frac{25}{21}, \frac{107}{21} \right)$
+}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%  Absolute Extrema  %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Absolute Extrema}
+
+\Definition{Closed, Open, and Bounded Region}{
+    \begin{enumerate}
+        \item A region $\R^2$ is called \textbf{closed} if it contains all its boundary points. 
+        \item A region $\R^2$ is called \textbf{open} if it does not contain any of its boundary points. 
+        \item A region $\R^2$ is called \textbf{bounded} if it can be contained in a circle of finite radius.
+    \end{enumerate}
+}
+
+\Theorem{Extreme Value Theorem}{
+    If $f(x,y)$ is continuous on a closed and bounded region $D$ in $\R^2$, then $f(x,y)$ there are two points $(x_1,y_1)$ and $(x_2,y_2)$ in region $D$ such that $f(x_1,y_1)$ is the absolute maximum and $f(x_2,y_2)$ is the absolute minimum of $f(x,y)$ in $D$.
+}
+
+\Note[Finding Absolute Extrema]{
+    \begin{enumerate}
+        \item Find all the critical points of the function $f(x,y)$ that lie in the region $D$ and determine the function value at each of these points. 
+        \item Find all extrema of the function $f(x,y)$ on the boundary of the region $D$ and determine the function value at each of these points. 
+        \item The largest and the smallest values found in the first two steps are the absolute minimum and the absolute maximum of the function $f(x,y)$ in the region $D$.
+    \end{enumerate}
+}
+
+\Example{Find the absolute minimum and absolute maximum of $f(x,y)=x^2+4y^2-2x^2y+4$ on the rectangle given by $-1 \leq x \leq 1$ and $-1 \leq y \leq 1$.}{
+    First, we need to find the critical points of the function $f(x,y)$ in the region $D$. The first order partial derivatives are given by
+    \begin{align*}
+        f_x &= 2x - 4xy \\
+        f_y &= 8y - 2x^2
+    \end{align*}
+    Setting these equal to zero, we get the following equations:
+    \begin{align*}
+        2x - 4xy &= 0 \\
+        8y - 2x^2 &= 0
+    \end{align*}
+    Solving the equations, we get \[ 
+        (x,y) = (0,0), \left(\sqrt{2}, \frac{1}{2}\right), \left(-\sqrt{2}, \frac{1}{2}\right)
+    \] Since $-1 \leq x \leq 1$, the only critical point in the region $D$ is $(0,0)$.
+    Value of the function at this point is \[ 
+        f(0,0) = 0^2 + 4(0)^2 - 2(0)^2(0) + 4 = 4
+    \]
+    Now, we need to find the extrema on the boundary of the region. The boundary consists of four line segments: \\
+    \begin{minipage}{0.6\textwidth}
+        \begin{enumerate}
+            \item $(-1,-1)$ to $(1,-1)$ where $y=-1$ and $-1\leq x\leq 1$
+            \item $(1,-1)$ to $(1,1)$ where $x=1$ and $-1\leq y\leq 1$
+            \item $(1,1)$ to $(-1,1)$ where $y=1$ and $-1\leq x\leq 1$
+            \item $(-1,1)$ to $(-1,-1)$ where $x=-1$ and $-1\leq y\leq 1$
+        \end{enumerate}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{3.4.1.png}
+            \captionof{figure}{Boundary of the region}
+        \end{center}
+    \end{minipage} \\
+    For segment 1: \\
+    Let $g(x)=f(x,-1)=3x^2+8$ \\
+    For critical point on the edge, $g'(x)=0$ or $6x=0 \implies x=0$. \\
+    \begin{align*}
+        g(0) &= f(0,-1) = 8 \\
+        g(-1) &= f(-1,-1) = 11 \\ 
+        g(1) &= f(1,-1) = 11
+    \end{align*}
+    For segment 2: \\
+    Let $h(y)=f(1,y)=1+4y^2-2(1)y+4=5+4y^2-2y$ \\ 
+    For critical point on the edge, $h'(y)=0$ or $8y-2=0 \implies y=\frac{1}{4}$. \\ 
+    \begin{align*}
+        h\left(\frac{1}{4}\right) &= f(1,\frac{1}{4}) = \frac{19}{4} = 4.75 \\
+        h(-1) &= f(1,-1) = 11 \\ 
+        h(1) &= f(1,1) = 7
+    \end{align*}
+    For segment 3: \\ 
+    Let $k(x)=f(x,1)=x^2+4(1)^2-2x^2(1)+4=5-2x^2$ \\ 
+    For critical point on the edge, $k'(x)=0$ or $-4x=0 \implies x=0$. \\ 
+    \begin{align*}
+        k(0) &= f(0,1) = 8 \\
+        k(-1) &= f(-1,1) = 7 \\ 
+        k(1) &= f(1,1) = 7
+    \end{align*}
+    For segment 4: \\ 
+    Let $l(y)=f(-1,y)=(-1)^2+4y^2-2(-1)y+4=5+4y^2+2y$ \\ 
+    For critical point on the edge, $l'(y)=0$ or $8y+2=0 \implies y=-\frac{1}{4}$. \\ 
+    \begin{align*}
+        l\left(-\frac{1}{4}\right) &= f(-1,-\frac{1}{4}) = \frac{19}{4} = 4.75 \\
+        l(-1) &= f(-1,-1) = 11 \\ 
+        l(1) &= f(-1,1) = 7
+    \end{align*}
+    Now, we can summarize the function values at the critical point and the boundary points:
+    \begin{align*}
+        & f(0,0) = 4, \\ 
+        & f(0,-1) = 8,      && f(-1,-1) = 11,       &&& f(1,-1) = 11, \\ 
+        & f\left(1,\frac{1}{4}\right) = 4.75,       && f(1,-1) = 11,      &&& f(1,1) = 7, \\ 
+        & f(0,1) = 8,       && f(-1,1) = 7,         &&& f(1,1) = 7, \\ 
+        & f\left(-1,-\frac{1}{4}\right) = 4.75,     && f(-1,-1) = 11,       &&& f(-1,1) = 7
+    \end{align*}
+    Hence, the absolute extrema are given by
+    \begin{align*}
+        &\text{Absolute Maximum: } (-1,-1) \text{ and } (1,-1) \text{ with value } 11, \\ 
+        &\text{Absolute Minimum: } (0,0) \text{ with value } 4 
+    \end{align*}
+}
+
+\Example{Find the absolute minimum and absolute maximum of $f(x,y)=2x^2-y^2+6y$ on the disk of radius $4$, $x^2+y^2 \leq 16$}{
+    First, we need to find the critical points of the function $f(x,y)$ in the region $D$. The first order partial derivatives are given by
+    \begin{align*}
+        f_x &= 4x \\
+        f_y &= -2y + 6
+    \end{align*}
+    Setting these equal to zero, we get the following equations:
+    \begin{align*}
+        4x &= 0 \implies x = 0 \\
+        -2y + 6 &= 0 \implies y = 3
+    \end{align*}
+    So, the only critical point in the region $D$ is $(0,3)$. The value of the function at this point is \[ 
+        f(0,3) = 2(0)^2 - (3)^2 + 6(3) = 15
+    \]
+    Now, we need to find the extrema on the boundary of the region. The boundary consists of the circle $x^2+y^2=16$. We can rewrite it as \[ 
+        x^2 = 16 - y^2
+    \]
+    Let
+    \begin{align*}
+        g(y) &= f\left(\sqrt{16-y^2},y\right) \\ 
+             &= 2(16-y^2) - y^2 + 6y \\ 
+             &= 32 - 3y^2 + 6y 
+    \end{align*}
+    The critical points on the boundary are given by \[ 
+        g'(y) = -6y + 6 = 0 \implies y = 1
+    \]
+    \[ x = \pm \sqrt{y^2-1} = \pm \sqrt{15} \]
+    Now, we can find the value of the function at this point and at the endpoints of the boundary:
+    \begin{align*}
+        g(1) &= f(\pm \sqrt{15},1) = 35 \\
+        g(-4) &= f(0,-4) = -40 \\ 
+        g(4) &= f(0,4) = 8
+    \end{align*}
+    Now, we can summarize the function values at the critical point and the boundary points:
+    \begin{align*}
+        & f(0,3) = 15, \\ 
+        & f(\sqrt{15},1) = 35, && f(-\sqrt{15},1) = 35, \\ 
+        & f(0,-4) = -40, && f(0,4) = 8
+    \end{align*}
+    Hence, the absolute extrema are given by
+    \begin{align*}
+        &\text{Absolute Maximum: } (\sqrt{15},1) \text{ and } (-\sqrt{15},1) \text{ with value } 35, \\ 
+        &\text{Absolute Minimum: } (0,-4) \text{ with value } -40
+    \end{align*}
+}
+
+\Example{Find the absolute minimum and absolute maximum of $f(x,y)=18x^2+4y^2-y^2x-2$ on the triangle with vertices $(-1,-1)$, $(5,-1)$, and $(5,17)$.}{
+    First, we need to find the critical points of the function $f(x,y)$ in the region $D$. The first order partial derivatives are given by
+    \begin{align*}
+        f_x &= 3x - y^2 \\
+        f_y &= 8y - 2xy
+    \end{align*}
+    Setting these equal to zero, we get the following equations: 
+    \begin{align*}
+        3x - y^2 &= 0 \\
+        8y - 2xy &= 0 
+    \end{align*}
+    Solving the equations, we get \[ 
+        (x,y) = (0,0), (4,-12), (4,12)
+    \]
+    Notice that the triangle is bounded by \\
+    \begin{minipage}{0.63\textwidth}
+        \begin{enumerate}
+            \item $y = -1$
+            \item $x = 5$
+            \item $y+1 = 3(x+1) \implies y = 3x+2$
+        \end{enumerate}
+        Among the critical points,
+        \begin{enumerate}
+            \item $(0,0)$ lies inside the triangle. 
+            \item $(4,12)$ lies inside the triangle. $[3 \times 4 + 2 = 14 > 12]$ 
+            \item $(4,-12)$ lies outside the triangle. $[-1 \leq y \leq 17]$
+        \end{enumerate}
+    \end{minipage}
+    \begin{minipage}{0.34\textwidth}
+        \begin{center}
+            \includegraphics[width=0.5\textwidth]{3.4.2.png}
+            \captionof{figure}{Triangle region}
+        \end{center}
+    \end{minipage} \\
+    The values of the function at the critical points are: \[ 
+        f(0,0) = -2 \qquad \text{ and } \qquad f(4,12) = 286
+    \]
+    Now, we need to find the extrema on the boundary of the region. The boundary consists of three line segments: \\
+    \begin{enumerate}
+        \item $(-1,-1)$ to $(5,-1)$ where $y=-1$ and $-1\leq x\leq 5$ 
+        \item $(5,-1)$ to $(5,17)$ where $x=5$ and $-1\leq y\leq 17$ 
+        \item $(-1,-1)$ to $(5,17)$ where $y=3x+2$ and $-1\leq x\leq 5$
+    \end{enumerate}
+    For segment 1: \\ 
+    Let $g(x)=f(x,-1) = 18x^2 + 4 - x - 2 = 18x^2 - x + 2$ \\
+    For critical point on the edge, $g'(x)=0$ or $36x-1=0 \implies x=\frac{1}{36}$. \\
+    \begin{align*}
+        g\left(\frac{1}{36}\right) &= f\left(\frac{1}{36},-1\right) \approx 1.986 \\
+        g(-1) &= f(-1,-1) = 21 \\ 
+        g(5) &= f(5,-1) = 447
+    \end{align*}
+    For segment 2: \\ 
+    Let $h(y)=f(5,y) = 450 + 4y^2 - 5y^2 - 2 = 448 - 9y^2$ \\ 
+    For critical point on the edge, $h'(y) = 0$ or $\displaystyle 448 - 9y^2 = 0 \implies y = \pm \frac{8\sqrt{7}}{3}$
+    \begin{align*}
+        h\left(\frac{8\sqrt{7}}{3}\right) &= f\left(5,\frac{8\sqrt{7}}{3}\right) \approx 398.22 \\
+        h\left(-\frac{8\sqrt{7}}{3}\right) &= f\left(5,-\frac{8\sqrt{7}}{3}\right) \approx 398.22 \\
+        h(-1) &= f(5,-1) = 447 \\ 
+        h(17) &= f(5,17) = 159
+    \end{align*}
+    For segment 3: \\ 
+    Let $k(x)=f(x,3x+2) = 18x^2 + 4(3x+2)^2 - (3x+2)^2x - 2$ \\
+    \begin{align*}
+        k(x) &= 18x^2 + 4(3x+2)^2 - (3x+2)^2x - 2 \\
+             &= 18x^2 + 4(9x^2 + 12x + 4) - (9x^3 + 12x^2 + 4x) - 2 \\
+             &= 18x^2 + 36x^2 + 48x + 16 - 9x^3 - 12x^2 - 4x - 2 \\
+             &= -9x^3 + 42x^2 + 44x + 14
+    \end{align*}
+    For critical point on the edge, $k'(x)=0$ or $-27x^2 + 84x + 44 = 0$. This gives us the points $(x,y) \approx (3.568,12.704), (-0.457,0.629)$
+    \begin{align*}
+        k(3.568) &= f(3.568,12.704) \approx 296.872 \\
+        k(-0.457) &= f(-0.457,0.629) \approx 3.523
+    \end{align*}
+    Hence, the absolute extrema are given by
+    \begin{align*}
+        &\text{Absolute Maximum: } (5,\pm1) \text{ with value } 447, \\ 
+        &\text{Absolute Minimum: } (0,0) \text{ with value } -2
+    \end{align*}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Lagrange Multipliers  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Lagrange Multipliers}
+
+\Note[Method of Lagrange Multipliers]{
+    Given a function $f(x,y,z)$ and a constraint $g(x,y,z)=k$. To find the absolute extrema:
+    \begin{enumerate}
+        \item Solve the following system of equations:
+            \begin{align*}
+                \nabla f(x,y,z) &= \lambda \nabla g(x,y,z) \\
+                g(x,y,z) &= k
+            \end{align*} 
+        \item Plug in all solutions, $(x,y,z)$, from the first step into the function $f(x,y,z)$ and identify the minimum and maximum values, provided they exist and $\nabla g \neq \vec{0}$ at the point.
+    \end{enumerate}
+    The constant $\lambda$ is called the \textbf{Lagrange Multiplier}.
+}
+
+\Note[Lagrange Multipliers for Multiple Constraints]{
+    If there are multiple constraints, say $g_1(x,y,z)=k_1$ and $g_2(x,y,z)=k_2$, then the system of equations becomes
+    \begin{align*}
+        \nabla f(x,y,z) &= \lambda_1 \nabla g_1(x,y,z) + \lambda_2 \nabla g_2(x,y,z) \\
+        g_1(x,y,z) &= k_1 \\
+        g_2(x,y,z) &= k_2
+    \end{align*}
+    where $\lambda_1$ and $\lambda_2$ are the Lagrange Multipliers for the constraints $g_1$ and $g_2$, respectively. \\
+    The method can be extended to any number of constraints by adding more terms to the right-hand side of the first equation. 
+}
+
+\Example{Find the maximum and minimum values of $f(x,y) = 4x^2+10y^2$ on the disk $x^2+y^2 \leq 4$.}{
+    Using Lagrange multipliers, we need to solve the following system of equations:
+    \begin{align*}
+        \nabla f(x,y) &= \lambda \nabla g(x,y) \\
+        g(x,y) &= x^2+y^2 = 4
+    \end{align*}
+    That is, we need to solve the following equations:
+    \begin{align*}
+        8x &= 2\lambda x \\ 
+        20y &= 2\lambda y \\ 
+        x^2 + y^2 &= 4
+    \end{align*}
+    From the first equation, we get: \[ 
+        2x(4-\lambda) = 0 \implies x=0 \text{ or } \lambda = 4
+    \]
+    If we have $x=0$ then the constraint gives us \[ 
+        y = \sqrt{x^2 - 4} \implies y = \pm 2
+    \]
+    If we have $\lambda=4$ the second equation gives us \[ 
+        20y = 8y \implies y = 0
+    \]
+    Then the constraint gives us \[ 
+        x^2 + 0^2 = 4 \implies x = \pm 2
+    \]
+    Now, we can find the values of the function at these points:
+    \begin{align*}
+        & f(0,0) = 0 \\
+        & f(0,2) = 40    && f(0,-2) = 40 \\
+        & f(2,0) = 16    && f(-2,0) = 16
+    \end{align*}
+    Hence, the maximum value is $40$ at the points $(0,2)$ and $(0,-2)$, and the minimum value is $0$ at the point $(0,0)$.
+}
+
+\Example{Find the maximum and minimum values of $f(x,y,z) = 4y-2z$ subject to the constraints $2x-y-z = 2$ and $x^2+y^2 = 1$.}{
+    Using Lagrange multipliers method, we need to solve the following system of equations:
+    \begin{align*}
+        \nabla f(x,y,z) &= \lambda \nabla g(x,y,z) + \mu \nabla h(x,y,z)  \\
+        g(x,y,z) &= 2x - y - z = 2 \\ 
+        h(x,y,z) &= x^2 + y^2 = 1
+    \end{align*}
+    That is, we need to solve the following equations:
+    \begin{align*}
+        0 &= 2\lambda + 2\mu x \\
+        4 &= -\lambda + 2\mu y \\ 
+        -2 &= -\lambda \\ 
+        2x - y - z &= 2 \\ 
+        x^2 + y^2 &= 1
+    \end{align*}
+    From the third equation, we get $\lambda=2$. Plugging this into the first and second equations, we get respectively
+    \begin{align*}
+        -4 &= 2\mu x \implies x = - \frac{2}{\mu} \\
+        6 &= 2\mu y \implies y = \frac{3}{\mu}
+    \end{align*}
+    Now, substituting these values in the fifth equation, we get \[ 
+        \frac{4}{\mu^2} + \frac{9}{\mu^2} = 1 \implies \mu = \pm \sqrt{13}
+    \]
+    Now, for $\mu = \sqrt{13}$, we have
+    \begin{align*}
+        x &= -\frac{2}{\sqrt{13}} \\
+        y &=  \frac{3}{\sqrt{13}} \\
+        z &= 2x - y - 2 = -\frac{4}{\sqrt{13}} - \frac{3}{\sqrt{13}} - 2 = - 2 - \frac{7}{\sqrt{13}}
+    \end{align*}
+    And for $\mu = -\sqrt{13}$, we have
+    \begin{align*}
+        x &= \frac{2}{\sqrt{13}} \\
+        y &= -\frac{3}{\sqrt{13}} \\ 
+        z &= 2x - y - 2 = \frac{4}{\sqrt{13}} + \frac{3}{\sqrt{13}} - 2 = -2 + \frac{7}{\sqrt{13}}
+    \end{align*}
+    Now, we can find the values of the function at these points:
+    \begin{align*}
+        f \left(-\frac{2}{\sqrt{13}}, \frac{3}{\sqrt{13}}, -2 - \frac{7}{\sqrt{13}}\right) &\approx 11.211 \\
+        f \left(\frac{2}{\sqrt{13}}, -\frac{3}{\sqrt{13}}, -2 + \frac{7}{\sqrt{13}}\right) &\approx -3.211
+    \end{align*}
+    Hence, the maximum value is approximately $11.211$ at the point $\left(-\frac{2}{\sqrt{13}}, \frac{3}{\sqrt{13}}, -2 - \frac{7}{\sqrt{13}}\right)$, and the minimum value is approximately $-3.211$ at the point $\left(\frac{2}{\sqrt{13}}, -\frac{3}{\sqrt{13}}, -2 + \frac{7}{\sqrt{13}}\right)$.
+}
