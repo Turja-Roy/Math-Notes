@@ -517,6 +517,19 @@ With this definition, we can then write the function as \[
     \] on $\lvert x-a \rvert < R$.
 }
 
+\Theorem{Taylor's Remainder Theorem}{
+    If $f(x)$ has $n+1$ continuous derivatives on the interval containing $a$ and $x$, then there exists a number $c$ between $a$ and $x$ such that \[ 
+        R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!} (x-a)^{n+1}
+    \]
+    This is called the \textbf{Lagrange form} of the remainder.
+}
+
+\Theorem{Lagrange Error Bound}{
+    If $|f^{(n+1)}(x)| \leq M$ for $\lvert x-a \rvert \leq d$, then for $\lvert x-a \rvert \leq d$, \[ 
+        |R_n(x)| \leq \frac{M}{(n+1)!} |x-a|^{n+1} \leq \frac{M}{(n+1)!} d^{n+1}
+    \]
+}
+
 \subsubsection{Maclaurin Series}
 
 \Definition{Maclaurin Series}{

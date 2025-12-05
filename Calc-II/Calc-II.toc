@@ -60,13 +60,13 @@
 \contentsline {subsection}{\numberline {5.13}Power Series and Functions}{31}{}%
 \contentsline {subsection}{\numberline {5.14}Properties of Power Series}{32}{}%
 \contentsline {subsection}{\numberline {5.15}Taylor Series}{33}{}%
-\contentsline {subsubsection}{\numberline {5.15.1}Maclaurin Series}{33}{}%
+\contentsline {subsubsection}{\numberline {5.15.1}Maclaurin Series}{34}{}%
 \contentsline {subsection}{\numberline {5.16}Binomial Series}{34}{}%
-\contentsline {section}{\numberline {6}3-Dimensional Space}{35}{}%
-\contentsline {subsection}{\numberline {6.1}Equations of Lines}{35}{}%
-\contentsline {subsection}{\numberline {6.2}Equations of Planes}{39}{}%
-\contentsline {subsection}{\numberline {6.3}Quadratic Surfaces}{42}{}%
-\contentsline {subsection}{\numberline {6.4}Calculus with Vector Functions}{43}{}%
-\contentsline {subsection}{\numberline {6.5}Tangent, Normal, and Binormal Vectors}{43}{}%
-\contentsline {subsection}{\numberline {6.6}Arc Length with Vector Functions}{44}{}%
-\contentsline {subsection}{\numberline {6.7}Curvature}{44}{}%
+\contentsline {section}{\numberline {6}3-Dimensional Space}{36}{}%
+\contentsline {subsection}{\numberline {6.1}Equations of Lines}{36}{}%
+\contentsline {subsection}{\numberline {6.2}Equations of Planes}{40}{}%
+\contentsline {subsection}{\numberline {6.3}Quadratic Surfaces}{43}{}%
+\contentsline {subsection}{\numberline {6.4}Calculus with Vector Functions}{44}{}%
+\contentsline {subsection}{\numberline {6.5}Tangent, Normal, and Binormal Vectors}{44}{}%
+\contentsline {subsection}{\numberline {6.6}Arc Length with Vector Functions}{45}{}%
+\contentsline {subsection}{\numberline {6.7}Curvature}{45}{}%
