@@ -362,12 +362,61 @@ The plane given by $3x+9y+7z=-1$ and the plane containing the points $(1,-1,9), 
     If $a = b = c$, we get a sphere.
 }
 
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        ticks=none,
+        enlargelimits=0.3,
+        ]
+        % Ellipsoid with a=2, b=1.5, c=1
+        \addplot3[
+            surf,
+            domain=0:360,
+            y domain=0:180,
+            samples=20,
+            opacity=0.6,
+            colormap/viridis,
+        ]
+        ({2*sin(y)*cos(x)}, {1.5*sin(y)*sin(x)}, {cos(y)});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Ellipsoid: $\frac{x^2}{4} + \frac{y^2}{2.25} + z^2 = 1$}
+\end{center}
+
 \Note[Cone]{
     The general equation of a cone that opens along the $z$-axis is \[ 
         \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = \frac{(z-l)^2}{c^2}
     \]
     where $(h,k,l)$ is the center of the cone and $a, b, c$ are the semi-axis lengths. \\
 }
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        ticks=none,
+        enlargelimits=0.3,
+        zmin=-2, zmax=2,
+        ]
+        % Cone: x^2 + y^2 = z^2
+        \addplot3[
+            surf,
+            domain=0:360,
+            y domain=-2:2,
+            samples=20,
+            opacity=0.6,
+            colormap/hot,
+        ]
+        ({abs(y)*cos(x)}, {abs(y)*sin(x)}, {y});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Cone: $x^2 + y^2 = z^2$}
+\end{center}
 
 \Note[Cylinder]{
     The general equation of a cylinder that opens along the $z$-axis is \[ 
@@ -377,12 +426,62 @@ The plane given by $3x+9y+7z=-1$ and the plane containing the points $(1,-1,9), 
     If $a = b$, we get a circular cylinder.
 }
 
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        ticks=none,
+        enlargelimits=0.3,
+        zmin=-2, zmax=2,
+        ]
+        % Cylinder: x^2 + y^2 = 1
+        \addplot3[
+            surf,
+            domain=0:360,
+            y domain=-2:2,
+            samples=20,
+            opacity=0.6,
+            colormap/cool,
+        ]
+        ({cos(x)}, {sin(x)}, {y});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Circular Cylinder: $x^2 + y^2 = 1$}
+\end{center}
+
 \Note[Hyperboloid of One Sheet]{
     The general equation of a hyperboloid of one sheet is \[ 
         \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} - \frac{(z-l)^2}{c^2} = 1
     \]
     where $(h,k,l)$ is the center of the hyperboloid and $a, b, c$ are the semi-axis lengths. \\
 }
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        ticks=none,
+        enlargelimits=0.3,
+        zmin=-2, zmax=2,
+        ]
+        % Hyperboloid of one sheet: x^2 + y^2 - z^2 = 1
+        \addplot3[
+            surf,
+            domain=0:360,
+            y domain=-2:2,
+            samples=20,
+            opacity=0.6,
+            colormap/jet,
+        ]
+        ({sqrt(1+y*y)*cos(x)}, {sqrt(1+y*y)*sin(x)}, {y});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Hyperboloid of One Sheet: $x^2 + y^2 - z^2 = 1$}
+\end{center}
 
 \Note[Hyperboloid of Two Sheets]{
     The general equation of a hyperboloid of two sheets is \[ 
@@ -391,6 +490,42 @@ The plane given by $3x+9y+7z=-1$ and the plane containing the points $(1,-1,9), 
     where $(h,k,l)$ is the center of the hyperboloid and $a, b, c$ are the semi-axis lengths. \\
 }
 
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        ticks=none,
+        enlargelimits=0.3,
+        zmin=-3, zmax=3,
+        ]
+        % Hyperboloid of two sheets: z^2 - x^2 - y^2 = 1
+        % Upper sheet
+        \addplot3[
+            surf,
+            domain=0:360,
+            y domain=1:2.5,
+            samples=20,
+            opacity=0.6,
+            colormap/cool,
+        ]
+        ({sqrt(y*y-1)*cos(x)}, {sqrt(y*y-1)*sin(x)}, {y});
+        % Lower sheet
+        \addplot3[
+            surf,
+            domain=0:360,
+            y domain=-2.5:-1,
+            samples=20,
+            opacity=0.6,
+            colormap/cool,
+        ]
+        ({sqrt(y*y-1)*cos(x)}, {sqrt(y*y-1)*sin(x)}, {y});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Hyperboloid of Two Sheets: $z^2 - x^2 - y^2 = 1$}
+\end{center}
+
 \Note[Elliptic Paraboloid]{
     The general equation of an elliptic paraboloid is \[ 
         \frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = \frac{z-l}{c}
@@ -398,12 +533,62 @@ The plane given by $3x+9y+7z=-1$ and the plane containing the points $(1,-1,9), 
     where $(h,k,l)$ is the center of the paraboloid and $a, b$ are the semi-axis lengths. \\
 }
 
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        ticks=none,
+        enlargelimits=0.3,
+        zmin=0, zmax=4,
+        ]
+        % Elliptic paraboloid: z = x^2 + y^2
+        \addplot3[
+            surf,
+            domain=-2:2,
+            y domain=-2:2,
+            samples=20,
+            opacity=0.6,
+            colormap/hot,
+        ]
+        ({x}, {y}, {x*x + y*y});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Elliptic Paraboloid: $z = x^2 + y^2$}
+\end{center}
+
 \Note[Hyperbolic Paraboloid]{
     The general equation of a hyperbolic paraboloid is \[ 
         \frac{(x-h)^2}{a^2} - \frac{(y-k)^2}{b^2} = \frac{z-l}{c}
     \]
     where $(h,k,l)$ is the center of the paraboloid and $a, b$ are the semi-axis lengths. \\
 }
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        ticks=none,
+        enlargelimits=0.3,
+        zmin=-4, zmax=4,
+        ]
+        % Hyperbolic paraboloid (saddle): z = x^2 - y^2
+        \addplot3[
+            surf,
+            domain=-2:2,
+            y domain=-2:2,
+            samples=20,
+            opacity=0.6,
+            colormap/cool,
+        ]
+        ({x}, {y}, {x*x - y*y});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Hyperbolic Paraboloid (Saddle): $z = x^2 - y^2$}
+\end{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -463,6 +648,44 @@ Let \[
     \]
     The binormal vector is orthogonal to both the tangent and normal vectors.
 }
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \begin{axis}[
+        view={120}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        xmin=-1, xmax=4,
+        ymin=-2, ymax=2,
+        zmin=-1, zmax=3,
+        ticks=none,
+        width=12cm, height=10cm,
+        ]
+        % Helix curve
+        \addplot3[blue, very thick, domain=0:4*pi, samples=50, smooth]
+            ({cos(deg(x))}, {sin(deg(x))}, {0.3*x});
+        
+        % Point on curve at t=pi
+        \addplot3[mark=*, mark size=3pt, black] coordinates {({cos(180)}, {sin(180)}, {0.3*pi})};
+        
+        % Tangent vector (red)
+        \draw[->, red, very thick] ({cos(180)}, {sin(180)}, {0.3*pi}) -- 
+            ({cos(180)-0.5*sin(180)}, {sin(180)+0.5*cos(180)}, {0.3*pi+0.15});
+        \node[red] at ({cos(180)-0.7*sin(180)}, {sin(180)+0.7*cos(180)}, {0.3*pi+0.15}) {$\vec{T}$};
+        
+        % Normal vector (green)
+        \draw[->, green!70!black, very thick] ({cos(180)}, {sin(180)}, {0.3*pi}) -- 
+            ({cos(180)-0.6*cos(180)}, {sin(180)-0.6*sin(180)}, {0.3*pi});
+        \node[green!70!black] at ({cos(180)-0.8*cos(180)}, {sin(180)-0.8*sin(180)}, {0.3*pi}) {$\vec{N}$};
+        
+        % Binormal vector (purple)
+        \draw[->, purple, very thick] ({cos(180)}, {sin(180)}, {0.3*pi}) -- 
+            ({cos(180)}, {sin(180)}, {0.3*pi+0.8});
+        \node[purple] at ({cos(180)}, {sin(180)}, {0.3*pi+1}) {$\vec{B}$};
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{TNB Frame (Frenet-Serret Frame) on a helix $\vec{r}(t) = \langle \cos t, \sin t, 0.3t \rangle$}
+\end{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

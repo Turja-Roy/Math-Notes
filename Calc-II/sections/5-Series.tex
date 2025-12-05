@@ -1,15 +1,11 @@
 \section{Series}
 
-\Note[Properties of Convergent Series]{
-    If $\sum a_n$ and $\sum b_n$ are both convergent series, then:
-    \begin{enumerate}
-        \item $\sum c a_n$, where $c$ is a constant, is also convergent and \[ 
-            \sum c a_n = c \sum a_n
-        \]
-        \item $\sum (a_n \pm b_n)$ is also convergent and \[ 
-            \sum (a_n \pm b_n) = \sum a_n \pm \sum b_n
-        \]
-    \end{enumerate}
+\Definition{Series}{
+    A \textbf{series} is the sum of the terms of a sequence. Given a sequence $\{ a_n \}$, the series is denoted by \[ 
+        \sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \cdots
+    \] The \textbf{n-th partial sum} of the series is defined as \[ 
+        s_n = \sum_{i=1}^{n} a_i = a_1 + a_2 + a_3 + \cdots + a_n
+    \]
 }
 
 
@@ -39,6 +35,18 @@
 
 \Theorem{}{
     If $\sum a_n$ converges, then $\displaystyle \lim_{n \to \infty} a_n = 0$.
+}
+
+\Note[Properties of Convergent Series]{
+    If $\sum a_n$ and $\sum b_n$ are both convergent series, then:
+    \begin{enumerate}
+        \item $\sum c a_n$, where $c$ is a constant, is also convergent and \[ 
+            \sum c a_n = c \sum a_n
+        \]
+        \item $\sum (a_n \pm b_n)$ is also convergent and \[ 
+            \sum (a_n \pm b_n) = \sum a_n \pm \sum b_n
+        \]
+    \end{enumerate}
 }
 
 
@@ -119,6 +127,42 @@
         \sum_{n=1}^{\infty} f(n) \text{ converges} \iff \int_{1}^{\infty} f(x) \, dx \text{ converges}
     \]
 }
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm, height=7cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=0, xmax=8,
+        ymin=0, ymax=1.2,
+        domain=1:8,
+        samples=100,
+        xtick={1,2,3,4,5,6,7},
+        ytick={0,0.2,0.4,0.6,0.8,1},
+        grid=major,
+        title={Integral Test: Comparing $\sum f(n)$ with $\int f(x) \dd{x}$},
+        ]
+        % The function f(x) = 1/x
+        \addplot[blue, very thick] {1/x};
+        \addlegendentry{$f(x) = \frac{1}{x}$}
+        
+        % Rectangles for the series (upper sum)
+        \foreach \n in {1,2,3,4,5,6,7} {
+            \addplot[red, fill=red!20, opacity=0.4] coordinates {(\n,0) (\n+1,0) (\n+1,{1/\n}) (\n,{1/\n})} -- cycle;
+        }
+        
+        % Points for series terms
+        \addplot[red, only marks, mark=*, mark size=3pt] coordinates {(1,1) (2,0.5) (3,0.333) (4,0.25) (5,0.2) (6,0.167) (7,0.143)};
+        \addlegendentry{Series: $\sum_{n=1}^{\infty} f(n)$}
+        
+        % Area under curve (integral)
+        \addplot[blue, fill=blue!10, opacity=0.3, domain=1:7] {1/x} \closedcycle;
+        \addlegendentry{Integral: $\int_1^{\infty} f(x) \dd{x}$}
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{The series $\sum f(n)$ (rectangles) compared with $\int f(x) \dd{x}$ (shaded area)}
+\end{center}
 
 \underline{\textbf{Proof:}} \\ 
 Let $s_n = f(1) + f(2) + \cdots + f(n)$ and $s_{n+1} = f(1) + f(2) + \cdots + f(n) + f(n+1)$. Then \[ 
@@ -547,6 +591,131 @@ With this definition, we can then write the function as \[
         \arctan(x) &= \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \cdots && \text{for } -1 \leq x \leq 1
     \end{align*}
 }
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm, height=8cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-3, xmax=3,
+        ymin=-5, ymax=20,
+        domain=-3:3,
+        samples=100,
+        legend pos=outer north east,
+        grid=major,
+        ]
+        % The actual function e^x
+        \addplot[blue, very thick] {exp(x)};
+        \addlegendentry{$f(x) = e^x$}
+        
+        % Taylor polynomials
+        \addplot[red, thick, dashed] {1};
+        \addlegendentry{$T_0(x) = 1$}
+        
+        \addplot[orange, thick] {1 + x};
+        \addlegendentry{$T_1(x) = 1 + x$}
+        
+        \addplot[green!70!black, thick] {1 + x + x^2/2};
+        \addlegendentry{$T_2(x) = 1 + x + \frac{x^2}{2}$}
+        
+        \addplot[purple, thick] {1 + x + x^2/2 + x^3/6};
+        \addlegendentry{$T_3(x)$}
+        
+        \addplot[cyan, thick] {1 + x + x^2/2 + x^3/6 + x^4/24 + x^5/120};
+        \addlegendentry{$T_5(x)$}
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Taylor Polynomial Approximations of $e^x$ centered at $x=0$}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm, height=8cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-2.5*pi, xmax=2.5*pi,
+        ymin=-3, ymax=3,
+        domain=-2.5*pi:2.5*pi,
+        samples=100,
+        legend pos=outer north east,
+        grid=major,
+        xtick={-7.85398, -4.71239, -1.5708, 0, 1.5708, 4.71239, 7.85398},
+        xticklabels={$-\frac{5\pi}{2}$, $-\frac{3\pi}{2}$, $-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$, $\frac{3\pi}{2}$, $\frac{5\pi}{2}$},
+        ]
+        % The actual function cos(x)
+        \addplot[blue, very thick] {cos(deg(x))};
+        \addlegendentry{$f(x) = \cos(x)$}
+        
+        % Taylor polynomials for cos(x) centered at x=0
+        \addplot[red, thick, dashed] {1};
+        \addlegendentry{$T_0(x) = 1$}
+        
+        \addplot[orange, thick] {1 - x^2/2};
+        \addlegendentry{$T_2(x) = 1 - \frac{x^2}{2}$}
+        
+        \addplot[green!70!black, thick] {1 - x^2/2 + x^4/24};
+        \addlegendentry{$T_4(x)$}
+        
+        \addplot[purple, thick] {1 - x^2/2 + x^4/24 - x^6/720};
+        \addlegendentry{$T_6(x)$}
+        
+        \addplot[cyan, thick] {1 - x^2/2 + x^4/24 - x^6/720 + x^8/40320};
+        \addlegendentry{$T_8(x)$}
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Taylor Polynomial Approximations of $\cos(x)$ centered at $x=0$}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm, height=8cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-pi, xmax=3*pi,
+        ymin=-3, ymax=3,
+        domain=-pi:3*pi,
+        samples=100,
+        legend pos=outer north east,
+        grid=major,
+        xtick={-3.14159, -1.5708, 0, 1.5708, 3.14159, 4.71239, 7.85398, 9.42478},
+        xticklabels={$-\pi$, $-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$, $\pi$, $\frac{3\pi}{2}$, $\frac{5\pi}{2}$, $3\pi$},
+        ]
+        % The actual function cos(x)
+        \addplot[blue, very thick] {cos(deg(x))};
+        \addlegendentry{$f(x) = \cos(x)$}
+        
+        % Taylor polynomials for cos(x) centered at x=3π/2
+        % cos(3π/2) = 0, sin(3π/2) = -1
+        % T_1(x) = 0 - 1*(x - 3π/2) = -(x - 3π/2)
+        \addplot[red, thick, dashed] {-(x - 3*pi/2)};
+        \addlegendentry{$T_1(x)$}
+        
+        % T_3(x) = -(x - 3π/2) + (x - 3π/2)^3/6
+        \addplot[orange, thick] {-(x - 3*pi/2) + (x - 3*pi/2)^3/6};
+        \addlegendentry{$T_3(x)$}
+        
+        % T_5(x)
+        \addplot[green!70!black, thick] {-(x - 3*pi/2) + (x - 3*pi/2)^3/6 - (x - 3*pi/2)^5/120};
+        \addlegendentry{$T_5(x)$}
+        
+        % T_7(x)
+        \addplot[purple, thick] {-(x - 3*pi/2) + (x - 3*pi/2)^3/6 - (x - 3*pi/2)^5/120 + (x - 3*pi/2)^7/5040};
+        \addlegendentry{$T_7(x)$}
+        
+        % T_9(x)
+        \addplot[cyan, thick] {-(x - 3*pi/2) + (x - 3*pi/2)^3/6 - (x - 3*pi/2)^5/120 + (x - 3*pi/2)^7/5040 - (x - 3*pi/2)^9/362880};
+        \addlegendentry{$T_9(x)$}
+        
+        % Mark the center point
+        \addplot[mark=*, mark size=3pt, black] coordinates {(3*pi/2, 0)};
+        \node[above right] at (axis cs:4.71239,0) {$a = \frac{3\pi}{2}$};
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Taylor Polynomial Approximations of $\cos(x)$ centered at $x=\frac{3\pi}{2}$}
+\end{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%

@@ -24,7 +24,7 @@
 
 \subsection{Common Differentiation and Integration Formulae}
 
-\begin{table}[htpb]
+\begin{table}[H]
     \centering
     \begin{tabular}{l | l}
         \textbf{Derivative} & \textbf{Integral} \\
@@ -207,6 +207,40 @@ For integrals involving $\sqrt{a^2 - x^2}$, $\sqrt{a^2 + x^2}$, or $\sqrt{x^2 - 
     \caption{Trigonometric Substitutions for Roots}
 \end{table}
 
+\begin{center}
+\textbf{Reference Triangles for Trigonometric Substitution}
+
+\begin{tikzpicture}[scale=1.3]
+    % Triangle 1: x = a*sin(theta), for sqrt(a^2 - x^2)
+    \draw[thick] (0,0) -- (2,0) node[midway, below] {$\sqrt{a^2-x^2}$} -- (2,1.5) node[midway, right] {$x$} -- cycle;
+    \draw[thick] (2,0) rectangle (1.8,0.2);
+    \draw (0.5,0) arc (0:36.87:0.5);
+    \node at (0.7,0.15) {$\theta$};
+    \node[above left] at (1,0.75) {$a$};
+    \node[below] at (1,-0.5) {For $\sqrt{a^2-x^2}$: $x = a\sin\theta$};
+    
+    % Triangle 2: x = a*tan(theta), for sqrt(a^2 + x^2)
+    \begin{scope}[xshift=4.5cm]
+        \draw[thick] (0,0) -- (2,0) node[midway, below] {$a$} -- (2,1.5) node[midway, right] {$x$} -- cycle;
+        \draw[thick] (2,0) rectangle (1.8,0.2);
+        \draw (0.5,0) arc (0:36.87:0.5);
+        \node at (0.7,0.15) {$\theta$};
+        \node[above left] at (1,0.75) {$\sqrt{a^2+x^2}$};
+        \node[below] at (1,-0.5) {For $\sqrt{a^2+x^2}$: $x = a\tan\theta$};
+    \end{scope}
+    
+    % Triangle 3: x = a*sec(theta), for sqrt(x^2 - a^2)
+    \begin{scope}[xshift=9cm]
+        \draw[thick] (0,0) -- (2,0) node[midway, below] {$a$} -- (2,1.5) node[midway, right] {$\sqrt{x^2-a^2}$} -- cycle;
+        \draw[thick] (2,0) rectangle (1.8,0.2);
+        \draw (0.5,0) arc (0:36.87:0.5);
+        \node at (0.7,0.15) {$\theta$};
+        \node[above left] at (1,0.75) {$x$};
+        \node[below] at (1,-0.5) {For $\sqrt{x^2-a^2}$: $x = a\sec\theta$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
 \Example{Evaluate $\int \frac{1}{\sqrt{9-x^2}} \dd{x}$}
 {
     Here $a=3$, so let $x = 3\sin\theta$, thus $\dd{x} = 3\cos\theta \dd{\theta}$.
@@ -291,6 +325,92 @@ Requires $n$ to be even. Approximates the function with parabolas instead of lin
 \Note{
     Simpson's Rule is generally more accurate than the Trapezoidal Rule, which is more accurate than the Midpoint Rule for the same number of subintervals.
 }
+
+\begin{center}
+\begin{tikzpicture}
+    % Midpoint Rule
+    \begin{axis}[
+        name=midpoint,
+        width=5cm, height=4.5cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=0, xmax=3,
+        ymin=0, ymax=2.5,
+        domain=0.5:2.5,
+        samples=50,
+        title={Midpoint Rule},
+        ytick=\empty,
+        xtick={0.5,1,1.5,2,2.5},
+        xticklabels={$a$,,,,$b$},
+        ]
+        % The function
+        \addplot[blue, very thick] {0.5*x^2 - 0.3*x + 1};
+        
+        % Rectangles (n=4)
+        \addplot[red, fill=red!20, opacity=0.5] coordinates {(0.5,1.00781) (0.75,1.00781) (0.75,0) (0.5,0)} -- cycle;
+        \addplot[red, fill=red!20, opacity=0.5] coordinates {(0.75,1.12031) (1,1.12031) (1,0) (0.75,0)} -- cycle;
+        \addplot[red, fill=red!20, opacity=0.5] coordinates {(1,1.29531) (1.25,1.29531) (1.25,0) (1,0)} -- cycle;
+        \addplot[red, fill=red!20, opacity=0.5] coordinates {(1.25,1.53281) (1.5,1.53281) (1.5,0) (1.25,0)} -- cycle;
+        
+        % Midpoints
+        \addplot[red, only marks, mark=*, mark size=2pt] coordinates {(0.625,1.00781) (0.875,1.12031) (1.125,1.29531) (1.375,1.53281)};
+    \end{axis}
+    
+    % Trapezoidal Rule
+    \begin{axis}[
+        at={(midpoint.right of south east)}, anchor=left of south west,
+        xshift=0.5cm,
+        width=5cm, height=4.5cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=0, xmax=3,
+        ymin=0, ymax=2.5,
+        domain=0.5:2.5,
+        samples=50,
+        title={Trapezoidal Rule},
+        ytick=\empty,
+        xtick={0.5,1,1.5,2,2.5},
+        xticklabels={$a$,,,,$b$},
+        ]
+        % The function
+        \addplot[blue, very thick] {0.5*x^2 - 0.3*x + 1};
+        
+        % Trapezoids (n=4)
+        \addplot[green!70!black, fill=green!20, opacity=0.5] coordinates {(0.5,0.975) (0.75,1.05625) (0.75,0) (0.5,0)} -- cycle;
+        \addplot[green!70!black, fill=green!20, opacity=0.5] coordinates {(0.75,1.05625) (1,1.2) (1,0) (0.75,0)} -- cycle;
+        \addplot[green!70!black, fill=green!20, opacity=0.5] coordinates {(1,1.2) (1.25,1.40625) (1.25,0) (1,0)} -- cycle;
+        \addplot[green!70!black, fill=green!20, opacity=0.5] coordinates {(1.25,1.40625) (1.5,1.675) (1.5,0) (1.25,0)} -- cycle;
+    \end{axis}
+    
+    % Simpson's Rule
+    \begin{axis}[
+        at={(midpoint.below south west)}, anchor=above north west,
+        yshift=-0.5cm,
+        width=10.5cm, height=4.5cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=0, xmax=3,
+        ymin=0, ymax=2.5,
+        domain=0.5:2.5,
+        samples=100,
+        title={Simpson's Rule (Parabolic Approximation)},
+        ytick=\empty,
+        xtick={0.5,1,1.5,2,2.5},
+        xticklabels={$a$,,,,$b$},
+        ]
+        % The function
+        \addplot[blue, very thick] {0.5*x^2 - 0.3*x + 1};
+        
+        % Parabolic segments (n=4)
+        \addplot[purple, thick, domain=0.5:1] {0.5*x^2 - 0.3*x + 1};
+        \addplot[purple, fill=purple!20, opacity=0.3, domain=0.5:1] {0.5*x^2 - 0.3*x + 1} \closedcycle;
+        
+        \addplot[purple, thick, domain=1:1.5] {0.5*x^2 - 0.3*x + 1};
+        \addplot[purple, fill=purple!20, opacity=0.3, domain=1:1.5] {0.5*x^2 - 0.3*x + 1} \closedcycle;
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Comparison of Numerical Integration Methods for $\int_a^b f(x) \dd{x}$}
+\end{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%

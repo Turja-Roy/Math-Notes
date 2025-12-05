@@ -8,12 +8,18 @@
 \usepackage{amsmath,amsfonts,amsthm,thmtools,amssymb,mathtools,commath}
 \usepackage{physics}
 \usepackage{tikz}
-\usetikzlibrary{mindmap}
+\usetikzlibrary{mindmap,arrows,calc,shadows.blur,3d,patterns}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage{caption}
 \usepackage{xcolor}
 \usepackage[most]{tcolorbox}
 \usepackage{xparse}
-\usepackage{cleveref}
+\usepackage{hyperref,cleveref}
+\usepackage{float}
+
+% Number figures by section
+\numberwithin{figure}{section}
 
 
 %%%%%%%%%%%%%%%%
@@ -59,6 +65,7 @@
 {
     theorem style=plain,
     enhanced,
+	breakable,
     colframe=green,
     boxrule=1pt,
     titlerule=0mm,

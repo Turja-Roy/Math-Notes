@@ -38,6 +38,68 @@ Unlike graphs of functions $y=f(x)$, parametric curves can trace out shapes that
     So the curve traces the circle $x^2 + y^2 = 1$, starting at $(1,0)$ and moving counterclockwise.
 }
 
+\begin{center}
+\begin{tikzpicture}
+    % Parabola
+    \begin{axis}[
+        name=parabola,
+        width=6cm, height=6cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-0.5, xmax=5,
+        ymin=-6, ymax=4,
+        grid=major,
+        title={$x = t^2$, $y = 2t-1$},
+        ]
+        \addplot[blue, very thick, domain=-2:2, samples=50]
+            ({x^2}, {2*x-1});
+        
+        % Mark points with parameter values
+        \addplot[red, only marks, mark=*, mark size=3pt] coordinates {
+            (4,-5) (1,-3) (0,-1) (1,1) (4,3)
+        };
+        \node[red, above right] at (axis cs: 4,-5) {$t=-2$};
+        \node[red, left] at (axis cs: 1,-3) {$t=-1$};
+        \node[red, below] at (axis cs: 0,-1) {$t=0$};
+        \node[red, right] at (axis cs: 1,1) {$t=1$};
+        \node[red, above] at (axis cs: 4,3) {$t=2$};
+        
+        % Direction arrows
+        \draw[->, thick, orange] (axis cs: 2,-3) -- (axis cs: 2.5,-2);
+    \end{axis}
+    
+    % Circle
+    \begin{axis}[
+        at={(parabola.right of south east)}, anchor=left of south west,
+        xshift=1cm,
+        width=6cm, height=6cm,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-1.5, xmax=1.5,
+        ymin=-1.5, ymax=1.5,
+        axis equal,
+        grid=major,
+        title={$x = \cos t$, $y = \sin t$},
+        ]
+        \addplot[blue, very thick, domain=0:360, samples=100]
+            ({cos(x)}, {sin(x)});
+        
+        % Mark points with parameter values
+        \addplot[red, only marks, mark=*, mark size=3pt] coordinates {
+            (1,0) (0,1) (-1,0) (0,-1)
+        };
+        \node[red, right] at (axis cs: 1,0) {$t=0$};
+        \node[red, above] at (axis cs: 0,1) {$t=\pi/2$};
+        \node[red, left] at (axis cs: -1,0) {$t=\pi$};
+        \node[red, below] at (axis cs: 0,-1) {$t=3\pi/2$};
+        
+        % Direction arrow
+        \draw[->, thick, orange] (axis cs: 0.707,0.707) arc (45:90:1);
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Parametric Curves with Direction of Motion}
+\end{center}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Tangents with Parametric Equations  %
@@ -159,6 +221,84 @@ In polar coordinates, each point is determined by a distance $r$ from the origin
     Note: The formula for $\theta$ requires care with quadrants. The functions $r^2 = x^2 + y^2$ and $\tan\theta = y/x$ are the fundamental relationships.
 }
 
+\subsubsection{Common Polar Curves}
+
+Below are some classic curves that are most naturally expressed in polar coordinates:
+
+\begin{center}
+\begin{tikzpicture}
+    % Rose curve: r = cos(3θ)
+    \begin{axis}[
+        name=rose,
+        width=6cm, height=6cm,
+        axis equal,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-1.2, xmax=1.2,
+        ymin=-1.2, ymax=1.2,
+        ticks=none,
+        title={Rose: $r = \cos(3\theta)$},
+        ]
+        \addplot[blue, thick, domain=0:360, samples=200, data cs=polar]
+            ({x}, {cos(3*x)});
+    \end{axis}
+    
+    % Cardioid: r = 1 + cos(θ)
+    \begin{axis}[
+        at={(rose.right of south east)}, anchor=left of south west,
+        xshift=1cm,
+        width=6cm, height=6cm,
+        axis equal,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-0.5, xmax=2.5,
+        ymin=-1.5, ymax=1.5,
+        ticks=none,
+        title={Cardioid: $r = 1 + \cos\theta$},
+        ]
+        \addplot[red, thick, domain=0:360, samples=200, data cs=polar]
+            ({x}, {1 + cos(x)});
+    \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}
+    % Limaçon: r = 1 + 2cos(θ)
+    \begin{axis}[
+        name=limacon,
+        width=6cm, height=6cm,
+        axis equal,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-1.5, xmax=3.5,
+        ymin=-2, ymax=2,
+        ticks=none,
+        title={Limaçon: $r = 1 + 2\cos\theta$},
+        ]
+        \addplot[green!70!black, thick, domain=0:360, samples=200, data cs=polar]
+            ({x}, {1 + 2*cos(x)});
+    \end{axis}
+    
+    % Lemniscate: r^2 = 4cos(2θ)
+    \begin{axis}[
+        at={(limacon.right of south east)}, anchor=left of south west,
+        xshift=1cm,
+        width=6cm, height=6cm,
+        axis equal,
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-2.5, xmax=2.5,
+        ymin=-1.5, ymax=1.5,
+        ticks=none,
+        title={Lemniscate: $r^2 = 4\cos(2\theta)$},
+        ]
+        \addplot[purple, thick, domain=-45:45, samples=100, data cs=polar]
+            ({x}, {sqrt(4*cos(2*x))});
+        \addplot[purple, thick, domain=135:225, samples=100, data cs=polar]
+            ({x}, {sqrt(4*cos(2*x))});
+    \end{axis}
+\end{tikzpicture}
+\captionof{figure}{Common Polar Curves}
+\end{center}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Tangents with Polar Coordinates  %
@@ -195,6 +335,43 @@ To find $\dv{y}{x}$ for a polar curve $r = f(\theta)$, we use the parametric der
         A = \frac{1}{2} \int_{\alpha}^{\beta} r^2 \dd{\theta}
     \]
 }
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+    % Axes
+    \draw[->] (-0.5,0) -- (3,0) node[right] {};
+    \draw[->] (0,-0.5) -- (0,2.5) node[above] {};
+    
+    % Origin
+    \node[below left] at (0,0) {$O$};
+    
+    % Polar curve
+    \draw[blue, very thick, domain=20:70, samples=100] plot (\x:{1.5 + 0.5*cos(\x)});
+    
+    % Two radial lines
+    \draw[thick] (0,0) -- (30:{1.5 + 0.5*cos(30)});
+    \draw[thick] (0,0) -- (50:{1.5 + 0.5*cos(50)});
+    
+    % Arc for dθ
+    \draw[<->, thick, red] (30:0.6) arc (30:50:0.6);
+    \node[red] at (40:0.8) {$\dd{\theta}$};
+    
+    % Sector (shaded)
+    \fill[orange!30, opacity=0.6] (0,0) -- plot[domain=30:50, samples=50] (\x:{1.5 + 0.5*cos(\x)}) -- cycle;
+    
+    % Radius r
+    \draw[<->, thick, purple] (0,0) -- (40:1.9) node[midway, above left] {$r$};
+    
+    % Angle theta
+    \draw[<->, thick] (1,0) arc (0:40:1);
+    \node at (20:1.3) {$\theta$};
+    
+    % Labels
+    \node[blue, above] at (40:2.2) {$r = f(\theta)$};
+    \node[below] at (1.5,-0.7) {Area element: $\dd{A} = \frac{1}{2} r^2 \dd{\theta}$};
+\end{tikzpicture}
+\captionof{figure}{Polar Area Element: A small sector with angle $\dd{\theta}$ and radius $r$}
+\end{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
