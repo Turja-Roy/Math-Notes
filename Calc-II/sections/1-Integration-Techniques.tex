@@ -131,6 +131,117 @@ Let $v = \dv{w}{x}$, then $w = \int v \dd{x}$. Hence,
 \qed
 
 
+%%%%%%%%%%%%%%%%%%%%%%%
+%  Reduction Formulas  %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Reduction Formulas}
+
+Reduction formulas are recursive formulas that express an integral in terms of a simpler integral of the same form. They are particularly useful for integrating powers of functions, as they reduce the power step by step until reaching a base case that can be integrated directly.
+
+\subsubsection{Trigonometric Reduction Formulas}
+
+\Note[Trigonometric Reduction Formulas]{
+    \textbf{Powers of Sine}
+    \[
+        \int \sin^n x \dd{x} = -\frac{1}{n}\sin^{n-1}x\cos x + \frac{n-1}{n}\int \sin^{n-2}x \dd{x}
+    \]
+    \textbf{Powers of Cosine}
+    \[
+        \int \cos^n x \dd{x} = \frac{1}{n}\cos^{n-1}x\sin x + \frac{n-1}{n}\int \cos^{n-2}x \dd{x}
+    \]
+    \textbf{Powers of Tangent}
+    \[
+        \int \tan^n x \dd{x} = \frac{1}{n-1}\tan^{n-1}x - \int \tan^{n-2}x \dd{x}
+    \]
+    \textbf{Powers of Secant}
+    \[
+        \int \sec^n x \dd{x} = \frac{1}{n-1}\sec^{n-2}x\tan x + \frac{n-2}{n-1}\int \sec^{n-2}x \dd{x}
+    \]
+    where $n \geq 2$.
+}
+
+\underline{\textbf{Derivation:}} \\
+Let $I_n = \int \sec^n x \dd{x}$. We can write
+\[
+    I_n = \int \sec^{n-2}x \sec^2 x \dd{x}
+\]
+Using integration by parts, let $u = \sec^{n-2}x$ and $\dd{v} = \sec^2 x \dd{x}$. Then:
+\[
+    \dd{u} = (n-2)\sec^{n-3}x \cdot \sec x \tan x \dd{x} = (n-2)\sec^{n-2}x \tan x \dd{x}
+\]
+\[
+    v = \tan x
+\]
+Applying integration by parts:
+\begin{align*}
+    I_n &= \sec^{n-2}x \tan x - \int \tan x \cdot (n-2)\sec^{n-2}x \tan x \dd{x} \\
+    &= \sec^{n-2}x \tan x - (n-2)\int \sec^{n-2}x \tan^2 x \dd{x}
+\end{align*}
+Using the identity $\tan^2 x = \sec^2 x - 1$:
+\begin{align*}
+    I_n &= \sec^{n-2}x \tan x - (n-2)\int \sec^{n-2}x (\sec^2 x - 1) \dd{x} \\
+    &= \sec^{n-2}x \tan x - (n-2)\int \sec^n x \dd{x} + (n-2)\int \sec^{n-2}x \dd{x} \\
+    &= \sec^{n-2}x \tan x - (n-2)I_n + (n-2)I_{n-2}
+\end{align*}
+Solving for $I_n$:
+\begin{align*}
+    I_n + (n-2)I_n &= \sec^{n-2}x \tan x + (n-2)I_{n-2} \\
+    (n-1)I_n &= \sec^{n-2}x \tan x + (n-2)I_{n-2} \\
+    I_n &= \frac{1}{n-1}\sec^{n-2}x \tan x + \frac{n-2}{n-1}I_{n-2}
+\end{align*}
+\qed
+
+\Note[Products of Sine and Cosine]{
+    For $\int \sin^m x \cos^n x \dd{x}$ where $m, n \geq 1$:
+    \begin{itemize}
+        \item If $m$ is odd: Let $u = \cos x$, use $\sin^2 x = 1 - \cos^2 x$
+        \item If $n$ is odd: Let $u = \sin x$, use $\cos^2 x = 1 - \sin^2 x$
+        \item If both $m$ and $n$ are even: Use half-angle formulas or the reduction formula:
+        \[
+            \int \sin^m x \cos^n x \dd{x} = -\frac{\sin^{m-1}x\cos^{n+1}x}{m+n} + \frac{m-1}{m+n}\int \sin^{m-2}x\cos^n x \dd{x}
+        \]
+    \end{itemize}
+}
+
+\subsubsection{Polynomial with Exponential or Trigonometric Functions}
+
+\Note[Polynomial with Exponential or Trigonometric Functions]{
+    \textbf{Polynomial Times Exponential}
+    \[
+        \int x^n e^{ax} \dd{x} = \frac{1}{a}x^n e^{ax} - \frac{n}{a}\int x^{n-1}e^{ax} \dd{x}
+    \]
+    \textbf{Polynomial Times Sine}
+    \[
+        \int x^n \sin(ax) \dd{x} = -\frac{1}{a}x^n\cos(ax) + \frac{n}{a}\int x^{n-1}\cos(ax) \dd{x}
+    \]
+    \textbf{Polynomial Times Cosine}
+    \[
+        \int x^n \cos(ax) \dd{x} = \frac{1}{a}x^n\sin(ax) - \frac{n}{a}\int x^{n-1}\sin(ax) \dd{x}
+    \]
+    where $n \geq 1$ and $a \neq 0$.
+}
+
+\Note{
+    For polynomial times sine or cosine, the reduction formulas alternate between sine and cosine. Continue applying the formulas until the power of $x$ reduces to zero.
+}
+
+\subsubsection{Other Common Reduction Formulas}
+
+\Note[Other Common Reduction Formulas]{
+    \textbf{Powers of $(x^2 + a^2)$}
+    \[
+        \int (x^2 + a^2)^n \dd{x} = \frac{x(x^2+a^2)^n}{2n+1} + \frac{2na^2}{2n+1}\int(x^2+a^2)^{n-1} \dd{x}
+    \]
+    where $n \geq 1$. \\
+    \textbf{Reciprocal Powers of $(x^2 + a^2)$}
+    \[
+        \int \frac{1}{(x^2 + a^2)^n} \dd{x} = \frac{x}{2(n-1)a^2(x^2+a^2)^{n-1}} + \frac{2n-3}{2(n-1)a^2}\int \frac{1}{(x^2+a^2)^{n-1}} \dd{x}
+    \]
+    where $n \geq 2$ and the base case is $\int \frac{1}{x^2+a^2} \dd{x} = \frac{1}{a}\tan^{-1}\left(\frac{x}{a}\right) + c$.
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Method of Substitution  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
