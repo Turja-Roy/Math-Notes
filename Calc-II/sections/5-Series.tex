@@ -440,6 +440,47 @@ Since, $a_n \leq b_n$ we also know that $R_n \leq T_n$.
 }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Properties of Power Series  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Properties of Power Series}
+
+\Theorem{}{
+    Suppose $\displaystyle f(x) = \lim_{n=k \to \infty} a_n x^n$ and $\displaystyle g(x) = \lim_{n=k \to \infty} b_n x^n$ on an interval $I$ and fix some $c \neq 0$. Then:
+    \begin{enumerate}
+        \item \textbf{Addition/Subtraction:} \[
+                f(x) \pm g(x) = \lim_{n=k \to \infty} (a_n \pm b_n) x^n \text{ for } x \in I
+            \]
+        \item \textbf{Multiplication:} If $k+m \geq 0$ then \[
+                x^m f(x) = \lim_{n=k \to \infty} a_n x^{n+m} \quad \forall x \in I, x \neq 0
+            \]
+            with \[
+                \lim_{n=k \to \infty} a_n x^{n+m} = \lim_{x \to 0} x^m f(x) \text{ when } x = 0.
+            \]
+        \item \textbf{Composition:} \[ 
+                f(cx^m) = \lim_{n=k \to \infty} a_n (cx^m)^n \text{ for } cx^m \in I
+         \]
+    \end{enumerate}
+}
+
+\Theorem{Term-by-Term Differentiation and Integration}{
+    Let $\displaystyle f(x) = \sum_{n=0}^{\infty} c_n (x-a)^n$ be a power series with radius of convergence $R>0$. Then $F$ is differentiable on $(c-R, c+R)$ and:
+    \begin{enumerate}
+        \item \textbf{Differentiation:} \[
+                f'(x) = \sum_{n=1}^{\infty} n c_n (x-a)^{n-1} \text{ for } |x-a| < R
+            \]
+        \item \textbf{Integration:} \[
+                \int f(x) \dd{x} = C + \sum_{n=0}^{\infty} \frac{c_n}{n+1}(x-a)^{n+1} \text{ for } |x-a| < R
+            \]
+    \end{enumerate}
+}
+
+\Theorem{Abel's Theorem}{
+    If a power series $F(x) = \lim_{n=0 \to \infty} a_n(x-c)^n$ has a radius of convergence $R \in (0,\infty)$ and $F$ converges at an endpoint, then $F$ is continuous at that endpoint.
+}
+
+
 %%%%%%%%%%%%%%%%%%%
 %  Taylor Series  %
 %%%%%%%%%%%%%%%%%%%
