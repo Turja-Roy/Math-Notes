@@ -50,7 +50,7 @@
 \contentsline {subsubsection}{\numberline {5.11.4}Ratio Test}{24}{}%
 \contentsline {subsection}{\numberline {5.12}Power Series}{25}{}%
 \contentsline {subsection}{\numberline {5.13}Power Series and Functions}{25}{}%
-\contentsline {subsection}{\numberline {5.14}Taylor Series}{25}{}%
+\contentsline {subsection}{\numberline {5.14}Taylor Series}{26}{}%
 \contentsline {subsubsection}{\numberline {5.14.1}Maclaurin Series}{26}{}%
 \contentsline {subsection}{\numberline {5.15}Binomial Series}{27}{}%
 \contentsline {section}{\numberline {6}3-Dimensional Space}{28}{}%

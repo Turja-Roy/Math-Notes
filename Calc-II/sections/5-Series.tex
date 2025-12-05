@@ -371,12 +371,16 @@ Since, $a_n \leq b_n$ we also know that $R_n \leq T_n$.
 }
 
 \Theorem{Convergence of Power Series}{
-    Given the power series $\sum c_n (x-a)^n$, the \textbf{radius of convergence} is given by \[ 
-        R = \frac{1}{L}
-    \] where \[ 
-        L = \lim_{n \to \infty} \left| \frac{c_{n+1}}{c_n} \right|
-    \]
-    The power series converges absolutely for all $x$ such that $|x-a| < R$ and diverges for all $x$ such that $|x-a| > R, x \neq a$. \\ 
+    Given the power series $\sum c_n (x-a)^n$, there exists a number $R$ called the \textbf{radius of convergence} such that:
+    \begin{enumerate}
+        \item The series converges absolutely for all $x$ with $|x-a| < R$
+        \item The series diverges for all $x$ with $|x-a| > R$
+    \end{enumerate}
+    To find $R$, apply the \textbf{Ratio Test} or \textbf{Root Test}:
+    \begin{itemize}
+        \item \textbf{Ratio Test:} Compute $\displaystyle L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|$ where $a_n = c_n(x-a)^n$. The series converges when $L < 1$, which gives $|x-a| < R$.
+        \item \textbf{Root Test:} Compute $\displaystyle L = \lim_{n \to \infty} \sqrt[n]{|a_n|}$ where $a_n = c_n(x-a)^n$. The series converges when $L < 1$, which gives $|x-a| < R$.
+    \end{itemize}
     \textbf{N.B:} the series always converges at $x = a$.
 }
 
