@@ -6,58 +6,66 @@
 \contentsline {subsection}{\numberline {1.5}Method of Substitution}{5}{}%
 \contentsline {subsection}{\numberline {1.6}Trigonometric Integrals}{5}{}%
 \contentsline {subsection}{\numberline {1.7}Partial Fractions}{5}{}%
-\contentsline {subsection}{\numberline {1.8}Improper Integrals}{6}{}%
-\contentsline {subsubsection}{\numberline {1.8.1}Comparison Test}{6}{}%
-\contentsline {section}{\numberline {2}Applications of Integrals}{8}{}%
-\contentsline {subsection}{\numberline {2.1}Arc Length}{8}{}%
-\contentsline {subsection}{\numberline {2.2}Surface Area}{8}{}%
-\contentsline {subsection}{\numberline {2.3}Center of Mass}{9}{}%
-\contentsline {subsection}{\numberline {2.4}Probability}{9}{}%
-\contentsline {section}{\numberline {3}Parametric Equations and Polar Coordinates}{11}{}%
-\contentsline {subsection}{\numberline {3.1}Tangents with Parametric Equations}{11}{}%
-\contentsline {subsection}{\numberline {3.2}Area with Parametric Equations}{11}{}%
-\contentsline {subsection}{\numberline {3.3}Arc Length with Parametric Equations}{11}{}%
-\contentsline {subsection}{\numberline {3.4}Surface Area with Parametric Equations}{12}{}%
-\contentsline {subsection}{\numberline {3.5}Polar Coordinates}{12}{}%
-\contentsline {subsection}{\numberline {3.6}Tangents with Polar Coordinates}{13}{}%
-\contentsline {subsection}{\numberline {3.7}Area with Polar Coordinates}{13}{}%
-\contentsline {subsection}{\numberline {3.8}Arc Length with Polar Coordinates}{13}{}%
-\contentsline {subsection}{\numberline {3.9}Surface Area with Polar Coordinates}{13}{}%
-\contentsline {section}{\numberline {4}Sequences}{15}{}%
-\contentsline {subsection}{\numberline {4.1}Definition}{15}{}%
-\contentsline {subsection}{\numberline {4.2}Precise Definition of Limit of a Sequence}{15}{}%
-\contentsline {subsection}{\numberline {4.3}Convergence of Sequences}{15}{}%
-\contentsline {subsection}{\numberline {4.4}Bounded and Monotonic Sequences}{17}{}%
-\contentsline {section}{\numberline {5}Series}{18}{}%
-\contentsline {subsection}{\numberline {5.1}Convergence of Series}{18}{}%
-\contentsline {subsection}{\numberline {5.2}Absolute and Conditional Convergence}{18}{}%
-\contentsline {subsection}{\numberline {5.3}Special Series}{19}{}%
-\contentsline {subsubsection}{\numberline {5.3.1}Geometric Series}{19}{}%
-\contentsline {subsubsection}{\numberline {5.3.2}Telescoping Series}{19}{}%
-\contentsline {subsubsection}{\numberline {5.3.3}Harmonic Series}{19}{}%
-\contentsline {subsection}{\numberline {5.4}Divergence Test}{19}{}%
-\contentsline {subsection}{\numberline {5.5}Integral Test}{20}{}%
-\contentsline {subsubsection}{\numberline {5.5.1}The $p$-series Test}{20}{}%
-\contentsline {subsection}{\numberline {5.6}Comparison Test/Limit Comparison Test}{21}{}%
-\contentsline {subsection}{\numberline {5.7}Alternating Series Test}{22}{}%
-\contentsline {subsection}{\numberline {5.8}Ratio Test}{22}{}%
-\contentsline {subsection}{\numberline {5.9}Root Test}{23}{}%
-\contentsline {subsection}{\numberline {5.10}Strategies for Series Test}{23}{}%
-\contentsline {subsection}{\numberline {5.11}Estimating the Value of a Series}{24}{}%
-\contentsline {subsubsection}{\numberline {5.11.1}Integral Test}{24}{}%
-\contentsline {subsubsection}{\numberline {5.11.2}Comparison Test}{24}{}%
-\contentsline {subsubsection}{\numberline {5.11.3}Alternating Series Test}{24}{}%
-\contentsline {subsubsection}{\numberline {5.11.4}Ratio Test}{24}{}%
-\contentsline {subsection}{\numberline {5.12}Power Series}{25}{}%
-\contentsline {subsection}{\numberline {5.13}Power Series and Functions}{25}{}%
-\contentsline {subsection}{\numberline {5.14}Taylor Series}{26}{}%
-\contentsline {subsubsection}{\numberline {5.14.1}Maclaurin Series}{26}{}%
-\contentsline {subsection}{\numberline {5.15}Binomial Series}{27}{}%
-\contentsline {section}{\numberline {6}3-Dimensional Space}{28}{}%
-\contentsline {subsection}{\numberline {6.1}Equations of Lines}{28}{}%
-\contentsline {subsection}{\numberline {6.2}Equations of Planes}{32}{}%
-\contentsline {subsection}{\numberline {6.3}Quadratic Surfaces}{35}{}%
-\contentsline {subsection}{\numberline {6.4}Calculus with Vector Functions}{36}{}%
-\contentsline {subsection}{\numberline {6.5}Tangent, Normal, and Binormal Vectors}{36}{}%
-\contentsline {subsection}{\numberline {6.6}Arc Length with Vector Functions}{37}{}%
-\contentsline {subsection}{\numberline {6.7}Curvature}{37}{}%
+\contentsline {subsection}{\numberline {1.8}Integrals Involving Roots}{5}{}%
+\contentsline {subsection}{\numberline {1.9}Integrals Involving Quadratics}{6}{}%
+\contentsline {subsection}{\numberline {1.10}Integration Strategy}{6}{}%
+\contentsline {subsection}{\numberline {1.11}Approximating Definite Integrals}{7}{}%
+\contentsline {subsubsection}{\numberline {1.11.1}Midpoint Rule}{7}{}%
+\contentsline {subsubsection}{\numberline {1.11.2}Trapezoidal Rule}{7}{}%
+\contentsline {subsubsection}{\numberline {1.11.3}Simpson's Rule}{7}{}%
+\contentsline {subsection}{\numberline {1.12}Improper Integrals}{7}{}%
+\contentsline {subsubsection}{\numberline {1.12.1}Comparison Test}{8}{}%
+\contentsline {section}{\numberline {2}Applications of Integrals}{10}{}%
+\contentsline {subsection}{\numberline {2.1}Arc Length}{10}{}%
+\contentsline {subsection}{\numberline {2.2}Surface Area}{10}{}%
+\contentsline {subsection}{\numberline {2.3}Center of Mass}{11}{}%
+\contentsline {subsection}{\numberline {2.4}Probability}{11}{}%
+\contentsline {section}{\numberline {3}Parametric Equations and Polar Coordinates}{13}{}%
+\contentsline {subsection}{\numberline {3.1}Parametric Equations and Curves}{13}{}%
+\contentsline {subsection}{\numberline {3.2}Tangents with Parametric Equations}{14}{}%
+\contentsline {subsection}{\numberline {3.3}Area with Parametric Equations}{14}{}%
+\contentsline {subsection}{\numberline {3.4}Arc Length with Parametric Equations}{14}{}%
+\contentsline {subsection}{\numberline {3.5}Surface Area with Parametric Equations}{15}{}%
+\contentsline {subsection}{\numberline {3.6}Polar Coordinates}{15}{}%
+\contentsline {subsection}{\numberline {3.7}Tangents with Polar Coordinates}{16}{}%
+\contentsline {subsection}{\numberline {3.8}Area with Polar Coordinates}{16}{}%
+\contentsline {subsection}{\numberline {3.9}Arc Length with Polar Coordinates}{16}{}%
+\contentsline {subsection}{\numberline {3.10}Surface Area with Polar Coordinates}{17}{}%
+\contentsline {section}{\numberline {4}Sequences}{18}{}%
+\contentsline {subsection}{\numberline {4.1}Definition}{18}{}%
+\contentsline {subsection}{\numberline {4.2}Precise Definition of Limit of a Sequence}{18}{}%
+\contentsline {subsection}{\numberline {4.3}Convergence of Sequences}{18}{}%
+\contentsline {subsection}{\numberline {4.4}Bounded and Monotonic Sequences}{21}{}%
+\contentsline {section}{\numberline {5}Series}{23}{}%
+\contentsline {subsection}{\numberline {5.1}Convergence of Series}{23}{}%
+\contentsline {subsection}{\numberline {5.2}Divergence Test}{23}{}%
+\contentsline {subsection}{\numberline {5.3}Special Series}{24}{}%
+\contentsline {subsubsection}{\numberline {5.3.1}Geometric Series}{24}{}%
+\contentsline {subsubsection}{\numberline {5.3.2}Telescoping Series}{24}{}%
+\contentsline {subsubsection}{\numberline {5.3.3}Harmonic Series}{25}{}%
+\contentsline {subsection}{\numberline {5.4}Integral Test}{25}{}%
+\contentsline {subsubsection}{\numberline {5.4.1}The $p$-series Test}{25}{}%
+\contentsline {subsection}{\numberline {5.5}Comparison Test/Limit Comparison Test}{26}{}%
+\contentsline {subsection}{\numberline {5.6}Alternating Series Test}{27}{}%
+\contentsline {subsection}{\numberline {5.7}Absolute and Conditional Convergence}{27}{}%
+\contentsline {subsection}{\numberline {5.8}Ratio Test}{28}{}%
+\contentsline {subsection}{\numberline {5.9}Root Test}{28}{}%
+\contentsline {subsection}{\numberline {5.10}Strategies for Series Test}{29}{}%
+\contentsline {subsection}{\numberline {5.11}Estimating the Value of a Series}{29}{}%
+\contentsline {subsubsection}{\numberline {5.11.1}Integral Test}{29}{}%
+\contentsline {subsubsection}{\numberline {5.11.2}Comparison Test}{29}{}%
+\contentsline {subsubsection}{\numberline {5.11.3}Alternating Series Test}{30}{}%
+\contentsline {subsubsection}{\numberline {5.11.4}Ratio Test}{30}{}%
+\contentsline {subsection}{\numberline {5.12}Power Series}{30}{}%
+\contentsline {subsection}{\numberline {5.13}Power Series and Functions}{31}{}%
+\contentsline {subsection}{\numberline {5.14}Taylor Series}{32}{}%
+\contentsline {subsubsection}{\numberline {5.14.1}Maclaurin Series}{32}{}%
+\contentsline {subsection}{\numberline {5.15}Binomial Series}{33}{}%
+\contentsline {section}{\numberline {6}3-Dimensional Space}{34}{}%
+\contentsline {subsection}{\numberline {6.1}Equations of Lines}{34}{}%
+\contentsline {subsection}{\numberline {6.2}Equations of Planes}{38}{}%
+\contentsline {subsection}{\numberline {6.3}Quadratic Surfaces}{41}{}%
+\contentsline {subsection}{\numberline {6.4}Calculus with Vector Functions}{42}{}%
+\contentsline {subsection}{\numberline {6.5}Tangent, Normal, and Binormal Vectors}{42}{}%
+\contentsline {subsection}{\numberline {6.6}Arc Length with Vector Functions}{43}{}%
+\contentsline {subsection}{\numberline {6.7}Curvature}{43}{}%

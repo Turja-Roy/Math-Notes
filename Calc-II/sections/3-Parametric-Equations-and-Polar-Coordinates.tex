@@ -1,8 +1,42 @@
 \section{Parametric Equations and Polar Coordinates}
 
-There are great many curves out there that cannot be expressed in a single equation in terms of only $x$ and $y$. To deal with such problems, we introduce \textbf{parametric equations}. Instead of defining $y$ in terms of $x (y=f(x))$ or $x$ in terms of $y (x=h(y))$, we define both $x$ and $y$ in terms of a third variable called a parameter as follows:
+There are a great many curves out there that cannot be expressed in a single equation in terms of only $x$ and $y$. To deal with such problems, we introduce \textbf{parametric equations}. Instead of defining $y$ in terms of $x (y=f(x))$ or $x$ in terms of $y (x=h(y))$, we define both $x$ and $y$ in terms of a third variable called a parameter as follows:
 \[ x = f(t) \quad y = g(t) \]
-This third variable is usually denoted byu $t$. Each value of $t$ defines a point $(x,y) = (f(t),g(t))$ that we can plot. The collection of points that we get by letteing $t$ be all possible values if the graph of the parametric equations and is called a \textbf{parametric curve}.
+This third variable is usually denoted by $t$. Each value of $t$ defines a point $(x,y) = (f(t),g(t))$ that we can plot. The collection of points that we get by letting $t$ be all possible values is the graph of the parametric equations and is called a \textbf{parametric curve}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Parametric Equations and Curves      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Parametric Equations and Curves}
+
+Unlike graphs of functions $y=f(x)$, parametric curves can trace out shapes that fail the vertical line test. For instance, a circle cannot be written as a single function $y=f(x)$, but can be easily expressed parametrically.
+
+\Example{Sketch the parametric curve $x = t^2$, $y = 2t - 1$ for $-2 \leq t \leq 2$.}{
+    We can create a table of values:
+    \begin{center}
+    \begin{tabular}{c|c|c}
+        $t$ & $x = t^2$ & $y = 2t-1$ \\ \hline
+        $-2$ & $4$ & $-5$ \\
+        $-1$ & $1$ & $-3$ \\
+        $0$ & $0$ & $-1$ \\
+        $1$ & $1$ & $1$ \\
+        $2$ & $4$ & $3$
+    \end{tabular}
+    \end{center}
+    Plotting these points $(x,y)$ and connecting them traces out a parabola opening to the right. \\
+    To eliminate the parameter, note that $x = t^2$, so $t = \pm\sqrt{x}$. Then:
+    \[ y = 2t - 1 = \pm 2\sqrt{x} - 1 \]
+    Since the parameter $t$ ranges from $-2$ to $2$, we get both branches. However, note that $x \geq 0$ always (since $x = t^2$).
+}
+
+\Example{Sketch the parametric curve $x = \cos(t)$, $y = \sin(t)$ for $0 \leq t \leq 2\pi$.}{
+    This is the unit circle! At $t=0$, we're at $(1,0)$. At $t = \pi/2$, we're at $(0,1)$. At $t=\pi$, we're at $(-1,0)$. At $t = 3\pi/2$, we're at $(0,-1)$, and at $t=2\pi$ we return to $(1,0)$.
+    To eliminate the parameter, use the Pythagorean identity:
+    \[ x^2 + y^2 = \cos^2(t) + \sin^2(t) = 1 \]
+    So the curve traces the circle $x^2 + y^2 = 1$, starting at $(1,0)$ and moving counterclockwise.
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -40,13 +74,16 @@ This third variable is usually denoted byu $t$. Each value of $t$ defines a poin
 \subsection{Area with Parametric Equations}
 
 \Note[Area with Parametric Equations]{
+    For the area between the parametric curve and the $x$-axis:
     \[ 
         A = \int_{t_1}^{t_2} y(t) \dv{x}{t} \dd{t}
     \]
-    or
+    Use this formula when the curve is traced vertically (from bottom to top or top to bottom).
+    For the area between the parametric curve and the $y$-axis:
     \[ 
        A = \int_{t_1}^{t_2} x(t) \dv{y}{t} \dd{t}
     \]
+    Use this formula when the curve is traced horizontally (from left to right or right to left).
 }
 
 
@@ -104,17 +141,22 @@ Then the arc length formula becomes,
 
 \subsection{Polar Coordinates}
 
+In polar coordinates, each point is determined by a distance $r$ from the origin and an angle $\theta$ measured counterclockwise from the positive $x$-axis. This provides an alternative way to describe points in the plane.
+
 \Note[Polar to Cartesian Conversion]{
+    To convert from polar coordinates $(r, \theta)$ to Cartesian coordinates $(x, y)$:
     \[ 
         x = r \cos \theta \quad y = r \sin \theta
     \]
 }
 
 \Note[Cartesian to Polar Conversion]{
+    To convert from Cartesian coordinates $(x, y)$ to polar coordinates $(r, \theta)$:
     \begin{align*}
         r^2 &= x^2 + y^2 &&\tan\theta = \frac{y}{x} \\
         r &= \sqrt{x^2 + y^2} &&\theta = \tan^{-1} \left( \frac{y}{x} \right)
     \end{align*}
+    Note: The formula for $\theta$ requires care with quadrants. The functions $r^2 = x^2 + y^2$ and $\tan\theta = y/x$ are the fundamental relationships.
 }
 
 
@@ -124,17 +166,16 @@ Then the arc length formula becomes,
 
 \subsection{Tangents with Polar Coordinates}
 
+To find $\dv{y}{x}$ for a polar curve $r = f(\theta)$, we use the parametric derivatives. Since $x = r\cos\theta$ and $y = r\sin\theta$, applying the product rule gives:
 \[ 
     \dv{x}{\theta} = r' \cos \theta - r \sin \theta \quad \dv{y}{\theta} = r' \sin \theta + r \cos \theta
 \]
-\[ 
-    \dv{r}{\theta} = \dv{r}{x} \dv{x}{\theta} + \dv{r}{y} \dv{y}{\theta}
- \]
 
 \Note[Tangents with Polar Coordinates]{
     \[ 
-        \dv{y}{x} = \frac{r' \sin \theta + r \cos \theta}{r' \cos \theta - r \sin \theta}
+        \dv{y}{x} = \frac{\dv{y}{\theta}}{\dv{x}{\theta}} = \frac{r' \sin \theta + r \cos \theta}{r' \cos \theta - r \sin \theta}
     \]
+    where $r' = \dv{r}{\theta}$.
 }
 
 
@@ -145,8 +186,13 @@ Then the arc length formula becomes,
 \subsection{Area with Polar Coordinates}
 
 \Note[Area with Polar Coordinates]{
+    For the area between two polar curves $r = r_o(\theta)$ (outer radius) and $r = r_i(\theta)$ (inner radius):
     \[ 
         A = \frac{1}{2} \int_{\alpha}^{\beta} \left( r_o^2 - r_i^2 \right) \dd{\theta}
+    \]
+    For the area enclosed by a single polar curve $r = f(\theta)$, set $r_i = 0$:
+    \[ 
+        A = \frac{1}{2} \int_{\alpha}^{\beta} r^2 \dd{\theta}
     \]
 }
 

@@ -32,7 +32,7 @@
 
         $\dv{}{x} x = 1$ , \quad $\dv{}{x} c = 0 $ & $\int c \dd{x} = cx + c$ \\
         $\dv{}{x} x^n $ & $\int x^n \dd{x} = \frac{x^{n+1}}{n+1} + c$ \\
-        $\dv{}{x} \ln(x) = \frac{1}{x}$ & $\int \frac{1}{x} \dd{x} = \ln(x) + c$ \\ 
+        $\dv{}{x} \ln(x) = \frac{1}{x}$ & $\int \frac{1}{x} \dd{x} = \ln|x| + c$ \\ 
         $\dv{}{x} e^{mx} = me^{mx} $ & $\int e^{mx} \dd{x} = \frac{1}{m} e^{mx} + c$ \\
         $\dv{}{x} a^x = a^x \ln(a)$ & $\int a^x \dd{x} = \frac{1}{\ln(a)} a^x + c$ \\
         $\dv{}{x} \sin(mx) = m \cos(mx) $ & $\int \cos(mx) \dd{x} = \frac{1}{m} \sin(mx) + c$ \\
@@ -42,10 +42,10 @@
         $\dv{}{x} \sec(x) = \sec(x) \tan(x)$ & $\int \sec(x) \tan(x) \dd{x} = \sec(x) + c$ \\
         $\dv{}{x} \csc(x) = -\csc(x) \cot(x)$ & $\int \csc(x) \cot(x) \dd{x} = -\csc(x) + c$ \\
         $\dv{}{x} \sin^{-1}(x) = \frac{1}{\sqrt{1-x^2}}$ & $\int \frac{1}{\sqrt{1-x^2}} \dd{x} = \sin^{-1}(x) + c$ \\
-        $\dv{}{x} \tan^{-1}(x) = \frac{1}{1+x^2}$ & $\int \frac{1}{1+x^2} \dd{x} = \tan^{-1}(x) + c$ \\
-        $\dv{}{x} \sec^{-1}(x) = \frac{1}{x \sqrt{x^2-1}}$ & $\int \frac{1}{x \sqrt{x^2-1}} \dd{x} = \sec^{-1}(x) + c$ \\
         $\dv{}{x} \cos^{-1}(x) = -\frac{1}{\sqrt{1-x^2}}$ & $\int \frac{1}{\sqrt{1-x^2}} \dd{x} = -\cos^{-1}(x) + c$ \\
+        $\dv{}{x} \tan^{-1}(x) = \frac{1}{1+x^2}$ & $\int \frac{1}{1+x^2} \dd{x} = \tan^{-1}(x) + c$ \\
         $\dv{}{x} \cot^{-1}(x) = -\frac{1}{1+x^2}$ & $\int \frac{1}{1+x^2} \dd{x} = -\cot^{-1}(x) + c$ \\
+        $\dv{}{x} \sec^{-1}(x) = \frac{1}{x \sqrt{x^2-1}}$ & $\int \frac{1}{x \sqrt{x^2-1}} \dd{x} = \sec^{-1}(x) + c$ \\
         $\dv{}{x} \csc^{-1}(x) = -\frac{1}{x \sqrt{x^2-1}}$ & $\int \frac{1}{x \sqrt{x^2-1}} \dd{x} = -\csc^{-1}(x) + c$ \\
         $\dv{}{x} \sqrt{x} = \frac{1}{2 \sqrt{x}}$ & $\int \frac{1}{\sqrt{x}} \dd{x} = 2\sqrt{x} + c$ \\
     \end{tabular}
@@ -185,6 +185,112 @@ Let $v = \dv{w}{x}$, then $w = \int v \dd{x}$. Hence,
     \end{tabular}
     \caption{Partial Fraction Decomposition}
 \end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Integrals Involving Roots      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integrals Involving Roots}
+
+For integrals involving $\sqrt{a^2 - x^2}$, $\sqrt{a^2 + x^2}$, or $\sqrt{x^2 - a^2}$, use trigonometric substitution:
+
+\begin{table}[htpb]
+    \centering
+    \begin{tabular}{c | c | c}
+        \textbf{Expression} & \textbf{Substitution} & \textbf{Identity Used} \\ 
+        \hline 
+        $\sqrt{a^2 - x^2}$ & $x = a\sin\theta$ & $1 - \sin^2\theta = \cos^2\theta$ \\ 
+        $\sqrt{a^2 + x^2}$ & $x = a\tan\theta$ & $1 + \tan^2\theta = \sec^2\theta$ \\ 
+        $\sqrt{x^2 - a^2}$ & $x = a\sec\theta$ & $\sec^2\theta - 1 = \tan^2\theta$ \\
+    \end{tabular}
+    \caption{Trigonometric Substitutions for Roots}
+\end{table}
+
+\Example{Evaluate $\int \frac{1}{\sqrt{9-x^2}} \dd{x}$}
+{
+    Here $a=3$, so let $x = 3\sin\theta$, thus $\dd{x} = 3\cos\theta \dd{\theta}$.
+    \begin{align*}
+        \int \frac{1}{\sqrt{9-x^2}} \dd{x} &= \int \frac{3\cos\theta}{\sqrt{9-9\sin^2\theta}} \dd{\theta} \\
+        &= \int \frac{3\cos\theta}{3\cos\theta} \dd{\theta} \\
+        &= \int 1 \dd{\theta} \\
+        &= \theta + c \\
+        &= \sin^{-1}\left(\frac{x}{3}\right) + c
+    \end{align*}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Integrals Involving Quadratics %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integrals Involving Quadratics}
+
+For integrals involving $ax^2 + bx + c$, complete the square first:
+\[ ax^2 + bx + c = a\left[\left(x + \frac{b}{2a}\right)^2 + \frac{4ac - b^2}{4a^2}\right] \]
+
+Then use substitution $u = x + \frac{b}{2a}$ to convert to standard forms.
+
+\Example{Evaluate $\int \frac{1}{x^2 + 4x + 13} \dd{x}$}{
+    Complete the square:
+    \[ x^2 + 4x + 13 = (x+2)^2 + 9 = (x+2)^2 + 3^2 \]
+    Let $u = x+2$, so $\dd{u} = \dd{x}$:
+    \begin{align*}
+        \int \frac{1}{x^2 + 4x + 13} \dd{x} &= \int \frac{1}{u^2 + 9} \dd{u} \\
+        &= \frac{1}{3}\tan^{-1}\left(\frac{u}{3}\right) + c \\
+        &= \frac{1}{3}\tan^{-1}\left(\frac{x+2}{3}\right) + c
+    \end{align*}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Integration Strategy           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integration Strategy}
+
+When faced with an integral, use the following strategy:
+
+\begin{enumerate}
+    \item \textbf{Simplify the integrand}: Expand, factor, or use algebraic manipulation
+    \item \textbf{Look for obvious substitutions}: If $u' = g'(x)$ appears, try $u = g(x)$
+    \item \textbf{Classify by type}:
+        \begin{itemize}
+            \item Trigonometric integrals $\to$ use trig identities
+            \item Rational functions $\to$ use partial fractions
+            \item Products $\to$ try integration by parts
+            \item Roots of quadratics $\to$ complete the square or trig substitution
+        \end{itemize}
+    \item \textbf{Try different techniques}: If one method fails, try another
+    \item \textbf{Use tables or computer algebra systems}: For complex integrals
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Approximating Definite Integrals      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Approximating Definite Integrals}
+
+When an antiderivative cannot be found in closed form, use numerical approximation methods.
+
+\subsubsection{Midpoint Rule}
+
+Divide $[a,b]$ into $n$ subintervals of width $\Delta x = \frac{b-a}{n}$. Let $\bar{x}_i$ be the midpoint of the $i$-th subinterval.
+\[ \int_{a}^{b} f(x) \dd{x} \approx M_n = \Delta x \sum_{i=1}^{n} f(\bar{x}_i) \]
+
+\subsubsection{Trapezoidal Rule}
+
+\[ \int_{a}^{b} f(x) \dd{x} \approx T_n = \frac{\Delta x}{2} \left[f(x_0) + 2f(x_1) + 2f(x_2) + \dots + 2f(x_{n-1}) + f(x_n)\right] \]
+
+\subsubsection{Simpson's Rule}
+
+Requires $n$ to be even. Approximates the function with parabolas instead of lines:
+\[ \int_{a}^{b} f(x) \dd{x} \approx S_n = \frac{\Delta x}{3} \left[f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + \dots + 2f(x_{n-2}) + 4f(x_{n-1}) + f(x_n)\right] \]
+
+\Note{
+    Simpson's Rule is generally more accurate than the Trapezoidal Rule, which is more accurate than the Midpoint Rule for the same number of subintervals.
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
