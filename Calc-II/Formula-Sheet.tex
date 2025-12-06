@@ -1,0 +1,675 @@
+\documentclass[7pt]{extarticle}
+\usepackage[margin=0.25in]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath,amssymb,physics}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\pagestyle{empty}
+
+\begin{document}
+\begin{multicols}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\scriptsize
+
+% ========== FRONT SIDE ==========
+
+\section*{Integration Techniques}
+
+\textbf{Integration by Parts:} $\int u\,dv = uv - \int v\,du$
+
+\textbf{LIATE Rule:} Choose $u$ in order: Logarithmic, Inverse trig, Algebraic, Trig, Exponential
+
+\textbf{Common Integrals:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\int \tan x\,dx = \ln|\sec x| + C = -\ln|\cos x| + C$
+\item $\int \cot x\,dx = \ln|\sin x| + C$
+\item $\int \sec x\,dx = \ln|\sec x + \tan x| + C$
+\item $\int \csc x\,dx = -\ln|\csc x + \cot x| + C$
+\item $\int \frac{1}{a^2+x^2}\,dx = \frac{1}{a}\tan^{-1}(\frac{x}{a}) + C$
+\item $\int \frac{1}{a^2-x^2}\,dx = \frac{1}{2a}\ln|\frac{a+x}{a-x}| + C$
+\item $\int \frac{1}{x^2-a^2}\,dx = \frac{1}{2a}\ln|\frac{x-a}{x+a}| + C$
+\item $\int \frac{1}{\sqrt{a^2-x^2}}\,dx = \sin^{-1}(\frac{x}{a}) + C$
+\item $\int \frac{1}{\sqrt{x^2+a^2}}\,dx = \ln|x + \sqrt{x^2+a^2}| + C$
+\item $\int \frac{1}{\sqrt{x^2-a^2}}\,dx = \ln|x + \sqrt{x^2-a^2}| + C$
+\item $\int \sqrt{a^2-x^2}\,dx = \frac{x\sqrt{a^2-x^2}}{2} + \frac{a^2}{2}\sin^{-1}(\frac{x}{a}) + C$
+\item $\int e^x[f(x)+f'(x)]\,dx = e^xf(x) + C$
+\end{itemize}
+
+\textbf{Trig Reduction Formulas:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\int \sin^n x\,dx = -\frac{1}{n}\sin^{n-1}x\cos x + \frac{n-1}{n}\int \sin^{n-2}x\,dx$
+\item $\int \cos^n x\,dx = \frac{1}{n}\cos^{n-1}x\sin x + \frac{n-1}{n}\int \cos^{n-2}x\,dx$
+\item $\int \tan^n x\,dx = \frac{1}{n-1}\tan^{n-1}x - \int \tan^{n-2}x\,dx$
+\item $\int \sec^n x\,dx = \frac{1}{n-1}\sec^{n-2}x\tan x + \frac{n-2}{n-1}\int \sec^{n-2}x\,dx$
+\item $\int \sin^m x\cos^n x\,dx = -\frac{\sin^{m-1}x\cos^{n+1}x}{m+n} + \frac{m-1}{m+n}\int \sin^{m-2}x\cos^n x\,dx$
+\end{itemize}
+
+\textbf{Polynomial Reduction:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\int x^n e^{ax}\,dx = \frac{1}{a}x^n e^{ax} - \frac{n}{a}\int x^{n-1}e^{ax}\,dx$
+\item $\int x^n\sin(ax)\,dx = -\frac{1}{a}x^n\cos(ax) + \frac{n}{a}\int x^{n-1}\cos(ax)\,dx$
+\item $\int x^n\cos(ax)\,dx = \frac{1}{a}x^n\sin(ax) - \frac{n}{a}\int x^{n-1}\sin(ax)\,dx$
+\end{itemize}
+
+\textbf{Trig Substitution:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\sqrt{a^2-x^2}$: use $x = a\sin\theta$, $dx = a\cos\theta\,d\theta$
+\item $\sqrt{a^2+x^2}$: use $x = a\tan\theta$, $dx = a\sec^2\theta\,d\theta$
+\item $\sqrt{x^2-a^2}$: use $x = a\sec\theta$, $dx = a\sec\theta\tan\theta\,d\theta$
+\end{itemize}
+
+\textbf{Numerical Integration} ($\Delta x = \frac{b-a}{n}$):
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Midpoint: $M_n = \Delta x \sum_{i=1}^{n} f(\bar{x}_i)$ where $\bar{x}_i = \frac{x_{i-1}+x_i}{2}$
+\item Trapezoid: $T_n = \frac{\Delta x}{2}[f(x_0) + 2f(x_1) + \cdots + 2f(x_{n-1}) + f(x_n)]$
+\item Simpson's: $S_n = \frac{\Delta x}{3}[f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + \cdots + f(x_n)]$ ($n$ even)
+\end{itemize}
+
+\textbf{Improper Integrals:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Type 1: $\int_a^\infty f(x)\,dx = \lim_{t\to\infty}\int_a^t f(x)\,dx$
+\item Type 2: $\int_{-\infty}^b f(x)\,dx = \lim_{t\to-\infty}\int_t^b f(x)\,dx$
+\item Type 3: $\int_{-\infty}^\infty f(x)\,dx = \int_{-\infty}^c f(x)\,dx + \int_c^\infty f(x)\,dx$
+\item Discontinuity at $c \in [a,b]$: $\int_a^b = \lim_{\epsilon\to 0^+}[\int_a^{c-\epsilon} + \int_{c+\epsilon}^b]$
+\end{itemize}
+
+$\int_a^\infty \frac{1}{x^p}\,dx$ converges if $p>1$, diverges if $p \leq 1$
+
+\textbf{Comparison Test for Improper Integrals:} If $f(x) \geq g(x) \geq 0$:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\int_a^\infty f(x)\,dx$ converges $\implies \int_a^\infty g(x)\,dx$ converges
+\item $\int_a^\infty g(x)\,dx$ diverges $\implies \int_a^\infty f(x)\,dx$ diverges
+\end{itemize}
+
+\section*{Applications of Integrals}
+
+\textbf{Arc Length:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $y=f(x)$, $a \leq x \leq b$: $L = \int_a^b \sqrt{1+\left(\frac{dy}{dx}\right)^2}\,dx$
+\item $x=h(y)$, $c \leq y \leq d$: $L = \int_c^d \sqrt{1+\left(\frac{dx}{dy}\right)^2}\,dy$
+\end{itemize}
+
+\textbf{Surface Area:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Rotation about $x$-axis: $S = \int_a^b 2\pi y\sqrt{1+\left(\frac{dy}{dx}\right)^2}\,dx$
+\item Rotation about $y$-axis: $S = \int_c^d 2\pi x\sqrt{1+\left(\frac{dx}{dy}\right)^2}\,dy$
+\end{itemize}
+
+\textbf{Center of Mass/Centroid:}
+$\bar{x} = \frac{1}{A}\int_a^b x[f(x)-g(x)]\,dx$, 
+$\bar{y} = \frac{1}{A}\int_a^b \frac{1}{2}[f(x)^2-g(x)^2]\,dx$
+where $A = \int_a^b [f(x)-g(x)]\,dx$
+
+\textbf{Probability:} $P(a \leq X \leq b) = \int_a^b f(x)\,dx$ where $\int_{-\infty}^\infty f(x)\,dx = 1$
+
+\textbf{Mean:} $\mu = \int_{-\infty}^\infty xf(x)\,dx$
+
+\section*{Parametric Equations}
+
+\textbf{Derivative:} $\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$ (provided $dx/dt \neq 0$)
+
+\textbf{Second Derivative:} $\frac{d^2y}{dx^2} = \frac{d}{dt}\left(\frac{dy}{dx}\right) \Big/ \frac{dx}{dt}$
+
+\textbf{Tangent Lines:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Horizontal: $\frac{dy}{dt} = 0$ and $\frac{dx}{dt} \neq 0$
+\item Vertical: $\frac{dx}{dt} = 0$ and $\frac{dy}{dt} \neq 0$
+\end{itemize}
+
+\textbf{Arc Length:} $L = \int_{t_1}^{t_2} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2}\,dt$
+
+\textbf{Surface Area:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item About $x$-axis: $S = \int_{t_1}^{t_2} 2\pi y \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2}\,dt$
+\item About $y$-axis: $S = \int_{t_1}^{t_2} 2\pi x \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2}\,dt$
+\end{itemize}
+
+\textbf{Area:} $A = \int_{t_1}^{t_2} y(t)\frac{dx}{dt}\,dt$ (enclosed by curve and $x$-axis)
+
+\vfill\null
+\columnbreak
+
+\section*{Polar Coordinates}
+
+\textbf{Conversion:}
+$x = r\cos\theta$, $y = r\sin\theta$
+$r^2 = x^2 + y^2$, $\tan\theta = \frac{y}{x}$, $r = \sqrt{x^2+y^2}$
+
+\textbf{Derivative:} $\frac{dy}{dx} = \frac{r'\sin\theta + r\cos\theta}{r'\cos\theta - r\sin\theta}$ where $r' = \frac{dr}{d\theta}$
+
+\textbf{Area:} 
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Single curve: $A = \frac{1}{2}\int_\alpha^\beta r^2\,d\theta$
+\item Between curves: $A = \frac{1}{2}\int_\alpha^\beta (r_{outer}^2 - r_{inner}^2)\,d\theta$
+\end{itemize}
+
+\textbf{Arc Length:} $L = \int_\alpha^\beta \sqrt{r^2 + \left(\frac{dr}{d\theta}\right)^2}\,d\theta$
+
+\textbf{Surface Area:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item About $x$-axis: $S = \int_\alpha^\beta 2\pi y\sqrt{r^2+(r')^2}\,d\theta = \int 2\pi r\sin\theta\sqrt{r^2+(r')^2}\,d\theta$
+\item About $y$-axis: $S = \int_\alpha^\beta 2\pi x\sqrt{r^2+(r')^2}\,d\theta = \int 2\pi r\cos\theta\sqrt{r^2+(r')^2}\,d\theta$
+\end{itemize}
+
+\textbf{Common Polar Curves:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Circle: $r = a$ (centered at origin), $r = 2a\cos\theta$ (tangent to $y$-axis)
+\item Line: $\theta = \alpha$ (through origin), $r = \frac{c}{\cos\theta - \sin\theta}$ (general)
+\item Cardioid: $r = a(1 \pm \cos\theta)$ or $r = a(1 \pm \sin\theta)$
+\item Lima\c{c}on: $r = a \pm b\cos\theta$ or $r = a \pm b\sin\theta$
+\item Rose: $r = a\cos(n\theta)$ or $r = a\sin(n\theta)$ ($n$ odd: $n$ petals; $n$ even: $2n$ petals)
+\item Lemniscate: $r^2 = a^2\cos(2\theta)$ or $r^2 = a^2\sin(2\theta)$
+\item Spiral: $r = a\theta$ (Archimedean), $r = ae^{b\theta}$ (logarithmic)
+\end{itemize}
+
+\section*{Sequences}
+
+\textbf{Definition:} $\{a_n\}_{n=1}^\infty$ where $a_n = f(n)$ for $n \in \N$
+
+\textbf{Limit:} $\lim_{n\to\infty} a_n = L$ if $\forall\epsilon>0, \exists N \in \N: \forall n\geq N, |a_n-L|<\epsilon$
+
+\textbf{Limit Properties:} If $\lim a_n = A$ and $\lim b_n = B$, then:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\lim(a_n \pm b_n) = A \pm B$
+\item $\lim(ca_n) = cA$
+\item $\lim(a_n b_n) = AB$
+\item $\lim\frac{a_n}{b_n} = \frac{A}{B}$ if $B \neq 0$
+\item $\lim(a_n^p) = A^p$ if $a_n \geq 0$
+\end{itemize}
+
+\textbf{Squeeze Theorem:} If $a_n \leq b_n \leq c_n$ and $\lim a_n = \lim c_n = L$, then $\lim b_n = L$
+
+\textbf{Important:} If $\lim|a_n| = 0$, then $\lim a_n = 0$
+
+\textbf{Bounded:} $\exists M: \forall n, |a_n| \leq M$
+
+\textbf{Monotonic:} Increasing: $a_{n+1} \geq a_n$ for all $n$; Decreasing: $a_{n+1} \leq a_n$ for all $n$
+
+\textbf{Monotonic Convergence Theorem:} Bounded \& monotonic $\implies$ convergent
+
+\textbf{Convergent sequences are bounded}
+
+\textbf{Special:} $\{r^n\}$ converges if $|r| \leq 1$; $\lim r^n = 0$ if $|r|<1$, $=1$ if $r=1$
+
+\section*{Series}
+
+\textbf{Partial Sum:} $s_n = \sum_{i=1}^n a_i$
+
+\textbf{Convergence:} $\sum_{n=1}^\infty a_n$ converges if $\lim_{n\to\infty} s_n$ exists
+
+\textbf{If $\sum a_n$ converges, then $\lim_{n\to\infty} a_n = 0$} (Contrapositive: Divergence Test)
+
+\textbf{Geometric Series:} $\sum_{n=0}^\infty ar^n = \frac{a}{1-r}$ if $|r|<1$; diverges if $|r| \geq 1$
+
+\textbf{Telescoping Series:} $\sum_{n=1}^\infty (a_n - a_{n+1}) = a_1 - \lim_{n\to\infty} a_{n+1}$
+
+\textbf{Harmonic Series:} $\sum_{n=1}^\infty \frac{1}{n}$ diverges
+
+\textbf{$p$-Series:} $\sum_{n=1}^\infty \frac{1}{n^p}$ converges if $p>1$, diverges if $p \leq 1$
+
+\textbf{Series Properties:} If $\sum a_n$ and $\sum b_n$ converge:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\sum ca_n = c\sum a_n$
+\item $\sum(a_n \pm b_n) = \sum a_n \pm \sum b_n$
+\end{itemize}
+
+\vfill\null
+\columnbreak
+
+\textbf{Convergence Tests:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item \textbf{Divergence Test:} If $\lim_{n\to\infty} a_n \neq 0$, then $\sum a_n$ diverges. If $\lim a_n = 0$, test is inconclusive.
+
+\item \textbf{Integral Test:} If $f$ is continuous, positive, decreasing for $x \geq 1$ and $a_n = f(n)$, then $\sum_{n=1}^\infty a_n$ and $\int_1^\infty f(x)\,dx$ both converge or both diverge.
+
+\item \textbf{Comparison Test:} If $0 \leq a_n \leq b_n$ for all $n$:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\sum b_n$ converges $\implies$ $\sum a_n$ converges
+\item $\sum a_n$ diverges $\implies$ $\sum b_n$ diverges
+\end{itemize}
+
+\item \textbf{Limit Comparison Test:} If $a_n, b_n > 0$ and $\lim_{n\to\infty}\frac{a_n}{b_n} = c$ where $0 < c < \infty$, then $\sum a_n$ and $\sum b_n$ both converge or both diverge.
+
+\item \textbf{Alternating Series Test:} If $b_n > 0$, $b_{n+1} \leq b_n$ for all $n$, and $\lim_{n\to\infty} b_n = 0$, then $\sum_{n=1}^\infty (-1)^n b_n$ converges. 
+\textbf{Error bound:} $|R_n| = |s - s_n| \leq b_{n+1}$
+
+\item \textbf{Ratio Test:} Let $L = \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|$. Then:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $L < 1 \implies$ converges absolutely
+\item $L > 1$ or $L = \infty \implies$ diverges
+\item $L = 1 \implies$ inconclusive
+\end{itemize}
+
+\item \textbf{Root Test:} Let $L = \lim_{n\to\infty}\sqrt[n]{|a_n|}$. Then:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $L < 1 \implies$ converges absolutely
+\item $L > 1$ or $L = \infty \implies$ diverges
+\item $L = 1 \implies$ inconclusive
+\end{itemize}
+\end{enumerate}
+
+\textbf{Absolute vs Conditional Convergence:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Absolutely convergent: $\sum |a_n|$ converges
+\item If absolutely convergent, then convergent
+\item Conditionally convergent: $\sum a_n$ converges but $\sum |a_n|$ diverges
+\end{itemize}
+
+\section*{Power Series}
+
+\textbf{Form:} $\sum_{n=0}^\infty c_n(x-a)^n$ where $a$ is center
+
+\textbf{Radius of Convergence $R$:} Series converges absolutely for $|x-a| < R$, diverges for $|x-a| > R$
+
+\textbf{Finding $R$:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Ratio Test: $\frac{1}{R} = \lim_{n\to\infty}\left|\frac{c_{n+1}}{c_n}\right|$
+\item Root Test: $\frac{1}{R} = \lim_{n\to\infty}\sqrt[n]{|c_n|}$
+\end{itemize}
+
+\textbf{Interval of Convergence:} Test endpoints $x = a \pm R$ separately
+
+\textbf{Term-by-Term Operations:} If $f(x) = \sum_{n=0}^\infty c_n(x-a)^n$ with radius $R$:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $f'(x) = \sum_{n=1}^\infty nc_n(x-a)^{n-1}$ for $|x-a| < R$ (same $R$)
+\item $\int f(x)\,dx = C + \sum_{n=0}^\infty \frac{c_n}{n+1}(x-a)^{n+1}$ for $|x-a| < R$ (same $R$)
+\item $f(x) \pm g(x) = \sum_{n=0}^\infty (c_n \pm d_n)(x-a)^n$
+\end{itemize}
+
+\section*{Taylor \& Maclaurin Series}
+
+\textbf{Taylor Series about $x=a$:} $f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n$
+
+\textbf{Taylor Polynomial:} $T_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k$
+
+\textbf{Taylor Remainder:} $R_n(x) = f(x) - T_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$ for some $c$ between $a$ and $x$
+
+\textbf{Error Bound:} If $|f^{(n+1)}(x)| \leq M$ for $|x-a| \leq d$, then $|R_n(x)| \leq \frac{M}{(n+1)!}|x-a|^{n+1}$
+
+\textbf{Series converges to $f(x)$} if and only if $\lim_{n\to\infty} R_n(x) = 0$
+
+\textbf{Maclaurin Series} (Taylor at $a=0$):
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $e^x = \sum_{n=0}^\infty \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots$ for all $x$
+\item $\sin x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots$ for all $x$
+\item $\cos x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots$ for all $x$
+\item $\ln(1+x) = \sum_{n=1}^\infty (-1)^{n+1}\frac{x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots$ for $-1<x\leq1$
+\item $\tan^{-1}x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \cdots$ for $|x|\leq1$
+\item $\frac{1}{1-x} = \sum_{n=0}^\infty x^n = 1 + x + x^2 + x^3 + \cdots$ for $|x|<1$
+\item $\frac{1}{1+x} = \sum_{n=0}^\infty (-1)^n x^n = 1 - x + x^2 - x^3 + \cdots$ for $|x|<1$
+\item $(1+x)^k = \sum_{n=0}^\infty \binom{k}{n}x^n = 1 + kx + \frac{k(k-1)}{2!}x^2 + \cdots$ for $|x|<1$
+\end{itemize}
+
+\textbf{Binomial Coefficient:} $\binom{k}{n} = \frac{k(k-1)(k-2)\cdots(k-n+1)}{n!}$, $\binom{k}{0} = 1$
+
+\end{multicols}
+
+\newpage
+
+% ========== BACK SIDE ==========
+
+\begin{multicols}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\scriptsize
+
+\section*{3D Space - Vectors}
+
+\textbf{Vector:} $\vec{v} = \langle v_1, v_2, v_3 \rangle = v_1\hat{i} + v_2\hat{j} + v_3\hat{k}$
+
+\textbf{Magnitude:} $|\vec{v}| = \sqrt{v_1^2 + v_2^2 + v_3^2}$
+
+\textbf{Unit Vector:} $\hat{v} = \frac{\vec{v}}{|\vec{v}|}$
+
+\textbf{Dot Product:} $\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3 = |\vec{a}||\vec{b}|\cos\theta$
+
+Properties:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\vec{a} \perp \vec{b} \iff \vec{a} \cdot \vec{b} = 0$
+\item $\vec{a} \cdot \vec{a} = |\vec{a}|^2$
+\item Commutative: $\vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}$
+\item Distributive: $\vec{a} \cdot (\vec{b} + \vec{c}) = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}$
+\end{itemize}
+
+\textbf{Cross Product:} $\vec{a} \times \vec{b} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \end{vmatrix}$
+
+$= (a_2b_3-a_3b_2)\hat{i} - (a_1b_3-a_3b_1)\hat{j} + (a_1b_2-a_2b_1)\hat{k}$
+
+Properties:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $|\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin\theta$
+\item $\vec{a} \times \vec{b}$ is perpendicular to both $\vec{a}$ and $\vec{b}$ (right-hand rule)
+\item Anti-commutative: $\vec{a} \times \vec{b} = -\vec{b} \times \vec{a}$
+\item $\vec{a} \times \vec{a} = \vec{0}$
+\item $\vec{a} \parallel \vec{b} \iff \vec{a} \times \vec{b} = \vec{0}$
+\item Area of parallelogram: $|\vec{a} \times \vec{b}|$
+\end{itemize}
+
+\textbf{Scalar Triple Product:} $\vec{a} \cdot (\vec{b} \times \vec{c}) = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix}$
+
+Volume of parallelepiped: $|\vec{a} \cdot (\vec{b} \times \vec{c})|$
+
+\textbf{Projection:} $\text{proj}_{\vec{b}}\vec{a} = \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|^2}\vec{b} = \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|}\hat{b}$
+
+\textbf{Component:} $\text{comp}_{\vec{b}}\vec{a} = \frac{\vec{a} \cdot \vec{b}}{|\vec{b}|}$
+
+\section*{3D Space - Lines}
+
+\textbf{Vector Form:} $\vec{r}(t) = \vec{r_0} + t\vec{v}$ where $\vec{v}$ is direction vector
+
+\textbf{Parametric:} $x = x_0 + ta$, $y = y_0 + tb$, $z = z_0 + tc$
+
+\textbf{Symmetric:} $\frac{x-x_0}{a} = \frac{y-y_0}{b} = \frac{z-z_0}{c}$ (if $a,b,c \neq 0$)
+
+\textbf{Two Points:} Direction vector $\vec{v} = P_2 - P_1 = \langle x_2-x_1, y_2-y_1, z_2-z_1 \rangle$
+
+\textbf{Parallel Lines:} $\vec{d_1} = k\vec{d_2}$ for some scalar $k$ (or $\vec{d_1} \times \vec{d_2} = \vec{0}$)
+
+\textbf{Orthogonal Lines:} $\vec{d_1} \cdot \vec{d_2} = 0$
+
+\textbf{Angle Between Lines:} $\cos\theta = \frac{|\vec{d_1} \cdot \vec{d_2}|}{|\vec{d_1}||\vec{d_2}|}$
+
+\textbf{Skew Lines:} Not parallel and do not intersect
+
+\section*{3D Space - Planes}
+
+\textbf{Vector Form:} $\vec{n} \cdot (\vec{r} - \vec{r_0}) = 0$ where $\vec{n}$ is normal vector
+
+\textbf{Scalar Form:} $ax + by + cz = d$ where $\vec{n} = \langle a,b,c\rangle$
+
+\textbf{Point-Normal Form:} $a(x-x_0) + b(y-y_0) + c(z-z_0) = 0$
+
+\textbf{Three Points:} $\vec{n} = \vec{AB} \times \vec{AC}$, then use point-normal form
+
+\textbf{Parallel Planes:} $\vec{n_1} = k\vec{n_2}$ or $\vec{n_1} \times \vec{n_2} = \vec{0}$
+
+\textbf{Orthogonal Planes:} $\vec{n_1} \cdot \vec{n_2} = 0$
+
+\textbf{Angle Between Planes:} $\cos\theta = \frac{|\vec{n_1} \cdot \vec{n_2}|}{|\vec{n_1}||\vec{n_2}|}$
+
+\textbf{Line-Plane Intersection:} Substitute parametric line equations into plane equation
+
+\textbf{Plane-Plane Intersection:} Solve system of two equations (result is a line)
+
+\section*{Distance Formulas}
+
+\textbf{Point to Point:} $d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}$
+
+\textbf{Point to Line:} $d = \frac{|\vec{P_0P_1} \times \vec{d}|}{|\vec{d}|}$ 
+where $P_0$ on line, $P_1$ is point, $\vec{d}$ is direction
+
+\textbf{Point to Plane:} $d = \frac{|ax_0 + by_0 + cz_0 - d|}{\sqrt{a^2 + b^2 + c^2}}$
+where plane: $ax+by+cz=d$, point: $(x_0,y_0,z_0)$
+
+\textbf{Between Parallel Planes:} $d = \frac{|d_1-d_2|}{\sqrt{a^2+b^2+c^2}}$ where $ax+by+cz=d_1$ and $ax+by+cz=d_2$
+
+\textbf{Between Skew Lines:} $d = \frac{|(\vec{P_1P_2}) \cdot (\vec{d_1} \times \vec{d_2})|}{|\vec{d_1} \times \vec{d_2}|}$
+
+\section*{Quadratic Surfaces}
+
+\textbf{Ellipsoid:} $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$ (all positive, sphere if $a=b=c$)
+
+\textbf{Cone:} $\frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z^2}{c^2}$ (double cone)
+
+\textbf{Cylinder:} $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ (extends along $z$-axis)
+
+\textbf{Hyperboloid of 1 Sheet:} $\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1$ (one negative)
+
+\textbf{Hyperboloid of 2 Sheets:} $-\frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$ (two negatives)
+
+\textbf{Elliptic Paraboloid:} $\frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z}{c}$ (all same sign, bowl shape)
+
+\textbf{Hyperbolic Paraboloid:} $\frac{x^2}{a^2} - \frac{y^2}{b^2} = \frac{z}{c}$ (saddle shape)
+
+\vfill\null
+\columnbreak
+
+\section*{Vector Functions}
+
+\textbf{Vector Function:} $\vec{r}(t) = \langle f(t), g(t), h(t) \rangle$
+
+\textbf{Limit:} $\lim_{t\to a}\vec{r}(t) = \langle \lim_{t\to a}f(t), \lim_{t\to a}g(t), \lim_{t\to a}h(t) \rangle$
+
+\textbf{Derivative:} $\vec{r}'(t) = \langle f'(t), g'(t), h'(t) \rangle$
+
+\textbf{Derivative Rules:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\frac{d}{dt}[\vec{u}(t) + \vec{v}(t)] = \vec{u}'(t) + \vec{v}'(t)$
+\item $\frac{d}{dt}[c\vec{u}(t)] = c\vec{u}'(t)$
+\item $\frac{d}{dt}[f(t)\vec{u}(t)] = f'(t)\vec{u}(t) + f(t)\vec{u}'(t)$
+\item $\frac{d}{dt}[\vec{u}(t) \cdot \vec{v}(t)] = \vec{u}'(t) \cdot \vec{v}(t) + \vec{u}(t) \cdot \vec{v}'(t)$
+\item $\frac{d}{dt}[\vec{u}(t) \times \vec{v}(t)] = \vec{u}'(t) \times \vec{v}(t) + \vec{u}(t) \times \vec{v}'(t)$
+\item $\frac{d}{dt}[\vec{u}(f(t))] = f'(t)\vec{u}'(f(t))$ (chain rule)
+\end{itemize}
+
+\textbf{Integration:} $\int \vec{r}(t)\,dt = \langle \int f(t)\,dt, \int g(t)\,dt, \int h(t)\,dt \rangle$
+
+\textbf{Arc Length:} $L = \int_a^b |\vec{r}'(t)|\,dt = \int_a^b \sqrt{[f'(t)]^2 + [g'(t)]^2 + [h'(t)]^2}\,dt$
+
+\textbf{Arc Length Function:} $s(t) = \int_a^t |\vec{r}'(u)|\,du$
+
+\textbf{Unit Tangent Vector:} $\vec{T}(t) = \frac{\vec{r}'(t)}{|\vec{r}'(t)|}$
+
+\textbf{Unit Normal Vector:} $\vec{N}(t) = \frac{\vec{T}'(t)}{|\vec{T}'(t)|}$
+
+\textbf{Binormal Vector:} $\vec{B}(t) = \vec{T}(t) \times \vec{N}(t)$ (always unit vector)
+
+\textbf{Important:} If $|\vec{r}(t)| = c$ (constant), then $\vec{r}(t) \perp \vec{r}'(t)$
+
+\textbf{Curvature:} 
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\kappa = \frac{|\vec{T}'(t)|}{|\vec{r}'(t)|}$
+\item $\kappa = \frac{|\vec{r}'(t) \times \vec{r}''(t)|}{|\vec{r}'(t)|^3}$
+\item For $y=f(x)$: $\kappa = \frac{|f''(x)|}{[1+(f'(x))^2]^{3/2}}$
+\end{itemize}
+
+\textbf{Radius of Curvature:} $\rho = \frac{1}{\kappa}$
+
+\section*{Important Identities}
+
+\textbf{Trigonometric:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\sin^2 x + \cos^2 x = 1$
+\item $\tan^2 x + 1 = \sec^2 x$
+\item $1 + \cot^2 x = \csc^2 x$
+\item $\sin(2x) = 2\sin x\cos x$
+\item $\cos(2x) = \cos^2 x - \sin^2 x = 2\cos^2 x - 1 = 1 - 2\sin^2 x$
+\item $\sin^2 x = \frac{1-\cos(2x)}{2}$, $\cos^2 x = \frac{1+\cos(2x)}{2}$
+\item $\sin(A \pm B) = \sin A\cos B \pm \cos A\sin B$
+\item $\cos(A \pm B) = \cos A\cos B \mp \sin A\sin B$
+\item $\sin A\sin B = \frac{1}{2}[\cos(A-B) - \cos(A+B)]$
+\item $\cos A\cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$
+\item $\sin A\cos B = \frac{1}{2}[\sin(A+B) + \sin(A-B)]$
+\end{itemize}
+
+\textbf{Hyperbolic:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\sinh x = \frac{e^x - e^{-x}}{2}$, $\cosh x = \frac{e^x + e^{-x}}{2}$
+\item $\tanh x = \frac{\sinh x}{\cosh x}$
+\item $\cosh^2 x - \sinh^2 x = 1$
+\item $1 - \tanh^2 x = \text{sech}^2 x$
+\item $\frac{d}{dx}\sinh x = \cosh x$, $\frac{d}{dx}\cosh x = \sinh x$
+\item $\frac{d}{dx}\tanh x = \text{sech}^2 x$
+\end{itemize}
+
+\textbf{Logarithmic:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\ln(ab) = \ln a + \ln b$
+\item $\ln(\frac{a}{b}) = \ln a - \ln b$
+\item $\ln(a^b) = b\ln a$
+\item $\log_b a = \frac{\ln a}{\ln b}$
+\item $a = e^{\ln a}$
+\end{itemize}
+
+\section*{Integration Techniques Summary}
+
+\textbf{Products of $\sin^m x \cos^n x$:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $m$ odd: $u = \cos x$, use $\sin^2 x = 1-\cos^2 x$
+\item $n$ odd: $u = \sin x$, use $\cos^2 x = 1-\sin^2 x$
+\item Both even: use half-angle formulas $\sin^2 x = \frac{1-\cos 2x}{2}$, $\cos^2 x = \frac{1+\cos 2x}{2}$
+\end{itemize}
+
+\textbf{Products of $\sec^m x \tan^n x$:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $n$ odd: $u = \sec x$, use $\tan^2 x = \sec^2 x - 1$
+\item $m$ even: $u = \tan x$, use $\sec^2 x = 1+\tan^2 x$
+\end{itemize}
+
+\textbf{Partial Fractions:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Linear factor $(ax+b)$: $\frac{A}{ax+b}$
+\item Repeated linear $(ax+b)^k$: $\frac{A_1}{ax+b} + \frac{A_2}{(ax+b)^2} + \cdots + \frac{A_k}{(ax+b)^k}$
+\item Irreducible quadratic $ax^2+bx+c$: $\frac{Ax+B}{ax^2+bx+c}$
+\item Repeated quadratic $(ax^2+bx+c)^k$: $\frac{A_1x+B_1}{ax^2+bx+c} + \cdots + \frac{A_kx+B_k}{(ax^2+bx+c)^k}$
+\end{itemize}
+
+\textbf{Completing the Square:} $ax^2 + bx + c = a\left[(x+\frac{b}{2a})^2 + \frac{4ac-b^2}{4a^2}\right]$
+
+Then substitute $u = x + \frac{b}{2a}$
+
+\vfill\null
+\columnbreak
+
+\section*{Strategy Guides}
+
+\textbf{Integration Strategy:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item Simplify (expand, factor, cancel)
+\item Look for obvious substitutions ($u' = g'(x)$)
+\item Classify:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Trig integrals $\to$ identities, reduction formulas
+\item Rational functions $\to$ partial fractions
+\item Products $\to$ integration by parts (LIATE)
+\item Roots of $a^2 \pm x^2$ or $x^2 \pm a^2$ $\to$ trig substitution
+\item Quadratic in denominator $\to$ complete square
+\end{itemize}
+\end{enumerate}
+
+\textbf{Series Test Selection:}
+\begin{enumerate}[leftmargin=*,noitemsep,topsep=0pt]
+\item Always try \textbf{Divergence Test} first
+\item Recognize special forms:
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Geometric: $ar^n$
+\item $p$-series: $\frac{1}{n^p}$
+\item Telescoping: $a_n - a_{n+1}$
+\end{itemize}
+\item For rational expressions: \textbf{Limit Comparison}
+\item For alternating series: \textbf{Alternating Series Test}
+\item For factorials or exponentials: \textbf{Ratio Test}
+\item For $n$-th powers: \textbf{Root Test}
+\item For comparisons: \textbf{Comparison Test}
+\item If $a_n = f(n)$ where $f$ is easy to integrate: \textbf{Integral Test}
+\end{enumerate}
+
+\section*{Common Derivatives}
+
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\frac{d}{dx}x^n = nx^{n-1}$
+\item $\frac{d}{dx}e^x = e^x$, $\frac{d}{dx}a^x = a^x\ln a$
+\item $\frac{d}{dx}\ln x = \frac{1}{x}$, $\frac{d}{dx}\log_a x = \frac{1}{x\ln a}$
+\item $\frac{d}{dx}\sin x = \cos x$, $\frac{d}{dx}\cos x = -\sin x$
+\item $\frac{d}{dx}\tan x = \sec^2 x$, $\frac{d}{dx}\cot x = -\csc^2 x$
+\item $\frac{d}{dx}\sec x = \sec x\tan x$, $\frac{d}{dx}\csc x = -\csc x\cot x$
+\item $\frac{d}{dx}\sin^{-1} x = \frac{1}{\sqrt{1-x^2}}$, $\frac{d}{dx}\cos^{-1} x = -\frac{1}{\sqrt{1-x^2}}$
+\item $\frac{d}{dx}\tan^{-1} x = \frac{1}{1+x^2}$, $\frac{d}{dx}\cot^{-1} x = -\frac{1}{1+x^2}$
+\item $\frac{d}{dx}\sec^{-1} x = \frac{1}{x\sqrt{x^2-1}}$, $\frac{d}{dx}\csc^{-1} x = -\frac{1}{x\sqrt{x^2-1}}$
+\end{itemize}
+
+\section*{Useful Limits}
+
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\lim_{n\to\infty} \frac{1}{n^p} = 0$ for $p > 0$
+\item $\lim_{n\to\infty} r^n = 0$ if $|r| < 1$
+\item $\lim_{n\to\infty} \left(1 + \frac{x}{n}\right)^n = e^x$
+\item $\lim_{n\to\infty} n^{1/n} = 1$
+\item $\lim_{n\to\infty} \frac{\ln n}{n} = 0$
+\item $\lim_{n\to\infty} \frac{n^k}{a^n} = 0$ for $a > 1$, any $k$
+\item $\lim_{x\to 0} \frac{\sin x}{x} = 1$
+\item $\lim_{x\to 0} \frac{1-\cos x}{x} = 0$
+\item $\lim_{x\to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$
+\item $\lim_{x\to 0} \frac{e^x-1}{x} = 1$
+\item $\lim_{x\to 0} \frac{\ln(1+x)}{x} = 1$
+\item $\lim_{x\to\infty} \left(1 + \frac{1}{x}\right)^x = e$
+\end{itemize}
+
+\section*{Key Theorems}
+
+\textbf{Fundamental Theorem of Calculus:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item Part 1: $\frac{d}{dx}\int_a^x f(t)\,dt = f(x)$
+\item Part 2: $\int_a^b f(x)\,dx = F(b) - F(a)$ where $F'(x) = f(x)$
+\end{itemize}
+
+\textbf{Mean Value Theorem:} If $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then $\exists c \in (a,b)$ such that $f'(c) = \frac{f(b)-f(a)}{b-a}$
+
+\textbf{Intermediate Value Theorem:} If $f$ continuous on $[a,b]$ and $N$ is between $f(a)$ and $f(b)$, then $\exists c \in (a,b)$ such that $f(c) = N$
+
+\textbf{L'Hôpital's Rule:} If $\lim_{x\to a}\frac{f(x)}{g(x)}$ is $\frac{0}{0}$ or $\frac{\infty}{\infty}$, then $\lim_{x\to a}\frac{f(x)}{g(x)} = \lim_{x\to a}\frac{f'(x)}{g'(x)}$ (if limit exists)
+
+\textbf{Abel's Theorem:} If power series $\sum c_n(x-a)^n$ has radius $R \in (0,\infty)$ and converges at an endpoint, then it's continuous at that endpoint.
+
+\section*{Error Estimates}
+
+\textbf{Integral Test:} $s_n + \int_{n+1}^\infty f(x)\,dx \leq s \leq s_n + \int_n^\infty f(x)\,dx$
+
+\textbf{Alternating Series:} $|R_n| = |s - s_n| \leq b_{n+1}$
+
+\textbf{Ratio Test:} Let $r_n = \frac{a_{n+1}}{a_n}$
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item If $\{r_n\}$ decreasing: $R_n \leq \frac{a_{n+1}}{1-r_{n+1}}$
+\item If $\{r_n\}$ increasing: $R_n \leq \frac{a_{n+1}}{1-L}$ where $L = \lim_{n\to\infty} r_n$
+\end{itemize}
+
+\textbf{Comparison Test:} If $0 \leq a_n \leq b_n$ and $\sum b_n$ converges, then $R_n \leq T_n = \sum_{k=n+1}^\infty b_k$
+
+\section*{Special Values}
+
+\textbf{Constants:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $e \approx 2.71828$
+\item $\pi \approx 3.14159$
+\item $\ln 2 \approx 0.693$
+\item $\ln 10 \approx 2.303$
+\item $\sqrt{2} \approx 1.414$
+\item $\sqrt{3} \approx 1.732$
+\item Golden ratio: $\phi = \frac{1+\sqrt{5}}{2} \approx 1.618$
+\end{itemize}
+
+\textbf{Common Angles:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+\item $\sin 0 = 0$, $\cos 0 = 1$, $\tan 0 = 0$
+\item $\sin \frac{\pi}{6} = \frac{1}{2}$, $\cos \frac{\pi}{6} = \frac{\sqrt{3}}{2}$, $\tan \frac{\pi}{6} = \frac{1}{\sqrt{3}}$
+\item $\sin \frac{\pi}{4} = \frac{\sqrt{2}}{2}$, $\cos \frac{\pi}{4} = \frac{\sqrt{2}}{2}$, $\tan \frac{\pi}{4} = 1$
+\item $\sin \frac{\pi}{3} = \frac{\sqrt{3}}{2}$, $\cos \frac{\pi}{3} = \frac{1}{2}$, $\tan \frac{\pi}{3} = \sqrt{3}$
+\item $\sin \frac{\pi}{2} = 1$, $\cos \frac{\pi}{2} = 0$, $\tan \frac{\pi}{2}$ undefined
+\end{itemize}
+
+\textbf{Factorials:} $0! = 1$, $1! = 1$, $2! = 2$, $3! = 6$, $4! = 24$, $5! = 120$, $6! = 720$
+
+\vfill
+
+\hrule
+\vspace{1mm}
+\textbf{Calculus II Formula Sheet} \hfill \textbf{Good luck on your final!}
+
+\end{multicols}
+
+\end{document}
