@@ -1,0 +1,699 @@
+\section{Surface Integrals}
+
+\subsection{Curl and Divergence}
+
+\Definition{Curl}{
+    Given a vector field $\vec{F} = P\hat{i} + Q\hat{j} + R\hat{k}$ the curl of $\vec{F}$ is defined to be, \[
+        \text{curl }\vec{F} = \nabla \times \vec{F} = \begin{vmatrix}
+            \hat{i} & \hat{j} & \hat{k} \\
+            \pdv{}{x} & \pdv{}{y} & \pdv{}{z} \\
+            P & Q & R
+        \end{vmatrix}
+    \]
+    where $\nabla$ is the \textbf{del} operator and is defined as: \[
+        \displaystyle \nabla = \pdv{}{x}\hat{i} + \pdv{}{y}\hat{j} + \pdv{}{z}\hat{k}
+    \]
+}
+
+\Note[Physical Interpretation of Curl]{
+    If we think of $\vec{F}$ as the velocity field of a flowing fluid then $\text{curl }\vec{F}$ represents the tendency of the fluid to rotate about the point $(x,y,z)$. If $\text{curl }\vec{F} = \vec{0}$ then there is no tendency to rotate and the fluid is said to be \textbf{irrotational}.
+}
+
+\Note{
+    \begin{enumerate}
+        \item If $f(x,y,z)$ has continuous second order partial derivatives then $\text{curl}(\nabla f) = \vec{0}$.
+        \item If $\vec{F}$ is a conservative vector field then $\text{curl }\vec{F} = \vec{0}$.
+        \item If $\vec{F}$ is defined on all of $\R^3$ whose components have continuous first order partial derivative and $\text{curl }\vec{F} = \vec{0}$ then $\vec{F}$ is a conservative vector field.
+    \end{enumerate}
+}
+
+\Example{Determine if $\vec{F} = x^2y\hat{i} + xyz\hat{j} - x^2y^2\hat{k}$ is a conservative vector field.}{
+    We need to do compute the curl and see if we get the zero vector or not.
+    \begin{align*}
+        \text{curl }\vec{F} &= \begin{vmatrix}
+            \hat{i} & \hat{j} & \hat{k} \\
+            \pdv{}{x} & \pdv{}{y} & \pdv{}{z} \\
+            x^2y & xyz & -x^2y^2
+        \end{vmatrix} \\
+                            &= -2x^2y\hat{i} + yz\hat{k} - \left( -2xy^2\hat{j} \right) - xy\hat{i} - x^2\hat{k} \\
+                            &= -\left( 2x^2y + xy \right)\hat{i} + 2xy^2\hat{j} + \left( yz - x^2 \right)\hat{k} \\
+                            &\neq \vec{0}
+    \end{align*}
+    So, the curl isn't the zero vector and so this vector field is not conservative.
+}
+
+\Definition{Divergence}{
+    Given a vector field $\vec{F} = P\hat{i} + Q\hat{j} + R\hat{k}$ the divergence of $\vec{F}$ is defined to be, \[
+        \text{div }\vec{F} = \nabla \cdot \vec{F} = \pdv{P}{x} + \pdv{Q}{y} + \pdv{R}{z}
+    \]
+}
+
+\Note[Physical Interpretation of Divergence]{
+    If we think of $\vec{F}$ as the velocity field of a flowing fluid then $\text{div }\vec{F}$ represents the net rate of change of the mass of the fluid flowing from the point $(x,y,z)$ per unit volume. This can also be thought of as the tendency of a fluid to diverge from a point. If $\text{div }\vec{F} = 0$ then the $\vec{F}$ is called \textbf{incompressible}.
+}
+
+\Note{
+    For any vector field $\vec{F}$ with continuous second order partial derivatives we have the following fact,
+    \[
+        \text{div}\left( \text{curl }\vec{F} \right) = 0
+    \]
+    The physical interpretation of this fact is that the tendency of a fluid to rotate about a point does not contribute to the net rate of change of the mass of the fluid flowing from that point per unit volume.
+}
+
+\Example{Verify the above fact for the vector field $\vec{F} = yz^2\hat{i} + xy\hat{j} + yz\hat{k}$.}{
+    Let's first compute the curl.
+    \begin{align*}
+        \text{curl }\vec{F} &= \begin{vmatrix}
+            \hat{i} & \hat{j} & \hat{k} \\
+            \pdv{}{x} & \pdv{}{y} & \pdv{}{z} \\
+            yz^2 & xy & yz
+        \end{vmatrix} \\
+                            &= z\hat{i} + 2yz\hat{j} + y\hat{k} - z^2\hat{k} \\
+                            &= z\hat{i} + 2yz\hat{j} + \left( y - z^2 \right)\hat{k}
+    \end{align*}
+    Now compute the divergence of this. \[
+        \text{div}\left( \text{curl }\vec{F} \right) = \pdv{}{x}(z) + \pdv{}{y}(2yz) + \pdv{}{z}\left( y - z^2 \right) = 2z - 2z = 0
+    \]
+}
+
+\Definition{Laplace Operator}{
+    The Laplace operator, denoted by $\nabla^2$, is defined as the divergence of the gradient of a function. That is, for a scalar function $f(x,y,z)$, \[
+        \text{div}(\nabla f) = \nabla \cdot \nabla f = \nabla^2 f = \pdv[2]{f}{x} + \pdv[2]{f}{y} + \pdv[2]{f}{z}
+    \]
+    Here, $\nabla^2$ is also called the \textbf{Laplacian}: \[ 
+        \nabla^2 = \pdv[2]{}{x} + \pdv[2]{}{y} + \pdv[2]{}{z}
+    \]
+}
+
+\subsubsection*{Vector Forms of Green's Theorem}
+\Theorem{Vector Form of Green's Theorem}{
+    Let $\vec{F} = P\hat{i} + Q\hat{j}$ be a vector field in the plane with $P$ and $Q$ having continuous partial derivatives on an open region that contains a simply closed curve $C$ and its interior $D$. Then, \[
+        \oint \limits_{C} \vec{F} \cdot d\vec{r} = \iint \limits_{D} (\text{curl }\vec{F}) \cdot \hat{k} \, dA
+    \]
+    where $\text{curl }\vec{F} = \left( \pdv{Q}{x} - \pdv{P}{y} \right)\hat{k}$.
+}
+
+For the other form, let the curve $C$ be parameterized by \[ 
+    \vec{r}(t) = x(t)\hat{i} + y(t)\hat{j}, \quad a \leq t \leq b
+\]
+then the outward unit normal vector to the curve $C$ is given by, \[
+    \vec{n} = \frac{y'(t)}{\lVert \vec{r'}(t) \rVert}\hat{i} - \frac{x'(t)}{\lVert \vec{r'}(t) \rVert}\hat{j}
+\]
+
+Figure \ref{fig:outward-unit-normal} illustrates this concept.
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.3\textwidth]{6.1.1.png}
+    \caption{Outward Unit Normal Vector to Curve C}
+    \label{fig:outward-unit-normal}
+\end{figure}
+
+\Theorem{Another Vector Form of Green's Theorem}{
+    Let $\vec{F} = P\hat{i} + Q\hat{j}$ be a vector field in the plane with $P$ and $Q$ having continuous partial derivatives on an open region that contains a simply closed curve $C$ and its interior $D$. \\
+    Then, \[
+        \oint \limits_{C} \vec{F} \cdot \vec{n} \, ds = \iint \limits_{D} (\text{div }\vec{F}) \, dA
+    \]
+    where $\displaystyle \text{div }\vec{F} = \pdv{P}{x} + \pdv{Q}{y}$ and $\vec{n}$ is the outward unit normal vector to the curve $C$.
+}
+
+\subsection{Parametric Surfaces}
+
+\Note[Parametric Equations]{
+    The \textbf{parametric representation} of a \textbf{parametric surface} is given by the vector function \[ 
+        \vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}
+    \]
+    The parametric equations for a surface are: \[
+        x = x(u,v) \qquad y = y(u,v) \qquad z = z(u,v)
+    \]
+}
+
+\Note[Common Forms]{
+    \begin{align*}
+        z = f(x,y) &\implies \vec{r}(x,y) = x\hat{i} + y\hat{j} + f(x,y)\hat{k} \\
+        x = f(y,z) &\implies \vec{r}(y,z) = f(y,z)\hat{i} + y\hat{j} + z\hat{k} \\
+        y = f(x,z) &\implies \vec{r}(x,z) = x\hat{i} + f(x,z)\hat{j} + z\hat{k}
+    \end{align*}
+}
+
+\Example{Identify the surface $\vec{r}(u,v) = u\hat{i} + u\cos v\hat{j} + u\sin v\hat{k}$.}{
+    Parametric equations: \[
+        x = u \qquad y = u\cos v \qquad z = u\sin v
+    \]
+    
+    Squaring and adding:
+    \begin{align*}
+        y^2 + z^2 &= u^2\cos^2 v + u^2\sin^2 v = u^2 = x^2
+    \end{align*}
+    
+    Surface equation: $x^2 = y^2 + z^2$ (cone opening along $x$-axis)
+}
+
+\Example{Parameterize the sphere $x^2 + y^2 + z^2 = 30$.}{
+    In spherical coordinates: $\rho = \sqrt{30}$
+    
+    Using $x = \rho\sin\varphi\cos\theta$, $y = \rho\sin\varphi\sin\theta$, $z = \rho\cos\varphi$: \[
+        \vec{r}(\theta,\varphi) = \sqrt{30}\sin\varphi\cos\theta\hat{i} + \sqrt{30}\sin\varphi\sin\theta\hat{j} + \sqrt{30}\cos\varphi\hat{k}
+    \]
+    with $0 \le \theta \le 2\pi$ and $0 \le \varphi \le \pi$.
+}
+
+\Example{Parameterize the cylinder $y^2 + z^2 = 25$ (centered on $x$-axis).}{
+    In cylindrical coordinates: $r = 5$
+    
+    Using $x = x$, $y = r\sin\theta$, $z = r\cos\theta$: \[
+        \vec{r}(x,\theta) = x\hat{i} + 5\sin\theta\hat{j} + 5\cos\theta\hat{k}
+    \]
+    with $0 \le \theta \le 2\pi$ (no restriction on $x$).
+}
+
+\subsubsection*{Tangent Planes}
+
+\Note[Tangent Vectors]{
+    For the parametric surface $\vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$, the tangent vectors are:
+    \begin{align*}
+        \vec{r}_u &= \pdv{x}{u}\hat{i} + \pdv{y}{u}\hat{j} + \pdv{z}{u}\hat{k} \\
+        \vec{r}_v &= \pdv{x}{v}\hat{i} + \pdv{y}{v}\hat{j} + \pdv{z}{v}\hat{k}
+    \end{align*}
+    $\vec{r}_u$ is tangent to curves where $v$ is constant. \\
+    $\vec{r}_v$ is tangent to curves where $u$ is constant.
+}
+
+\Note[Normal Vector]{
+    Provided $\vec{r}_u \times \vec{r}_v \neq \vec{0}$, the cross product $\vec{r}_u \times \vec{r}_v$ is normal to the surface and can be used for the tangent plane equation.
+}
+
+\Example{Find the tangent plane to $\vec{r}(u,v) = u\hat{i} + 2v^2\hat{j} + (u^2 + v)\hat{k}$ at $(2,2,3)$.}{
+    Compute partial derivatives: \[
+        \vec{r}_u = \hat{i} + 2u\hat{k} \qquad \vec{r}_v = 4v\hat{j} + \hat{k}
+    \]
+    
+    Normal vector:
+    \begin{align*}
+        \vec{n} = \vec{r}_u \times \vec{r}_v &= \begin{vmatrix}
+            \hat{i} & \hat{j} & \hat{k} \\
+            1 & 0 & 2u \\
+            0 & 4v & 1
+        \end{vmatrix} = -8uv\hat{i} - \hat{j} + 4v\hat{k}
+    \end{align*}
+    
+    Find $u,v$ for point $(2,2,3)$:
+    \[
+        u = 2, \quad 2v^2 = 2 \implies v = \pm 1, \quad u^2 + v = 3 \implies 4 + v = 3 \implies v = -1
+    \]
+    
+    At $(u,v) = (2,-1)$: \[
+        \vec{n} = 16\hat{i} - \hat{j} - 4\hat{k}
+    \]
+    
+    Tangent plane: \[
+        16(x-2) - (y-2) - 4(z-3) = 0 \implies 16x - y - 4z = 18
+    \]
+}
+
+\subsubsection*{Surface Area}
+
+\Note[Surface Area Formula]{
+    For parametric surface $\vec{r}(u,v)$ over region $D$: \[
+        A = \iint \limits_{D} \lVert \vec{r}_u \times \vec{r}_v \rVert \, dA
+    \]
+}
+
+\Example{Find the surface area of the portion of sphere $x^2+y^2+z^2=16$ inside cylinder $x^2+y^2=12$ and above the $xy$-plane.}{
+    Sphere: $\vec{r}(\theta,\varphi) = 4\sin\varphi\cos\theta\hat{i} + 4\sin\varphi\sin\theta\hat{j} + 4\cos\varphi\hat{k}$
+    
+    Ranges: $0 \le \theta \le 2\pi$
+    
+    For $\varphi$: Intersection of sphere and cylinder gives $12 + z^2 = 16 \implies z = 2$
+    
+    Using $z = 4\cos\varphi$: $\cos\varphi = \frac{1}{2} \implies \varphi = \frac{\pi}{3}$
+    
+    So $0 \le \varphi \le \frac{\pi}{3}$.
+    
+    Compute partial derivatives:
+    \begin{align*}
+        \vec{r}_\theta &= -4\sin\varphi\sin\theta\hat{i} + 4\sin\varphi\cos\theta\hat{j} \\
+        \vec{r}_\varphi &= 4\cos\varphi\cos\theta\hat{i} + 4\cos\varphi\sin\theta\hat{j} - 4\sin\varphi\hat{k}
+    \end{align*}
+    
+    Cross product:
+    \[
+        \vec{r}_\theta \times \vec{r}_\varphi = -16\sin^2\varphi\cos\theta\hat{i} - 16\sin^2\varphi\sin\theta\hat{j} - 16\sin\varphi\cos\varphi\hat{k}
+    \]
+    
+    Magnitude:
+    \begin{align*}
+        \lVert \vec{r}_\theta \times \vec{r}_\varphi \rVert &= \sqrt{256\sin^4\varphi + 256\sin^2\varphi\cos^2\varphi} \\
+        &= \sqrt{256\sin^2\varphi(\sin^2\varphi + \cos^2\varphi)} = 16\sin\varphi
+    \end{align*}
+    
+    Surface area:
+    \begin{align*}
+        A &= \int \limits_0^{2\pi} \int \limits_0^{\pi/3} 16\sin\varphi \, d\varphi \, d\theta \\
+        &= \int \limits_0^{2\pi} [-16\cos\varphi]_0^{\pi/3} \, d\theta \\
+        &= \int \limits_0^{2\pi} (-8 + 16) \, d\theta = 16\pi
+    \end{align*}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%  Surface Integrals  %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Surface Integrals}
+
+Surface integrals extend line integrals to two dimensions, allowing us to integrate over surfaces in three-dimensional space.
+
+\Note[Surface Integral - Explicit Form]{
+    For a surface $S$ given by $z = g(x,y)$ over region $D$ in the $xy$-plane: \[
+        \iint \limits_{S} f(x,y,z) \dd{S} = \iint \limits_{D} f\left( x,y,g(x,y) \right) \sqrt{1 + \left( \pdv{g}{x} \right)^2 + \left( \pdv{g}{y} \right)^2} \dd{A}
+    \]
+    
+    Similarly, for $x = g(y,z)$ over $D$ in $yz$-plane: \[
+        \iint \limits_{S} f(x,y,z) \dd{S} = \iint \limits_{D} f\left( g(y,z),y,z \right) \sqrt{1 + \left( \pdv{g}{y} \right)^2 + \left( \pdv{g}{z} \right)^2} \dd{A}
+    \]
+    
+    For $y = g(x,z)$ over $D$ in $xz$-plane: \[
+        \iint \limits_{S} f(x,y,z) \dd{S} = \iint \limits_{D} f\left( x,g(x,z),z \right) \sqrt{1 + \left( \pdv{g}{x} \right)^2 + \left( \pdv{g}{z} \right)^2} \dd{A}
+    \]
+}
+
+\Note[Surface Integral - Parametric Form]{
+    For a surface $S$ parameterized by $\vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$: \[ 
+        \iint \limits_{S} f(x,y,z) \dd{S} = \iint \limits_{D} f(\vec{r}(u,v)) \lVert \vec{r}_u \times \vec{r}_v \rVert \dd{A}
+    \]
+    where $D$ is the parameter domain.
+}
+
+\Example{Evaluate $\displaystyle \iint \limits_S 6xy \dd{S}$ where $S$ is the portion of the plane $x+y+z=1$ in the first octant, in front of the $yz$-plane.}{
+    Write the surface as $x = g(y,z) = 1-y-z$.
+    
+    Region $D$ in $yz$-plane: Setting $x=0$ gives $y+z=1$, so $0 \le y \le 1$ and $0 \le z \le 1-y$.
+    
+    Compute: \[
+        \pdv{g}{y} = -1 \qquad \pdv{g}{z} = -1
+    \]
+    
+    Surface integral:
+    \begin{align*}
+        \iint \limits_S 6xy \dd{S} &= \iint \limits_D 6(1-y-z)y \sqrt{1+1+1} \dd{A} \\
+        &= \sqrt{3} \int_0^1 \int_0^{1-y} 6y(1-y-z) \dd{z} \dd{y} \\
+        &= 6\sqrt{3} \int_0^1 \int_0^{1-y} (y - y^2 - yz) \dd{z} \dd{y} \\
+        &= 6\sqrt{3} \int_0^1 \left[ yz - y^2z - \frac{1}{2}yz^2 \right]_0^{1-y} \dd{y} \\
+        &= 6\sqrt{3} \int_0^1 \left( y(1-y) - y^2(1-y) - \frac{1}{2}y(1-y)^2 \right) \dd{y} \\
+        &= 6\sqrt{3} \int_0^1 \left( \frac{1}{2}y - y^2 + \frac{1}{2}y^3 \right) \dd{y} \\
+        &= 6\sqrt{3} \left[ \frac{1}{4}y^2 - \frac{1}{3}y^3 + \frac{1}{8}y^4 \right]_0^1 \\
+        &= 6\sqrt{3} \left( \frac{1}{4} - \frac{1}{3} + \frac{1}{8} \right) = 6\sqrt{3} \cdot \frac{1}{24} = \frac{\sqrt{3}}{4}
+    \end{align*}
+}
+
+\Example{Evaluate $\displaystyle \iint \limits_S z \dd{S}$ where $S$ is the upper hemisphere of radius 2.}{
+    Use spherical parameterization: \[
+        \vec{r}(\theta,\varphi) = 2\sin\varphi\cos\theta\hat{i} + 2\sin\varphi\sin\theta\hat{j} + 2\cos\varphi\hat{k}
+    \]
+    
+    Ranges: $0 \le \theta \le 2\pi$, $0 \le \varphi \le \frac{\pi}{2}$ (upper hemisphere).
+    
+    Compute tangent vectors:
+    \begin{align*}
+        \vec{r}_\theta &= -2\sin\varphi\sin\theta\hat{i} + 2\sin\varphi\cos\theta\hat{j} \\
+        \vec{r}_\varphi &= 2\cos\varphi\cos\theta\hat{i} + 2\cos\varphi\sin\theta\hat{j} - 2\sin\varphi\hat{k}
+    \end{align*}
+    
+    Cross product:
+    \begin{align*}
+        \vec{r}_\theta \times \vec{r}_\varphi &= -4\sin^2\varphi\cos\theta\hat{i} - 4\sin^2\varphi\sin\theta\hat{j} - 4\sin\varphi\cos\varphi\hat{k}
+    \end{align*}
+    
+    Magnitude:
+    \begin{align*}
+        \lVert \vec{r}_\theta \times \vec{r}_\varphi \rVert &= \sqrt{16\sin^4\varphi + 16\sin^2\varphi\cos^2\varphi} \\
+        &= 4\sin\varphi\sqrt{\sin^2\varphi + \cos^2\varphi} = 4\sin\varphi
+    \end{align*}
+    
+    Surface integral (using $z = 2\cos\varphi$):
+    \begin{align*}
+        \iint \limits_S z \dd{S} &= \int \limits_0^{2\pi} \int \limits_0^{\pi/2} 2\cos\varphi \cdot 4\sin\varphi \dd{\varphi} \dd{\theta} \\
+        &= \int \limits_0^{2\pi} \int \limits_0^{\pi/2} 4\sin(2\varphi) \dd{\varphi} \dd{\theta} \\
+        &= \int \limits_0^{2\pi} \left[ -2\cos(2\varphi) \right]_0^{\pi/2} \dd{\theta} \\
+        &= \int \limits_0^{2\pi} (-2(-1) + 2(1)) \dd{\theta} = \int \limits_0^{2\pi} 4 \dd{\theta} = 8\pi
+    \end{align*}
+}
+
+\Example{Evaluate $\displaystyle \iint \limits_S (y+z) \dd{S}$ where $S$ consists of: the cylinder wall $x^2+y^2=3$ with $0 \le z \le 4-y$, the top cap (plane $z=4-y$), and bottom disk (in $xy$-plane).}{
+    Split into three parts: $S = S_1 \cup S_2 \cup S_3$.
+    
+    \textbf{$S_1$: Cylinder wall}
+    
+    Parameterization: $\vec{r}(z,\theta) = \sqrt{3}\cos\theta\hat{i} + \sqrt{3}\sin\theta\hat{j} + z\hat{k}$
+    
+    Ranges: $0 \le \theta \le 2\pi$, $0 \le z \le 4-y = 4-\sqrt{3}\sin\theta$
+    
+    From previous example: $\lVert \vec{r}_z \times \vec{r}_\theta \rVert = \sqrt{3}$
+    \begin{align*}
+        \iint \limits_{S_1} (y+z) \dd{S} &= \sqrt{3} \int_0^{2\pi} \int_0^{4-\sqrt{3}\sin\theta} (\sqrt{3}\sin\theta + z) \dd{z} \dd{\theta} \\
+        &= \sqrt{3} \int_0^{2\pi} \left[ \sqrt{3}\sin\theta \cdot z + \frac{z^2}{2} \right]_0^{4-\sqrt{3}\sin\theta} \dd{\theta} \\
+        &= \sqrt{3} \int_0^{2\pi} \left( \sqrt{3}\sin\theta(4-\sqrt{3}\sin\theta) + \frac{(4-\sqrt{3}\sin\theta)^2}{2} \right) \dd{\theta} \\
+        &= \sqrt{3} \int_0^{2\pi} \left( 8 - \frac{3}{2}\sin^2\theta \right) \dd{\theta} \\
+        &= \sqrt{3} \int_0^{2\pi} \left( 8 - \frac{3}{4}(1-\cos(2\theta)) \right) \dd{\theta} \qquad \left[\sin^2\theta = \frac{1-\cos(2\theta)}{2}\right] \\
+        &= \sqrt{3} \left[ \frac{29}{4}\theta + \frac{3}{8}\sin(2\theta) \right]_0^{2\pi} = \frac{29\sqrt{3}\pi}{2}
+    \end{align*}
+    
+    \textbf{$S_2$: Top cap (plane $z = 4-y$)}
+    
+    Surface: $z = g(x,y) = 4-y$ over disk $D: x^2+y^2 \le 3$
+    
+    \begin{align*}
+        \iint \limits_{S_2} (y+z) \dd{S} &= \iint \limits_D (y+4-y) \sqrt{0^2 + (-1)^2 + 1} \dd{A} \\
+        &= \sqrt{2} \iint \limits_D 4 \dd{A} = 4\sqrt{2} \cdot \pi(\sqrt{3})^2 = 12\sqrt{2}\pi
+    \end{align*}
+    
+    \textbf{$S_3$: Bottom disk ($z=0$)}
+    
+    Surface: $z = 0$ over disk $D: x^2+y^2 \le 3$
+    \begin{align*}
+        \iint \limits_{S_3} (y+z) \dd{S} &= \iint \limits_D y \cdot 1 \dd{A} = \int_0^{2\pi} \int_0^{\sqrt{3}} r\sin\theta \cdot r \dd{r} \dd{\theta} \\
+        &= \int_0^{2\pi} \left[ \frac{r^3}{3}\sin\theta \right]_0^{\sqrt{3}} \dd{\theta} \\
+        &= \int_0^{2\pi} \sqrt{3}\sin\theta \dd{\theta} = \left[ -\sqrt{3}\cos\theta \right]_0^{2\pi} = 0
+    \end{align*}
+    
+    Total:
+    \[
+        \iint \limits_S (y+z) \dd{S} = \frac{29\sqrt{3}\pi}{2} + 12\sqrt{2}\pi + 0 = \frac{\pi}{2}(29\sqrt{3} + 24\sqrt{2})
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Surface Integrals of Vector Fields  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Surface Integrals of Vector Fields}
+
+Surface integrals of vector fields extend the concept to integrating a vector field over an oriented surface.
+
+\subsubsection*{Oriented Surfaces}
+
+\Definition{Oriented Surface}{
+    A surface $S$ is \textbf{oriented} if we choose one of two possible unit normal vector fields $\vec{n}$ on $S$. For surfaces with two sides, at each point we have $\vec{n}_1$ and $\vec{n}_2 = -\vec{n}_1$.
+}
+
+\Note[Orientation for Closed Surfaces]{
+    For a closed surface $S$ (the boundary of a solid region $E$), the \textbf{positive orientation} is defined by choosing the unit normal vectors that point outward from $E$. The \textbf{negative orientation} points inward toward $E$.
+}
+
+\subsubsection*{Finding Unit Normal Vectors}
+
+\Note[For $z = g(x,y)$ (Explicit Form)]{
+    Define $f(x,y,z) = z - g(x,y)$, where $z=g(x,y)$. Hence we get $f(x,y,z)=0$. Then the unit normal vector is: \[
+        \vec{n} = \frac{\nabla f}{\lVert \nabla f \rVert} = \frac{-g_x\hat{i} - g_y\hat{j} + \hat{k}}{\sqrt{g_x^2 + g_y^2 + 1}}
+    \]
+    This points generally upward (positive $z$-component). Use $-\vec{n}$ for downward orientation.
+    
+    Similar formulas hold for $x = g(y,z)$ or $y = g(x,z)$.
+}
+
+\Note[For Parametric Surfaces]{
+    Given $\vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$: \[
+        \vec{n} = \frac{\vec{r}_u \times \vec{r}_v}{\lVert \vec{r}_u \times \vec{r}_v \rVert}
+    \]
+    Check the direction and use $-\vec{n}$ if needed to match orientation.
+}
+
+\subsubsection*{Surface Integral of Vector Field}
+
+\Definition{Flux}{
+    The surface integral of vector field $\vec{F}$ over oriented surface $S$ is: \[
+        \iint \limits_S \vec{F} \cdot \dd{\vec{S}} = \iint \limits_S \vec{F} \cdot \vec{n} \dd{S}
+    \]
+    This is called the \textbf{flux} of $\vec{F}$ across $S$.
+}
+
+\Note[Physical Interpretation]{
+    If $\vec{v}$ is the velocity field of a fluid, then $\displaystyle \iint \limits_S \vec{v} \cdot \dd{\vec{S}}$ represents the volume of fluid flowing through $S$ per unit time (flux).
+}
+
+This formula can be simplified depending on how the surface is defined.
+
+If the surface is given by $z = g(x,y)$ over region $D$ in the $xy$-plane, and $\vec{F} = P\hat{i} + Q\hat{j} + R\hat{k}$, and the orientation is upward, then using the unit normal vector from above:
+\begin{align*}
+    \iint \limits_{S} \vec{F} \cdot \dd{\vec{S}} &= \iint \limits_{S} \vec{F} \cdot \vec{n} \dd{S} \\
+                                                 &= \iint \limits_{D} (P\hat{i} + Q\hat{j} + R\hat{k}) \cdot \left( \frac{-g_x\hat{i} - g_y\hat{j} + \hat{k}}{\sqrt{g_x^2 + g_y^2 + 1}} \right) \sqrt{g_x^2 + g_y^2 + 1} \dd{A} \\
+                                                 &= \iint \limits_{D} (P\hat{i} + Q\hat{j} + R\hat{k}) \cdot (-g_x\hat{i} - g_y\hat{j} + \hat{k}) \dd{A} \\
+                                                 &= \iint \limits_{D} (-Pg_x - Qg_y + R) \dd{A}
+\end{align*}
+
+\Note[Formula for $z = g(x,y)$ (Upward Orientation)]{
+    For $\vec{F} = P\hat{i} + Q\hat{j} + R\hat{k}$ and $z = g(x,y)$ over region $D$: \[
+        \iint \limits_S \vec{F} \cdot \dd{\vec{S}} = \iint \limits_D (-Pg_x - Qg_y + R) \dd{A}
+    \]
+    For downward orientation, change signs.
+}
+
+If the surface is parameterized by $\vec{r}(u,v)$ over region $D$ in the $uv$-plane, then:
+\begin{align*}
+    \iint \limits_S \vec{F} \cdot \dd{\vec{S}} &= \iint \limits_S \vec{F} \cdot \vec{n} \dd{S} \\
+                                                 &= \iint \limits_D \vec{F}(\vec{r}(u,v)) \cdot \left( \frac{\vec{r}_u \times \vec{r}_v}{\lVert \vec{r}_u \times \vec{r}_v \rVert} \right) \lVert \vec{r}_u \times \vec{r}_v \rVert \dd{A} \\
+                                                 &= \iint \limits_D \vec{F}(\vec{r}(u,v)) \cdot (\vec{r}_u \times \vec{r}_v) \dd{A}
+\end{align*}
+
+\Note[Formula for Parametric Surfaces]{
+    For $\vec{r}(u,v)$ over parameter domain $D$: \[
+        \iint \limits_S \vec{F} \cdot \dd{\vec{S}} = \iint \limits_D \vec{F} \cdot \left( \vec{r_u}\times\vec{r_v} \right) \cdot \dd{A}
+    \]
+    Adjust sign of cross product to match orientation.
+}
+
+\Example{Evaluate $\displaystyle \iint \limits_S \vec{F} \cdot \dd{\vec{S}}$ where $\vec{F} = y\hat{j} - z\hat{k}$ and $S$ is the paraboloid $y = x^2 + z^2$ for $0 \le y \le 1$ with the disk $x^2+z^2 \le 1$ at $y=1$, positive orientation.}{
+    Split: $S = S_1 \cup S_2$ where $S_1$ is paraboloid, $S_2$ is disk cap.
+    
+    For positive orientation (pointing out), normal on $S_1$ points in negative $y$ direction.
+    
+    \textbf{$S_1$: Paraboloid}
+    
+    Define $f(x,y,z) = y - x^2 - z^2$. Then $\nabla f = \langle -2x, 1, -2z \rangle$.
+    
+    For outward pointing normal: $\vec{n} = \frac{\langle 2x, -1, 2z \rangle}{\lVert \nabla f \rVert}$
+    
+    Surface integral over $S_1$:
+    \begin{align*}
+        \iint \limits_{S_1} \vec{F} \cdot \dd{\vec{S}} &= \iint \limits_D (y\hat{j} - z\hat{k}) \cdot \langle 2x, -1, 2z \rangle \dd{A} \\
+        &= \iint \limits_D (-y - 2z^2) \dd{A} = \iint \limits_D (-(x^2+z^2) - 2z^2) \dd{A} \\
+        &= -\iint \limits_D (x^2 + 3z^2) \dd{A}
+    \end{align*}
+    
+    Using polar: $x = r\cos\theta$, $z = r\sin\theta$, $0 \le r \le 1$, $0 \le \theta \le 2\pi$:
+    \begin{align*}
+        &= -\int_0^{2\pi} \int_0^1 (r^2\cos^2\theta + 3r^2\sin^2\theta) r \dd{r} \dd{\theta} \\
+        &= -\int_0^{2\pi} \int_0^1 (\cos^2\theta + 3\sin^2\theta) r^3 \dd{r} \dd{\theta} \\
+        &= -\int_0^{2\pi} (\cos^2\theta + 3\sin^2\theta) \frac{1}{4} \dd{\theta} \\
+        &= -\frac{1}{4}\int_0^{2\pi} \left(\frac{1+\cos(2\theta)}{2} + 3\frac{1-\cos(2\theta)}{2}\right) \dd{\theta} \\
+        &= -\frac{1}{8}\int_0^{2\pi} (4 - 2\cos(2\theta)) \dd{\theta} = -\frac{1}{8}[4\theta - \sin(2\theta)]_0^{2\pi} = -\pi
+    \end{align*}
+    
+    \textbf{$S_2$: Disk cap at $y=1$}
+    
+    Surface: plane $y = 1$. Outward normal: $\vec{n} = \hat{j}$
+    \begin{align*}
+        \iint \limits_{S_2} \vec{F} \cdot \dd{\vec{S}} &= \iint \limits_{S_2} (y\hat{j} - z\hat{k}) \cdot \hat{j} \dd{S} \\
+        &= \iint \limits_{S_2} y \dd{S} = \iint \limits_D 1 \cdot \sqrt{0^2 + 1 + 0^2} \dd{A} \\
+        &= \iint \limits_D \dd{A} = \pi(1)^2 = \pi
+    \end{align*}
+    
+    Total: \[
+        \iint \limits_S \vec{F} \cdot \dd{\vec{S}} = -\pi + \pi = 0
+    \]
+}
+
+\Example{Evaluate $\displaystyle \iint \limits_S \vec{F} \cdot \dd{\vec{S}}$ where $\vec{F} = x\hat{i} + y\hat{j} + z^4\hat{k}$ and $S$ is the upper hemisphere $x^2+y^2+z^2=9$ with $z \ge 0$ and the disk $x^2+y^2 \le 9$ at $z=0$, positive orientation.}{
+    Split: $S = S_1 \cup S_2$ where $S_1$ is hemisphere, $S_2$ is disk base.
+    
+    \textbf{$S_1$: Hemisphere}
+    
+    Parameterize: \[
+        \vec{r}(\theta,\varphi) = 3\sin\varphi\cos\theta\hat{i} + 3\sin\varphi\sin\theta\hat{j} + 3\cos\varphi\hat{k}
+    \]
+    with $0 \le \theta \le 2\pi$, $0 \le \varphi \le \frac{\pi}{2}$.
+    
+    Tangent vectors:
+    \begin{align*}
+        \vec{r}_\theta &= -3\sin\varphi\sin\theta\hat{i} + 3\sin\varphi\cos\theta\hat{j} \\
+        \vec{r}_\varphi &= 3\cos\varphi\cos\theta\hat{i} + 3\cos\varphi\sin\theta\hat{j} - 3\sin\varphi\hat{k}
+    \end{align*}
+    
+    Cross product:
+    \[
+        \vec{r}_\theta \times \vec{r}_\varphi = -9\sin^2\varphi\cos\theta\hat{i} - 9\sin^2\varphi\sin\theta\hat{j} - 9\sin\varphi\cos\varphi\hat{k}
+    \]
+    
+    For outward pointing (positive $z$-component), use $-(\vec{r}_\theta \times \vec{r}_\varphi)$.
+    
+    Evaluate $\vec{F}$ on surface:
+    \[
+        \vec{F}(\vec{r}(\theta,\varphi)) = 3\sin\varphi\cos\theta\hat{i} + 3\sin\varphi\sin\theta\hat{j} + 81\cos^4\varphi\hat{k}
+    \]
+    
+    Dot product with $-(\vec{r}_\theta \times \vec{r}_\varphi)$:
+    \begin{align*}
+        \vec{F} \cdot (-\vec{r}_\theta \times \vec{r}_\varphi) &= 27\sin^3\varphi\cos^2\theta + 27\sin^3\varphi\sin^2\theta + 729\sin\varphi\cos^5\varphi \\
+        &= 27\sin^3\varphi + 729\sin\varphi\cos^5\varphi
+    \end{align*}
+    
+    Surface integral:
+    \begin{align*}
+        \iint \limits_{S_1} \vec{F} \cdot \dd{\vec{S}} &= \int_0^{2\pi} \int_0^{\pi/2} (27\sin^3\varphi + 729\sin\varphi\cos^5\varphi) \dd{\varphi} \dd{\theta} \\
+        &= \int_0^{2\pi} \int_0^{\pi/2} 27\sin\varphi(1-\cos^2\varphi) + 729\sin\varphi\cos^5\varphi \dd{\varphi} \dd{\theta} \\
+        &= \int_0^{2\pi} \left[-27\cos\varphi + 9\cos^3\varphi - \frac{729}{6}\cos^6\varphi\right]_0^{\pi/2} \dd{\theta} \\
+        &= \int_0^{2\pi} \frac{279}{2} \dd{\theta} = 279\pi
+    \end{align*}
+    
+    \textbf{$S_2$: Disk at $z=0$}
+    
+    Surface: plane $z = 0$. Outward normal: $\vec{n} = -\hat{k}$
+    \begin{align*}
+        \iint \limits_{S_2} \vec{F} \cdot \dd{\vec{S}} &= \iint \limits_{S_2} (x\hat{i} + y\hat{j} + z^4\hat{k}) \cdot (-\hat{k}) \dd{S} \\
+        &= \iint \limits_{S_2} -z^4 \dd{S} = \iint \limits_{S_2} 0 \dd{S} = 0
+    \end{align*}
+    
+    Total: \[
+        \iint \limits_S \vec{F} \cdot \dd{\vec{S}} = 279\pi + 0 = 279\pi
+    \]
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Stokes' Theorem  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Stokes' Theorem}
+
+Stokes' Theorem relates a line integral around a boundary curve to a surface integral over the enclosed surface.
+
+\Note[Boundary Curve and Orientation]{
+    For an oriented surface $S$ with boundary curve $C$:
+    \begin{itemize}
+        \item The \textbf{boundary curve} $C$ is the edge of surface $S$
+        \item \textbf{Positive orientation of $C$}: Walking along $C$ with head pointing in direction of normal vectors, surface is on the left
+    \end{itemize}
+}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{6.5.1.png}
+    \caption{Orientation of surface and boundary curve}
+    \label{fig:stokes-orientation}
+\end{figure}
+
+\Theorem{Stokes' Theorem}{
+    Let $S$ be an oriented smooth surface bounded by simple, closed, smooth boundary curve $C$ with positive orientation. For vector field $\vec{F}$:
+    \[
+        \int \limits_{C} \vec{F} \cdot d\vec{r} = \iint \limits_S \text{curl } \vec{F} \cdot d\vec{S}
+    \]
+}
+
+\Note{
+    The surface $S$ can be \textit{any} surface with boundary curve $C$. Choose the simplest surface for easier computation.
+}
+
+\Example{Evaluate $\displaystyle \iint \limits_S \text{curl } \vec{F} \cdot d\vec{S}$ where $\vec{F} = z^2 \hat{i} - 3xy \hat{j} + x^3 y^3 \hat{k}$ and $S$ is part of $z = 5 - x^2 - y^2$ above $z=1$, oriented upward.}{
+    The boundary curve is where $z=1$ intersects the paraboloid:
+    \begin{align*}
+        1 &= 5 - x^2 - y^2 \\
+        x^2 + y^2 &= 4 \text{ at } z=1
+    \end{align*}
+    Parameterize $C$ (circle of radius 2 at $z=1$): \[
+        \vec{r}(t) = 2\cos t \, \hat{i} + 2\sin t \, \hat{j} + \hat{k}, \quad 0 \le t \le 2\pi
+    \]
+    By Stokes' Theorem: \[
+        \iint \limits_S \text{curl } \vec{F} \cdot d\vec{S} = \int_C \vec{F} \cdot d\vec{r}
+    \]
+    Evaluate $\vec{F}$ on curve:
+    \begin{align*}
+        \vec{F}(\vec{r}(t)) &= (1)^2 \hat{i} - 3(2\cos t)(2\sin t) \hat{j} + (2\cos t)^3(2\sin t)^3 \hat{k} \\
+                            &= \hat{i} - 12\cos t \sin t \, \hat{j} + 64\cos^3 t \sin^3 t \, \hat{k}
+    \end{align*}
+    Compute derivative and dot product:
+    \begin{align*}
+        \vec{r}'(t) &= -2\sin t \, \hat{i} + 2\cos t \, \hat{j} \\
+        \vec{F}(\vec{r}(t)) \cdot \vec{r}'(t) &= -2\sin t - 24\sin t \cos^2 t
+    \end{align*}
+    Evaluate integral:
+    \begin{align*}
+        \iint \limits_S \text{curl } \vec{F} \cdot d\vec{S} &= \int_0^{2\pi} (-2\sin t - 24\sin t \cos^2 t) \dd{t} \\
+                                                            &= \left[ 2\cos t + 8\cos^3 t \right]_0^{2\pi} \\
+                                                            &= 0
+    \end{align*}
+}
+
+\Example{Evaluate $\displaystyle \int_C \vec{F} \cdot d\vec{r}$ where $\vec{F} = z^2 \hat{i} + y^2 \hat{j} + x \hat{k}$ and $C$ is the triangle with vertices $(1,0,0)$, $(0,1,0)$, $(0,0,1)$ with counterclockwise orientation.}{
+    First compute curl: \[
+        \text{curl } \vec{F} = \begin{vmatrix}
+            \hat{i} & \hat{j} & \hat{k} \\
+            \pdv{}{x} & \pdv{}{y} & \pdv{}{z} \\
+            z^2 & y^2 & x
+        \end{vmatrix} = (2z-1) \hat{j}
+    \]
+    The triangle lies on plane $x + y + z = 1$, so $z = 1 - x - y$. Orient plane upward, inducing positive direction on $C$.
+    For the surface: $f(x,y,z) = z - (1-x-y) = z - 1 + x + y$ \[
+        \nabla f = \hat{i} + \hat{j} + \hat{k}
+    \]
+    Region $D$ in $xy$-plane: $0 \le x \le 1$, $0 \le y \le 1-x$ \\
+    By Stokes' Theorem:
+    \begin{align*}
+        \int_C \vec{F} \cdot d\vec{r} &= \iint \limits_S \text{curl } \vec{F} \cdot d\vec{S} \\
+                                      &= \iint \limits_D (2z-1) \hat{j} \cdot (\hat{i} + \hat{j} + \hat{k}) \dd{A} \\
+                                      &= \iint \limits_D (2z-1) \dd{A} \\
+                                      &= \int_0^1 \int_0^{1-x} [2(1-x-y)-1] \dd{y} \dd{x} \qquad [z = 1-x-y] \\
+                                      &= \int_0^1 \int_0^{1-x} (1-2x-2y) \dd{y} \dd{x} \\
+                                      &= \int_0^1 \left[ y - 2xy - y^2 \right]_0^{1-x} \dd{x} \\
+                                      &= \int_0^1 [(1-x) - 2x(1-x) - (1-x)^2] \dd{x} \\
+                                      &= \int_0^1 (x^2 - x) \dd{x} \\
+                                      &= \left[ \frac{x^3}{3} - \frac{x^2}{2} \right]_0^1 \\
+                                      &= \frac{1}{3} - \frac{1}{2} = -\frac{1}{6}
+    \end{align*}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  Divergence Theorem  %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Divergence Theorem}
+
+\Theorem{Divergence Theorem}{
+    Let $E$ be a simple solid region and $S$ be the boundary surface of $E$ with positive orientation (outward normal). For vector field $\vec{F}$ with continuous first order partial derivatives:
+    \[ 
+       \iint \limits_{S} \vec{F} \cdot \dd{\vec{S}} = \iiint \limits_{E} \text{div } \vec{F} \dd{V}
+    \]
+}
+
+\Example{Use the divergence theorem to evaluate $\displaystyle \iint \limits_{S} \vec{F} \cdot \dd{\vec{S}}$ where $\vec{F} = xy \hat{i} - \frac{1}{2}y^2 \hat{j} + z \hat{k}$ and the surface consists of the three surfaces, $z=4-3x^2-3y^2, 1 \leq z \leq 4$ on the top, $x^2+y^2=1, 0 \leq z \leq 1$ on the sides and $z=0$ on the bottom}{
+    First compute divergence:
+    \[
+        \text{div } \vec{F} = \pdv{}{x}(xy) + \pdv{}{y}\left(-\frac{1}{2}y^2\right) + \pdv{}{z}(z) = y - y + 1 = 1
+    \]
+    The solid region $E$ is bounded above by the paraboloid $z=4-3x^2-3y^2$ and below by the disk $x^2+y^2 \leq 1$ at $z=0$.
+    
+    Using cylindrical coordinates: $x=r\cos\theta$, $y=r\sin\theta$, $z=z$, with $0 \le r \le 1$, $0 \le \theta \le 2\pi$, and $0 \le z \le 4-3r^2$.
+    
+    Volume integral:
+    \begin{align*}
+        \iiint \limits_{E} \text{div } \vec{F} \dd{V} &= \iiint \limits_{E} 1 \dd{V} = \int_0^{2\pi} \int_0^1 \int_0^{4-3r^2} r \dd{z} \dd{r} \dd{\theta} \\
+        &= \int_0^{2\pi} \int_0^1 r(4-3r^2) \dd{r} \dd{\theta} \\
+        &= \int_0^{2\pi} \left[ 2r^2 - \frac{3}{4}r^4 \right]_0^1 \dd{\theta} \\
+        &= \int_0^{2\pi} \left( 2 - \frac{3}{4} \right) \dd{\theta} = \int_0^{2\pi} \frac{5}{4} \dd{\theta} = \frac{5\pi}{2}
+    \end{align*}
+    Therefore:
+    \[
+        \iint \limits_{S} \vec{F} \cdot \dd{\vec{S}} = \frac{5\pi}{2}
+    \]
+}
+
+
+
+
+
+
+
+
+
+
