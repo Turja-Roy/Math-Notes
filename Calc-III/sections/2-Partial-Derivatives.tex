@@ -254,7 +254,7 @@ This also applies to functions of more than two variables. For example, \[
     \begin{align*}
         \pdv{}{\theta} \left( \pdv{f}{x} \right) &= -r \sin\theta \pdv{}{x} \left( \pdv{f}{x} \right) + r \cos\theta \pdv{}{y} \left( \pdv{f}{x} \right) \\
             &= -r \sin\theta \pdv[2]{f}{x} + r \cos\theta \pdv{f}{y,x} \\ 
-        \pdv{}{\theta} \left( \pdv{f}{y} \right) &= -r \sin\theta \pdv{}{x} \left( \pdv{f}{y} \right) + r \cos\theta + \pdv{}{y} \left( \pdv{f}{y} \right) \\
+        \pdv{}{\theta} \left( \pdv{f}{y} \right) &= -r \sin\theta \pdv{}{x} \left( \pdv{f}{y} \right) + r \cos\theta \pdv{}{y} \left( \pdv{f}{y} \right) \\
             &= -r \sin\theta \pdv{f}{x,y} + r \cos\theta \pdv[2]{f}{y}
     \end{align*}
     Finally, we can substitute these into the second derivative:
@@ -339,7 +339,7 @@ Now, let's rewrite $g(z)$ as follows: \[
     g(z) = f(x,y) \quad \text{where } x = x_0 + az \text{ and } y = y_0 + bz
 \]
 We can now apply the chain rule to find $g'(z)$: \[ 
-    g'(z) = \dv{g}{z} = \pdv{f}{x} \dv{x}{z} + \pdv{f}{y} \dv{y}{z} = f_x(x,y) a + f_x(x,y) b
+    g'(z) = \dv{g}{z} = \pdv{f}{x} \dv{x}{z} + \pdv{f}{y} \dv{y}{z} = f_x(x,y) a + f_y(x,y) b
 \]
 
 If we take $z=0$, we get $x=x_0$ and $y=y_0$, and finally we have: \[ 
@@ -381,7 +381,7 @@ If we take $z=0$, we get $x=x_0$ and $y=y_0$, and finally we have: \[
 
 Notice, the directional derivative can also be written in the following way:
 \begin{align*}
-    D_{\vec{u}}f(x,y,z) &= f_x(x,y,z)a + f_y(x,y,z)b + f_z(x,y,z) \\
+    D_{\vec{u}}f(x,y,z) &= f_x(x,y,z)a + f_y(x,y,z)b + f_z(x,y,z)c \\
         &= \langle f_x,f_y,f_z \rangle \cdot \langle a,b,c \rangle 
 \end{align*}
 

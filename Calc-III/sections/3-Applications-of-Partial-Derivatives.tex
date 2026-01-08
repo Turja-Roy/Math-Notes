@@ -15,7 +15,7 @@ Let there be a point $(x_0,y_0)$ on function $z=f(x,y)$ in $\R^3$. Let $C_1$ be 
 \end{figure}
 
 Now, we need to find the equation of the tangent plane. The general equation of a plane is given by \[ 
-    a(x-x_0) + v(y-y_0) + c(z-z_0) = 0
+    a(x-x_0) + b(y-y_0) + c(z-z_0) = 0
 \]
 where $(x_0,y_0,z_0)$ is a point on the plane and $a$, $b$, and $c$ are the coefficients of the plane. The equation can be rewritten as \[ 
     z-z_0 = - \frac{a}{c}(x-x_0) - \frac{b}{c}(y-y_0)
@@ -41,6 +41,13 @@ Hence, the equation of the tangent plane is given by
 The linear approximation for a surface "near" the point $(x_0,y_0)$ is given then \[ 
     L(x,y) = f(x_0,y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)
 \]
+
+\Note[Linear Approximation]{
+    The linear approximation to the function $z=f(x,y)$ at the point $(x_0,y_0)$ is given by
+    \[ 
+        L(x,y) = f(x_0,y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)
+    \]
+}
 
 \Example{Find the linear approximation to $z = \frac{10x^2}{x-y}$ at $(4,-1)$}{
     The linear approximation is given by \[ 
@@ -140,7 +147,7 @@ We can also find the normal line to the surface $f(x,y,z)=k$ at the point $(x_0,
         8x + 120y - 49z &= 242
     \end{align*}
     And the normal line is given by the equation 
-    \[ \frac{x-3}{ \frac{8}{5} } = \frac{y-1}{24} = \frac{z+2}{ - \frac{49}{g} } \]
+    \[ \frac{x-3}{ \frac{8}{5} } = \frac{y-1}{24} = \frac{z+2}{ - \frac{49}{5} } \]
     \[ \frac{x-3}{8} = \frac{y-1}{120} = -\frac{z+2}{49} \]
 }
 
@@ -161,7 +168,6 @@ We can also find the normal line to the surface $f(x,y,z)=k$ at the point $(x_0,
     Now, substituting these values in the equation of the surface, we get 
     \begin{align*}
         6x^2 + (21x)^2 - 3x^2 &= 4 \\
-        6x^2 + 441x^2 - 3x^2 &= 4 \\
         x^2 &= \frac{4}{444}
     \end{align*}
     \[ \therefore x = \pm \frac{1}{\sqrt{111}}, \qquad y = \pm \frac{21}{\sqrt{111}}, \qquad z = \pm \frac{1}{\sqrt{111}} \]
@@ -178,8 +184,8 @@ We can also find the normal line to the surface $f(x,y,z)=k$ at the point $(x_0,
 \subsection{Relative Minimums and Maximums}
 
 \Definition{Relative Minimum and Maximum}{
-    A function $f(x,y)$ has a \textbf{relative minimum} at the point $(a,b)$ if $f(x,y) \geq f(a,b)$ for all points $x(,y)$ in some region around $(a,b)$. \\~\\
-    A function $f(x,y)$ has a \textbf{relative maximum} at the point $(a,b)$ if $f(x,y) \leq f(a,b)$ for all points $x(,y)$ in some region around $(a,b)$.
+    A function $f(x,y)$ has a \textbf{relative minimum} at the point $(a,b)$ if $f(x,y) \geq f(a,b)$ for all points $(x,y)$ in some region around $(a,b)$. \\~\\
+    A function $f(x,y)$ has a \textbf{relative maximum} at the point $(a,b)$ if $f(x,y) \leq f(a,b)$ for all points $(x,y)$ in some region around $(a,b)$.
 }
 
 \Definition{Critical Point}{
@@ -344,7 +350,7 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
 }
 
 \Theorem{Extreme Value Theorem}{
-    If $f(x,y)$ is continuous on a closed and bounded region $D$ in $\R^2$, then $f(x,y)$ there are two points $(x_1,y_1)$ and $(x_2,y_2)$ in region $D$ such that $f(x_1,y_1)$ is the absolute maximum and $f(x_2,y_2)$ is the absolute minimum of $f(x,y)$ in $D$.
+    If $f(x,y)$ is continuous on a closed and bounded region $D$ in $\R^2$, then there are two points $(x_1,y_1)$ and $(x_2,y_2)$ in region $D$ such that $f(x_1,y_1)$ is the absolute maximum and $f(x_2,y_2)$ is the absolute minimum of $f(x,y)$ in $D$.
 }
 
 \Note[Finding Absolute Extrema]{
@@ -382,11 +388,22 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
         \end{enumerate}
     \end{minipage}
     \begin{minipage}{0.3\textwidth}
-        \begin{center}
-            \includegraphics[width=0.8\textwidth]{3.4.1.png}
-            \captionof{figure}{Boundary of the region}
-        \end{center}
-    \end{minipage} \\
+        \centering
+        \begin{tikzpicture}
+            % Draw axes
+            \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+            \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+            % Draw rectangle
+            \draw[thick] (-1,-1) -- (1,-1) -- (1,1) -- (-1,1) -- cycle;
+            % Label corners
+            \node at (-1,-1) [below left] {(-1,-1)};
+            \node at (1,-1) [below right] {(1,-1)};
+            \node at (1,1) [above right] {(1,1)};
+            \node at (-1,1) [above left] {(-1,1)};
+        \end{tikzpicture} \vspace{-0.2cm}
+        \captionof{figure}{Boundary of the region}
+    \end{minipage}
+
     For segment 1: \\
     Let $g(x)=f(x,-1)=3x^2+8$ \\
     For critical point on the edge, $g'(x)=0$ or $6x=0 \implies x=0$. \\
@@ -404,8 +421,8 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
         h(1) &= f(1,1) = 7
     \end{align*}
     For segment 3: \\ 
-    Let $k(x)=f(x,1)=x^2+4(1)^2-2x^2(1)+4=5-2x^2$ \\ 
-    For critical point on the edge, $k'(x)=0$ or $-4x=0 \implies x=0$. \\ 
+    Let $k(x)=f(x,1)=x^2+4(1)^2-2x^2(1)+4=-x^2+8$ \\ 
+    For critical point on the edge, $k'(x)=0$ or $-2x=0 \implies x=0$. \\ 
     \begin{align*}
         k(0) &= f(0,1) = 8 \\
         k(-1) &= f(-1,1) = 7 \\ 
@@ -446,12 +463,12 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
         -2y + 6 &= 0 \implies y = 3
     \end{align*}
     So, the only critical point in the region $D$ is $(0,3)$. The value of the function at this point is \[ 
-        f(0,3) = 2(0)^2 - (3)^2 + 6(3) = 15
+        f(0,3) = 2(0)^2 - (3)^2 + 6(3) = 9
     \]
     Now, we need to find the extrema on the boundary of the region. The boundary consists of the circle $x^2+y^2=16$. We can rewrite it as \[ 
         x^2 = 16 - y^2
     \]
-    Let
+    Let \vspace{-0.2cm}
     \begin{align*}
         g(y) &= f\left(\sqrt{16-y^2},y\right) \\ 
              &= 2(16-y^2) - y^2 + 6y \\ 
@@ -460,7 +477,7 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
     The critical points on the boundary are given by \[ 
         g'(y) = -6y + 6 = 0 \implies y = 1
     \]
-    \[ x = \pm \sqrt{y^2-1} = \pm \sqrt{15} \]
+    \[ x = \pm \sqrt{16-y^2} = \pm \sqrt{15} \]
     Now, we can find the value of the function at this point and at the endpoints of the boundary:
     \begin{align*}
         g(1) &= f(\pm \sqrt{15},1) = 35 \\
@@ -469,7 +486,7 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
     \end{align*}
     Now, we can summarize the function values at the critical point and the boundary points:
     \begin{align*}
-        & f(0,3) = 15, \\ 
+        & f(0,3) = 9, \\ 
         & f(\sqrt{15},1) = 35, && f(-\sqrt{15},1) = 35, \\ 
         & f(0,-4) = -40, && f(0,4) = 8
     \end{align*}
@@ -483,12 +500,12 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
 \Example{Find the absolute minimum and absolute maximum of $f(x,y)=18x^2+4y^2-y^2x-2$ on the triangle with vertices $(-1,-1)$, $(5,-1)$, and $(5,17)$.}{
     First, we need to find the critical points of the function $f(x,y)$ in the region $D$. The first order partial derivatives are given by
     \begin{align*}
-        f_x &= 3x - y^2 \\
+        f_x &= 36x - y^2 \\
         f_y &= 8y - 2xy
     \end{align*}
     Setting these equal to zero, we get the following equations: 
     \begin{align*}
-        3x - y^2 &= 0 \\
+        36x - y^2 &= 0 \\
         8y - 2xy &= 0 
     \end{align*}
     Solving the equations, we get \[ 
@@ -509,11 +526,27 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
         \end{enumerate}
     \end{minipage}
     \begin{minipage}{0.34\textwidth}
-        \begin{center}
-            \includegraphics[width=0.5\textwidth]{3.4.2.png}
-            \captionof{figure}{Triangle region}
-        \end{center}
-    \end{minipage} \\
+        \centering
+        \begin{tikzpicture}[scale=0.22]
+            % Grid lines
+            \draw[step=1cm,gray!30,very thin] (-2,-2) grid (6,18);
+            % Axes
+            \draw[very thick,->] (-2,0) -- (6,0) node[right] {$x$};
+            \draw[very thick,->] (0,-2) -- (0,18) node[above] {$y$};
+            % Triangle vertices
+            \coordinate (A) at (-1,-1);
+            \coordinate (B) at (5,-1);
+            \coordinate (C) at (5,17);
+            % Triangle edges
+            \draw[thick] (A) -- (B) -- (C) -- cycle;
+            % Labels for vertices
+            \node[below left] at (A) {(-1,-1)};
+            \node[below right] at (B) {(5,-1)};
+            \node[above right] at (C) {(5,17)};
+        \end{tikzpicture} \vspace{-0.2cm}
+        \captionof{figure}{Triangle region}
+    \end{minipage} \vspace{0.5cm}
+
     The values of the function at the critical points are: \[ 
         f(0,0) = -2 \qquad \text{ and } \qquad f(4,12) = 286
     \]
@@ -532,11 +565,10 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
         g(5) &= f(5,-1) = 447
     \end{align*}
     For segment 2: \\ 
-    Let $h(y)=f(5,y) = 450 + 4y^2 - 5y^2 - 2 = 448 - 9y^2$ \\ 
-    For critical point on the edge, $h'(y) = 0$ or $\displaystyle 448 - 9y^2 = 0 \implies y = \pm \frac{8\sqrt{7}}{3}$
+    Let $h(y)=f(5,y) = 450 + 4y^2 - 5y^2 - 2 = 448 - y^2$ \\ 
+    For critical point on the edge, $h'(y) = -2y = 0 \implies y = 0$
     \begin{align*}
-        h\left(\frac{8\sqrt{7}}{3}\right) &= f\left(5,\frac{8\sqrt{7}}{3}\right) \approx 398.22 \\
-        h\left(-\frac{8\sqrt{7}}{3}\right) &= f\left(5,-\frac{8\sqrt{7}}{3}\right) \approx 398.22 \\
+        h(0) &= f(5,0) = 448 \\
         h(-1) &= f(5,-1) = 447 \\ 
         h(17) &= f(5,17) = 159
     \end{align*}
@@ -555,7 +587,7 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
     \end{align*}
     Hence, the absolute extrema are given by
     \begin{align*}
-        &\text{Absolute Maximum: } (5,\pm1) \text{ with value } 447, \\ 
+        &\text{Absolute Maximum: } (5,-1) \text{ with value } 447, \\ 
         &\text{Absolute Minimum: } (0,0) \text{ with value } -2
     \end{align*}
 }
@@ -606,7 +638,7 @@ Note that if $D>0$ then both $f_{xx}(a,b)$ and $f_{yy}(a,b)$ will have the same 
         2x(4-\lambda) = 0 \implies x=0 \text{ or } \lambda = 4
     \]
     If we have $x=0$ then the constraint gives us \[ 
-        y = \sqrt{x^2 - 4} \implies y = \pm 2
+        y^2 = 4 - x^2 \implies y = \pm\sqrt{4-x^2} = \pm 2
     \]
     If we have $\lambda=4$ the second equation gives us \[ 
         20y = 8y \implies y = 0

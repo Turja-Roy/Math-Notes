@@ -65,7 +65,7 @@ In this section we will look at line integrals with respect to arc length.
     For a curve $C$ defined by the parametric equations \[ 
         x=x(t) \quad y=y(t) \quad a \leq t \leq b
     \] \[ 
-        \text{or } \vec{r}(t) = x(t) \hat{i} + x(t) \hat{j} \quad a \leq t \leq b
+        \text{or } \vec{r}(t) = x(t) \hat{i} + y(t) \hat{j} \quad a \leq t \leq b
     \]
     the curve is called \textbf{smooth} if $\vec{r'}(t)$ is continuous and $\vec{r'}(t) \neq 0$ for all $t$.
 }
@@ -409,7 +409,7 @@ By definition of the line integral of a vector field, we have:
         \item $\displaystyle \int \limits_{C} \nabla f \cdot \dd{\vec{r}}$ is independent of path.
         \item If $\vec{F}$ is a conservative vector field, then $\displaystyle \int \limits_{C} \vec{F} \cdot \dd{\vec{r}}$ is independent of path.
         \item If $\vec{F}$ is a continuous vector field on an open connected region $D$ and if $\displaystyle \int \limits_{C} \vec{F} \cdot \dd{\vec{r}}$ is independent of path (for any path in $D$), then $\vec{F}$ is a conservative vector field on $D$.
-        \item If $\displaystyle \int \limits_{C} \vec{F} \cdot \dd{\vec{r}}$ is independent of path, then $\displaystyle \int \limits_{C} \vec{F} \cdot \dd{r} = 0$ for every closed path $C$.
+        \item If $\displaystyle \int \limits_{C} \vec{F} \cdot \dd{\vec{r}}$ is independent of path, then $\displaystyle \int \limits_{C} \vec{F} \cdot \dd{\vec{r}} = 0$ for every closed path $C$.
         \item If $\int \limits_{C} \vec{F} \cdot \dd{\vec{r}} = 0$ for every closed path $C$, then $\displaystyle \int \limits_{C} \vec{F} \cdot \dd{\vec{r}}$ is independent of path.
     \end{enumerate}
 }
@@ -619,7 +619,7 @@ Now, since the region $D$ has a hole in it, we can't directly apply Green's Theo
 Now we can apply Green's Theorem to each of these two regions since they have no holes.
 
 \begin{align*}
-    \iint \limits_{D} (Q_x-P_y) \dd{A} &= \iint \limits_{D_1} (Q_x-Py) \dd{A} + \iint \limits_{D_2} (Q_x-P_y) \dd{A} \\
+    \iint \limits_{D} (Q_x-P_y) \dd{A} &= \iint \limits_{D_1} (Q_x-P_y) \dd{A} + \iint \limits_{D_2} (Q_x-P_y) \dd{A} \\
                                        &= \oint \limits_{C_1 \cup C_2 \cup C_5 \cup C_6} P \dd{x} + Q \dd{y} + \oint \limits_{C_1 \cup C_2 \cup (-C_5) \cup (-C_6)} P \dd{x} + Q \dd{y}
 \end{align*}
 
