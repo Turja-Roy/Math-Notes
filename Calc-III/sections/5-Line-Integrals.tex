@@ -92,25 +92,29 @@ Recall that $\dd{s} = \lVert \vec{r}'(t) \rVert \dd{t}$ where $\vec{r}(t) = \lan
     \]
 }
 
-\Example{Evaluate $\int \limits_{C} xyz \dd{s}$ where $C$ is the curve given by $x = t$, $y = t^2$, $z = t^3$ for $0 \le t \le 1$.}{
-    We have $x(t) = t$, $y(t) = t^2$, and $z(t) = t^3$.
-    
-    First, compute $\dd{s}$:
-    \[
-        \dv{x}{t} = 1 \quad \dv{y}{t} = 2t \quad \dv{z}{t} = 3t^2
-    \]
-    \[ \therefore \dd{s} = \sqrt{1 + 4t^2 + 9t^4} \dd{t} \]
-    
-    Now evaluate the integral: \[
-        \int \limits_{C} xyz \dd{s} = \int_0^1 (t)(t^2)(t^3) \sqrt{1 + 4t^2 + 9t^4} \dd{t} = \int_0^1 t^6 \sqrt{1 + 4t^2 + 9t^4} \dd{t}
-    \]
-    
-    Notice that $1 + 4t^2 + 9t^4 = (1 + 3t^2)^2$, so:
+\Example{Evaluate $\int \limits_{C} xyz \dd{s}$ where $C$ is the curve given by $\langle \cos(t), \sin(t), 3t \rangle$, $0 \leq t \leq 4\pi$.}{
+    First, we compute $\dd{s}$:
     \begin{align*}
-        \int \limits_{C} xyz \dd{s} &= \int_0^1 t^6 (1 + 3t^2) \dd{t} \\
-        &= \int_0^1 (t^6 + 3t^8) \dd{t} \\
-        &= \frac{t^7}{7}\Biggr|_{0}^{1} + \frac{3t^9}{9}\Biggr|_{0}^{1} \\
-        &= \frac{1}{7} + \frac{1}{3} = \frac{10}{21}
+        \vec{r}'(t) &= \langle -\sin(t), \cos(t), 3 \rangle \\
+        \lVert \vec{r}'(t) \rVert &= \sqrt{(-\sin(t))^2 + (\cos(t))^2 + (3)^2} = \sqrt{1 + 9} = \sqrt{10} \\
+        \dd{s} &= \sqrt{10} \dd{t}
+    \end{align*}
+    Next, we evaluate the function along the curve: \[
+        f(x(t), y(t), z(t)) = (\cos(t))(\sin(t))(3t) = 3t\cos(t)\sin(t)
+    \]
+    Now we can set up the line integral:
+    \begin{align*}
+        \int \limits_{C} xyz \dd{s} &= \int_0^{4\pi} 3t\cos(t)\sin(t) \sqrt{10} \dd{t} \\
+        &= 3\sqrt{10} \int_0^{4\pi} t\cos(t)\sin(t) \dd{t} \\
+        &= \frac{3\sqrt{10}}{2} \int_0^{4\pi} t\sin(2t) \dd{t}
+    \end{align*}
+    To evaluate $\int_0^{4\pi} t\sin(2t) \dd{t}$, we use integration by parts. Let $u = t$ and $\dd{v} = \sin(2t) \dd{t}$. Then $\dd{u} = \dd{t}$ and $v = -\frac{1}{2}\cos(2t)$. Thus:
+    \begin{align*}
+        \int \limits_{C} xyz \dd{s} &= \frac{3 \sqrt{10}}{2} \left[ -\frac{t}{2}\cos(2t) + \frac{1}{2} \int \limits_0^{4\pi} \cos(2t) \dd{t} \right]_0^{4\pi} \\
+                                    &= \frac{3 \sqrt{10}}{2} \left[ -\frac{t}{2}\cos(2t) + \frac{1}{4}\sin(2t) \right]_0^{4\pi} \\
+                                    &= \frac{3 \sqrt{10}}{2} \left( -\frac{4\pi}{2}\cos(8\pi) + \frac{1}{4}\sin(8\pi) - 0 \right) \\
+                                    &= \frac{3 \sqrt{10}}{2} \left( -2\pi(1) + 0 \right) \\
+                                    &= -3\pi \sqrt{10}
     \end{align*}
 }
 
@@ -331,21 +335,10 @@ Note: \[
 }
 
 \Note{
-    We can write vector fields in component form as follows. In two dimensions: \[
-        \vec{F}(x,y) = P(x,y)\,\vec{i} + Q(x,y)\,\vec{j}
-    \]
-    In three dimensions: \[
+    We can write vector fields in component form as follows: \[
         \vec{F}(x,y,z) = P(x,y,z)\,\vec{i} + Q(x,y,z)\,\vec{j} + R(x,y,z)\,\vec{k}
     \]
     where $P$, $Q$, and $R$ are scalar functions called the component functions of the vector field.
-}
-
-\Example{Let $\vec{F}(x,y) = x^2\,\vec{i} + (2x+y)\,\vec{j}$. Evaluate $\vec{F}(1,2)$.}{
-    We simply substitute the point into the component functions:
-    \begin{align*}
-        \vec{F}(1,2) &= (1)^2\,\vec{i} + (2(1)+2)\,\vec{j} \\
-        &= \vec{i} + 4\,\vec{j}
-    \end{align*}
 }
 
 \Note[Gradient Vector Fields]{
@@ -367,7 +360,7 @@ Note: \[
 \subsection{Fundamental Theorem for Line Integrals}
 
 \Theorem{Fundamental Theorem for Line Integrals}{
-    Let $C$ be a smooth curve given by $\vec{r}(t), a<=t<=b$. Also, let $f$ be a differentiable scalar function whose gradient vector field $\nabla f$ is continuous on $C$. Then:
+    Let $C$ be a smooth curve given by $\vec{r}(t), a \leq t \leq b$. Also, let $f$ be a differentiable scalar function whose gradient vector field $\nabla f$ is continuous on $C$. Then:
     \[ 
         \int \limits_{C} \nabla f \cdot \dd{\vec{r}} = f(\vec{r}(b)) - f(\vec{r}(a))
     \]
@@ -480,8 +473,6 @@ Green's Theorem establishes a relationship between certain line integrals on clo
 }
 
 \Example{Use Green's Theorem to evaluate $\displaystyle \oint \limits_{C} xy \dd{x} + x^2y^3 \dd{y}$ where $C$ is the triangle with vertices $(0,0)$, $(1,0)$, $(1,2)$ with positive orientation.}{
-    First, sketch the region to verify that the conditions of Green's Theorem are met. The triangle is a simple closed curve traversed counter-clockwise, so it has positive orientation.
-
     \begin{minipage}[t]{0.55\textwidth}
         The region $D$ can be described by: \[
             0 \le x \le 1, \quad 0 \le y \le 2x
@@ -495,7 +486,7 @@ Green's Theorem establishes a relationship between certain line integrals on clo
     \end{minipage}\hfill
     \begin{minipage}[t]{0.4\textwidth}
         \centering\vspace{0pt}
-        \begin{tikzpicture}[scale=2.0]
+        \begin{tikzpicture}[scale=1.8]
             % Axes
             \draw[->] (-0.2,0) -- (1.2,0) node[right] {$x$};
             \draw[->] (0,-0.2) -- (0,2.2) node[above] {$y$};

@@ -210,13 +210,16 @@ We can use set builder method to describe these regions as follows:
 }
 
 \Example{Evaluate the integral $\displaystyle \iint \limits_{D} (6x^2 - 40y) \dd{A}$, where $D$ is the triangle with vertices $(0,3)$, $(1,1)$, and $(5,3)$}{
-    We can break the region into two parts and evaluate the integral as follows:
-    \begin{align*}
-        D_1 &= \{ (x,y) | 0 \leq x \leq 1, -2x + 3 \leq y \leq 3 \} \\
-        D_2 &= \{ (x,y) | 1 \leq x \leq 5, \frac{1}{2}x + \frac{1}{2} \leq y \leq 3 \}
-    \end{align*}
-    \begin{center}
-        \begin{tikzpicture}[scale=1]
+    We can break the region into two parts and evaluate the integral as follows: \\
+    \begin{minipage}{0.6\textwidth}
+        \begin{align*}
+            D_1 &= \{ (x,y) | 0 \leq x \leq 1, -2x + 3 \leq y \leq 3 \} \\
+            D_2 &= \{ (x,y) | 1 \leq x \leq 5, \frac{1}{2}x + \frac{1}{2} \leq y \leq 3 \}
+        \end{align*}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.7]
         % Axes
             \draw[->] (0,0) -- (6,0) node[right] {$x$};
             \draw[->] (0,0) -- (0,4) node[above] {$y$};
@@ -233,15 +236,17 @@ We can use set builder method to describe these regions as follows:
             \node[below left] at (0.5,2) {$y=-2x+3$};
             \node[below right] at (3,2) {$y=\frac{1}{2}x+\frac{1}{2}$};
         \end{tikzpicture}
-    \end{center}
+    \end{minipage}
 
     \textbf{Solution 1:}
     \begin{align*}
         \iint \limits_{D} (6x^2 - 40y) \dd{A} &= \iint \limits_{D_1} (6x^2-40y) \dd{A} + \iint \limits_{D_2} (6x^2-40y) \dd{A} \\
                                               &= \int_{0}^{1} \int_{-2x+3}^{3} (6x^2-40y) \dd{y} \dd{x} + \int_{1}^{5} \int_{\frac{1}{2}x+\frac{1}{2}}^{3} (6x^2-40y) \dd{y} \dd{x} \\
                                               &= \int_{0}^{1} (6x^2y-20y^2)\Bigr|_{-2x+3}^{3} \dd{x} + \int_{1}^{5} (6x^2y-20y^2)\Bigr|_{\frac{1}{2}x+\frac{1}{2}}^{3} \dd{x} \\
-                                              &= \int_{0}^{1} (12x^3 - 180 + 20(3-2x)^2) \dd{x} + \int_{1}^{5} \left( -3x^3 + 25x^2 - 180 + 20 \left( \frac{1}{2}x + \frac{1}{2} \right)^2 \right) \dd{x} \\
-                                              &= \left( 3x^4 - 180x - \frac{10}{3} (3-2x)^3 \right)\Biggr|_{0}^{1} + \left( \frac{-3}{4}x^4 + 5x^3 - 180x + \frac{40}{3} \left( \frac{1}{2}x + \frac{1}{2} \right)^3 \right)\Biggr|_{1}^{5} \\
+                                              &= \int_{0}^{1} (12x^3 - 180 + 20(3-2x)^2) \dd{x} \\
+                                              &\quad+ \int_{1}^{5} \left( -3x^3 + 25x^2 - 180 + 20 \left( \frac{1}{2}x + \frac{1}{2} \right)^2 \right) \dd{x} \\
+                                              &= \left( 3x^4 - 180x - \frac{10}{3} (3-2x)^3 \right)\Biggr|_{0}^{1} \\
+                                              &\quad+ \left( \frac{-3}{4}x^4 + 5x^3 - 180x + \frac{40}{3} \left( \frac{1}{2}x + \frac{1}{2} \right)^3 \right)\Biggr|_{1}^{5} \\
                                               &= -\frac{935}{3}
     \end{align*}
     However, we can also evaluate the integral using a different approach. \\
@@ -256,19 +261,9 @@ We can use set builder method to describe these regions as follows:
 }
 
 \Example{Find the volume of the solid that lies below the surface given by $z=16xy+200$ and lies above the region in the $xy$-plane bounded by $y=x^2$ and $y=8-x^2$.}{
-    \begin{minipage}{0.45\textwidth}
-        The volume is given by
-        \begin{align*}
-            V &= \iint \limits_{D} (16xy+200) \dd{A} \\
-              &= \int_{-2}^{2} \int_{x^2}^{8-x^2} (16xy+200) \dd{y} \dd{x} \\
-              &= \int_{-2}^{2} (8xy^2+200y)\Bigr|_{x^2}^{8-x^2} \dd{x} \\
-              &= \int_{-2}^{2} ( -128x^3 - 400x^2 + 512x + 1600 ) \dd{x} \\
-              &= \left( -32x^4 - \frac{400}{3}x^3 + 256x^2 + 1600x \right)\Biggr|_{-2}^{2} \\
-              &= \frac{12800}{3}
-        \end{align*}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \begin{tikzpicture}[scale=0.6,
+    \vspace{-0.5cm}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.5,
             x={(-0.5cm,-0.3cm)}, y={(0.8cm,0cm)}, z={(0cm,0.8cm)}]
             % Axes
             \draw[->, thick] (-3,0,0) -- (3,0,0) node[below] {$x$};
@@ -308,7 +303,16 @@ We can use set builder method to describe these regions as follows:
             \node at (0, 4, 0) {$D$};
             \node[purple] at (-3, 5, 2.5) {$z=16xy+200$};
         \end{tikzpicture}
-    \end{minipage}
+    \end{center}
+    The volume is given by
+    \begin{align*}
+        V &= \iint \limits_{D} (16xy+200) \dd{A} \\
+          &= \int_{-2}^{2} \int_{x^2}^{8-x^2} (16xy+200) \dd{y} \dd{x} \\
+          &= \int_{-2}^{2} (8xy^2+200y)\Bigr|_{x^2}^{8-x^2} \dd{x} \\
+          &= \int_{-2}^{2} ( -128x^3 - 400x^2 + 512x + 1600 ) \dd{x} \\
+          &= \left( -32x^4 - \frac{400}{3}x^3 + 256x^2 + 1600x \right)\Biggr|_{-2}^{2} \\
+          &= \frac{12800}{3}
+    \end{align*}
 }
 
 \Note{
@@ -720,7 +724,7 @@ Just as we had substitution in Calculus I to transform integrals into simpler fo
 
 % Transformations and Regions %
 
-\subsubsection*{Transformations and Regions}
+\subsubsection{Transformations and Regions}
 
 When performing a change of variables, we use a \textbf{transformation} to convert from one coordinate system to another. Typically, we start with a region $R$ in $xy$-coordinates and transform it into a region $S$ in $uv$-coordinates.
 
@@ -745,7 +749,7 @@ When performing a change of variables, we use a \textbf{transformation} to conve
 
 % The Jacobian %
 
-\subsubsection*{The Jacobian}
+\subsubsection{The Jacobian}
 
 The key to changing variables in multiple integrals is the \textbf{Jacobian}, which measures how area or volume scales under the transformation.
 
@@ -831,7 +835,7 @@ The key to changing variables in multiple integrals is the \textbf{Jacobian}, wh
 
 % Jacobian for Triple Integrals %
 
-\subsubsection*{Jacobian for Triple Integrals}
+\subsubsection{Jacobian for Triple Integrals}
 
 For triple integrals with transformation $x = g(u,v,w)$, $y = h(u,v,w)$, $z = k(u,v,w)$:
 

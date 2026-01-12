@@ -85,7 +85,11 @@
     \]
 }
 
-\subsubsection*{Vector Forms of Green's Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Vector Forms of Green's Theorem  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Vector Forms of Green's Theorem}
 \Theorem{Vector Form of Green's Theorem}{
     Let $\vec{F} = P\hat{i} + Q\hat{j}$ be a vector field in the plane with $P$ and $Q$ having continuous partial derivatives on an open region that contains a simply closed curve $C$ and its interior $D$. Then, \[
         \oint \limits_{C} \vec{F} \cdot d\vec{r} = \iint \limits_{D} (\text{curl }\vec{F}) \cdot \hat{k} \, dA
@@ -148,25 +152,19 @@ Figure \ref{fig:outward-unit-normal} illustrates this concept.
     Surface equation: $x^2 = y^2 + z^2$ (cone opening along $x$-axis)
 }
 
-\Example{Parameterize the sphere $x^2 + y^2 + z^2 = 30$.}{
-    In spherical coordinates: $\rho = \sqrt{30}$
-    
-    Using $x = \rho\sin\varphi\cos\theta$, $y = \rho\sin\varphi\sin\theta$, $z = \rho\cos\varphi$: \[
-        \vec{r}(\theta,\varphi) = \sqrt{30}\sin\varphi\cos\theta\hat{i} + \sqrt{30}\sin\varphi\sin\theta\hat{j} + \sqrt{30}\cos\varphi\hat{k}
+\Example{Parameterize the plane containing three points $(1,4,-2)$, $(-3,0,1)$, and $(2,4,-5)$}{
+    Let $\vec{r_0} = 1\hat{i} + 4\hat{j} - 2\hat{k}$ be a position vector to point $(1,4,-2)$. \\
+    Direction vectors:
+    \begin{align*}
+        \vec{a} &= (-3-1)\hat{i} + (0-4)\hat{j} + (1+2)\hat{k} = -4\hat{i} - 4\hat{j} + 3\hat{k} \\
+        \vec{b} &= (2-1)\hat{i} + (4-4)\hat{j} + (-5+2)\hat{k} = 1\hat{i} + 0\hat{j} - 3\hat{k}
+    \end{align*}
+    Parametric representation: \[
+        \vec{r}(u,v) = \vec{r_0} + u\vec{a} + v\vec{b} = (1 - 4u + v)\hat{i} + (4 - 4u)\hat{j} + (-2 + 3u - 3v)\hat{k}
     \]
-    with $0 \le \theta \le 2\pi$ and $0 \le \varphi \le \pi$.
 }
 
-\Example{Parameterize the cylinder $y^2 + z^2 = 25$ (centered on $x$-axis).}{
-    In cylindrical coordinates: $r = 5$
-    
-    Using $x = x$, $y = r\sin\theta$, $z = r\cos\theta$: \[
-        \vec{r}(x,\theta) = x\hat{i} + 5\sin\theta\hat{j} + 5\cos\theta\hat{k}
-    \]
-    with $0 \le \theta \le 2\pi$ (no restriction on $x$).
-}
-
-\subsubsection*{Tangent Planes}
+\subsubsection{Tangent Planes}
 
 \Note[Tangent Vectors]{
     For the parametric surface $\vec{r}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}$, the tangent vectors are:
@@ -210,7 +208,7 @@ Figure \ref{fig:outward-unit-normal} illustrates this concept.
     \]
 }
 
-\subsubsection*{Surface Area}
+\subsubsection{Surface Area}
 
 \Note[Surface Area Formula]{
     For parametric surface $\vec{r}(u,v)$ over region $D$: \[
@@ -219,38 +217,39 @@ Figure \ref{fig:outward-unit-normal} illustrates this concept.
 }
 
 \Example{Find the surface area of the portion of sphere $x^2+y^2+z^2=16$ inside cylinder $x^2+y^2=12$ and above the $xy$-plane.}{
-    Sphere: $\vec{r}(\theta,\varphi) = 4\sin\varphi\cos\theta\hat{i} + 4\sin\varphi\sin\theta\hat{j} + 4\cos\varphi\hat{k}$
+    Parameterization (spherical coordinates): \[
+        \vec{r}(\theta,\varphi) = 4\sin\varphi\cos\theta\hat{i} + 4\sin\varphi\sin\theta\hat{j} + 4\cos\varphi\hat{k}
+    \]
     
-    Ranges: $0 \le \theta \le 2\pi$
+    Ranges: $0 \le \theta \le 2\pi$, $0 \le \varphi \le \frac{\pi}{2}$ (above $xy$-plane).
     
-    For $\varphi$: Intersection of sphere and cylinder gives $12 + z^2 = 16 \implies z = 2$
+    Cylinder condition: \[
+        x^2 + y^2 = 16\sin^2\varphi \le 12 \implies \sin^2\varphi \le \frac{3}{4} \implies \sin\varphi \le \frac{\sqrt{3}}{2} \implies \varphi \le \frac{\pi}{3}
+    \]
+
+    So, new ranges: $0 \le \theta \le 2\pi$, $0 \le \varphi \le \pi/3$.
     
-    Using $z = 4\cos\varphi$: $\cos\varphi = \frac{1}{2} \implies \varphi = \frac{\pi}{3}$
-    
-    So $0 \le \varphi \le \frac{\pi}{3}$.
-    
-    Compute partial derivatives:
+    Compute tangent vectors:
     \begin{align*}
         \vec{r}_\theta &= -4\sin\varphi\sin\theta\hat{i} + 4\sin\varphi\cos\theta\hat{j} \\
         \vec{r}_\varphi &= 4\cos\varphi\cos\theta\hat{i} + 4\cos\varphi\sin\theta\hat{j} - 4\sin\varphi\hat{k}
     \end{align*}
     
     Cross product:
-    \[
-        \vec{r}_\theta \times \vec{r}_\varphi = -16\sin^2\varphi\cos\theta\hat{i} - 16\sin^2\varphi\sin\theta\hat{j} - 16\sin\varphi\cos\varphi\hat{k}
-    \]
+    \begin{align*}
+        \vec{r}_\theta \times \vec{r}_\varphi &= -16\sin^2\varphi\cos\theta\hat{i} - 16\sin^2\varphi\sin\theta\hat{j} - 16\sin\varphi\cos\varphi\hat{k}
+    \end{align*}
     
     Magnitude:
     \begin{align*}
-        \lVert \vec{r}_\theta \times \vec{r}_\varphi \rVert &= \sqrt{256\sin^4\varphi + 256\sin^2\varphi\cos^2\varphi} \\
-        &= \sqrt{256\sin^2\varphi(\sin^2\varphi + \cos^2\varphi)} = 16\sin\varphi
+        \lVert \vec{r}_\theta \times \vec{r}_\varphi \rVert &= \sqrt{256\sin^4\varphi + 256\sin^2\varphi\cos^2\varphi} = 16\sin\varphi
     \end{align*}
     
     Surface area:
     \begin{align*}
-        A &= \int \limits_0^{2\pi} \int \limits_0^{\pi/3} 16\sin\varphi \, d\varphi \, d\theta \\
-        &= \int \limits_0^{2\pi} [-16\cos\varphi]_0^{\pi/3} \, d\theta \\
-        &= \int \limits_0^{2\pi} (-8 + 16) \, d\theta = 16\pi
+        A &= \int_0^{2\pi} \int_0^{\pi/3} 16\sin\varphi \, d\varphi \, d\theta \\
+          &= 16 \int_0^{2\pi} \left[ -\cos\varphi \right]_0^{\pi/3} d\theta \\
+          &= 16 \int_0^{2\pi} \left( -\frac{1}{2} + 1 \right) d\theta = 16 \cdot \frac{1}{2} \cdot 2\pi = 16\pi
     \end{align*}
 }
 
@@ -391,7 +390,7 @@ Surface integrals extend line integrals to two dimensions, allowing us to integr
 
 Surface integrals of vector fields extend the concept to integrating a vector field over an oriented surface.
 
-\subsubsection*{Oriented Surfaces}
+\subsubsection{Oriented Surfaces}
 
 \Definition{Oriented Surface}{
     A surface $S$ is \textbf{oriented} if we choose one of two possible unit normal vector fields $\vec{n}$ on $S$. For surfaces with two sides, at each point we have $\vec{n}_1$ and $\vec{n}_2 = -\vec{n}_1$.
@@ -401,7 +400,7 @@ Surface integrals of vector fields extend the concept to integrating a vector fi
     For a closed surface $S$ (the boundary of a solid region $E$), the \textbf{positive orientation} is defined by choosing the unit normal vectors that point outward from $E$. The \textbf{negative orientation} points inward toward $E$.
 }
 
-\subsubsection*{Finding Unit Normal Vectors}
+\subsubsection{Finding Unit Normal Vectors}
 
 \Note[For $z = g(x,y)$ (Explicit Form)]{
     Define $f(x,y,z) = z - g(x,y)$, where $z=g(x,y)$. Hence we get $f(x,y,z)=0$. Then the unit normal vector is: \[
@@ -419,7 +418,7 @@ Surface integrals of vector fields extend the concept to integrating a vector fi
     Check the direction and use $-\vec{n}$ if needed to match orientation.
 }
 
-\subsubsection*{Surface Integral of Vector Field}
+\subsubsection{Surface Integral of Vector Field}
 
 \Definition{Flux}{
     The surface integral of vector field $\vec{F}$ over oriented surface $S$ is: \[
@@ -653,20 +652,20 @@ Stokes' Theorem relates a line integral around a boundary curve to a surface int
 }
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%  Divergence Theorem  %
-%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Gauss' Divergence Theorem  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Divergence Theorem}
+\subsection{Gauss' Divergence Theorem}
 
-\Theorem{Divergence Theorem}{
+\Theorem{Gauss' Divergence Theorem}{
     Let $E$ be a simple solid region and $S$ be the boundary surface of $E$ with positive orientation (outward normal). For vector field $\vec{F}$ with continuous first order partial derivatives:
     \[ 
        \iint \limits_{S} \vec{F} \cdot \dd{\vec{S}} = \iiint \limits_{E} \text{div } \vec{F} \dd{V}
     \]
 }
 
-\Example{Use the divergence theorem to evaluate $\displaystyle \iint \limits_{S} \vec{F} \cdot \dd{\vec{S}}$ where $\vec{F} = xy \hat{i} - \frac{1}{2}y^2 \hat{j} + z \hat{k}$ and the surface consists of the three surfaces, $z=4-3x^2-3y^2, 1 \leq z \leq 4$ on the top, $x^2+y^2=1, 0 \leq z \leq 1$ on the sides and $z=0$ on the bottom}{
+\Example{Use Gauss' divergence theorem to evaluate $\displaystyle \iint \limits_{S} \vec{F} \cdot \dd{\vec{S}}$ where $\vec{F} = xy \hat{i} - \frac{1}{2}y^2 \hat{j} + z \hat{k}$ and the surface consists of the three surfaces, $z=4-3x^2-3y^2, 1 \leq z \leq 4$ on the top, $x^2+y^2=1, 0 \leq z \leq 1$ on the sides and $z=0$ on the bottom}{
     First compute divergence:
     \[
         \text{div } \vec{F} = \pdv{}{x}(xy) + \pdv{}{y}\left(-\frac{1}{2}y^2\right) + \pdv{}{z}(z) = y - y + 1 = 1
