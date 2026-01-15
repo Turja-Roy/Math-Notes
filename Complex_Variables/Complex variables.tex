@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=0.75in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{import}
+\input{preamble.tex}
+
+\numberwithin{equation}{subsection}
+\renewcommand{\thesubsubsection}{\Alph{subsubsection}}
+
+\title{
+    \textbf{MATH-281} \\
+    \textbf{Complex Variables}
+}
+
+\author{
+    Notes taken by: Turja Roy \\
+    ID: 2108052
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+\import{./sections}{1-Complex_Numbers.tex}
+
+\newpage
+\import{./sections}{2-Analytic_Functions.tex}
+
+\newpage
+\import{./sections}{3-Harmonic_Function.tex}
+
+\newpage
+\import{./sections}{4-Complex_Integration.tex}
+
+\newpage
+\import{./sections}{5-Singularities.tex}
+
+\newpage
+\import{./sections}{6-Conformal_mapping.tex}
+
+\end{document}
