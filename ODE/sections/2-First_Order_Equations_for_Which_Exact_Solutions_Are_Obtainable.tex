@@ -1,0 +1,1044 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  1st ord eqn for which Exact Solutions are Obtainable  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{First Order Equations for Which Exact Solutions Are Obtainable}
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Exact DE and IF  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Exact Differential Equations and Integrating Factors}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  A. Standard Forms of First-Order DE  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Standard Forms of First-Order Differential Equations}
+The first-order differential equations may be expressed in either the \textbf{Derivative Form}
+\begin{equation}
+    \dv{y}{x} = f(x,y)
+\end{equation}
+or the \textbf{Differential Form}
+\begin{equation}
+    M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+\end{equation}
+
+\begin{example}{Standard Forms}{}
+    The equation \[
+        \dv{y}{x} = \frac{x^2 + y^2}{x-y}
+    \]
+    is the form (2.1.1). It may be written as \[
+        (x^2 + y^2) \: dx + (y-x) \: dy = 0
+    \] which is of the form (2.1.2). \\
+    Again, the equation \[
+        (\sin x + y) \: dx + (x + 3y) \: dy = 0
+    \] is of the form (2.1.2), which can also be written as \[
+    \dv{y}{x} = - \frac{\sin x + y}{x + 3y}
+    \]
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  B. Exact Differential Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}
+\subsubsection{Exact Differential Equations}
+
+\begin{definition}{Exact Differential}{}
+    Let $F$ be a function of two real variables such that  $F$ has continuous first partial derivatives in a domain $D$. The total differential $dF$ of the function $F$ is defined by the formula
+    \[
+        d{F(x,y)} = \pdv{F(x,y)}{x} \: dx + \pdv{F(x,y)}{y} \: dy
+    \]
+    for all $(x,y) \in D$.
+\end{definition} \vspace{0.25cm}
+
+Comparing $dF(x,y)$ with the form (2.1.2), we get
+\[
+    \pdv{F(x,y)}{x} = M(x,y) \;\;\; and \;\;\;
+    \pdv{F(x,y)}{y} = N(x,y)
+\]
+
+\begin{example}{}{}
+    Let $F$ be a function \[
+        F(x,y) = xy^2 + 2x^3y
+    \] for all real $(x,y)$. Then
+    \[
+        \pdv{F(x,y)}{x} = y^2 + 6x^2y ,\;\;\;
+        \pdv{F(x,y)}{y} = 2xy + 2x^3
+    \]
+    and the total differential $dF$ is defined by \[
+        dF(x,y) = (y^2 + 6x^2y) \: dx + (2xy + 2x^3) \: dy
+    \]
+    for all real $(x,y)$
+\end{example}
+
+\begin{definition}{Exact Differential Equation}{}
+    The expression
+    \begin{equation}
+        M(x,y) \: d{x} + N(x,y) \: d{y}
+    \end{equation}
+    is called an exact differential in a domain $D$ if there exists a function $F$ of two real variables such that this expression equals the total differential $dF(x,y)$ for all $(x,y) \in D$. \\
+    That is, expression (2.1.3) is an exact differential in $D$ if there exists a function $F$ such that
+\[
+    \pdv{F(x,y)}{x} = M(x,y) \;\;\; and \;\;\;
+    \pdv{F(x,y)}{y} = N(x,y)
+\]
+for all $(x,y) \in D$. \\
+If $M(x,y) \: d{x} + N(x,y) \: d{y}$ is an exact differential, then the differential equation
+\[ M(x,y) \: d{x} + N(x,y) \: d{y} = 0 \]
+is called an \textbf{Exact Differential Equation}.
+\end{definition}
+
+\begin{theorem}{Exact Differential Equation}{}
+    \begin{enumerate}
+        \item If the DE $M(x,y) \: d{x} + N(x,y) \: d{y} = 0$ is exact in $D$, then
+            \[ \forall (x,y)\in D, \;\;\; \pdv{M(x,y)}{y} = \pdv{N(x,y)}{x} \]
+        \item Conversely, if 
+            \[ \forall (x,y)\in D, \;\;\; \pdv{M(x,y)}{y} = \pdv{N(x,y)}{x} \]
+        then the DE is exact in $D$.
+    \end{enumerate}
+\end{theorem} \vspace{0.5cm}
+
+\underline{\textbf{Proof (1):}}
+\begin{align*}
+    \pdv{F(x,y)}{x} = M(x,y) \;\;\;&,\;\;\; \pdv{F(x,y)}{y} = N(x,y)  \\
+    \frac{\partial^2 F(x,y)}{\partial x \partial y} = \pdv{M(x,y)}{y} \;\;\;&,\;\;\; \frac{\partial^2 F(x,y)}{\partial x \partial y} = \pdv{N(x,y)}{x}
+\end{align*}
+\[
+    \because \frac{\partial^2 F(x,y)}{\partial y \partial x} = \frac{\partial^2 F(x,y)}{\partial x \partial y}
+\] \[
+    \therefore \pdv{M(x,y)}{y} = \pdv{N(x,y)}{x} \qed
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Solution of Exact DE  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}
+\subsubsection{The Solution of Exact Differential Equations}
+
+\begin{theorem}{Solution of Exact DE}{}
+    \\If $M(x,y) \: d{x} + N(x,y) \: d{y} = 0$ is exact in domain $D$, then
+    \[
+        \forall(x,y)\in D, \exists F(x,y) : \pdv{F(x,y)}{x} = M(x,y) \;\;\;and\;\;\;
+        \pdv{F(x,y)}{y} = N(x,y)
+    \]
+    Then the equation may be written \[
+        \pdv{F(x,y)}{x} \: d{x} + \pdv{F(x,y)}{y} \: d{y} = 0
+    \] or simply, \[
+        dF(x,y) = 0
+    \]
+    Here, $F(x,y) = c$ is a one-parameter family of solutions of this DE, where $c$ is an arbitrary constant.
+\end{theorem}
+
+\begin{example}{Solve the equation \[
+        (3x^2 + 4xy) \: d{x} + (2x^2 + 2y) \: d{y} = 0
+\]}{}
+    \textbf{Standard Method:}
+    \begin{align*}
+        \pdv{F(x,y)}{x} &= M(x,y) = 3x^2 + 4xy \\
+        F(x,y) &= \int (3x^2 + 4xy) \: \partial{x} + \phi(y) \\
+        &= x^3 + 2x^2y + \phi(y) \\
+    \end{align*}
+    Again, \[
+        \pdv{F(x,y)}{y} = 2x^2 + \pdv{\phi(y)}{y} = 2x^2 + 2y
+    \] \[
+        \dv{\phi(y)}{y} = 2y
+    \] \[
+    \int \dv{\phi(y)}{y} \: d{y} = \int 2y \: d{y}
+    \] \[
+        \phi(y) = y^2 + c_0
+    \]
+    Thus, we get \[
+        F(x,y) = x^3 + 2x^2y + y^2 + c_0
+    \] Hence, a one-parameter family of the solution is $F(x,y) = c_1$ or, \[
+        x^3 + 2x^2y + y^2 + c_0 = c_1
+    \]\[
+        \boxed{x^3 + 2x^2y + y^2 = c}
+    \]
+    \textbf{Method of Grouping:}
+    \begin{align*}
+        (3x^2 + 4xy) \: d{x} + (2x^2 + 2y) \: d{y} &= 0 \\
+        3x^2 \: d{x} + (4xy \: d{x} + 2x^2 \: d{y}) + 2y \: d{y} &= 0 \\
+        d(x^3) + d(2x^2y) + d(y^2) &= d(c) \\
+        \boxed{x^3 + 2x^2y + y^2 = c}
+    \end{align*}
+\end{example}
+
+\begin{example}{Solve the initial-value problem \[
+        (2x\cos y + 3x^2y) \: d{x} + (x^3 - x^2\sin y - y) \: d{y} = 0 \;\;;\;\; y(0) = 2
+    \] \vspace{-40pt}
+}{}
+    \begin{align*}
+        (2x\cos y \: dx - x^2\sin y \: d{y}) + (3x^2y \: d{x} + x^3 \: d{y}) - y \: d{y} &= 0 \\
+        d(x^2 \cos y) + d(x^3y) + d(\frac{y^2}{2}) &= d(c_1) \\
+        2x^2 \cos y + x^3y + y^2 &= c 
+    \end{align*}
+    Substituting $x=0$ and $y=2$,
+    \[ 2^2 = c \]
+    Hence, the solution is: \[
+        2x^2 \cos y + x^3y + y^2 = 4 
+    \]
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Integrating Factors  %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}
+\subsubsection{Integrating Factors}
+
+\begin{definition}{Integrating Factor (IF)}{}
+    If the DE
+    \begin{equation}
+        M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+    \end{equation}
+    is not exact in a domain $D$ but the DE
+    \begin{equation}
+        \mu(x,y)M(x,y) \: d{x} + \mu(x,y)N(x,y) \: d{y} = 0
+    \end{equation}
+    is exact in $D$, then $\mu(x,y)$ is called an \textbf{Integrating Factor} of the DE.
+\end{definition}
+
+\begin{example}{Integrating factor}{}
+    Consider the DE
+    \begin{equation}
+        (3y + 4xy^2) \: d{x} + (2x + 3x^2y) \: d{y} = 0
+    \end{equation}
+    This equation is of the form (2.1.4), where
+     \begin{align*}
+        M(x,y) &= 3y+4xy^2 ,& N(x,y) &= 2x+3x^2y \\
+        \pdv{M(x,y)}{y} &= 3+8xy ,& \pdv{N(x,y)}{x} &= 2+6xy
+    \end{align*}
+    Since \[
+        \pdv{M(x,y)}{y} \neq \pdv{N(x,y)}{x}
+    \] except for $(x,y)$ such that $2xy + 1 = 0$, Equation (2.1.4) is not exact in any rectangular domain $D$. \\
+    Let $\mu(x,y) = x^2y$. Then the corresponding DE of the form (2.1.5) is \[
+        (3x^2y^2 + 4x^3y^3) \: d{x} + (2x^3y + 3x^4y^2) \: d{y} = 0
+    \]
+    This equation is exact in every rectangular domain $D$, since
+    \[
+        \pdv{[\mu(x,y)M(x,y)]}{y} = 6x^2y+12x^3y^2 = \pdv{[\mu(x,y)N(x,y)]}{x} 
+    \]
+    For all real $(x,y)$. Hence, $\mu(x,y) = x^2y$ is an integrating factor of Equation (2.1.6).
+\end{example}
+
+\begin{example}{
+    Determine whether or not the following equation is exact
+    \[ \left(\dfrac{x}{y^2} + x\right) \: d{x} + \left(\dfrac{x^2}{y^3} + y\right) \: d{y} = 0 \]
+    }{}
+    \[ \pdv{M(x,y)}{y} = -\frac{x}{2y^3} \]
+    \[ \pdv{N(x,y)}{x} = \frac{2x}{y^3} \]
+    Here, $\pdv{M(x,y)}{y} \neq \pdv{N(x,y)}{x}$. Hence, the equation is not exact.
+\end{example}
+
+\begin{example}{Determine the constant $A$ in the following equations such that the equation is exact
+    \begin{equation*} 1.\quad
+        (Ax^2y + 2y^2) \: d{x} + x^3 + 4xy \: d{y} = 0
+    \end{equation*}
+    \begin{equation*} 2.\quad
+        \left( \frac{Ay}{x^3} + \frac{y}{x^2} \right) \: d{x} + \left( \frac{1}{x^2} - \frac{1}{x} \right) \: d{y} = 0
+    \end{equation*}
+}{}
+    \textbf{1.}
+    \[ \pdv{M(x,y)}{y} = \pdv{(Ax^2y + 2y^2)}{y} = Ax^2 + 4y \]
+    \[ \pdv{N(x,y)}{x} = \pdv{(x^3 + 4xy)}{x} = 3x^2 + 4y \]
+    Equating the coefficients of $x^2$, we get \[
+        \boxed{A=3}
+    \]
+    \textbf{2.}
+    \[ \pdv{M(x,y)}{y} = \pdv{ \left( \frac{Ay}{x^3} + \frac{y}{x^2} \right) }{y} = \frac{A}{x^3} + \frac{1}{x^2} \]
+    \[ \pdv{N(x,y)}{x} = \pdv{ \left( \frac{1}{x^2} - \frac{1}{x} \right) }{x} = -\frac{1}{2x^3} + \frac{1}{x^2} \]
+    Equating the coefficients of $\frac{1}{x^3}$, we get \[
+        \boxed{A = -\frac{1}{2}}
+    \]
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Separable Equations and Equations Reducible to this Form  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}\rule{3in}{1pt}
+\subsection{Separable Equations and Equations Reducible to this Form}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Separable Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Separable Equations}
+
+\begin{definition}{Separable Equations}{}
+    An equations of the form
+    \begin{equation}
+        F(x)G(y) \: d{x} + f(x)g(y) \: d{y} = 0
+    \end{equation}
+    is called an equation with separable variables or simply a separable equation.
+\end{definition}
+
+\begin{theorem}{Solution of Separable Differential Equations}{}
+    \\In general, the separable equations are not exact, but they possess an obvious integrating factor $\dfrac{1}{f(x)G(y)}$ \\
+    Thus the equation (2.2.1) becomes
+    \begin{equation}
+        \frac{F(x)}{f(x)} \: d{x} + \frac{g(y)}{G(y)} \: d{y} = 0
+    \end{equation}
+    which is exact, because \[
+        \pdv{}{y} \left( \frac{F(x)}{f(x)} \right) = 0 = \pdv{}{x} \left( \frac{g(y)}{G(y)} \right)
+    \]
+    We can write the equation (2.2.2) as \[
+        M(x) \: d{x} + N(y) \: d{y} = 0
+    \] where $M(x) = \dfrac{F(x)}{f(x)}$ and $N(y) = \dfrac{g(y)}{G(y)}$ \\
+    A one-parameter family solution to the DE is
+    \begin{equation}
+        \int{M(x)} \: d{x} + \int{N(y)} \: d{y} = c
+    \end{equation}
+\end{theorem}
+
+\begin{example}{Solve the equation \[
+    (x-4)y^4 \: d{x} - x^3(y^2-3) \: d{y} = 0
+\]}{}
+    The equation is separable; dividing by $x^3y^4$ we obtain
+    \[ \frac{x-4}{x^3} \: d{x} - \frac{y^2-3}{y^4} \: d{y} = 0 \]
+    \[ \int{(x^{-2} - 4x^{-3})} \: d{x} - \int{(y^{-2} - 3y^{-4})} \: d{y} = 0 \]
+    \[ \boxed{-\frac{1}{x} + \frac{2}{x^2} + \frac{1}{y} - \frac{1}{y^3} = c} \]
+    The DE in derivative form:
+    \[ \dv{y}{x} = \frac{(x-4)y^4}{x^3(y^2-3)} \]
+    Here, $y=0$ is a solution which was lost in the separation process.
+\end{example}
+
+\begin{example}{Solve the initial-value problem that consists of the DE \[
+        x\sin{y} \: d{x} + (x^2+1)\cos{y} \: d{y} = 0
+\] and the initial condition $y(1) = \frac{\pi}{2}$}{}
+    \[ \frac{x}{x^2+1} \: d{x} + \frac{\cos y}{\sin y} \: d{y} = 0 \]
+    \[ \frac{1}{2}\int{\frac{d(x^2+1)}{x^2+1}} + \int{\cot y} \: d{y} = 0 \]
+    \[ \frac{1}{2}\ln|x^2+1| + \ln|\sin y| = \ln|c_1| \]
+    \[ \ln|(x^2+1)\sin^2 y| = \ln|c| \]
+    \[ \therefore (x^2+1)\sin^2y = c \]
+    Applying the initial condition, we get \[
+        2\sin^2\frac{\pi}{2} = c \text{ or, } c = 2
+    \] Thus, the solution is
+    \[ \boxed{(x^2+1)\sin^2y = 2} \]
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Homogeneous Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}
+\subsubsection{Homogeneous Equations}
+
+\begin{definition}{Homogeneous Equations}{}
+    The first-orger differential equation \[
+        M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+    \] is said to be homogeneous if, when written in the derivative form \[
+        \dv{y}{x} = f(x,y)
+    \] there exists a function $g$ such that $f(x,y)$ can be expressed in the form $g(y/x)$
+\end{definition}
+
+\begin{example}{}{}
+    The DE \[
+        x^2 - 3y^2 \: d{x} + 2xy \: d{y} = 0
+    \] is homogeneous. To see this, we first write the derivative form of the equation: \[
+        \dv{y}{x} = \frac{3y^2 - x^2}{2xy} = \frac{3y}{2x} - \frac{x}{2y}
+    \] We see that the DE can be written as \[
+        \dv{y}{x} = \frac{3}{2} \left( \frac{y}{x} \right) - \frac{1}{2} \left( \frac{1}{y/x} \right) 
+    \] in which the right side of the equation is of the form $g(y/x)$ for a certain function $g$.
+\end{example}
+
+\begin{example}{The equation \[
+        (y + \sqrt{x^2 + y^2}) \: d{x} - x \: d{y} = 0
+\] is homogeneous.}{}
+    Derivative form:
+    \begin{align*}
+        \dv{y}{x} &= \frac{y + \sqrt{x^2 + y^2}}{x} \\
+        &= \frac{y}{x} + \frac{\sqrt{x^2 + y^2}}{\sqrt{x^2}} \\
+        &= \frac{y}{x} + \sqrt{1 + \left( \frac{y}{x} \right)^2} = g\left( \frac{y}{x} \right) \\
+    \end{align*}
+\end{example}
+
+\begin{definition}{Homogeneous Equation of degree n}{}
+    A function $F$ is called homogeneous of degree n if \[
+        F(tx,ty) = t^nF(x,y)
+    \] This means that if the $tx$ and $ty$ are substituted for $x$ and $y$ respectively in $F(x,y)$, and if $t^n$ is then factored out, the other factor that remains is the original expression $F(x,y)$ itself.
+\end{definition}
+For example, the function given by $F(x,y) = x^2+y^2$ is homogeneous of degree 2, since \[
+    F(tx,ty) = (tx)^2+(ty)^2 = t^2(x^2+y^2) = t^2F(x,y)
+\]
+Now, suppose both $M(x,y)$ and $N(x,y)$ in the DE \[
+    M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+\] are homogeneous of the same degree $n$. Since $M(tx,ty) = t^n M(x,y)$, for $t = \frac{1}{x}$, we have
+\[ M \left( 1,\frac{y}{x} \right) = \left( \frac{1}{x} \right)^n M(x,y) \]
+\[ M(x,y) = \left( \frac{1}{x} \right)^{-n} M\left( 1, \frac{y}{x} \right) \]
+Similarly, \[
+    N(x,y) = \left( \frac{1}{x} \right)^{-n} N\left( 1, \frac{y}{x} \right)
+\]
+Now, writing the DE in derivative form, we get
+\begin{align*}
+    \dv{y}{x} &= - \frac{M(x,y)}{N(x,y)} \\
+    &= - \frac{ \left(\frac{1}{x}\right)^{-n} M\left(1,\frac{y}{x}\right) }{ \left(\frac{1}{x}\right)^{-n} N\left(1,\frac{y}{x}\right) } \\
+    &= - \frac{M\left(1,\frac{y}{x}\right)}{N\left(1,\frac{y}{x}\right)} \\
+    &= g\left(\frac{y}{x}\right)
+\end{align*}
+
+\begin{note}{}
+    If $M(x,y)$ and $N(x,y)$ in \[
+        M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+    \] are both homogeneous functions of the same degree $n$, then the differential equation is a homogeneous differential equation.
+\end{note}
+
+\begin{theorem}{}{}
+    \\If
+    \begin{equation}
+        M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+    \end{equation}
+    is a homogeneous equation, then the change of variables $y = vx$ transforms the equation into a separable equation in the variables $v$ and $x$.
+\end{theorem} \vspace{0.5cm}
+
+\underline{\textbf{Proof:}} \\
+Since $M(x,y) \: d{x} + N(x,y) \: d{y} = 0$ is homogeneous, it may be written in the form \[
+    \dv{y}{x} = g \left( \frac{y}{x} \right)
+\] Let $y = vx$. Then \[
+    \dv{y}{x} = v + x\dv{v}{x}
+\] and the initial equation becomes \[
+    v + x\dv{v}{x} = g(v)
+\] or, \[
+    [v - g(v)] \: d{x} + x \: d{v} = 0
+\]
+
+This equation is separable. Separating the variables we obtain
+\begin{equation}
+    \frac{d{v}}{v - g(v)} + \frac{d{x}}{x} = 0 \qed
+\end{equation}
+
+\begin{theorem}{Solution of a Homogeneous Differential Equation}{}
+    To solve a DE of the form (2.2.4), we let $y = vx$ and transform the homogeneous equation into a separable equation of the form (2.2.5). From this, we have \[
+        \int{\frac{dv}{v - g(v)}} + \int{\frac{dx}{x}} = c
+    \] where $c$ is an arbitrary constant. Letting $F(v)$ denote \[
+        \int{\frac{dv}{v - g(v)}}
+    \] and returning to the original dependent variable $y$, the solution takes the form \[
+        F\left( \frac{y}{x} \right) + \ln|x| = c
+    \]
+\end{theorem}
+
+\begin{example}{Solve the equation \[
+        (x^2 - 3y^2) \: d{x} + 2xy \: d{y} = 0
+\]}{}
+    Derivative form: \[
+        \dv{y}{x} = - \frac{x}{2y} + \frac{3y}{2x}
+    \] Letting $y = vx$, we get
+    \begin{align*}
+        v + x\dv{v}{x} &= -\frac{1}{2v} + \frac{3v}{2} \\
+        x\dv{v}{x} &= \frac{v^2-1}{2v} \\
+        \frac{2v \: dv}{v^2-1} &= \frac{dx}{x}
+    \end{align*}
+    Integrating, we find
+    \begin{align*}
+        \ln|v^2 - 1| &= \ln|x| + \ln|c| \\
+        |v^2 - 1| &= |cx| \\
+        |\frac{y^2}{x^2} - 1| &= |cx| \\
+        |y^2 - x^2| &= x^2|cx|
+    \end{align*}
+    For $y \ge x \ge 0$, it can be written as \[
+        \boxed{y^2 - x^2 = cx^3}
+    \]
+\end{example}
+
+\begin{example}{Solve the initial-value problem \[
+        (y + \sqrt{x^2 + y^2}) \: d{x} - x \: d{y} = 0, y(1) = 0
+\]}{}
+    Derivative form: \[
+        \dv{y}{x} = \frac{y}{x} + \sqrt{1 + \left( \frac{y}{x} \right)^2}
+    \] Letting $y = vx$, we get
+    \begin{align*}
+        v + x\dv{v}{x} &= v + \sqrt{1 + v^2} \\
+        \frac{dv}{\sqrt{1+v^2}} &= \frac{dx}{x} \\
+        \ln|v + \sqrt{1+v^2}| &= ln|x|+ln|c| \\
+        v + \sqrt{v^2 + 1} &= cx \\
+        \frac{y}{x} + \frac{1}{x}\sqrt{y^2 + x^2} &= cx \\
+        y + \sqrt{x^2 + y^2} &=  cx^2 \\
+    \end{align*}
+    Applying the initial condition, we get \[
+        0 + \sqrt{1} = c \cdot 1 \text{ or, } c = 1
+    \] Hence, the solution: \[
+        \boxed{ y + \sqrt{x^2 + y^2} = x^2 } \text{ or, } \boxed{y = \frac{1}{2}(x^2 - 1)}
+    \]
+\end{example}
+
+\begin{exercise}{Solve the following differential equations
+    \begin{enumerate}
+        \item $(xy + 2x + y + 2) \: d{x} + (x^2 + 2x) \: d{y} = 0$ \\
+        \item $(2x\cos{y} + 3x^2y) \: d{x} + (x^3 - x^2 - y) \: d{y} = 0, y(0)=2$ \\
+        \item $(e^v+1)\cos{u} \: d{u} + e^v(\sin{u}+1) \: d{v} = 0$
+        \item $(x+4)(y^2+1) \: d{x} + y(x^2+3x+2) \: d{y} = 0$
+        \item $(2xy + 3y^2) \: d{x} - (2xy + x^2) \: d{y} = 0$
+        \item $(x+y) \: d{x} - x \: d{y} = 0$
+        \item $v^3 \: d{u} + (u^3-uv^2) \: d{v} = 0$
+        \item $\left( x\tan\frac{y}{x} + y \right) \: d{x} - x \: d{y} = 0$
+        \item $(2s^2+2st+t^2) \: d{s} + (s^2+2st-t^2) \: d{t} = 0$
+        \item $(x^3+y^2 \sqrt{x^2+y^2}) \: d{x} - xy \sqrt{x^2+y^2} \: d{y} = 0$
+        \item $(\sqrt{x+y} + \sqrt{x-y}) \: d{x} + (\sqrt{x-y} - \sqrt{x+y}) \: d{y} = 0$
+        \item $(3x+8)(y^2+4) \: d{x} - 4y(x^2+5x+6) \: d{y} = 0, y(1)=2$
+        \item $(2x^2+2xy+y^2) \: d{x} + (x^2+2xy) \: d{y} = 0$
+    \end{enumerate}
+}{}
+    \textbf{1.}
+    \begin{align*}
+        (xy + 2x + y + 2) \: d{x} + (x^2 + 2x) \: d{y} &= 0 \\
+        (x+1)(y+2) \: d{x} + x(x+2) \: d{y} &= 0 \\
+        \int{\frac{x+1}{x(x+2)}} \: d{x} + \int{\frac{dy}{y+2}} &= 0 \\
+        \frac{1}{2}\ln|x^2+2x| + \ln|y+2| &= \ln|c_1| \\
+        \ln|(x^2+2x)(y+2)^2| &= \ln|c| \\
+        \boxed{(x^2+2x)(y+2)^2 = c}
+    \end{align*}
+
+    \textbf{2.}
+    \[ (2x\cos{y} + 3x^2y) \: d{x} + (x^3 - x^2\sin^2{y} - y) \: d{y} = 0 \]
+    \begin{align*}
+        F(x,y) &= \int{(2x\cos{y} + 3x^2y)} \: \partial{x} + \phi(y) \\
+               &= x^2\cos{y} + x^3y + \phi(y)
+    \end{align*}
+    Now, \[
+        \pdv{F(x,y)}{y} = x^3 - x^2\sin y - y = x^3 - x^2\sin y + \dv{}{x}\phi(y)
+    \] \[
+        \therefore \phi(y) = -\int{y} \: d{y} = -\frac{y^2}{2} + c_0
+    \]
+    \begin{align*}
+        F(x,y) = x^2\cos y + x^3y - \frac{y^2}{2} + c_0 &= c_1 \\
+        2x^2\cos y + 2x^3y - y^2 &= c
+    \end{align*}
+    Applying initial value, \[ c = -4 \]
+    \[ \boxed{2x^2\cos y + 2x^3y - y^2 + 4 = 0} \]
+
+    \textbf{3.}
+    \begin{align*}
+        (e^v+1)\cos{u} \: d{u} + e^v(\sin{u}+1) \: d{v} &= 0 \\
+        (e^v\cos{u} \: du + e^v\sin{u} \: dv) + \cos{u} \: du + e^v \: dv &= 0 \\
+        d(e^v\sin u) + d(\sin u) + d{e^v} &= d(c)
+    \end{align*}
+    \[ \boxed{\sin u + e^v(\sin u + 1) = c} \]
+
+    \textbf{4.}
+    \[ (x+4)(y^2+1) \: d{x} + y(x^2+3x+2) \: d{y} = 0 \]
+    \[ \int{\frac{x+4}{x^2+3x+2}} \: d{x} + \int{\frac{y}{y^2+1}} \: d{y} = 0 \]
+    \[ \int{\frac{x+4}{(x+2)(x+1)}} \: d{x} + \frac{1}{2}\int{\frac{2y}{y^2+1}} \: d{y} = 0 \]
+    \[ \int{\frac{3}{x+1}} \: d{x} - \int{\frac{2}{x+2}} \: d{x} + \frac{1}{2}\ln|y^2+1| \]
+    \[ 3\ln|x+1| - 2\ln|x+2| + \frac{1}{2}\ln|y^2+1| = \ln|c_1| \]
+    \[ \ln \left| \frac{(x+1)^6}{(x+2)^4} \cdot (y^2+1) \right| = \ln|c| \]
+    \[ \boxed{(x+6)^6 (y^2+1) = c(x+2)^4} \]
+
+    \begin{multicols}{2}
+        \textbf{5.}
+        \[ (2xy + 3y^2) \: d{x} - (2xy + x^2) \: d{y} = 0 \]
+        \[ \dv{y}{x} = \frac{2xy + 3y^2}{2xy + x^2} = \frac{2\left(\frac{y}{x}\right) + 3\left(\frac{y}{x}\right)^2}{2\left(\frac{y}{x}\right) + 1} \]
+        Letting $y = vx$, we get \[
+            v + x\dv{v}{x} = \frac{2 + 3v^2}{2v + 1}
+            \] \[ x\dv{v}{x} = \frac{v^2 + v}{2v + 1} \]
+            \[ \int{\frac{2v+1}{v^2+v}} \: d{v} = \int{\frac{dx}{x}} \]
+            \[ \int{\frac{d(v^2+v)}{v^2+v}} = \int{\frac{dx}{x}} \]
+            \[ \ln|v^2+v| = \ln|cx| \]
+            \[ \frac{y^2}{x^2} + \frac{y}{x} = cx \]
+            \[ \boxed{y^2 + xy = cx^3} \]
+
+        \columnbreak
+
+        \textbf{6.}
+        \[ (x+y) \: d{x} - x \: d{y} = 0 \]
+        \[ \dv{y}{x} = \frac{x+y}{x} = 1+\frac{y}{x} \]
+        Letting $y = vx$, we get
+        \[ v + x\dv{v}{x} = 1 + v \]
+        \[ \int{dv} = \int{\frac{dx}{x}} \]
+        \[ \frac{y}{x} = \ln|cx| \]
+        \[ \boxed{cx = e^{y/x}} \]
+    \end{multicols}
+
+    \begin{multicols}{2}
+        \textbf{7.}
+        \[ v^3 \: d{u} + (u^3 - uv^2) \: d{v} = 0 \]
+        \[ \dv{u}{v} = \frac{uv^2 - u^3}{v^3} = \frac{u}{v} - \left( \frac{u}{v} \right)^3 \]
+        Letting $u = wv$, we get
+        \[ w + v\dv{w}{v} = w - w^3 \]
+        \[ -\int{\frac{dw}{w^3}} = \int{\frac{dv}{v}} \]
+        \[ \frac{1}{2w^2} = \ln|v| + c_1 \]
+        \[ \boxed{v^2 = u^2(\ln v^2 + c)} \]
+
+        \columnbreak
+
+        \textbf{8.}
+        \[ \left( x\tan \frac{y}{x} + y \right) \: d{x} - x \: d{y} = 0 \]
+        \[ \dv{y}{x} = \tan \frac{y}{x} + \frac{y}{x} \]
+        Letting $y = vx$, we get
+        \begin{align*}
+            v + x\dv{v}{x} &= \tan v + v \\
+            \int{\frac{dv}{\tan v}} &= \int{\frac{dx}{x}} \\
+            \ln|\sin v| &= \ln|cx|
+        \end{align*}
+        \[ \boxed{\sin \frac{y}{x} = cx} \]
+    \end{multicols}
+      \textbf{9.}
+        \[ (2s^2+2st+t^2) \: d{s} + (s^2+2st-t^2) \: d{t} = 0 \]
+        \begin{align*}
+            \dv{s}{t} &= \frac{t^2 - 2st - s^2}{2s^2 + 2st + t^2} \\
+            &= \frac{1 - 2\left(\dfrac{s}{t}\right) - \left(\dfrac{s}{t}\right)^2}{2\left(\dfrac{s}{t}\right)^2 + 2\left(\dfrac{s}{t}\right) + 1} \\
+        \end{align*}
+        Letting $s = vt$, we get
+        \begin{align*}
+            v + t\dv{v}{t} &= \frac{1-2v-v^2}{2v^2+2v+1} \\
+            t\dv{v}{t} &= -\frac{2v^3+3v^2+3v-1}{2v^2+2v+1} \\
+            -\int{\frac{2v^2+2v+1}{2v^3+3v^2+3v-1}} \: d{v} &= \int{\frac{dt}{t}} \\
+            -\frac{1}{3} \int{\frac{d(2v^3+3v^2+3v-1)}{2v^3+3v^2+3v-1}} &= \ln|t| + \ln|c_1|
+        \end{align*}
+        \[ \boxed{2v^3 + 3v^2 + 3v -1 = \frac{c}{t^3}} \]
+
+    \textbf{10.}
+    \[ (x^3+y^2 \sqrt{x^2+y^2}) \: d{x} - xy \sqrt{x^2+y^2} \: d{y} = 0 \]
+    \[ \dv{y}{x} = \frac{x^3+y^2 \sqrt{x^2+y^2}}{xy \sqrt{x^2+y^2}} = \frac{1+\left(\frac{y}{x}\right)^2 \sqrt{1 + \left(\frac{y}{x}\right)^2}}{\frac{y}{x}\sqrt{1+\left(\frac{y}{x}\right)^2}} \]
+    Letting $y = vx$,
+    \begin{align*}
+        v + x \dv{v}{x} &= \frac{1 + v^2 \sqrt{1+v^2}}{v \sqrt{1+v^2}} \\
+        x\dv{v}{x} &= \frac{1}{v \sqrt{1+v^2}} \\
+        \int{v \sqrt{1+v^2}} \: d{v} &= \int{\frac{dx}{x}} \\
+        \frac{1}{2} \int{\sqrt{1+v^2}} \: d{(1+v^2)} &= \ln|c_1x| \\
+        (1+v^2)^{3/2} &= 3\ln|c_1x| \\
+        \left( 1+\frac{y^2}{x^2} \right)\sqrt{1 + \frac{y^2}{x^2}} &= \ln|cx^3|
+    \end{align*}
+    \[ \boxed{(x^2+y^2)\sqrt{x^2+y^2} = x^3\ln|cx^3|} \]
+
+    \textbf{11.}
+    \[ (\sqrt{x+y} + \sqrt{x-y}) \: d{x} + (\sqrt{x-y} - \sqrt{x+y}) \: d{y} = 0 \]
+    \[ \dv{y}{x} = \frac{\sqrt{\frac{x}{y}+1} - \sqrt{x-y}-1}{\sqrt{\frac{x}{y}+1} + \sqrt{\frac{x}{y}-1}} \]
+    Letting $x = vy$,
+    \begin{align*}
+        v + y\dv{v}{y} &= \frac{\sqrt{v+1} - \sqrt{v-1}}{\sqrt{v+1} + \sqrt{v-1}} \\
+        &= \frac{v+1+v-1-2\sqrt{v^2-1}}{v+1-v+1} \\
+        v + y\dv{v}{y} &= v - \sqrt{v^2-1} \\
+        \int{ \frac{dv}{\sqrt{v^2-1}} } &= -\int{ \frac{dy}{y} } \\
+        \ln |v + \sqrt{v^2-1}| &= \ln \left| \frac{c}{y} \right| \\
+        \frac{x}{y} + \sqrt{\frac{x^2}{y^2} - 1} &= \frac{c}{y} \\
+    \end{align*}
+    \[ \boxed{ x + \sqrt{x^2-y^2}  = c } \]
+
+    \textbf{12.}
+    \[ (3x+8)(y^2+4) \: d{x} + 4y(x^2+5x+6) \: d{y} = 0 \]
+    \[ \frac{3x+8}{x^2+5x+6} \: d{x} - \frac{4y}{y^2+4} \: d{y} = 0 \]
+    Here, \[
+        \frac{3x+8}{(x+3)(x+2)} = \frac{1}{x+3} + \frac{2}{x+2}
+    \]
+    \[ \therefore \int{ \frac{dx}{x+3} } + 2\int{ \frac{dx}{x+2} } - 2\ln|y^2+4| = c_2 \]
+    \[ \ln|x+3| + 2\ln|x+2| = 2\ln|c_1(y^2+4)| \]
+    \[ (x+3)(x+2)^2 = c(y^2+4) \]
+    Applying initial value,
+    \[ c = \frac{9}{16} \]
+    \[ \boxed{ 16(x+3)(x+2)^2 = 9(y^2+4) } \]
+
+    \textbf{13.}
+    \[ (2x^2+2xy+y^2) \: d{x} + (x^2+2xy) \: d{y} = 0 \]
+    \[ (2xy \: dx + x^2 \: dy) + (y^2 \: dx + 2xy \: dy) + 2x^2 \: dx = 0 \]
+    \[ d(x^2y) + d(xy^2) + d\left( \frac{2}{3}x^3 \right) = d(c_1) \]
+    \[ x^2y + xy^2 + \frac{2}{3}x^3 = c_1 \]
+    \[ \boxed{ 2x^3 + 3x^2y + 3xy^2 = c } \]
+\end{exercise}
+
+\begin{exercise}{
+    Show that the homogeneous equation \[
+        (Ax^2 + Bxy + Cy^2) \: d{x} + (Dx^2 + Exy + Fy^2) \: d{y} = 0
+\] is exact if and only if $B=2D$ and $E=2C$.
+}{}
+    The equation is exact if and only if \[
+        \pdv{(Ax^2 + Bxy + Cy^2)}{y} = \pdv{(Dx^2 + Exy + Fy^2)}{x}
+    \]
+    \[ Bx + 2Cy = 2Dx + Ey \]
+    Equating the coefficients of $x$, $B = 2D$ \\
+    Equating the coefficients of $y$, $E = 2C$
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Linear Equations and Bernoulli Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}\rule{3in}{1pt}
+\subsection{Linear Equations and Bernoulli Equations}
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Linear Equation  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Linear Equation}
+\begin{definition}{Linear Equation}{}
+    A first-order ordinary differential equation is linear in the dependent variable $y$ and independent variable $x$ if it is, or can be, written in the form
+    \begin{equation}
+        \dv{y}{x} + P(x)y = Q(x)
+    \end{equation}
+\end{definition}
+ Equation (2.3.1) can also be written as
+    \begin{equation}
+        [P(x)y - Q(x)] \: d{x} + \: d{y} = 0 
+    \end{equation}
+ Here, \[
+     \frac{\partial}{\partial{y}} M(x,y) = P(x,y) \quad\text{ and }\quad \frac{\partial}{\partial{x}} N(x,y) = 0
+ \]
+ The equation is not exact. So we multiply both sides of (2.3.2) by an integrating factor: \[
+     [\mu(x)P(x)y - \mu(x)Q(x)] \: d{x} + \mu(x) \: d{y} = 0
+ \]
+ Now,
+\begin{align*}
+    \frac{\partial}{\partial{y}} \: \left[\mu(x)M(x,y)\right] &= \frac{\partial}{\partial{x}} \: \left[\mu(x)N(x,y)\right] \\
+    \frac{\partial}{\partial{y}} \: \left[\mu(x)P(x)y - \mu(x)Q(x)\right] &= \frac{\partial}{\partial{x}} \: \left[\mu(x)\right] \\
+    % \mu(x) P(x) &= \dv{\mu(x)}{x} \\
+    \mu P(x) &= \frac{d}{dx} \: \mu \\
+    \int{P(x)} \: d{x} &= \int{ \frac{d\mu}{\mu} } \\
+    \ln|\mu| &= \int{P(x)} \: d{x}
+\end{align*}
+\[ \boxed{ \mu = e^{\int{ P(x) } \: d{x} } } \]
+
+\begin{theorem}{Solution of Linear Differential Equation}{}
+    \\The linear differential equation \[
+        \dv{y}{x} + P(x)y = Q(x)
+    \] has an integrating factor of the form
+    \begin{equation}
+        \mu = e^{\int{P(x)} \: d{x}}
+    \end{equation}
+    A one-parameter family of solution of this equation is \[
+        \mu \: y = \int{\mu \: Q(x)} \: d{x} + c
+    \] or
+    \begin{equation}
+        y \: e^{\int{P(x)} \: d{x}} = \int{e^{\int{P(x)} \: d{x}} \: Q(x)} \: d{x} + c
+    \end{equation}
+    That is,
+    \begin{equation}
+        y = e^{-\int{P(x)} \: d{x}} \left[ \int{e^{\int{P(x)} \: d{x}} \: Q(x)} \: d{x} + c \right]
+    \end{equation}
+\end{theorem}
+
+\begin{example}{
+    Solve the Linear Differential Equation
+    \[ \dv{y}{x} + \left( \frac{2x+1}{x} \right) y = e^{-2x} \]
+    }{} \vspace{-20pt}
+    \[ P(x) = 2 + \frac{1}{x} \]
+    \[ \therefore \text{IF} = e^{\int{P(x)} \: d{x}} = e^{2x + \ln x} = xe^{2x} \]
+    Now,
+    \begin{align*}
+        xe^{2x}\dv{y}{x} + e^{2x}(2x+1)y &= x \\
+        \frac{d}{d{x}} \: (xe^{2x}y) &= x \\
+        xe^{2x}y &= \frac{x^2}{2} + c_1
+    \end{align*}
+    \[ \boxed{ y = \frac{1}{2} xe^{-2x} + \frac{c}{x} e^{-2x} } \]
+\end{example}
+
+\begin{example}{Solve the initial value problem \[
+    (x^2+1)\dv{y}{x} + 4xy = x \;\;,\;\; y(2)=1
+\]}{} \vspace{-20pt}
+    \[ \dv{y}{x} + \left( \frac{4x}{x^2+1} \right) y = \frac{x}{x^2+1} \]
+    \[ \therefore \text{ IF } = \text{exp}\left( 2\int{\frac{2x}{x^2+1}} \: d{x} \right) = \text{exp}\left( 2\ln|x^2+1| \right) = (x^2+1)^2 \]
+    Therefore, the solution is
+    \begin{align*}
+        (x^2+1)^2 y &= \int{ (x^2+1)^2 \cdot \frac{x}{x^2+1} } \: d{x} + c_1 \\
+        &= \int{ (x^3+x) } \: d{x} + c_1 \\
+        &= \frac{x^4}{4} + \frac{x^2}{2} + c \\
+    \end{align*}
+    Applying initial value, 
+    \[ c = 19 \]
+    \[ \boxed{ (x^2+1)^2 y = \frac{x^4}{4} + \frac{x^2}{2} + 19 } \]
+\end{example}
+
+\begin{example}{Solve the linear DE \[
+    y^2 \: d{x} + (3xy-1) \: d{y} = 0
+\]}{} \vspace{-20pt}
+    \[ \dv{x}{y} = -\frac{3x-1}{y^2} = -\frac{3}{y}x + \frac{1}{y^2} \]
+    \[ \therefore \dv{x}{y} + \frac{3}{y}x = \frac{1}{y^2} \]
+    \[ \therefore \text{ IF } = e^{3 \int{\frac{dy}{y}}} = y^3 \]
+    Now,
+    \begin{align*}
+        y^3\dv{x}{y} + 3xy^2 &= y \\
+        y^3 \: dx + (3xy^2 - y) \: dy &= 0 \\
+        (y^3 \: dx + 3xy^2 \: dy) - y \: dy &= 0 \\
+        d(xy^3) - d\left( \frac{y^2}{2} \right) &= d(c_1) \\
+        2xy^3 - y^2 &= c
+    \end{align*}
+    \[ \boxed{ x = \frac{1}{2y} + \frac{c}{y^3} } \]
+\end{example} \vspace{10pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Bernoulli Equations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}
+\subsubsection{Bernoulli Equations}
+
+\begin{definition}{Bernoulli Equations}{}
+    An equation of the form \[
+        \dv{y}{x} + P(x)y = Q(x)y^n
+    \] is called a Bernoulli Equation. \\
+\end{definition} \vspace{10pt}
+
+If $n=0$ or $n=1$, the equation is simply a linear DE. However, in general case in which $n \neq 0$ or $n \neq 1$, we must proceed in a different manner.
+
+\begin{theorem}{Transformation of Bernoulli Equation to Linear Equation}{}
+    \\Suppose $n \neq 0$ or $n \neq 1$. Then the transformation  \[
+        v = y^{1-n}
+    \] reduces the Bernoulli Equation to a linear equation in $v$.
+\end{theorem}
+
+\underline{\textbf{Proof:}}\\
+\[ \dv{y}{x} + P(x)y = Q(x) y^n \]
+\[ y^{-n}\dv{y}{x} + P(x)y^{1-n} = Q(x) \]
+Substituting $v = y^{1-n}$,
+\begin{align*}
+    \dv{v}{x} &= (1-n)y^{-n}\dv{y}{x} \\
+    \frac{1}{1-n}\dv{v}{x} + P(x)v &= Q(x) \\
+    \dv{v}{x} + (1-n)P(x)v &= (1-n)Q(x)
+\end{align*}
+Letting $P_1(x) = (1-n)P(x)$ and $Q_1(x) = (1-n)Q(x)$ we get,
+\[ \dv{v}{x} + P_1(x)v = Q_1(x) \qed \] 
+
+\begin{example}{\[
+    \dv{y}{x} + y = xy^3
+\]}{}
+    \[ y^{-3}\dv{y}{x} + y^{-2} = x \]
+    Letting $v = y^{-2}$,
+    \begin{align*}
+        \dv{v}{x} &= -2y^{-3}\dv{y}{x} \\
+        -\frac{1}{2}\dv{v}{x} + v &= x \\
+        \dv{v}{x} - 2v &= x \\
+    \end{align*}
+    \[ \therefore \text{ IF } = e^{-\int{2} \: d{x}} = e^{-2x} \]
+    \begin{align*}
+        e^{-2x}v &= \int{ e^{-2x} (-2x) } \: d{x} + c \\
+        e^{-2x}\frac{1}{y^2} &= -2 \int{ xe^{-2x} } \: d{x} + c \\
+        &= xe^{-2x} + \frac{1}{2}e^{-2x} + c
+    \end{align*}
+    \[ \boxed{ \frac{1}{y^2} = x + \frac{1}{2} + ce^{2x} } \]
+\end{example}
+
+\begin{exercise}{
+    Solve the Differential Equations
+    \begin{enumerate}
+        \item $ x^4\dv{y}{x} + 2x^3y = 1 $
+        \item $ \dv{y}{x} + 3y = 3x^2e^{-3x} $
+        \item $ (x^2+x-2)\dv{y}{x} + 3(x+1)y = x-1 $
+        \item $ y \: d{x} + (xy^2+x-y) \: d{y} = 0 $
+        \item $ \cos\theta \: d{r} + (r\sin\theta - \cos^4\theta) \: d{\theta} = 0 $
+        \item $ (y\sin2x - \cos{x}) \: d{x} + (1+\sin^2x) \: d{y} = 0 $
+        \item $ x\dv{y}{x} + y = -2x^6y^4 $
+        \item $ \dv{y}{x} - \frac{y}{x} = -\frac{y^2}{x} $
+        \item $ e^x\left[ y-3(e^x+1)^2 \right] \: d{x} + (e^x+1) \: d{y} = 0 $
+        \item $ \dv{y}{x} + \frac{y}{2x} = \frac{x}{y^3} $
+    \end{enumerate}
+}{}
+    Handwritten solutions on notebook. No time for updating in \LaTeX now. If anyone is interested, contact; I can provide handwritten solutions.
+\end{exercise}
+
+\begin{exercise}{
+    Consider the equation \[
+        a\dv{y}{x} + by = ke^{-\lambda x} 
+    \] where $a$, $b$, and $k$ are positive constants and $\lambda$ is a non-negative constant.
+    \begin{enumerate}[(a)]
+        \item Solve this equation.
+        \item Show that if $\lambda=0$, every solution approaches $\frac{k}{b}$ as $x \to \infty$, but if $\lambda>0$ every solution approaches $0$ as $x \to \infty$.
+    \end{enumerate}
+    }{}
+    Handwritten solutions on notebook. No time for updating in \LaTeX now. If anyone is interested, contact; I can provide handwritten solutions.
+\end{exercise}
+
+\begin{exercise}{
+    \begin{enumerate}[(a)]
+        \item Prove that if $f$ and $g$ are two different solutions of
+        \begin{equation}\tag{A}
+            \dv{y}{x} + P(x)y = Q(x)
+        \end{equation}
+    then $f-g$ is a solution of the equation \[
+        \dv{y}{x} + P(x)y = 0
+    \]
+    \item Thus show that if $f$ and $g$ are two different solutions of Equation (A) and $c$ is an arbitrary constant, then \[
+        c(f-g) + f
+    \] is a one-parameter family of solutions of (A).
+    \end{enumerate}
+    }{}
+    Handwritten solutions on notebook. No time for updating in \LaTeX now. If anyone is interested, contact; I can provide handwritten solutions.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Special Integrating Factors and Transformations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}\rule{3in}{1pt}
+\subsection{Special Integrating Factors and Transformations}
+The five basic types of differential equations we've encountered so far:\\
+\begin{itemize}
+    \item Exact $ \to $ Direct solution
+    \item Separable $ \to $ Integrating Factor $ \to $ Exact DE
+    \item Homogeneous $ \to $ Integrating Factor $ \to $ Exact DE
+    \item Linear $ \to $ Appropriate Transformation $ \to $ Separable DE
+    \item Bernoulli $ \to $ Appropriate Transformation $ \to $ Linear DE
+\end{itemize}
+
+How to solve a DE that is not of one of the five types?
+\begin{enumerate}
+    \item Either multiply by proper IF $ \to $ Exact DE
+    \item Or, appropriate transformation $ \to $ One of the five basic forms.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Finding Integrating Factors  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}
+\subsubsection{Finding Integrating Factors}
+
+Separable equations always possess integrating factors that can be determined by immediate inspection. However, some non-separable equations also possess such integrating factors that can be determined.\\
+
+Suppose a non-exact DE
+\begin{equation}
+    M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+\end{equation}
+has an IF $\mu(x,y)$. Then the equation is
+\begin{equation}
+    \mu(x,y)M(x,y) \: d{x} + \mu(x,y)N(x,y) \: d{y} = 0
+\end{equation}
+is exact. Now, we can say the equation (2.4.2) is exact if and only if \[
+    \frac{\partial}{\partial{y}} \: \left[ \mu(x,y)M(x,y) \right] = \frac{\partial}{\partial{x}} \: \left[ \mu(x,y)N(x,y) \right]
+\]\[
+    M(x,y)\pdv{\mu(x,y)}{y} + \mu(x,y)\pdv{M(x,y)}{y} = N(x,y)\pdv{\mu(x,y)}{x} + \mu(x,y)\pdv{N(x,y)}{x} 
+\]
+\begin{equation}
+    N(x,y)\pdv{\mu}{x} - M(x,y)\pdv{\mu}{x} = \left[ \pdv{M(x,y)}{y} - \pdv{N(x,y)}{x} \right] \mu
+\end{equation}
+Equation (2.4.3) is a PDE fo rthe general IF  $\mu$, and we're in no position to attempt to solve such an equation. Let's attepts to determine IF of certain special types instead.\\
+If $M$ and $N$ are functions of $x$ and $y$, but the IF $\mu$ depends only upon $x$, then equation (2.4.3) reduces to
+\[
+    N(x,y) \: \dv{\mu(x)}{x} = \mu(x) \: \pdv{M(x,y)}{y} - \mu(x) \: \pdv{N(x,y)}{x}
+\] or,
+    \begin{equation}
+        \frac{d\mu(x)}{\mu(x)} = \frac{1}{N(x,y)} \left[ \pdv{M(x,y)}{y} - \pdv{N(x,y)}{x} \right] \: d{x}
+    \end{equation}
+Here, if \[
+    \frac{1}{N(x,y)} \left[ \pdv{M(x,y)}{y} - \pdv{N(x,y)}{x} \right]  
+\]
+depends upon $x$ only, equation (2.4.4) is a separable ordinary equation in the single independent, equation (2.4.4) is a separable ordinary equation in the single independent variable $x$ and the single dependent variable $\mu$. In this case, we may integrate to obtain the IF
+\[
+    \mu(x) = \exp \left\{ \int{ \frac{1}{N(x,y)} \left[ \pdv{M(x,y)}{y} - \pdv{N(x,y)}{x} \right] } \: d{x} \right\}
+\]
+Likewise, if
+\[
+    \frac{1}{M(x,y)} \left[ \pdv{N(x,y)}{x} - \pdv{M(x,y)}{y} \right]
+\] depends upon $y$ only, then we may obtain an IF that depends only on $y$.
+
+\begin{theorem}{Integrating Factors}{}
+    \\Consider the differential equation
+    \begin{equation}
+        M(x,y) \: d{x} + N(x,y) \: d{y} = 0
+    \end{equation}
+    If
+    \begin{equation}
+        \frac{1}{N(x,y)} \left[ \pdv{M(x,y)}{y} - \pdv{N(x,y)}{x} \right]  
+    \end{equation}
+    depends upon $x$ only, then IF
+    \begin{equation}
+        \mu(x) = \exp \left\{ \int{ \frac{1}{N(x,y)} \left[ \pdv{M(x,y)}{y} - \pdv{N(x,y)}{x} \right] } \: d{x} \right\}
+    \end{equation}
+    And if
+    \begin{equation}
+        \frac{1}{M(x,y)} \left[ \pdv{N(x,y)}{x} - \pdv{M(x,y)}{y} \right]
+    \end{equation}
+    depends upon $y$ only, then IF
+    \begin{equation}
+        \mu(y) = \exp \left\{ \int{ \frac{1}{M(x,y)} \left[ \pdv{N(x,y)}{x} - \pdv{M(x,y)}{y} \right] } \: d{y} \right\}
+    \end{equation}
+\end{theorem}
+
+\begin{example}{\[
+    (2x^2 + y) \: d{x} + (x^2y - x) \: d{y} = 0
+\]}{}
+    This equation is not any of the five basic types of differential equations. We can apply Theorem 2.4.1 in this case. Here, $M(x,y) = 2x^2+y$ and $N(x,y) = x^2y-x$, and the equation (2.4.6) becomes \[
+        \frac{1}{x^2y-x} [1 - (2xy-1)] = \frac{2(1-xy)}{x(xy-y)} = -\frac{2}{x}
+    \]
+    This depends upon $x$ only, so \[
+        \text{ IF } = \exp\left( -\int{\frac{2}{x}} \: d{x} \right) = \exp(-2\ln|x|) = \frac{1}{x^2}
+    \]
+    Thus we obtain the equation \[
+        \left( 2 + \frac{y}{x^2} \right) \: d{x} + \left( y - \frac{1}{x} \right) \: d{y} = 0
+    \]
+    This equation is exact, and the solution is \[
+        2x + \frac{y^2}{2} - \frac{y}{x} = c
+    \]
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  A Special Transformation  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{20pt}
+\subsubsection{A Special Transformation}
+
+\begin{theorem}{A Special Transformation}{}
+    \\Consider the equation
+    \begin{equation}
+        (a_1x + b_1y + c_1) \: d{x} + (a_2x + b_2y + c_2) \: d{y} = 0
+    \end{equation}
+    where $a_1, b_1, c_1, a_2, b_2, c_2$ are constants. \\~\\
+    \textbf{Case 1:} If $\frac{a_2}{a_1} \neq \frac{b_2}{b_1}$, then the transformation
+    \begin{align*}
+        x &= X + h \\
+        y &= Y + k
+    \end{align*}
+    where $(h, k)$ is the solution of the system
+    \begin{align*}
+        a_1h + b_1k + c_1 &= 0 \\
+        a_2h + b_2k + c_2 &= 0
+    \end{align*}
+    reduces the equation (2.4.10) to the Homogeneous Equation
+    \begin{equation}
+        (a_1X + b_1Y) \: d{X} + (a_2X + b_2Y) \: d{Y} = 0
+    \end{equation}
+    \textbf{Case 2:} If $\frac{a_2}{a_1} = \frac{b_2}{b_1}$, then the transformation \[
+        z = a_1x + b_1y
+    \] reduces the equation (2.4.10) to a separable equation in the variables $x$ and $z$.
+\end{theorem}
+
+\begin{example}{\[
+        (x - 2y + 1) \: d{x} + (4x - 3y - 6) \: d{y} = 0
+\]}{} \vspace{-20pt}
+    Here, \[
+        \frac{a_2}{a_1} = 4 \neq \frac{3}{2} = \frac{b_2}{b_1}
+    \] Therefore, we make the transformation
+    \begin{align*}
+        x &= X + h \\
+        y &= Y + k
+    \end{align*}
+    where $(h,k)$ is the solution of the system
+    \begin{align*}
+        h - 2k + 1 &= 0 \\
+        4h - 3k - 6 &= 0
+    \end{align*}
+    The solution of the system is $(3,2)$, and so the transformation is
+    \begin{align*}
+        x &= X + 3 \\
+        y &= Y + 2
+    \end{align*}
+    This reduces the given equation to the homogeneous equation
+    \[ (X-2Y) \: d{X} + (4X-3Y) \: d{Y} = 0 \]
+    \[ \dv{Y}{X} = \frac{1 - 2(Y/X)}{3(Y/X) - 4} \]
+    Letting $Y = vX$,
+    \begin{align*}
+        v + X\dv{v}{X} &= \frac{1-2v}{3v-4} \\
+        \int{ \frac{3v-4}{3v^2-2v-1} } \: d{v} &= -\int{ \frac{dX}{X} } \\
+        \frac{1}{2}\int{ \frac{d(3v^2-2v-1)}{3v^2-2v-1} } - 3\int{ \frac{dv}{3v^2-2v-1} } &= -\int{ \frac{dX}{X} } \\
+        \frac{1}{2}\int{ \frac{d(3v^2-2v-1)}{3v^2-2v-1} } - 3\int{ \left[ \frac{1}{4}\int{ \frac{dv}{v-1} } - \frac{3}{4}\int{ \frac{dv}{3v+1} } \right]  } &= -\int{ \frac{dX}{X} } \\
+        \frac{1}{2}\ln|3v^2-2v-1| - \frac{3}{4}\ln|v-1| + \frac{9}{4}\ln|3v+1| + \ln|X| &= \ln|c_1| \\
+        \ln \left| X^4 \cdot \frac{(v-1)^2(3v+1)^{11}}{(v-1)^3} \right| &= \ln|c| \\
+        |3Y+X|^{11} &= X^6c|Y-X|
+    \end{align*}
+    \[ \boxed{ |x + 3y - 9|^{11} = c(x-3)^6|y-x+1| } \]
+\end{example}
+
+\begin{example}{\[
+        (x+2y+3) \: d{x} + (2x+4y-1) \: d{y} = 0
+\]}{}
+    Here, \[
+        \frac{a_2}{a_1} = 2 = \frac{b_2}{b_1}
+    \] Therefore, we apply the transformation \[
+        z = x + 2y
+    \]
+    \begin{align*}
+        \therefore (z+3) \: dx + (2z-1) \left( \frac{dz-dx}{2} \right) &= 0 \\
+        7 \: dx + (2z-1) \: dz &= 0 \\
+        7x + z^2 - z &= c \\
+        7x + x^2 + 4y^2 + 4xy - x - 2y &= c
+    \end{align*}
+    \[ \boxed{ x^2 + 4xy + 4y^2 + 6x - 2y = c  } \]
+\end{example}
