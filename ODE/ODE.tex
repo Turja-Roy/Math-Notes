@@ -1,26 +1,12 @@
-\documentclass[12pt]{article}
-\usepackage[a4paper, margin=0.75in]{geometry}
-\usepackage[document]{ragged2e}
-\usepackage{graphicx}
-\usepackage{multicol}
-\graphicspath{ {./images/} }
-\usepackage{physics}
-\usepackage{booktabs}
-\usepackage{import}
-
 \input{preamble.tex}
-
-\numberwithin{equation}{subsection}
-\renewcommand{\thesubsubsection}{\Alph{subsubsection}}
 
 \title{
     \textbf{Math-183} \\
-    \textbf{Differential Equations}
+    \textbf{Ordinary Differential Equations}
 }
 
 \author{
-    Note taken by: Turja Roy \\
-    ID: 2108052
+    Turja Roy \\
 }
 \date{}
 
@@ -31,19 +17,14 @@
 %  Content  %
 %%%%%%%%%%%%%
 \tableofcontents
-\pagebreak
+\newpage
 
 %%%%%%%%%%%%%%
 %  Sections  %
 %%%%%%%%%%%%%%
 
-\import{./sections}{1-DE_and_Solutions.tex}
-\pagebreak
-
-\import{./sections}{2-First_Order_Equations_for_Which_Exact_Solutions_Are_Obtainable.tex}
-\pagebreak
-
-\import{./sections}{3-Explicit_Methods_of_Solving_Higher-Order_Linear_DE.tex}
-\pagebreak
+\include{sections/1-DE_and_Solutions}
+\include{sections/2-First_Order_Equations_for_Which_Exact_Solutions_Are_Obtainable}
+\include{sections/3-Explicit_Methods_of_Solving_Higher-Order_Linear_DE}
 
 \end{document}

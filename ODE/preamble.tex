@@ -1,14 +1,44 @@
-\usepackage{enumerate}
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=0.75in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{enumerate,enumitem}
 \usepackage{framed}
 \usepackage{amsmath,amsfonts,amsthm,thmtools,amssymb,mathtools,commath}
+\usepackage{physics,derivative}
 \usepackage{tikz}
 \usetikzlibrary{mindmap}
-\usepackage{caption}
+\usepackage{caption,subcaption}
 \usepackage{xcolor}
 \usepackage[most]{tcolorbox}
-\usepackage{hyperref}
-\usepackage{cleveref}
+\usepackage{xparse}
+\usepackage{hyperref,cleveref}
+\usepackage{esint}
+\usepackage{multicol}
 
+\makeatletter
+%% make esint definition in line with amsmath
+\@for\next:={int,iint,iiint,iiiint,dotsint,oint,oiint,sqint,sqiint,
+  ointctrclockwise,ointclockwise,varointclockwise,varointctrclockwise,
+  fint,varoiint,landupint,landdownint}\do{%
+    \expandafter\edef\csname\next\endcsname{%
+      \noexpand\DOTSI
+      \expandafter\noexpand\csname\next op\endcsname
+      \noexpand\ilimits@
+    }%
+  }
+\makeatother
+
+%%%%%%%%%%%%%%%
+%  Numbering  %
+%%%%%%%%%%%%%%%
+
+\numberwithin{equation}{subsection}
+\renewcommand{\thesubsubsection}{\Alph{subsubsection}}
+
+\counterwithin{figure}{subsection}
+\renewcommand{\thefigure}{\thesubsection.\arabic{figure}}
 
 %%%%%%%%%%%%%%%%
 %  Definition  %
@@ -18,7 +48,6 @@
 {
     % theorem style=definition,
     enhanced,
-    % breakable,
 	before skip=2mm,after skip=2mm, colback=cyan!5,colframe=cyan!80!black,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
 	boxed title style={frame code={
@@ -40,23 +69,21 @@
 	title={#2},#1
 }{def}
 
-% \newcommand{\definition}[2]{
-% \begin{definition}{#1}{}
-%     #2
-% \end{definition}
-% }
-
+\NewDocumentCommand\Definition{m+m}{%
+    \begin{definition}{#1}{}
+        #2
+    \end{definition}
+}
 
 %%%%%%%%%%%%%
 %  Theorem  %
 %%%%%%%%%%%%%
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=subsection]{theorem}{Theorem}%
+\newtcbtheorem[use counter from=definition]{theorem}{Theorem}%
 {
     theorem style=plain,
     enhanced,
-    breakable,
-    colframe=green!50!black,
+    colframe=green,
     boxrule=1pt,
     titlerule=0mm,
     toptitle=1mm,
@@ -69,13 +96,19 @@
     description font=\bfseries\sffamily
 }{thrm}
 
+\NewDocumentCommand\Theorem{m+m}{%
+    \begin{theorem}{#1}{}
+        #2
+    \end{theorem}
+}
 
-%%%%%%%%%%%%%%%
-%  Corollary  %
-%%%%%%%%%%%%%%%
-\tcbuselibrary{theorems,skins}
-\newtcbtheorem[number within=tcb@cnt@theorem]{corollary}{Corollary}%
-{
+
+%%%%%%%%%%%%%%
+% Corollary  %
+%%%%%%%%%%%%%%
+ \tcbuselibrary{theorems,skins}
+ \newtcbtheorem[use counter from=theorem]{corollary}{Corollary}%
+ {
     theorem style=plain,
     enhanced,
     colframe=green,
@@ -89,14 +122,20 @@
     colbacktitle=cyan!15!white,
     colback=green!10,
     description font=\bfseries\sffamily
-}{corl}
+ }{corl}
+
+\NewDocumentCommand\Corollary{m+m}{%
+    \begin{corollary}{#1}{}
+        #2
+    \end{corollary}
+}
 
 
 %%%%%%%%%%%%%
 %  Example  %
 %%%%%%%%%%%%%
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=subsection]{example}{Example}%
+\newtcbtheorem[number within=section]{example}{Example}%
 {
 	enhanced,
 	breakable,
@@ -113,6 +152,11 @@
 }
 {xmp}
 
+\NewDocumentCommand\Example{m+m}{%
+    \begin{example}{#1}{}
+        #2
+    \end{example}
+}
 
 %%%%%%%%%%%%%%
 %  Exercise  %
@@ -120,42 +164,43 @@
 \tcbuselibrary{theorems,skins,hooks}
 \newtcbtheorem[number within=section]{exercise}{Exercise}%
 {
-	enhanced,
-	breakable,
-	colback = gray!15,
-	frame hidden,
-	boxrule = 0sp,
-	borderline west = {2pt}{0pt}{black},
-    borderline north = {4pt}{0pt}{black},
-	sharp corners,
-	% detach title,
-	before upper = \tcbtitle\par\smallskip,
-    toptitle = 15pt,
-    bottomtitle = 10pt,
-    coltitle = white,
-    colbacktitle = gray!60!black,
-	fonttitle = \bfseries\sffamily,
-	description font = \mdseries\bfseries
+    enhanced,
+    breakable,
+    colback=black!5,
+    colframe=black!30,
+    left=0.5em,
+    before skip=10pt,
+    after skip=10pt,
+    boxrule=0pt,
+    boxsep=0pt,
+    arc=0pt,
+    outer arc=0pt,
+    borderline west={3pt}{0pt}{black!30},
 }{exc}
+
+\NewDocumentCommand\Exercise{m+m}{%
+    \begin{exercise}{#1}{}
+        #2
+    \end{exercise}
+}
 
 %%%%%%%%%%
 %  Note  %
 %%%%%%%%%%
 \usetikzlibrary{arrows,calc,shadows.blur}
 \tcbuselibrary{skins}
-\newtcolorbox{note}[1][]{%
+\newtcbtheorem[]{note}{}%
+{
 	enhanced jigsaw,
 	colback=gray!20!white,%
 	colframe=gray!80!black,
 	size=small,
 	boxrule=1pt,
-	title=\textbf{Note:-},
 	halign title=flush center,
 	coltitle=black,
 	breakable,
 	drop shadow=black!50!white,
 	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
-	minipage boxed title=1.5cm,
 	boxed title style={%
 			colback=white,
 			size=fbox,
@@ -174,5 +219,42 @@
 					\end{scope}
 				},
 		},
-	#1,
+    fonttitle=\bfseries,
+    title={#2},#1,
+}{nte}
+
+\NewDocumentCommand\Note{O{Note:-}+m}{%
+    \begin{note*}{#1}{}
+        #2
+    \end{note*}
 }
+
+
+%%%%%%%%%%%%
+%  Macros  %
+%%%%%%%%%%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\EE}{\mathcal{E}}

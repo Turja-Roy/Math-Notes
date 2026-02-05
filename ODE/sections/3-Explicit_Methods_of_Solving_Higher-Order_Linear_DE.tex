@@ -16,8 +16,8 @@
 
 \subsubsection{Definition and Basic Existence Theorem}
 
-\begin{definition}{Linear Ordinary Differential Equation of Order $n$}{}
-    A \textbf{linear ordinary differential equation of order $n$} in the dependent variable $y$ and the independent variable $x$ is an equation that is in, or can be expressed in the form
+\Definition{Linear Ordinary Differential Equation of Order $n$}{
+A \textbf{linear ordinary differential equation of order $n$} in the dependent variable $y$ and the independent variable $x$ is an equation that is in, or can be expressed in the form
     \begin{equation} \label{eq1}
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)}n + \cdots + a_{n-1}(x)y' + a_n(x)y = F(x)
     \end{equation}
@@ -26,19 +26,19 @@
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)}n + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
     \end{equation}
     Equation (\ref{eq2}) is a \textbf{homogeneous differential equation of order $n$}.
-\end{definition}
+}
 
-\begin{example}{}{}
-    The equation \[
+\Example{}{
+The equation \[
         y'' + 3xy' + x^3y = e^x
     \] is a linear ordinary differential equation.\\
     The equation \[
         y''' + xy'' + 3x^2y' - 5y = \sin x
     \] is a linear ODE of third order.
-\end{example}
+}
 
-\begin{theorem}{Basic Existence Theorem}{}
-    \\\textbf{Hypothesis:}
+\Theorem{Basic Existence Theorem}{
+\\\textbf{Hypothesis:}
     \begin{enumerate}
         \item Consider the $n$th-order linear differential equation
             \begin{equation}\tag{3.1.1}
@@ -51,20 +51,23 @@
         f(x_0) = c_0, f'(x_0) = c_1, \cdots, f^{(n-1)}(x_0) = c_{n-1}
     \]
     and this solution is defined over the entire interval $a \le x \le b$.
-\end{theorem}
+}
 
-\begin{example}{
+\Example{
     Consider the initial-value problem
     \[ 2y''' + xy'' + 3x^2y' - 5y = \sin x \]
-    \[ y(4)=3 \]
-    \[ y'(4)=5 \]
-    \[ y''(4)=-\frac{7}{2} \]
-}{} \vspace{-10pt}
+    with initial conditions:
+    \begin{enumerate}
+        \item $\displaystyle y(4)=3$
+        \item $\displaystyle y'(4)=5$
+        \item $\displaystyle y''(4)=-\frac{7}{2}$
+    \end{enumerate}}{
+\vspace{-10pt}
     Here we have a third-order problem. The coefficients $2, x, 3x^2,$ and $-5$, as well as the nonhomogeneous term $\sin{x}$, are all continuous for all $x \in (-\infty,\infty)$. The point $x_0=4$ certainly belongs to this intervall; the real numbers $c_0, c_1, $ and $c_2$ in this problem are 3, 5, and  $-\frac{7}{2}$ respectively. Theorem 3.1.1 assures is that this problem also has a unique solution which is defined for all $x \in (-\infty,\infty)$
-\end{example}
+}
 
-\begin{corollary}{}{}
-    \\\textbf{Hypothesis:} Let $f$ be a solution of the nth-order homogeneous linear DE
+\Corollary{}{
+\\\textbf{Hypothesis:} Let $f$ be a solution of the nth-order homogeneous linear DE
     \begin{equation}\tag{3.1.2}
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
     \end{equation}
@@ -72,15 +75,15 @@
         f(x_0)=0, f'(x_0)=0, \cdots, f^{(n-1)}(x_0)=0,
     \] where $x_0$ is a point of the interval $a \le x \le b$ in which the coefficients $a_0, a_1, \cdots, a_n$ are all continuous and $a_0(x) \neq 0$. \\~\\
     \textbf{Conclusion:} Then $f(x)=0$ for all $x$ on $a \le x \le b$.
-\end{corollary}
+}
 
-\begin{example}{}{}
-    The unique solution of $f$ of the third-order homogeneous equation \[
+\Example{}{
+The unique solution of $f$ of the third-order homogeneous equation \[
         y''' + 2y'' + 4xy' + x^2y = 0
     \] which is such that \[
         f(2) = f'(2) = f''(2) = 0
     \] is the trivial solution $f$ such that $f(x)=0$ for all $x$.
-\end{example}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  The Homogeneous Equation  %
@@ -93,95 +96,97 @@ We now consider the fundamental results concerning the homogeneous equation
     a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
 \end{equation}
 
-\begin{theorem}{Basic Theorem on Linear Homogeneous Differential Equations}{}
-    \\\textbf{Hypothesis:} Let $f_1, f_2, \cdots, f_m$ be any $m$ solutions of the homogeneous linear differential equation (\ref{eq2}).\\~\\
+\Theorem{Basic Theorem on Linear Homogeneous Differential Equations}{
+\\\textbf{Hypothesis:} Let $f_1, f_2, \cdots, f_m$ be any $m$ solutions of the homogeneous linear differential equation (\ref{eq2}).\\~\\
     \textbf{Conclusion:} Then \[
         c_1f_1 + c_2f_2 + \cdots + c_mf_m
     \] is also a solution of (\ref{eq2}), where $c_1, c_2, \cdots, c_m$ are $m$ arbitrary constants.\\~\\
 
     In other words: Any linear combination of solutions of the homogeneous linear differential equation (\ref{eq2}) is also a solution of (3.1.2).
-\end{theorem}
+}
 
-\begin{definition}{Linear Combination}{}
-    If $f_1, f_2, \cdots, f_m$ are $m$ given functions, and $c_1, c_2, \cdots, c_m$ are $m$ constants, then the expression \[
+\Definition{Linear Combination}{
+If $f_1, f_2, \cdots, f_m$ are $m$ given functions, and $c_1, c_2, \cdots, c_m$ are $m$ constants, then the expression \[
         c_1f_1 + c_2f_2 + \cdots + c_mf_m
     \] is called a linear combination of $f_1, f_2, \cdots, f_m$.
-\end{definition}
+}
 
-\begin{example}{}{}
-    $e^x, e^{-x}, e^{2x}$ are solutions of \[
+\Example{}{
+$e^x, e^{-x}, e^{2x}$ are solutions of \[
         y''' - 2y'' - y' + 2y = 0
     \] Theorem 3.1.3 states that the linear combination $c_1e^x + c_2e^{-x} + c_3x^{2x}$ is also a solution for any constants $c_1, c_2, c_3$. For example, the particular linear combination \[
         2e^x - 3e^{-x} + \frac{2}{3}e^{2x}
     \] is a solution.
-\end{example}
+}
 
-\begin{definition}{Linear Dependence}{}
-    The $n$ functions $f_1, f_2, \cdots, f_n$ are called \textit{linearly dependent} on $a \le x \le b$ if there exist constants $c_1, c_2, \cdots, c_n$, not all zero, such that \[
+\Definition{Linear Dependence}{
+The $n$ functions $f_1, f_2, \cdots, f_n$ are called \textit{linearly dependent} on $a \le x \le b$ if there exist constants $c_1, c_2, \cdots, c_n$, not all zero, such that \[
         c_1f_1(x) + c_2f_2(x) + \cdots + c_mf_m(x) = 0
     \] for all $x$ such that $a \le x \le b$.
-\end{definition}
+}
 
-\begin{definition}{Linear Independence}{}
-    The $n$ functions $f_1, f_2, \cdots, f_n$ are called linearly independent on the interval $a \le x \le b$ if the relation \[
+\Definition{Linear Independence}{
+The $n$ functions $f_1, f_2, \cdots, f_n$ are called linearly independent on the interval $a \le x \le b$ if the relation \[
         c_1f_1(x) + c_2f_2(x) + \cdots + c_nf_n(x) = 0
     \] for all $x$ such that $a \le x \le b$ implies that \[
         c_1 = c_2 = \cdots = c_n = 0
     \] In other words, the only linear combination of $f_1, f_2, \cdots, f_n$ that is identically zero on $a \le x \le b$ is the trivial linear combination \[
     0\cdot f_1 + 0\cdot f_2 + \cdots + 0\cdot f_n
     \]
-\end{definition}
+}
 
-\begin{theorem}{Linearly Independent Solutions of nth-Order Linear Differential Equation}{}
-    The nth-order homogeneous linear differential equation
+\Theorem{Linearly Independent Solutions of nth-Order Linear Differential Equation}{
+The nth-order homogeneous linear differential equation
     \begin{equation}\tag{3.1.2}
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
     \end{equation}
     always possesses $n$ solutions that are linearly independent. Further, if $f_1, f_2, \cdots f_n$ are $n$ linearly independent solutions of (\ref{eq2}), then every solution $f$ of (3.1.2) can be expressed as a linear combination \[
         c_1f_1(x) + c_2f_2(x) + \cdots + c_nf_n(x) = 0
     \] of these $n$ linearly independent soulutions by proper choice of the constants $c_1, c_2, \cdots, c_n$.
-\end{theorem}
+}
 
-\begin{example}{}{}
-    We have observed that $\sin x$ and $\cos x$ are solutions of
+\Example{}{
+We have observed that $\sin x$ and $\cos x$ are solutions of
     \begin{equation}
+        \label{eq:sin-cos-de}
+        \tag{3.1.3}
         y'' + y = 0
     \end{equation}
-    for all $x \in (-\infty, \infty)$. Further, we can show that these two solutions are linearly independent. Suppose $f$ is any solution of (3.1.3). Then by Theorem 3.1.4 $f$ can be expressed as a certain linear combination $c_1\sin x + c_2\cos x$ of the two linearly independent solutions  $\sin x$ and $\cos x$ by proper choice of $c_1$ and $c_2$. That is, there exist two particular constants $c_1$ and $c_2$ such that
+    for all $x \in (-\infty, \infty)$. Further, we can show that these two solutions are linearly independent. Suppose $f$ is any solution of \eqref{eq:sin-cos-de}. Then by Theorem 3.1.4 $f$ can be expressed as a certain linear combination $c_1\sin x + c_2\cos x$ of the two linearly independent solutions  $\sin x$ and $\cos x$ by proper choice of $c_1$ and $c_2$. That is, there exist two particular constants $c_1$ and $c_2$ such that
     \begin{equation}
         f(x) = c_1\sin x + c_2\cos x
     \end{equation}
-    for all $x \in (-\infty,\infty)$. For example, it can be easily verified that $f(x) = \sin(x+\pi/6)$ is a solution of the equation (3.1.3). Since \[
+    for all $x \in (-\infty,\infty)$. For example, it can be easily verified that $f(x) = \sin(x+\pi/6)$ is a solution of the equation \eqref{eq:sin-cos-de}. Since \[
         \sin \left( x + \frac{\pi}{6} \right) = \sin x \cos \frac{\pi}{6} + \cos x \sin \frac{\pi}{6} = \frac{\sqrt{3}}{2}\sin x + \frac{1}{2}\cos x,
     \] we see that the solution $\sin(x + \pi/6)$ can be expressed as the linear combination \[
         \frac{\sqrt{3}}{2}\sin x + \frac{1}{2}\cos x
     \] of the two linearly independent solutions $\sin x$ and $\cos x$. Here, $c_1 = \sqrt{3}/2$ and $c_2 = 1/2$
-\end{example}
+}
 
-\begin{definition}{Fundamental Set of Solutions}{}
-    If $f_1, f_2, \cdots, f_n$ are $n$ linearly independent solutions of the nth-order homogeneous linear differential equation
+\Definition{Fundamental Set of Solutions}{
+If $f_1, f_2, \cdots, f_n$ are $n$ linearly independent solutions of the nth-order homogeneous linear differential equation
     \begin{equation}\tag{3.1.2}
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
     \end{equation}
     on $a \le x \le b$, then the set $f_1, f_2, \cdots, f_n$ is called a fundamental set of solutions of (\ref{eq2}) and the function $f$ defined by \[
         f(x) = c_1f_1(x) + c_2f_2(x) + \cdots + c_nf_n(x), \quad a \le x \le b,
     \] where $c_1, c_2, \cdots, c_n$ are arbitrary constants, is called a general solution of (\ref{eq2}) on  $a \le x \le b$.
-\end{definition}
+}
 
 Therefore, if we can find $n$ linearly independent solutions of (\ref{eq2}), we can at once write the general solution of (3.1.2) as a general linear combination of these $n$ solutions.
 
-\begin{example}{}{}
-    The solutions $e^x, e^{-x},$ and $e^{2x}$ of \[
+\Example{}{
+The solutions $e^x, e^{-x},$ and $e^{2x}$ of \[
         y''' - 2y'' + y' + 2y = 0
     \] may be shown to be linearly independent for all $x \in (-\infty, \infty)$. Thus, $e^x, e^{-x},$ and $e^{2x}$ constitute a fundamental set of the given DE, and its general solution may be expressed as the linear combination \[
         c_1e^x + e^{-x} + c_3e^{2x}
     \] where $c_1$, $c_2$, and $c_3$ are arbitrary constants. We can write this as \[
         y = c_1e^x + e^{-x} + c_3e^{2x}
     \]
-\end{example}
+}
 
-\begin{definition}{Wronskian}{}
-    Let $f_1, f_2, \cdots, f_3$ be $n$ real functions each of which has an $(n-1)$th derivative on a real interval $a \le x \le b$. The determinant \[
+\Definition{Wronskian}{
+Let $f_1, f_2, \cdots, f_3$ be $n$ real functions each of which has an $(n-1)$th derivative on a real interval $a \le x \le b$. The determinant \[
         W(f_1, f_2, \cdots, f_n) = 
         \begin{vmatrix} 
             f_1 & f_2 & \cdots & f_n \\
@@ -190,18 +195,18 @@ Therefore, if we can find $n$ linearly independent solutions of (\ref{eq2}), we 
             f_1^{(n-1)} & f_2^{(n-1)} & \cdots & f_n^{(n-1)}
         \end{vmatrix}
     \] is called the Wronskian of these $n$ functions. We observe that $W(f_1, f_2, \cdots, f_n)$ is itself a real function defined on $a \le x \le b$. Its value at $x$ is denoted by  $W(f_1, f_2, \cdots, f_n)(x)$ or by $W[ f_1(x), f_2(x), \cdots, f_n(x) ]$.
-\end{definition}
+}
 
-\begin{theorem}{}{}
-    The $n$ solutions $f_1, f_2, \cdots, f_n$ of the nth-order homogeneous linear DE (\ref{eq2}) are linearly independent on $a \le x \le b$ if and only if the Wronskian of $f_1, f_2, \cdots, f_n$ is different from zero for some $x$ on the interval $a \le x \le b$.
-\end{theorem}
+\Theorem{}{
+The $n$ solutions $f_1, f_2, \cdots, f_n$ of the nth-order homogeneous linear DE (\ref{eq2}) are linearly independent on $a \le x \le b$ if and only if the Wronskian of $f_1, f_2, \cdots, f_n$ is different from zero for some $x$ on the interval $a \le x \le b$.
+}
 
-\begin{theorem}{}{}
-    The Wronskian of $n$ solutions $f_1, f_2, \cdots, f_n$ of (\ref{eq2}) is either identically zero on $a \le x \le b$ or else is never zero on $a \le x \le b$.
-\end{theorem}
+\Theorem{}{
+The Wronskian of $n$ solutions $f_1, f_2, \cdots, f_n$ of (\ref{eq2}) is either identically zero on $a \le x \le b$ or else is never zero on $a \le x \le b$.
+}
 
-\begin{example}{}{}
-    We can apply Theorem 3.1.2 to show that the solutions $\sin x$ and $\cos x$ of \[
+\Example{}{
+We can apply Theorem 3.1.2 to show that the solutions $\sin x$ and $\cos x$ of \[
         y'' + y = 0
     \] are linearly independent. We find that \[
         W(\sin x, \cos x) = 
@@ -211,10 +216,10 @@ Therefore, if we can find $n$ linearly independent solutions of (\ref{eq2}), we 
         \end{vmatrix} 
         = -\sin^2x - \cos^2x = -1 \neq 0
     \] for all real $x$. Thus, since $W(\sin x, \cos x) \neq 0$ for all real $x$, we conclude that $\sin x$ and $\cos x$ are indeed linearly independent solutions of the given DE on every real interval.
-\end{example}
+}
 
-\begin{example}{}{}
-    The solutions $e^{x}, e^{-1}$, and $e^{2x}$ of \[
+\Example{}{
+The solutions $e^{x}, e^{-1}$, and $e^{2x}$ of \[
         y''' - 2y'' - y' + 2y = 0
     \] are linearly independent on every real interval, for \[
         W(e^x, e^{-1}, e^{2x}) =
@@ -231,7 +236,7 @@ Therefore, if we can find $n$ linearly independent solutions of (\ref{eq2}), we 
         \end{vmatrix} 
         = -6e^{2x} \neq 0
     \] for all real $x$.
-\end{example}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -240,42 +245,52 @@ Therefore, if we can find $n$ linearly independent solutions of (\ref{eq2}), we 
 \vspace{20pt}
 \subsubsection{Reduction of Order}
 
-\begin{theorem}{}{}
-    \\\textbf{Hypothesis:} Let $f$ be a nontrivial solution of the nth-order homogeneous linear differential equation
+\Theorem{}{
+\\\textbf{Hypothesis:} Let $f$ be a nontrivial solution of the nth-order homogeneous linear differential equation
     \begin{equation}\tag{3.1.2}
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
     \end{equation}
     \textbf{Conclusion:} The transformation $y = f(x)v$ reduces Equation (\ref{eq2}) to an $(n-1)$th-order homogeneous linear different equation in the dependent variable $w = dv/dx$.
-\end{theorem}
+}
 
 According to this theorem, id one nonzero solution of the nth-order homogeneous linear DE (\ref{eq2}) is known, then by making the appropriate transformation we may reduce the given equation to another homogeneous linear DE that is one order lower than the original. We'll now investigate the second-order ($n=2$) DE in detal.\\
 
 Suppose $f$ is a known nontrivial solution of the second-order homogeneous linear equation
 \begin{equation}
+    \label{eq:second-order-homog}
+    \tag{3.1.5}
     a_0(x)y'' + a_1(x)y' + a_2(x)y = 0
 \end{equation}
 Let's make the transformation
 \begin{equation}
+    \label{eq:reduction-transform}
+    \tag{3.1.6}
     y = f(x)v
 \end{equation}
-, where $f$ is the known solution of (3.1.5) and $v$ is a function of $x$ that will be determined. Then, differentiating, we obtain
+, where $f$ is the known solution of \eqref{eq:second-order-homog} and $v$ is a function of $x$ that will be determined. Then, differentiating, we obtain
 \begin{equation}
+    \label{eq:reduction-y-prime}
+    \tag{3.1.7}
     y' = f(x)v' + f'(x)v,
 \end{equation}
 \begin{equation}
+    \label{eq:reduction-y-double-prime}
+    \tag{3.1.8}
     y'' = f(x)v'' + 2f'(x)v' + f''(x)v.
 \end{equation}
 
-Substituting (3.1.6), (3.1.7), and (3.1.8) into (3.1.5), we obtain \[
+Substituting \eqref{eq:reduction-transform}, \eqref{eq:reduction-y-prime}, and \eqref{eq:reduction-y-double-prime} into \eqref{eq:second-order-homog}, we obtain \[
     a_0(x)[ y'' = f(x)v'' + 2f'(x)v' + f''(x)v ] + a_1(x)[ y' = f(x)v' + f'(x)v ] + a_2(x)f(x)v = 0
 \] or \[
 a_0(x)f(x)v'' + [ 2a_0(x)f'(x) + a_1f(x) ]v' + [ a_0(x)f''(x) + a_1(x)f'(x) + a_2(x)f(x) ]v = 0
 \]
-Since $f$ is a solution of (3.1.5), the coefficient of $v$ is zero, and so the last equation reduces to \[
+Since $f$ is a solution of \eqref{eq:second-order-homog}, the coefficient of $v$ is zero, and so the last equation reduces to \[
     a_0(x)f(x)v'' + [ 2a_0(x)f'(x) + a_1(x)f(x) ]v' = 0
 \]
 Letting $w = v'$, this becomes
 \begin{equation}
+    \label{eq:reduction-w}
+    \tag{3.1.9}
     a_0(x)f(x) \: \frac{dw}{dx} + [ 2a_0(x)f'(x) + a_1(x)f(x) ]w = 0
 \end{equation}
 
@@ -287,13 +302,13 @@ Thus integrating, we obtain \[
 \] or \[
 w = \frac{ c\cdot \exp\left[ -\int{ \frac{a_1(x)}{a_0(x)} } \: d{x} \right] }{[ f(x) ]^2}
 \]
-This is the general solution of Equation (3.1.9); choosing the particular solution for which $c=1$, recalling that $dv/dw = w$, and integrating again, we now obtain \[
+This is the general solution of Equation \eqref{eq:reduction-w}; choosing the particular solution for which $c=1$, recalling that $dv/dw = w$, and integrating again, we now obtain \[
     v = \int{ \frac{ \exp\left[ -\int{ \frac{a_1(x)}{a_0(x)} } \: d{x} \right] }{[ f(x) ]^2} } \: d{x} 
 \]
-Finally, from (3.1.6), we obtain \[
+Finally, from \eqref{eq:reduction-transform}, we obtain \[
     y = f(x) \int{ \frac{ \exp\left[ -\int{ \frac{a_1(x)}{a_0(x)} } \: d{x} \right] }{[ f(x) ]^2} } \: d{x} 
 \]
-If we denote the right side of the function by $g$, which is a solution of (3.1.5), we can write the general solution of (3.1.5) as the following linear combination \[
+If we denote the right side of the function by $g$, which is a solution of \eqref{eq:second-order-homog}, we can write the general solution of \eqref{eq:second-order-homog} as the following linear combination \[
     c_1f + c_2g
 \] where $c_1$ and $c_2$ are arbitrary constants.
 
@@ -310,50 +325,58 @@ We also observe that $g$ and $f$ are linearly independent, since \[
     = [f(x)]^2v' = \exp\left[ -\int{\frac{a_1(x)}{a_0(x)}} \: d{x} \right] \neq 0
 \]
 
-\begin{theorem}{}{} \label{th3.1.8}
+\Theorem{}{
+\label{th3.1.8}
     \\\textbf{Hypothesis:} Let $f$ be a nontrivial solution of the second-order homogeneous linear differential equation
     \begin{equation}
+        \label{eq:second-order-general}
+        \tag{3.1.10}
         a_0(x)y'' + a_1(x)y' + a_2(x)y = 0
     \end{equation}
-    \textbf{Conclusion 1:} The transformation $y = f(x)v$ reduces (3.1.10) to the first-order linear homogeneous DE \[
+    \textbf{Conclusion 1:} The transformation $y = f(x)v$ reduces \eqref{eq:second-order-general} to the first-order linear homogeneous DE \[
         a_0(x)f(x)\frac{dw}{dx} + [ 2a_0(x)f'(x) + a_1(x)f(x) ]w = 0
     \] in the dependent variable $w$, where $w = v'$ \\
     \textbf{Conclusion 2:} The particular solution \[
         w = \frac{\exp\left[ -\int{ \frac{a_1(x)}{a_0(x)} } \: d{x} \right]}{[f(x)]^2}
-    \] of equation (3.1.10) gives rise to the function $v$, where \[
+    \] of equation \eqref{eq:second-order-general} gives rise to the function $v$, where \[
     v(x) = \int{ \frac{\exp\left[ -\int{\frac{a_1(x)}{a_0(x)}} \: d{x} \right]}{[f(x)]^2} } \: d{x}
-    \] The function $g(x)$ defined by $g(x) = f(x)v(x)$ is then a solution of the second-order equation (3.1.10). \\
-    \textbf{Conclusion 3:} The original known solution $f$ and the new solution $g$ are linearly independent solutions of (3.1.10), and hence the general solution of (3.1.10) is \[
+    \] The function $g(x)$ defined by $g(x) = f(x)v(x)$ is then a solution of the second-order equation \eqref{eq:second-order-general}. \\
+    \textbf{Conclusion 3:} The original known solution $f$ and the new solution $g$ are linearly independent solutions of \eqref{eq:second-order-general}, and hence the general solution of \eqref{eq:second-order-general} is \[
         c_1f + c_2g
     \] where $c_1$ and $c_2$ are arbitrary constants.
-\end{theorem}
+}
 
-\begin{example}{
-        Given that $y=x$ is a solution of
+\Example{
+    Given that $y=x$ is a solution of
         \begin{equation}\tag{A}
             (x^2+1)y'' - 2xy' + 2y = 0
         \end{equation}
-        find a linearly independent solution by reducing the order.
-    }{}
-    First applying the transformation \[
+        find a linearly independent solution by reducing the order.}{
+First applying the transformation \[
         y = xv
     \] Then \[
         y' = xv' + v, \text{ and } y'' = xv'' + 2v'
-    \] Substituting these into (A) we obtain \[
-    (x^2+1)(xv''+2v') - 2x(xv'+v) + 2xv = 0
-    \] \[ x(x^2+1)v'' + 2v' = 0 \]
+    \] Substituting these into (A) we obtain
+    \begin{align*}
+        (x^2+1)(xv''+2v') - 2x(xv'+v) + 2xv &= 0 \\
+        x(x^2+1)v'' + 2v' &= 0
+    \end{align*}
     Letting $w = v'$,
-    \[ x(x^2+1)\frac{dw}{dx} + 2w = 0 \]
-    \[ \int{\frac{dw}{w}} = -\int{\frac{2dx}{x(x^2+1)}} = \int{\left( -\frac{2}{x} + \frac{2x}{x^2+1} \right)} \: d{x} \]
-    \[ \ln|w| = \ln|x^2+1| - \ln|x|^2 + \ln|c| \]
-    \[ w = \frac{c(x^2+1)}{x^2} \]
+    \begin{align*}
+        x(x^2+1)\frac{dw}{dx} + 2w &= 0 \\
+        \int{\frac{dw}{w}} &= -\int{\frac{2dx}{x(x^2+1)}} = \int{\left( -\frac{2}{x} + \frac{2x}{x^2+1} \right)} \: d{x} \\
+        \ln|w| &= \ln|x^2+1| - \ln|x|^2 + \ln|c| \\
+        w &= \frac{c(x^2+1)}{x^2}
+    \end{align*}
     Letting $c = 1$,
-    \[ v(x) = \int{\left( 1 + \frac{1}{x^2} \right)} \: d{x} = x - \frac{1}{x} \]
-    \[ \therefore g = f(x)v(x) = x\cdot\left( x-\frac{1}{x} \right) = x^2-1 \]
+    \begin{align*}
+        v(x) &= \int{\left( 1 + \frac{1}{x^2} \right)} \: d{x} = x - \frac{1}{x} \\
+        \therefore g &= f(x)v(x) = x\cdot\left( x-\frac{1}{x} \right) = x^2-1
+    \end{align*}
     Hence, the general solution of (A) is \[
         \boxed{ y = c_1x + c_2(x^2-1) }
     \]
-\end{example}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -365,8 +388,8 @@ We also observe that $g$ and $f$ are linearly independent, since \[
     a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = F(x)
 \end{equation}
 
-\begin{theorem}{}{}
-    \\\textbf{Hypothesis:}
+\Theorem{}{
+\\\textbf{Hypothesis:}
     \begin{enumerate}
         \item Let $v$ be any solution of the given (nonhomogeneous) nth-order linear differential equation (\ref{eq1})
         \item Let $u$ be any solution of the corresponding homogeneous equation
@@ -375,10 +398,10 @@ We also observe that $g$ and $f$ are linearly independent, since \[
             \end{equation}
     \end{enumerate}
     \textbf{Conclusion:} Then $u + v$ is also a solution of the given (nonhomogeneous) equation (\ref{eq1})
-\end{theorem}
+}
 
-\begin{theorem}{}{}
-    \\\textbf{Hypothesis:}
+\Theorem{}{
+\\\textbf{Hypothesis:}
     \begin{enumerate}
         \item Let $y_p$ be a given solution of the nth-order nonhomogeneous linear equation (\ref{eq1}) involving no arbitrary constants.
         \item Let \[
@@ -390,10 +413,10 @@ We also observe that $g$ and $f$ are linearly independent, since \[
     \] that is, \[
         c_1y_1 + c_2y_2 + \cdots + c_ny_n + y_p
     \] for suitable choice of the $n$ arbitrary constants $c_1, c_2, \cdots, c_n$.
-\end{theorem}
+}
 
-\begin{definition}{}{}
-    Consider the nth-order nonhomogeneous linear DE
+\Definition{}{
+Consider the nth-order nonhomogeneous linear DE
     \begin{equation} \tag{3.1.1}
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = F(x)
     \end{equation}
@@ -404,10 +427,10 @@ We also observe that $g$ and $f$ are linearly independent, since \[
     \textbf{Complimentary Function:} $y_c =$ general solution of (\ref{eq2})\\
     \textbf{Particular Solution:} $y_p =$ any solution of (\ref{eq1}) involving no arbitrary constant\\
     \textbf{General Solution of (\ref{eq1}):} $y_c + y_p$
-\end{definition}
+}
 
-\begin{example}{}{}
-    Consider the DE \[
+\Example{}{
+Consider the DE \[
         y'' + y = x
     \] The complimentary function \[
         y_c = c_1\sin x + c_2\cos x
@@ -418,10 +441,10 @@ We also observe that $g$ and $f$ are linearly independent, since \[
     \] Thus the general solution is \[
         y = y_c + y_p = c_1\sin x + c_2\cos x + x
     \]
-\end{example}
+}
 
-\begin{theorem}{}{}
-    \\\textbf{Hypothesis:}
+\Theorem{}{
+\\\textbf{Hypothesis:}
     \begin{enumerate}
         \item Let $f_1$ be a particular integral of
             \begin{equation}
@@ -436,7 +459,7 @@ We also observe that $g$ and $f$ are linearly independent, since \[
     \begin{equation}
         a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = k_1F_1(x) + k_2F_2(x)
     \end{equation}
-\end{theorem}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -492,22 +515,25 @@ Note that (\ref{eq4}) is formally obtained from (\ref{eq3}). If $y=e^{mx}$ is a 
 
 If the AE of (\ref{eq3}) has the $n$ distinct real roots $m_1, m_2, \cdots, m_n$, then $e^{m_1x}, e^{m_2x}, \cdots, e^{m_nx}$ are $n$ distinct solutions of (\ref{eq3}).
 
-\begin{theorem}{}{}
-    Consider the nth-order homogeneous linear differential equation (\ref{eq3}) with constant coefficients. If the auxiliary equation (\ref{eq4}) has the $n$ distinct real roots \[
+\Theorem{}{
+Consider the nth-order homogeneous linear differential equation (\ref{eq3}) with constant coefficients. If the auxiliary equation (\ref{eq4}) has the $n$ distinct real roots \[
         m_1, m_2, \cdots, m_n
     \], then the general solution of (\ref{eq3}) is \[
         y = c_1e^{m_1x} + c_2e^{m_2x} + \cdots + c_ne^{m_nx}
     \], where $c_1, c_2, \cdots, c_n$ are arbitrary constants.
-\end{theorem}
+}
 
-\begin{example}{
+\Example{
     Solve the differential equation \[
         y'' - 3y' + 2y = 0
-\] }{}\vspace{-20pt}
-    The auxiliary equation is \[
-        m^2 - 3m + 2y = 0
-    \]\[ (m-1)(m-2) = 0 \]
-    \[ m = 1,2 \]
+\] }{
+\vspace{-20pt}
+    The auxiliary equation is
+    \begin{align*}
+        m^2 - 3m + 2y &= 0 \\
+        (m-1)(m-2) &= 0 \\
+        m &= 1,2
+    \end{align*}
     The roots are real and distinct. Thus $e^{x}$ and $e^{2x}$ are the solutions, and the general solution is \[
         y = c_1e^{x} + c_2e^{2x}
     \]
@@ -518,21 +544,24 @@ If the AE of (\ref{eq3}) has the $n$ distinct real roots $m_1, m_2, \cdots, m_n$
             e^{x} & 2e^{2x}
         \end{vmatrix} = e^{3x} \neq 0
     \]
-\end{example}
+}
 
-\begin{example}{
+\Example{
     Solve the differential equation \[
         y''' - 4y'' + y' + 6y = 0
-\]}{}\vspace{-20pt}
-    The auxiliary equation is \[
-        m^3 - 4m^2 + m + 6 = 0
-    \]\[ (m+1)(m^2-5m+6) = 0 \]
-    \[ (m+1)(m-2)(m-3) \]
-    \[ m = -1, 2, 3 \]
+\]}{
+\vspace{-20pt}
+    The auxiliary equation is
+    \begin{align*}
+        m^3 - 4m^2 + m + 6 &= 0 \\
+        (m+1)(m^2-5m+6) &= 0 \\
+        (m+1)(m-2)(m-3) &= 0 \\
+        m &= -1, 2, 3
+    \end{align*}
     Thus the general solution is \[
         y = c_1e^{-1} + c_2e^{2x} + c_3e^{3x}
     \]
-\end{example}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Case 2: Repeated Real Roots  %
@@ -540,22 +569,29 @@ If the AE of (\ref{eq3}) has the $n$ distinct real roots $m_1, m_2, \cdots, m_n$
 \vspace{20pt}
 \subsubsection{Case 2: Repeated Real Roots}
 
-\begin{example}{Consider the equation
+\Example{
+    Consider the equation
     \begin{equation}
+        \label{eq:double-root-example}
+        \tag{3.2.3}
         y'' - 6y' + 9y = 0
-    \end{equation}
-}{}\vspace{-20pt}
-    The auxiliary equation is \[
-        m^2 - 6m + 9 = 0
-    \]\[ (m-3)^2 = 0 \]
+    \end{equation}}{
+\vspace{-20pt}
+    The auxiliary equation is
+    \begin{align*}
+        m^2 - 6m + 9 &= 0 \\
+        (m-3)^2 &= 0
+    \end{align*}
     The roots of this equation are \[
         m_1 = 3, m_2 = 3
     \] (real but not distinct)
-\end{example}
+}
 
-From Example 3.2.3 we find the linear combination \[
-    c_1e^{3x} + c_2e^{3x}
-\] \[ \text{or, } (c_1 + c_2)e^{3x} = c_0e^{3x} \]
+From Example 3.2.3 we find the linear combination
+\begin{align*}
+    c_1e^{3x} + c_2e^{3x} \\
+    \text{or, } (c_1 + c_2)e^{3x} = c_0e^{3x}
+\end{align*}
 However, the solutions are clearly not the general solution of the given DE, because the solutions are not linearly independent since the Wronskian is zero:\[
     W(e^{3x}, e^{3x}) =
     \begin{vmatrix}
@@ -563,30 +599,35 @@ However, the solutions are clearly not the general solution of the given DE, bec
         3e^{3x} & 3e^{3x}
     \end{vmatrix} = 0
 \]
-So, we must find a linearly independent solution. Since we already know one solution $e^{3x}$, we may apply Theorem 3.1.7 and reduce the order. Let \[
-    y = e^{3x}v
-\] Then \[
-    y' = e^{3x}v' + 3e^{3x}v
-\] \[ y'' = e^{3x}v'' + 6e^{3x}v' + 9e^{3x}v \]
-Substituting into (3.2.3) we obtain \[
-    ( e^{3x}v'' + 6e^{3x}v' + 9e^{3x}v ) - 6( e^{3x}v' + 3e^{3x}v ) + 9e^{3x}v = 0
-\] \[ \text{or, } e^{3x}v'' = 0 \]
-Letting $w = v'$, we have the first-order equation \[
-    e^{3x}\frac{dw}{dx} = 0
-\] \[ \text{or, } \frac{dw}{dx} = 0 \]
-\[ \text{or, } w = c \]
+So, we must find a linearly independent solution. Since we already know one solution $e^{3x}$, we may apply Theorem 3.1.7 and reduce the order. Let
+\begin{align*}
+    y &= e^{3x}v \\
+    y' &= e^{3x}v' + 3e^{3x}v \\
+    y'' &= e^{3x}v'' + 6e^{3x}v' + 9e^{3x}v
+\end{align*}
+Substituting into \eqref{eq:double-root-example} we obtain
+\begin{align*}
+    ( e^{3x}v'' + 6e^{3x}v' + 9e^{3x}v ) - 6( e^{3x}v' + 3e^{3x}v ) + 9e^{3x}v &= 0 \\
+    \text{or, } e^{3x}v'' &= 0
+\end{align*}
+Letting $w = v'$, we have the first-order equation
+\begin{align*}
+    e^{3x}\frac{dw}{dx} &= 0 \\
+    \text{or, } \frac{dw}{dx} &= 0 \\
+    \text{or, } w &= c
+\end{align*}
 Choosing the particular solution $w = 1$, we get \[
     v(x) = \int{w} \: d{x} = \int{} d{x} = x + c_0
 \]
-By Theorem 3.1.7 we know that for any choice of $c_0$, a solution of the given second-order equation (3.2.3) is \[
+By Theorem 3.1.7 we know that for any choice of $c_0$, a solution of the given second-order equation \eqref{eq:double-root-example} is \[
     y = v(x)e^{3x} = (x + c_0)e^{3x}
 \] We also observe that this solution and the previously known solution $e^{3x}$ are linearly independent. Choosing $c_0 = 0$, we get $y = xe^{3x}$. And thus corresponding to the double root 3, we find the linearly independent solutions $e^{3x}$ and $xe^{3x}$.
-Thus the general solution of (3.2.3) may be written as \[
+Thus the general solution of \eqref{eq:double-root-example} may be written as \[
     y = c_1e^{3x} + c_2xe^{3x} \]
 \[ \text{or, } y = (c_1 + c_2x)e^{3x} \]
 
-\begin{theorem}{}{}
-    \begin{enumerate}
+\Theorem{}{
+\begin{enumerate}
         \item Consider the nth-order homogeneous linear differential equation (\ref{eq3}) with constant coefficients. If the auxiliary equation (\ref{eq4}) has the real root $m$ occurring $k$ times, then the part of the general solution of (\ref{eq3}) corresponding to this $k$-fold repeated root is \[
             (c_1 + c_2x + c_3x^2 + \cdots + c_kx^{k-1})e^{mx}
         \]
@@ -595,17 +636,21 @@ Thus the general solution of (3.2.3) may be written as \[
         \]
         \item If, however, any of the remaining roots are also repeated, then the parts of the general solution of (\ref{eq3}) corresponding to each of these other repeated roots are expressions similar to that corresponding to $m$ in part 1.
     \end{enumerate}
-\end{theorem}
+}
 
-\begin{example}{Find the solution of \[
-    y^{iv} - 5y''' + 6y'' + 4y' - 8y = 0
-\]}{}\vspace{-20pt}
+\Example{
+    Find the solution of
+    \[
+        y^{iv} - 5y''' + 6y'' + 4y' - 8y = 0
+    \]
+}{
+\vspace{-20pt}
     The AE is \[
         m^4 - 5m^3 + 6m^2 + 4m - 8 = 0
     \] with roots $2, 2, 2, -1$. Thus, the general equation is \[
         y = (c_1 + c_2x + c_3x^2)e^{2x} + c_4e^{-x}
     \]
-\end{example}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Case 3: Conjugate Complex Roots  %
@@ -630,8 +675,8 @@ Thus the part of the general solution corresponding to the nonrepeated conjugate
     e^{ax}[c_1\sin{bx} + c_2\cos{bx}]
 \]
 
-\begin{theorem}{}{}
-    \begin{enumerate}
+\Theorem{}{
+\begin{enumerate}
         \item Consider the nth-order homogeneous linear DE (\ref{eq3}) with constant coefficients. If the auxiliary equation (\ref{eq4}) has the nonrepeated conjugate complex roots $a\pm bi$, then the corresponding part of the general solution of (\ref{eq4}) may be written as \[
             y = e^{ax}( c_1\sin{bx} + c_2\cos{bx} )
         \]
@@ -639,11 +684,15 @@ Thus the part of the general solution corresponding to the nonrepeated conjugate
                 y = e^{ax}[ (c_1 + c_2x + c_3x^2 + \cdots + c_kx^{k-1})\sin{bx} + (c_{k+1} + c_{k+2}x + c_{k+3}x^2 + \cdots + c_{2k}x^{k-1})\cos{bx} ]
         \]
     \end{enumerate}
-\end{theorem}
+}
 
-\begin{example}{Find the general solution of \[
-    y'' - 6y' + 25y = 0
-\]}{}\vspace{-20pt}
+\Example{
+    Find the general solution of
+    \[
+        y'' - 6y' + 25y = 0
+    \]
+}{
+\vspace{-20pt}
     The AE is \[
         m^2 - 6m + 25 = 0
     \] Solving it, we find \[
@@ -652,11 +701,15 @@ Thus the part of the general solution corresponding to the nonrepeated conjugate
     Here, the roots are conjugate complex numbers. Hence, the general solution is \[
         y = e^{3x}(c_1\sin{4x} + c_2\cos{4x})
     \]
-\end{example}
+}
 
-\begin{example}{Find the general solution of \[
-    y^{iv} - 4y''' + 14y'' - 20y' + 25y = 0
-\]}{}\vspace{-20pt}
+\Example{
+    Find the general solution of
+    \[
+        y^{iv} - 4y''' + 14y'' - 20y' + 25y = 0
+    \]
+}{
+\vspace{-20pt}
     The AE is \[
         m^4 - 4m^3 + 14m^2 - 20m + 25 = 0
     \]
@@ -668,7 +721,7 @@ Thus the part of the general solution corresponding to the nonrepeated conjugate
     \] or \[
         y = e^{x} [ c_1\sin{2x} + c_2x\sin{2x} + c_3\cos{2x} + c_4x\cos{2x} ]
     \]
-\end{example}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  An Initial-Value Problem  %
@@ -676,20 +729,27 @@ Thus the part of the general solution corresponding to the nonrepeated conjugate
 \vspace{20pt}
 \subsubsection{An Initial-Value Problem}
 
-\begin{example}{Solve the initial-value problem \[
-    y'' - 6y' + 25y = 0
-\]\[ y(0)=-3, y'(0)=-1 \]}{}
-    We already found the general solution of the DE in Example 3.2.5. It is \[
+\Example{
+    Solve the initial-value problem
+    \[
+        y'' - 6y' + 25y = 0, \quad y(0)=-3, \quad y'(0)=-1
+    \]
+}{
+We already found the general solution of the DE in Example 3.2.5. It is \[
         y = e^{3x}( c_1\sin{4x} + c_2\cos{4x} )
     \] From this, we find \[
         y' = e^{3x} [ (3c_1-4c_2)\sin{4x} + (4c_1+3c_2)\cos{} ]
     \] Now, applying the initial condition $y(0)=-3$, we obtain
-    \[ -3 = e^{0}(c_1\sin{0} + c_2\cos{0}) \]
-    \[ \text{or, } c_2=-3 \]
-    Applying initial condition $y'(0)=-1$, we obtain \[
-        -1 = e^{0}[ (3c_1-4c_2)\sin{0} + (4c_1+3c_2)\cos{0} ]
-    \]\[ \text{or, } 4c_1 + 3c_2 = -1 \]
-    \[ \text{or, } c_1=2 \]
+    \begin{align*}
+        -3 &= e^{0}(c_1\sin{0} + c_2\cos{0}) \\
+        \text{or, } c_2 &= -3
+    \end{align*}
+    Applying initial condition $y'(0)=-1$, we obtain
+    \begin{align*}
+        -1 &= e^{0}[ (3c_1-4c_2)\sin{0} + (4c_1+3c_2)\cos{0} ] \\
+        \text{or, } 4c_1 + 3c_2 &= -1 \\
+        \text{or, } c_1 &= 2
+    \end{align*}
     Thus we can write the solution \[
         y = e^{3x}(2\sin{4x} - 3\cos{4x})
     \] We can further modify it by multiplying $\sqrt{(2)^2 + (-3)^2} = \sqrt{13}$ with nominator and denominator
@@ -699,7 +759,7 @@ Thus the part of the general solution corresponding to the nonrepeated conjugate
     \], where \[
         \sin{\phi}=-\frac{3}{13,} \text{ and } \cos{\phi}=\frac{2}{\sqrt{13}}
     \]
-\end{example}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -723,18 +783,21 @@ General solution \[
     y = y_c + y_p
 \]
 
-\begin{example}{Introductory Example}{}
-    \begin{equation}
+\Example{Introductory Example}{
+\begin{equation}
+        \label{eq:undetermined-ex1}
+        \tag{3.3.2}
         y'' - 2y' - 3y = 2e^{4x}
     \end{equation}
     We proceed to seek a particular integral $y_p$. Since the derivatives of $e^{4x}$ are constant multiples of $e^{4x}$, it seemsreasonable that the desired particular integral might also be constant multiple of $e^{4x}$ so that the 2nd derivative and 1st derivative of it and the function itself multiplied by the constants is equal to $2e^{4x}$.\\
 Let's assume
 \begin{equation}
+    \label{eq:undetermined-assumption1}
     y_p = Ae^{4x}
 \end{equation}
 Here $A$ is the undetermined coefficient to be determined. \[
     y_p' = 4Ae^{4x}, y_p'' = 16Ae^{4x}
-\] Substituting into (3.3.2), we obtain
+\] Substituting into \eqref{eq:undetermined-ex1}, we obtain
 \begin{align*}
     16Ae^{4x} - 8Ae^{4x} - 3Ae^{4x} &= 2e^{4x} \\
     5Ae^{4x} &= 2e^{4x} \\
@@ -746,34 +809,42 @@ Here $A$ is the undetermined coefficient to be determined. \[
 
 Now consider the differential equation
 \begin{equation}
+    \label{eq:undetermined-ex2}
+    \tag{3.3.4}
     y'' - 2y' - 3y = 2e^{3x}
 \end{equation}
 Here if we assume
 \begin{equation}
+    \label{eq:undetermined-assumption2}
+    \tag{3.3.5}
     y_p = Ae^{3x}
 \end{equation}
 Then \[
     y_p' = 3Ae^{3x}, y_p'' = 9Ae^{3x}
 \]
-Substituting into (3.3.4), we obtain
+Substituting into \eqref{eq:undetermined-ex2}, we obtain
 \begin{align*}
     9Ae^{3x} - 2(3Ae^{3x}) - 3(Ae^{3x}) &= 2e^{3x} \\
     0 \cdot Ae^{3x} &= 2e^{3x} \\
     0 &= 2e^{3x}
 \end{align*}
-which is not possible, and hence there is no particular integral of the form (3.3.5).
+which is not possible, and hence there is no particular integral of the form \eqref{eq:undetermined-assumption2}.
 
 \rule{4in}{0.25pt}
 
 Let's examine the homogeneous equation 
 \begin{equation}
+    \label{eq:undetermined-homog}
+    \tag{3.3.6}
     y'' - 2y' - 3y = 0
 \end{equation}
-Auxiliary equation: \[
-    m^2 - 2m - 3 = 0
-\] \[ m = 3, -1 \]
+Auxiliary equation:
+    \begin{align*}
+        m^2 - 2m - 3 &= 0 \\
+        m &= 3, -1
+    \end{align*}
 $\therefore e^{-1}$ and $e^{3x}$ are linearly independent solutions.\\
-The failure to obtain a solution of the form (3.3.5) is due to the fact that  $e^{3x}$ is a solution of the corresponding homogeneous equation of (3.3.4). Since $e^{3x}$ satisfies the homogeneous equation, it reduces the left member of the equation to 0, not $2e^{3x}$.
+The failure to obtain a solution of the form \eqref{eq:undetermined-assumption2} is due to the fact that  $e^{3x}$ is a solution of the corresponding homogeneous equation of \eqref{eq:undetermined-ex2}. Since $e^{3x}$ satisfies the homogeneous equation, it reduces the left member of the equation to 0, not $2e^{3x}$.
 
 \rule{4in}{0.25pt}
 
@@ -784,14 +855,14 @@ So, now what form of solution should we seek? Recall that in case of double root
 Then \[
     y_p' = 3Axe^{3x} + Ae^{3x}, y_p'' = 9Axe^{3x} + 6Ae^{3x}
 \]
-Substituting into (3.3.4), we obtain
+Substituting into \eqref{eq:undetermined-ex2}, we obtain
 \begin{align*}
     (9Axe^{3x} + 6Ae^{3x}) - 2(3Axe^{3x} + Ae^{3x}) - 3Axe^{3x} &= 2e^{3x} \\
     0 \cdot xe^{3x} + 4Ae^{3x} &= 2e^{3x} \\
     A &= \frac{1}{2}
 \end{align*}
 \[ \therefore y_p = \frac{1}{2}xe^{3x} \]
-\end{example}
+}
 
 The differential equation
 \begin{equation}\tag{3.3.2}
@@ -804,17 +875,17 @@ each have the same corresponding homogeneous DE
 \begin{equation}\tag{3.3.6}
     y'' - 2y' - 3y = 0
 \end{equation}
-Equation (3.3.6) has solutions $e^{3x}$ and $e^{-1}$ \[
+Equation \eqref{eq:undetermined-homog} has solutions $e^{3x}$ and $e^{-1}$ \[
     \therefore y_c = c_1e^{3x} + e^{-1}
 \]
-The right member of (3.3.2), $2e^{4x}$, is not a solution of (3.3.6)
+The right member of \eqref{eq:undetermined-ex1}, $2e^{4x}$, is not a solution of \eqref{eq:undetermined-homog}
 \begin{equation}
     \therefore y_{p,(3.3.2)} = Ae^{4x}
 \end{equation}
 And general solution \[
     y_{(3.3.2)} = c_1e^{3x} + e^{-1} + \frac{2}{5}e^{4x}
 \]
-The right member of (3.3.4), $e^{2e^{3x}}$ is a solution of (3.3.6)
+The right member of \eqref{eq:undetermined-ex2}, $e^{2e^{3x}}$ is a solution of \eqref{eq:undetermined-homog}
 \begin{equation}
     \therefore y_{p, (3.3.4)} = Axe^{3x}
 \end{equation}
@@ -828,11 +899,11 @@ And general solution \[
 \vspace{20pt}
 \subsubsection{The Method}
 
-\begin{definition}{UC function}{}
-    We'll call a function a UC function if it is either
+\Definition{UC function}{
+We'll call a function a UC function if it is either
     \begin{enumerate}
         \item a function defined by one of the following:
-            \begin{enumerate}[(i)]
+            \begin{enumerate}[label=(\roman*)]
                 \item $x_n$, where $n$ is a positive integer or zero,
                 \item $e^{ax}$, where $a$ is a constant and $a \neq 0$,
                 \item $\sin{(bx+c)}$, where $b$ and $c$ are constants, and $b \neq 0$,
@@ -840,14 +911,14 @@ And general solution \[
             \end{enumerate}
         \item or a function defined as a finite product of two or more functions of these four types.
     \end{enumerate}
-\end{definition}
+}
 
-\begin{definition}{UC set}{}
-    Consider a UC fucntion $f$. The set of functions consisting of $f$ itself and all linearly independent UC functions of which the successive derivatives of $f$ are either constant multiples or linear combinations will be called the UC set of $f$.
-\end{definition}
+\Definition{UC set}{
+Consider a UC fucntion $f$. The set of functions consisting of $f$ itself and all linearly independent UC functions of which the successive derivatives of $f$ are either constant multiples or linear combinations will be called the UC set of $f$.
+}
 
-\begin{example}{}{}
-    The function $f$ defined for all real $x$ by $f(x)=x^3$ is a UC function. Computing derivatives of $f$, we find \[
+\Example{}{
+The function $f$ defined for all real $x$ by $f(x)=x^3$ is a UC function. Computing derivatives of $f$, we find \[
         f'(x) = 3x^2, f''(x) = 6x, f'''(x) = 6, f^{(n)}(x) = 0 \text{ for } n>3
     \]
     The linearly independent UC functions of which the successive derivatives of $f$ are either constant multiples or linear combinations are those given by \[
@@ -856,7 +927,7 @@ And general solution \[
     Thus the UC set of $x^3$ is the set \[
         S = {x^3, x^2, x, 1}
     \]
-\end{example}
+}
 
 \bgroup
 \def\arraystretch{1.33}
@@ -873,9 +944,10 @@ And general solution \[
     7 & $x^ne^{ax}\sin{(bx+c)}$ or $x^ne^{ax}\cos{(bx+x)}$ & $ \left\{ x^ke^{ax}\sin{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} \cup $ $ \left\{ x^ke^{ax}\cos{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} $ \\\hline
 \end{tabular}
 \end{table}
+\egroup
 
-\begin{example}{$f(x)=x^2\sin{x}$}{}
-    Here, $f$ is a product of two UC functions $x^2$ and $\sin{x}$. Computing derivatives, we find
+\Example{$f(x)=x^2\sin{x}$}{
+Here, $f$ is a product of two UC functions $x^2$ and $\sin{x}$. Computing derivatives, we find
     \begin{align*}
         f'(x) &= 2x\sin{x} + x^2\cos{x} \\
         f''(x) &= 2\sin{x} + 4x\cos{x} - x^2\sin{x} \\
@@ -887,20 +959,20 @@ And general solution \[
     Also notice that the UC sets of $x^2$ and $\sin{x}$ are the following respectively:
     \[ S_{x^2} = \left\{ x^2, x, 1 \right\} \]
     \[ S_{\sin{x}} = \left\{ \sin{x}, \cos{x} \right\} \]
-\end{example}
+}
 
-\begin{example}{$f(x) = x^3\cos{2x}$}{}
-    UC set of $x^3$ : \[
+\Example{$f(x) = x^3\cos{2x}$}{
+UC set of $x^3$ : \[
         \left\{ x^3, x^2, x, 1 \right\}
     \] UC set of $\cos{2x}$: \[
         \left\{ \sin{2x}, \cos{2x} \right\}
     \] Hence, the UC set of $f(x) = x^3\cos{2x}$: \[
         S = \left\{ x^3\sin{2x}, x^3\cos{2x}, x^2\sin{2x}, x^2\cos{2x}, x\sin{2x}, x\cos{2x}, \sin{2x}, \cos{2x} \right\}
     \]
-\end{example}
+}
 
 \vspace{10pt}
-\begin{note}{}
+\Note{Method of Undetermined Coefficients}{
     Now we outline the method of undetermined coefficients for finding the particular integral $y_p$ of
     \begin{equation} \tag{3.3.1}
         a_0y^{(n)} + a_1y^{(n-1)} + \cdots + a_{n-1}y' + a_ny = F(x)
@@ -915,49 +987,63 @@ And general solution \[
         \item Now form a linear combination of all the sets remaining after Step 2 and Step 3, with unknown constants (undetermined coefficients).
         \item Determine the unknown coefficients by substituting the linear combination into the differential equation (\ref{eq5})
     \end{enumerate}
-\end{note}
+}
 
-\begin{example}{Solve the differential equation \[
-    y'' - 2y' + y = x^2e^{x}
-\]}{}\vspace{-20pt}
+\Example{
+    Solve the differential equation
+    \[
+        y'' - 2y' + y = x^2e^{x}
+    \]
+}{
+\vspace{-20pt}
     UC set of $x^2e^{x}$ is \[
         S = \left\{ x^2e^{x}, xe^{x}, e^{x} \right\}
     \]
     Now corresponding homogeneous DE: \[
         y'' - 3y' + y = 0
     \]
-    \[ \text{ AE: } m^2 - 2m + 2 = 0 \]
-    \[ m = 1, 1 \]
-    \[ \therefore y_c = (c_1 + c_2x)e^{x} \]
+    \begin{align*}
+        \text{ AE: } m^2 - 2m + 2 &= 0 \\
+        m &= 1, 1 \\
+        \therefore y_c &= (c_1 + c_2x)e^{x}
+    \end{align*}
     Hence the UC set have to be processed.
-    \[ S' = \left\{ x^3e^{x}, x^2e^{x}, xe^{x} \right\} \]
-    \[ S'' = \left\{ x^4e^{x}, x^3e^{x}, x^2e^{x} \right\} \]
+    \begin{align*}
+        S' &= \left\{ x^3e^{x}, x^2e^{x}, xe^{x} \right\} \\
+        S'' &= \left\{ x^4e^{x}, x^3e^{x}, x^2e^{x} \right\}
+    \end{align*}
     Hence the complimentary function, \[
         y_p = Ax^4e^{x} + Bx^3e^{x} + Cx^2e^{x}
     \]
-    Differentiating it, we obtain \[
-        y_p' = Ax^4e^{x} + (4A+B)x^3e^{x} + (3B+C)x^2e^{x} + 2Cxe^{x}
-    \] \[
-        y_p'' = Ax^4e^{x} + (8A+B)x^3e^{x} + (12A+6B+C)x^2e^{x} + (6B+4C)xe^{x} + 2Ce^{x}
-    \]
-    Substituting them into the given DE, we obtain \[
-        \left[ Ax^4e^{x} + (8A+B)x^3e^{x} + (12A+6B+C)x^2e^{x} + (6B+4C)xe^{x} + 2Ce^{x} \right] \]\[- 2 \left[ Ax^4e^{x} + (4A+B)x^3e^{x} + (3B+C)x^2e^{x} + 2Cxe^{x} \right] \]\[+ \left[ Ax^4e^{x} + Bx^3e^{x} + Cx^2e^{x} \right] = x^2e^{x}
-    \]
+    Differentiating it, we obtain
+    \begin{align*}
+        y_p' &= Ax^4e^{x} + (4A+B)x^3e^{x} + (3B+C)x^2e^{x} + 2Cxe^{x} \\
+        y_p'' &= Ax^4e^{x} + (8A+B)x^3e^{x} + (12A+6B+C)x^2e^{x} + (6B+4C)xe^{x} + 2Ce^{x}
+    \end{align*}
+    Substituting them into the given DE, we obtain
+    \begin{align*}
+        &\left[ Ax^4e^{x} + (8A+B)x^3e^{x} + (12A+6B+C)x^2e^{x} + (6B+4C)xe^{x} + 2Ce^{x} \right] \\
+        &- 2 \left[ Ax^4e^{x} + (4A+B)x^3e^{x} + (3B+C)x^2e^{x} + 2Cxe^{x} \right] \\
+        &+ \left[ Ax^4e^{x} + Bx^3e^{x} + Cx^2e^{x} \right] = x^2e^{x}
+    \end{align*}
     or \[ 12Ax^2 + 6Bx + 2C = x^2 \]
     Equating the coefficients, we obtain \[
         A = \frac{1}{12}, B = 0, C = 0
     \]
-    Hence, the general solution is \[
-        y = y_c + y_p
-    \] \[
-        \boxed{ y = (c_1 + c_2x)e^{x} + \frac{1}{12}x^4e^{x} }
-    \]
-\end{example}
+    Hence, the general solution is
+    \begin{align*}
+        y &= y_c + y_p \\
+        &\boxed{ y = (c_1 + c_2x)e^{x} + \frac{1}{12}x^4e^{x} }
+    \end{align*}
+}
 
-\begin{example}{Solve the differential equation \[
-    y'' - 2y' - 3y = 2e^{x} - 10\sin{x}
-\]}{}
-    The corresponding homogeneous equation: \[
+\Example{
+    Solve the differential equation
+    \[
+        y'' - 2y' - 3y = 2e^{x} - 10\sin{x}
+    \]
+}{
+The corresponding homogeneous equation: \[
         y'' - 2y' - 3y = 0
     \] AE : \[
         m^2 - 2m - 3 = 0 \text{ or, } m = 3, -1
@@ -967,42 +1053,54 @@ And general solution \[
     Now, UC sets of $e^{x}$ and $\sin{x}$ are respectively: \[
         S_1 = \{ e^{x} \}, S_2 = \{ \sin{x}, \cos{x} \}
     \]
-    Therefore, the linear combination \[
-        y_p = Ae^{x} + B\sin{x} + C\cos{x}
-    \] \[ y_p' = Ae^{x} + B\cos{x} - C\sin{x} \]
-    \[ y_p'' = Ae^{x} - B\sin{x} - C\cos{x} \]
-    Substituting into the given DE, \[
-        ( Ae^{x} - B\sin{x} - C\cos{x} ) - 2( Ae^{x} + B\cos{x} - C\sin{x} ) - 3( Ae^{x} + B\sin{x} + C\cos{x} ) = 2e^{x} - 10\sin{x}
-    \] \[
-        -4Ae^{x} + ( -4B+2C )\sin{x} + ( -4C-2B )\cos{x} = 2e^{x} - 10\sin{x}
-    \]
+    Therefore, the linear combination
+    \begin{align*}
+        y_p &= Ae^{x} + B\sin{x} + C\cos{x} \\
+        y_p' &= Ae^{x} + B\cos{x} - C\sin{x} \\
+        y_p'' &= Ae^{x} - B\sin{x} - C\cos{x}
+    \end{align*}
+    Substituting into the given DE,
+    \begin{align*}
+        &( Ae^{x} - B\sin{x} - C\cos{x} ) - 2( Ae^{x} + B\cos{x} - C\sin{x} ) - 3( Ae^{x} + B\sin{x} + C\cos{x} ) = 2e^{x} - 10\sin{x} \\
+        &-4Ae^{x} + ( -4B+2C )\sin{x} + ( -4C-2B )\cos{x} = 2e^{x} - 10\sin{x}
+    \end{align*}
     Equating the coefficients, we obtain \[
         A = -\frac{1}{2}, B = 2, C = -1
     \]
     Hence, the PI, \[
         y_p = -\frac{1}{2}e^{x} + 2\sin{x} - \cos{x}
     \]
-    Finally, the general solution of the equation is \[
-        y = y_c + y_p
-    \] \[
-        \boxed{ y = c_1e^{3x} + c_2e^{-x} - \frac{1}{2}e^{x} + 2\sin{x} - \cos{x} }
-    \]
-\end{example}
+    Finally, the general solution of the equation is
+    \begin{align*}
+        y &= y_c + y_p \\
+        &\boxed{ y = c_1e^{3x} + c_2e^{-x} - \frac{1}{2}e^{x} + 2\sin{x} - \cos{x} }
+    \end{align*}
+}
 
-\begin{example}{Solve the differential equation \[
-    y'' + 4y = 12x^2 - 16x\cos{2x}
-\]}{}\vspace{-20pt}
+\Example{
+    Solve the differential equation
+    \[
+        y'' + 4y = 12x^2 - 16x\cos{2x}
+    \]
+}{
+\vspace{-20pt}
     Corresponding homogeneous equation: \[
         y'' + 4y = 0
-    \] Auxiliary equation: \[
-        m^2 + 4 = 0 \quad \therefore m = \pm 2i
-    \] Therefore, the complimentary function: \[
+    \]
+    Auxiliary equation:
+    \begin{align*}
+        m^2 + 4 &= 0 \\
+        \therefore m &= \pm 2i
+    \end{align*}
+    Therefore, the complimentary function: \[
         y_c = c_1\sin{2x} + c_2\cos{2x}
     \]
     Now, UC sets of $x^2$ and $x\cos{2x}$ are
-    \[ S_1 = \{ x^2, x, 1 \} \]
-    \[ S_2 = \{ x\sin{2x}, x\cos{2x}, \sin{2x}, \cos{2x} \} \]
-    \[ S_2' = \{ x^2\sin{2x}, x^2\cos{2x}, x\sin{2x}, x\cos{2x} \} \]
+    \begin{align*}
+        S_1 &= \{ x^2, x, 1 \} \\
+        S_2 &= \{ x\sin{2x}, x\cos{2x}, \sin{2x}, \cos{2x} \} \\
+        S_2' &= \{ x^2\sin{2x}, x^2\cos{2x}, x\sin{2x}, x\cos{2x} \}
+    \end{align*}
     $\therefore$ Particular integral: \[
         y_p = Ax^2 + Bx + C + Dx^2\sin{2x} + Ex^2\cos{2x} + Fx\sin{2x} + Gx\cos{2x}
     \]
@@ -1042,7 +1140,7 @@ And general solution \[
     \] \[
         \boxed{ y = c_1\sin{2x} + c_2\cos{2x} + 3x^2 - \frac{3}{2} - 2x^2\sin{2x} - x\cos{2x} }
     \]
-\end{example}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1059,10 +1157,14 @@ And general solution \[
 
 The method of undetermined coefficients is quite straightforward, but its application is also restricted. Thus we seek a general method that applies in all cases. Let a nonhomogeneous linear differential equation be
 \begin{equation}
+    \label{eq:vop-nonhomog}
+    \tag{3.4.1}
     a_0(x)y'' + a_1(x)y' + a_2(x)y = F(x)
 \end{equation}
 The corresponding homogeneous equation is
 \begin{equation}
+    \label{eq:vop-homog}
+    \tag{3.4.2}
     a_0(x)y'' + a_1(x)y' + a_2(x)y = 0
 \end{equation}
 Suppose the complimentary functions \[
@@ -1072,7 +1174,7 @@ Now, if we replace $c_1$ and $c_2$ by functions $v_1$ and $v_2$ respectively, wh
 \begin{equation}
     v_1(x)y_1(x) + v_2(x)y_2(x)
 \end{equation}
-will be a particular integral of (3.4.1). We can write \[
+will be a particular integral of \eqref{eq:vop-nonhomog}. We can write \[
     y_p(x) = v_1(x)y_1(x) + v_2(x)y_2(x)
 \] \[
     y_p'(x) = v_1(x)y_1'(x) + v_2(x)y_2'(x) + v_1'(x)y_1(x) + v_2'(x)y_2(x)
@@ -1083,7 +1185,7 @@ will be a particular integral of (3.4.1). We can write \[
 \] \[
     y_p''(x) = v_1(x)y_1''(x) + v_2(x)y_2''(x) + v_1'(x)y_1'(x) + v_2'(x)y_2'(x)
 \]
-Substituting into (3.4.1),
+Substituting into \eqref{eq:vop-nonhomog},
 \begin{equation*}
     \begin{split}
         a_0(x)  &[ v_1(x)y_1''(x) + v_2(x)y_2''(x) + v_1'(x)y_1'(x) + v_2'(x)y_2'(x) ]\\
@@ -1098,14 +1200,16 @@ Substituting into (3.4.1),
                 & + a_0(x)[ v_1'(x)y_1'(x) + v_2'(x)y_2'(x) ] = F(x)
     \end{split}
 \end{equation*}
-Since $y_1$ and $y_2$ are solutions of (3.4.2), we get \[
+Since $y_1$ and $y_2$ are solutions of \eqref{eq:vop-homog}, we get \[
      v_1(x)y_1(x) + v_2(x)y_2(x) = \frac{F(x)}{a_0(x)}
 \]
 Now, $v_1$ and $v_2$ have to be chosen such that the following system of equation is satisfied:
-\begin{align*}
+\begin{align}
+    \label{eq:vop-system}
+    \tag{3.4.4}
     y_1(x)v_1'(x) + y_2(x)v_2'(x) &= 0 \\
-    y_1'(x)v_1'(x) + y_2'(x)v_2'(x) &= \frac{F(x)}{a_0(x)}
-\end{align*}
+    y_1'(x)v_1'(x) + y_2'(x)v_2'(x) &= \frac{F(x)}{a_0(x)} \notag
+\end{align}
 Now,
 \[
     \begin{bmatrix}
@@ -1157,9 +1261,9 @@ Now,
     \end{split}
     }
 \end{equation}
-Therefore, a particular integral $y_p$ of (3.4.1) is defined by \[
+Therefore, a particular integral $y_p$ of \eqref{eq:vop-nonhomog} is defined by \[
     y_p = v_1(x)y_1(x) + v_2(x)y_2(x)
-\] where $v_1$ and $v_2$ are defined by (3.4.4).
+\] where $v_1$ and $v_2$ are defined by \eqref{eq:vop-system}.
 
 
 
