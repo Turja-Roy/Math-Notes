@@ -19,11 +19,11 @@
 \Definition{Linear Ordinary Differential Equation of Order $n$}{
 A \textbf{linear ordinary differential equation of order $n$} in the dependent variable $y$ and the independent variable $x$ is an equation that is in, or can be expressed in the form
     \begin{equation} \label{eq1}
-        a_0(x)y^{(n)} + a_1(x)y^{(n-1)}n + \cdots + a_{n-1}(x)y' + a_n(x)y = F(x)
+        a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = F(x)
     \end{equation}
     where $a_0$ is not identically zero. In the equation, $a_0, a_1, \cdots, a_n$ and $F$ are continuous real functions on a real interval $a \le x \le b$ and that $a_0(x) \neq 0$ for any $x$ on $a \le x \le b$. The $F(x)$ is called the nonhomogeneous term. If $F$ is identically zero, Equation (\ref{eq1}) reduces to
     \begin{equation} \label{eq2}
-        a_0(x)y^{(n)} + a_1(x)y^{(n-1)}n + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
+        a_0(x)y^{(n)} + a_1(x)y^{(n-1)} + \cdots + a_{n-1}(x)y' + a_n(x)y = 0
     \end{equation}
     Equation (\ref{eq2}) is a \textbf{homogeneous differential equation of order $n$}.
 }
@@ -728,16 +728,17 @@ Thus the part of the general solution corresponding to the nonrepeated conjugate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{20pt}
 \subsubsection{An Initial-Value Problem}
+\lineskip
 
 \Example{
-    Solve the initial-value problem
-    \[
+    Solve the initial-value problem \[
         y'' - 6y' + 25y = 0, \quad y(0)=-3, \quad y'(0)=-1
     \]
 }{
-We already found the general solution of the DE in Example 3.2.5. It is \[
+    \vspace{-0.5cm}
+    We already found the general solution of the DE in Example 3.2.5. It is \[
         y = e^{3x}( c_1\sin{4x} + c_2\cos{4x} )
-    \] From this, we find \[
+        \] From this, we find \[
         y' = e^{3x} [ (3c_1-4c_2)\sin{4x} + (4c_1+3c_2)\cos{} ]
     \] Now, applying the initial condition $y(0)=-3$, we obtain
     \begin{align*}
@@ -756,7 +757,7 @@ We already found the general solution of the DE in Example 3.2.5. It is \[
     \[ y = \sqrt{13}e^{3x} \left[ \frac{2}{\sqrt{13}}\sin{4x} - \frac{3}{\sqrt{13}}\cos{4x} \right] \]
     From this, we may express the solution in the alternative form \[
         y = \sqrt{13}e^{3x}\sin( 4x + \phi )
-    \], where \[
+        \]where \[
         \sin{\phi}=-\frac{3}{13,} \text{ and } \cos{\phi}=\frac{2}{\sqrt{13}}
     \]
 }
@@ -932,17 +933,17 @@ The function $f$ defined for all real $x$ by $f(x)=x^3$ is a UC function. Comput
 \bgroup
 \def\arraystretch{1.33}
 \begin{table}[h]
-\centering
-\begin{tabular}{p{0.05\linewidth} | p{0.21\linewidth} | p{0.45\linewidth}}
+    \centering
+    \begin{tabular}{p{0.05\linewidth} | p{0.21\linewidth} | p{0.45\linewidth}}
       & UC function & UC set \\\hline\hline
-    1 & $x^n$ & $\left\{ x^k : 0 \le k \le n , k \in \mathbb{N} \right\}$ \\\hline
-    2 & $e^{ax}$ & $\left\{ e^{ax} \right\}$ \\\hline
-    3 & $\sin{(bx+c)}$ or $\cos{(bx+c)}$ & $\left\{ \sin{(bx+c)}, \cos{(bx+c)}\right\}$ \\\hline
-    4 & $x^ne^{ax}$ & $\left\{ x^ke^{ax} : 0 \le k \le n \right\}$ \\\hline
-    5 & $x^n\sin{(bx+c)}$ or $x^n\cos{(bx+x)}$ & $ \left\{ x^k\sin{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} \cup \left\{ x^k\cos{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} $ \\\hline
-    6 & $e^{ax}\sin{(bx+c)}$ or $e^{ax}\cos{(bx+c)}$ & $\left\{ e^{ax}\sin{(bx+c)}, e^{ax}\cos{(bx+c)} \right\}$ \\\hline
-    7 & $x^ne^{ax}\sin{(bx+c)}$ or $x^ne^{ax}\cos{(bx+x)}$ & $ \left\{ x^ke^{ax}\sin{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} \cup $ $ \left\{ x^ke^{ax}\cos{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} $ \\\hline
-\end{tabular}
+        1 & $x^n$ & $\left\{ x^k : 0 \le k \le n , k \in \mathbb{N} \right\}$ \\\hline
+        2 & $e^{ax}$ & $\left\{ e^{ax} \right\}$ \\\hline
+        3 & $\sin{(bx+c)}$ or $\cos{(bx+c)}$ & $\left\{ \sin{(bx+c)}, \cos{(bx+c)}\right\}$ \\\hline
+        4 & $x^ne^{ax}$ & $\left\{ x^ke^{ax} : 0 \le k \le n \right\}$ \\\hline
+        5 & $x^n\sin{(bx+c)}$ or $x^n\cos{(bx+x)}$ & $ \left\{ x^k\sin{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} \cup \left\{ x^k\cos{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} $ \\\hline
+        6 & $e^{ax}\sin{(bx+c)}$ or $e^{ax}\cos{(bx+c)}$ & $\left\{ e^{ax}\sin{(bx+c)}, e^{ax}\cos{(bx+c)} \right\}$ \\\hline
+        7 & $x^ne^{ax}\sin{(bx+c)}$ or $x^ne^{ax}\cos{(bx+x)}$ & $ \left\{ x^ke^{ax}\sin{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} \cup $ $ \left\{ x^ke^{ax}\cos{(bx+c)} : 0 \le k \le n , k \in \mathbb{N} \right\} $ \\\hline
+    \end{tabular}
 \end{table}
 \egroup
 
@@ -972,7 +973,7 @@ UC set of $x^3$ : \[
 }
 
 \vspace{10pt}
-\Note{Method of Undetermined Coefficients}{
+\Note[Method of Undetermined Coefficients]{
     Now we outline the method of undetermined coefficients for finding the particular integral $y_p$ of
     \begin{equation} \tag{3.3.1}
         a_0y^{(n)} + a_1y^{(n-1)} + \cdots + a_{n-1}y' + a_ny = F(x)
@@ -1147,7 +1148,7 @@ The corresponding homogeneous equation: \[
 %  Variation of Parameters  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{20pt}\rule{3in}{1pt}
-\subsection{Variationg of Parameters}
+\subsection{Variation of Parameters}
 
 %%%%%%%%%%%%%%%%
 %  The Method  %
