@@ -1,0 +1,187 @@
+\section{Sets and Relations}
+
+%%%%%%%%%%
+%  Sets  %
+%%%%%%%%%%
+
+\subsection{Sets}
+
+\Definition{Set}{
+    A \textbf{set} is a well-defined collection of distinct objects, considered as an object in its own right. The objects in a set are called \textbf{elements} or \textbf{members} of the set.
+}
+
+\begin{enumerate}
+    \item A set is made up of \textbf{elements,} and if $a$ is one of these elements, we denote this fact by $a \in S$. 
+    \item There is exactly one set with no elements. It is the \textbf{empty set} and is denoted by $\{\}$ or $\varnothing$.
+    \item We may describe a set either by giving a characterizing property of the elements, such as $S = \{ x \mid P(x) \}$, or by listing the elements, such as $S = \{ a, b, c \}$. 
+    \item A set is \textbf{well-defined}, meaning that if $S$ is a set and $a$ is an object, then either $a$ is definitely in $S$, denoted by $a \in S$, or $a$ is definitely not in $S$, denoted by $a \notin S$.
+\end{enumerate}
+
+\Definition{Subset}{
+    A set $A$ is a \textbf{subset} of a set $B$, denoted $A \subseteq B$, or $B \supseteq A$, if every element of $A$ is also an element of $B$.
+}
+
+\Definition{Proper and Improper Subsets}{
+    A \textbf{proper subset} of a set $B$ is a subset $A$ such that $A \neq B$, and is denoted by $A \subset B$ or $B \supset A$. An \textbf{improper subset} of a set $B$ is the set $B$ itself, denoted by $B \subseteq B$.
+}
+
+\Definition{Cartesian Product}{
+    The \textbf{Cartesian product} of two sets $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs $(a, b)$ where $a \in A$ and $b \in B$. Formally, \[
+        A \times B = \{ (a, b) \mid a \in A, b \in B \}.
+    \]
+}
+
+
+%%%%%%%%%%%%%%%
+%  Relations  %
+%%%%%%%%%%%%%%%
+
+\subsection{Relations}
+
+\Definition{Relation}{
+    A \textbf{relation} between sets $A$ and $B$ is a subset $\RR$ of $A \times B$. We read $(a,b) \in \RR$ as "$a$ is related to $b$" and write $a \RR b$.
+}
+
+\Note[Relation on $S$]{
+    Any relation between a set $S$ and itself is called a \textbf{relation on} $S$.
+}
+
+\Definition{Mapping}{
+    A \textbf{function} $\phi$ mapping $X$ into $Y$ is a relation between $X$ and $Y$ with the property that each $x \in X$ appears as the first member of exactly one ordered pair $(x,y)$ in $\phi$. Such a function is called a \textbf{map} or \textbf{mapping} of $X$ into $Y$. We write $\phi : X \to Y$ and express $(x,y) \in \phi$ by $\phi(x) = y$.
+}
+
+\Note[Domain, Codomain, Range]{
+    For the mapping $\phi : X \to Y$,
+    \begin{itemize}
+        \item The \textbf{domain} of $\phi$ is the set $X$
+        \item The set $Y$ is the \textbf{codomain} of $\phi$ 
+        \item The \textbf{range} of $\phi$ is $\phi[X] = \{ \phi(x) \mid x \in X \}$.
+    \end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%
+%  Cardinality  %
+%%%%%%%%%%%%%%%%%
+
+\subsection{Cardinality}
+
+\Definition{Cardinality}{
+    The number of elements in a set $S$ is called the \textbf{cardinality} of $S$, denoted by $|S|$. If $S$ is finite, then $|S|$ is a non-negative integer. If $S$ is infinite, then $|S|$ is not a finite number.
+}
+
+\Definition{Injective, Surjective, and Bijective Functions}{
+    A function $\phi : A \to B$ is \textbf{injective} (or \textbf{one-to-one}) if
+    \[ \forall a_1,a_2 \in A, \quad \phi(a_1) = \phi(a_2) \implies a_1 = a_2. \]
+    It is \textbf{surjective} (or \textbf{onto}) if the range of $\phi$ is $B$, i.e.,
+    \[ \forall b \in B, \exists a \in A \text{ s.t. } \phi(a) = b \]
+    It is \textbf{bijective} if it is both injective and surjective.
+}
+
+\Definition{One-to-one Correspondence}{
+    A \textbf{one-to-one correspondence} between two sets $A$ and $B$ is a bijective function $\phi : A \to B$. If such a function exists, we say that $A$ and $B$ have the same cardinality, denoted by $|A| = |B|$.
+}
+
+\Definition{Equal Cardinality}{
+    Two sets $A$ and $B$ have the \textbf{same/equal cardinality} if there exists a one-to-one function mapping $A$ onto $B$, that is, if there exists a one-to-one correspondence between $A$ and $B$. In this case, we write $|A| = |B|$.
+}
+
+\Example{}{
+    The function $f : \R \to \R$ where $f(x)=x^2$ is not injective, since $f(2)=f(-2)=4$ but $2 \neq -2$. Also it is not surjective, since there is no $x \in \R$ such that $f(x)=-1$. However, the function $g : \R \to \R$ where $g(x)=x^3$ is both injective and surjective, since for any $y \in \R$, there exists a unique $x \in \R$ such that $g(x)=y$, namely $x = \sqrt[3]{y}$. Therefore, $g$ is a bijection.
+}
+
+\Example{Show that $\Z$ and $\Z^+$ have the same cardinality}{
+    We can define a function $f : \Z \to \Z^+$ by
+    \[
+        f(n) = \begin{cases}
+            2n + 1 & \text{if } n \geq 0, \\
+            -2n & \text{if } n < 0.
+        \end{cases}
+    \]
+    This function is injective, since if $f(n_1) = f(n_2)$, then either both $n_1$ and $n_2$ are non-negative or both are negative. In the first case, we have $2n_1 + 1 = 2n_2 + 1$, which implies $n_1 = n_2$. In the second case, we have $-2n_1 = -2n_2$, which also implies $n_1 = n_2$. Therefore, $f$ is injective.
+
+    To show that $f$ is surjective, let $m \in \Z^+$. If $m$ is odd, then there exists a non-negative integer $k$ such that $m = 2k + 1$, and we can choose $n = k$ to get $f(n) = m$. If $m$ is even, then there exists a positive integer $k$ such that $m = 2k$, and we can choose $n = -k$ to get $f(n) = m$. Therefore, for every positive integer $m$, there exists an integer $n$ such that $f(n) = m$, which means that $f$ is surjective.
+
+    Since $f$ is both injective and surjective, it is a bijection. Therefore, $\Z$ and $\Z^+$ have the same cardinality.
+}
+
+\Note{
+    It is fascinating that a proper subset of an infinite set may have the same number of elements as the whole set; an \textbf{infinite set} can be defined as a set having this property.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Partitions and Equivalence Relations  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Partitions and Equivalence Relations}
+
+\Definition{Partition}{
+    A \textbf{partition} of a set $S$ is a collection of nonempty subsets of $S$ such that every element of $S$ is in exactly one of the subsets. The subsets are the \textbf{cells} of the partition.
+}
+
+\Example{}{
+    Splitting $\Z$ into the subset of even integers and the subset of odd integers, we obtain a partition of $\Z$ into the two cells listed below:
+    \begin{align*}
+        [0] &= \{ \dots,-8,-6,-4,-2,0,2,4,\dots \} \\
+        [1] &= \{ \dots,-7,-5,-3,-1,1,3,5,\dots \}
+    \end{align*}
+    We can think of $[0]$ as being the integers that are divisible by $2$, and $[1]$ as the integers when divided by $2$ yield a remainder of $1$. This idea can be used for positive integers other $2$ as well. For example, we can partition $\Z$ into three cells:
+    \begin{align*}
+        [0] &= \{ x \in \Z \mid\; x \equiv 0 \pmod{3} \}, \\
+        [1] &= \{ x \in \Z \mid\; x \equiv 1 \pmod{3} \}, \\
+        [2] &= \{ x \in \Z \mid\; x \equiv 2 \pmod{3} \}.
+    \end{align*}
+}
+
+\Definition{Equivalence Relation}{
+    An \textbf{equivalence relation} $\RR$ on a set $S$ is one that satisfies these three properties for all $x,y,z \in S$:
+    \begin{enumerate}
+        \item \textbf{Reflexivity:} $x \RR x$.
+        \item \textbf{Symmetry:} If $x \RR y$, then $y \RR x$.
+        \item \textbf{Transitivity:} If $x \RR y$ and $y \RR z$, then $x \RR z$.
+    \end{enumerate}
+}
+
+\Example{}{
+    For any nonempty set $S$, the equality relation $=$ defined by the subset $\{ (x,x) \mid x \in S \}$ of $S \times S$ is an equivalence relation on $S$. This relation is reflexive, since every element $x$ of $S$ is related to itself. It is symmetric, since if $x$ and $y$ are related, then $y$ and $x$ are also related. It is transitive, since if $x$ and $y$ are related and $y$ and $z$ are related, then $x$ and $z$ are also related. Therefore, the equality relation is an equivalence relation on any nonempty set.
+
+    Another example of an equivalence relation on $\Z$ is the relation $\RR$ defined by $x \RR y$ if and only if $x$ and $y$ have the same parity, that is, both are even or both are odd. This relation is reflexive, since every integer has the same parity as itself. It is symmetric, since if $x$ and $y$ have the same parity, then $y$ and $x$ also have the same parity. It is transitive, since if $x$ and $y$ have the same parity and $y$ and $z$ have the same parity, then $x$ and $z$ also have the same parity. Therefore, $\RR$ is an equivalence relation on $\Z$.
+}
+
+\Definition{Equivalence Class}{
+    If $\RR$ is an equivalence relation on a set $S$ and $x \in S$, then the \textbf{equivalence class} of $x$ under $\RR$ is the set of all elements in $S$ that are equivalent to $x$ under $\RR$, denoted by $[x]$ or $\overline{x}$. Formally,
+    \[
+        [x]\; (\text{or }\overline{x}) = \{ y \in S \mid y \RR x \}.
+    \]
+}
+
+In example 0.4.1, the equivalence classes under the relation $\RR$ are $[0]$ and $[1]$, which consist of the even integers and the odd integers, respectively. Here, the even and odd integers are equivalent to $0$ and $1$ respectively under the modulo 2 operation in a sense that they yield the same remainder when divided by $2$.
+
+\Definition{Congruence Modulo $n$}{
+    For a positive integer $n$, the relation $\equiv_n$ on $\Z$ defined by $x \equiv_n y$ if and only if $x$ and $y$ have the same remainder when divided by $n$ is an equivalence relation on $\Z$. This relation is called \textbf{congruence modulo} $n$.
+
+    Another way of writing is: \[
+        x \equiv_n y \iff x \equiv y \pmod{n} \iff n \mid (x-y).
+    \]
+}
+
+\Theorem{Equivalence Relations and Partitions}{
+    Let $S$ be a nonempty set and let $\sim$ be an equivalence relation on $S$. Then $\sim$ yields a partition of $S$, where \[ 
+        [a] = \{ x \in S \mid x \sim a \}
+    \]
+    Also, each partition of $S$ gives rise to an equivalence relation $\sim$ on $S$ where $a \sim b$ if and only if $a$ and $b$ are in the same cell of the partition.
+}
+
+\underline{\textbf{Proof:}} \\
+Let $\sim$ be an equivalence relation on $S$. We will show that the collection of equivalence classes $\{ [a] \mid a \in S \}$ forms a partition of $S$.
+
+First, we need to show that each equivalence class $[a]$ is nonempty. Since $\sim$ is reflexive, we have $a \sim a$, which means that $a \in [a]$. Therefore, $[a]$ is nonempty.
+
+Next, we need to show that the equivalence classes are disjoint. Suppose that $[a] \cap [b] \neq \varnothing$ for some $a,b \in S$. Then there exists an element $x$ such that $x \in [a]$ and $x \in [b]$. This means that $x \sim a$ and $x \sim b$. By symmetry and transitivity of $\sim$, we have $a \sim x$ and $x \sim b$, which implies that $a \sim b$. Therefore, if two equivalence classes intersect, they must be the same class. Hence, the equivalence classes are disjoint.
+
+Finally, we need to show that the union of all equivalence classes is equal to $S$. Let $x$ be an arbitrary element of $S$. Since $\sim$ is reflexive, we have $x \sim x$, which means that $x \in [x]$. Therefore, every element of $S$ belongs to at least one equivalence class. Hence, the union of all equivalence classes is equal to $S$. \qed
+
+\Lemma{}{
+    Each cell in the partition of $S$ induced by an equivalence relation $\sim$ is an equivalence class under $\sim$.
+}

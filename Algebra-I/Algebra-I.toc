@@ -1,0 +1,54 @@
+\contentsline {section}{\numberline {0}Sets and Relations}{3}{section.0}%
+\contentsline {subsection}{\numberline {0.1}Sets}{3}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Relations}{3}{subsection.0.2}%
+\contentsline {subsection}{\numberline {0.3}Cardinality}{4}{subsection.0.3}%
+\contentsline {subsection}{\numberline {0.4}Partitions and Equivalence Relations}{5}{subsection.0.4}%
+\contentsline {section}{\numberline {1}Groups and Subgroups}{8}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Binary Operations}{8}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Groups}{10}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Elementary Properties of Groups}{12}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Group Isomorphisms}{14}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}Abelian Examples}{15}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Complex Numbers and the Circle Group}{17}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Roots of Unity}{19}{subsubsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.4}Nonabelian Examples}{20}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Notation and Terminology}{20}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Permutation Groups}{20}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}Disjoint Cycles}{22}{subsubsection.1.4.3}%
+\contentsline {subsubsection}{\numberline {1.4.4}The Dihedral Group}{25}{subsubsection.1.4.4}%
+\contentsline {subsection}{\numberline {1.5}Subgroups}{28}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Subgroup Tests}{29}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Cyclic Subgroups}{31}{subsubsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.6}Cyclic Groups}{32}{subsection.1.6}%
+\contentsline {subsubsection}{\numberline {1.6.1}Elementary Properties of Cyclic Groups}{32}{subsubsection.1.6.1}%
+\contentsline {subsubsection}{\numberline {1.6.2}The Division Algorithm}{33}{subsubsection.1.6.2}%
+\contentsline {subsubsection}{\numberline {1.6.3}Subgroups of Cyclic Groups}{33}{subsubsection.1.6.3}%
+\contentsline {subsubsection}{\numberline {1.6.4}Greatest Common Divisor via Subgroups}{34}{subsubsection.1.6.4}%
+\contentsline {subsubsection}{\numberline {1.6.5}The Structure of Cyclic Groups}{34}{subsubsection.1.6.5}%
+\contentsline {subsubsection}{\numberline {1.6.6}Subgroups of Finite Cyclic Groups}{35}{subsubsection.1.6.6}%
+\contentsline {subsection}{\numberline {1.7}Generating Sets and Cayley Digraphs}{37}{subsection.1.7}%
+\contentsline {subsubsection}{\numberline {1.7.1}Generating Sets}{37}{subsubsection.1.7.1}%
+\contentsline {subsubsection}{\numberline {1.7.2}Cayley Digraphs}{39}{subsubsection.1.7.2}%
+\contentsline {section}{\numberline {2}Structure of Groups}{40}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Groups of Permutations}{40}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Homomorphisms}{41}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Cayley's Theorem}{42}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Even and Odd Permutations}{42}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Alternating Groups}{44}{subsubsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.2}Finitely Generated Abelian Groups}{45}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Direct Products}{45}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}The Structure of Finitely Generated Abelian Groups}{47}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Applications}{49}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Cosets and the Theorem of Lagrange}{50}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Cosets}{50}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}The Theorem of Lagrange}{51}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Plane Isometries}{53}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Isometries and Their Group Structure}{53}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}The Four Types of Plane Isometries}{54}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Finite Isometry Groups}{54}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Infinite Isometry Groups: Friezes and Wallpaper}{55}{subsubsection.2.4.4}%
+\contentsline {section}{\numberline {3}Homomorphisms and Factor Groups}{57}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Factor Groups}{57}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Factor-Group Computations and Simple Groups}{60}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Group Action on a Set}{63}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Applications of G-Sets to Counting}{66}{subsection.3.4}%

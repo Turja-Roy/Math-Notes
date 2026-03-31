@@ -1,0 +1,163 @@
+\subsection{Cosets and the Theorem of Lagrange}
+
+
+%%%%%%%%%%%%
+%  Cosets  %
+%%%%%%%%%%%%
+
+\subsubsection{Cosets}
+
+\Theorem{}{
+    Let $H$ be a subgroup of a group $G$. We can define an equivalence relation $\sim_L$ on $G$ by: \[
+        a \sim_L b \iff a^{-1}b \in H
+    \]
+    This relation partitions $G$ into disjoint equivalence classes.
+}
+
+\Proof{
+    We verify the properties of an equivalence relation:
+    \begin{itemize}
+        \item \textbf{Reflexivity:} For any $a \in G$, $a^{-1}a = e \in H$, so $a \sim_L a$.
+        \item \textbf{Symmetry:} If $a \sim_L b$, then $a^{-1}b \in H$. Taking inverses gives $b^{-1}a = (a^{-1}b)^{-1} \in H$, so $b \sim_L a$.
+        \item \textbf{Transitivity:} If $a \sim_L b$ and $b \sim_L c$, then $a^{-1}b \in H$ and $b^{-1}c \in H$. Multiplying these gives $a^{-1}c = (a^{-1}b)(b^{-1}c) \in H$, so $a \sim_L c$.
+    \end{itemize}
+    Thus, $\sim_L$ is an equivalence relation, and it partitions $G$ into disjoint equivalence classes.
+}
+
+\Definition{Left Coset}{
+    Let $H$ be a subgroup of $G$. The subset $aH = \{ah \mid h \in H\}$ of $G$ is the \textbf{left coset} of $H$ containing $a$.
+}
+
+\Note{
+    If we are using additive notation (such as in $\Z$), the left coset is denoted $a + H = \{a + h \mid h \in H\}$.
+}
+
+\Example{Left Cosets in an Abelian Group}{
+    Let $G = \Z$ and $H = 3\Z = \{\dots, -6, -3, 0, 3, 6, \dots\}$. To find the left cosets of $3\Z$ in $\Z$:
+    \begin{align*}
+        0 + 3\Z &= \{\dots, -6, -3, 0, 3, 6, \dots\} \\
+        1 + 3\Z &= \{\dots, -5, -2, 1, 4, 7, \dots\} \\
+        2 + 3\Z &= \{\dots, -4, -1, 2, 5, 8, \dots\}
+    \end{align*}
+    These three disjoint sets exhaust $\Z$. So there are exactly 3 distinct left cosets.
+}
+
+\Example{Left Cosets in a Nonabelian Group}{
+    Consider $D_4$ and the subgroup $H = \langle \mu \rangle = \{\iota, \mu\}$. The left cosets are:
+    \begin{align*}
+        \iota H &= \{\iota, \mu\} \\
+        \rho H &= \{\rho, \mu\rho^3\} \\
+        \rho^2 H &= \{\rho^2, \mu\rho^2\} \\
+        \rho^3 H &= \{\rho^3, \mu\rho\}
+    \end{align*}
+    Notice that the left coset $\rho H = \{\rho, \mu\rho^3\}$ is generally not equal to the right coset $H\rho = \{\rho, \mu\rho\}$. In abelian groups, left and right cosets are always identical.
+}
+
+\Definition{Right Coset}{
+    Similarly to left cosets, we can define right cosets using the equivalence relation \[
+        a \sim_R b \iff ab^{-1} \in H
+    \]
+    The \textbf{right coset} containing $a$ is $Ha = \{ha \mid h \in H\}$.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  The Theorem of Lagrange  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Theorem of Lagrange}
+
+\Theorem{}{
+    Let $H$ be a subgroup of $G$. Then for any $a \in G$, the coset $aH$ has the same cardinality as $H$.
+}
+
+\Proof{
+    Let $\lvert G \rvert = n$ and $\lvert H \rvert = m$. Every coset of $H$ also has $m$ elements. Let $r$ be the number of cells in the partition of $G$ into left cosets of $H$. Then $n = rm$, so $m$ is indeed a divisor of $n$.
+}
+
+This leads directly to one of the most famous theorems in group theory, which acts as a powerful counting tool.
+
+\Theorem{Theorem of Lagrange}{
+    Let $H$ be a subgroup of a finite group $G$. Then the order of $H$ is a divisor of the order of $G$.
+}
+
+\Proof{
+    Since there is a injection from $H$ to any of its cosets in $G$, all left cosets of $H$ have the same number of elements as $H$. Let $[G:H]$ be the number of distinct left cosets of $H$ in $G$. Then we can express the order of $G$ as: \[
+        |G| = [G:H] \cdot |H|
+    \]
+    Since $[G:H]$ is a positive integer, it follows that $|H|$ divides $|G|$.
+}
+
+\Note{
+    While Lagrange's Theorem says the order of a subgroup must divide the order of the group, the \textbf{converse is not always true}. A group $G$ of order $n$ does not necessarily have a subgroup of order $d$ for every divisor $d$ of $n$. However, if $G$ is finite abelian, the converse happens to hold.
+}
+
+Several immediate and elegant corollaries follow from Lagrange's Theorem.
+
+\Corollary{}{
+    Every group of prime order is cyclic.
+}
+
+\Proof{
+    Let $G$ have prime order $p$, and let $a \in G$ be any element other than the identity $e$. The cyclic subgroup $\langle a \rangle$ has at least two elements ($a$ and $e$). By Lagrange's Theorem, its order $|\langle a \rangle|$ must divide $p$. Since $p$ is prime and $|\langle a \rangle| \geq 2$, we must have $|\langle a \rangle| = p$. Thus $\langle a \rangle = G$, and $G$ is cyclic.
+}
+
+\Note{
+    Up to isomorphism, there is only one group structure of a given prime order $p$, which is $\Z_p$.
+}
+
+\Corollary{}{
+    The order of an element of a finite group divides the order of the group.
+}
+
+\Proof{
+    The order of an element $a$ is equal to the order of the cyclic subgroup $\langle a \rangle$ it generates. By Lagrange's Theorem, $|\langle a \rangle|$ divides $|G|$.
+}
+
+\Definition{Index}{
+    Let $H$ be a subgroup of a group $G$. The number of left (or right) cosets of $H$ in $G$ is the \textbf{index} of $H$ in $G$, denoted by $[G : H]$.
+
+    If $G$ is finite, the index is simply $\displaystyle [G : H] = \frac{|G|}{|H|}$.
+}
+
+\Note{
+    The index can also be finite even if $G$ and $H$ are infinite (e.g., $(\Z : 3\Z) = 3$).
+}
+
+\Theorem{Multiplicativity of Index}{
+    Suppose $H$ and $K$ are subgroups of a group $G$ such that $K \leq H \leq G$. If $[H : K]$ and $[G : H]$ are both finite, then $[G : K]$ is finite, and: \[
+        [G : K] = [G : H][H : K]
+    \]
+}
+
+\Proof{
+    Let $r = [G : H]$ and $s = [H : K]$. We can write $G$ as a disjoint union of $r$ left cosets of $H$: \[
+        G = a_1 H \cup a_2 H \cup \cdots \cup a_r H
+    \]
+    Each $a_i H$ is itself a union of $s$ left cosets of $K$: \[
+        a_i H = a_i b_{i1} K \cup a_i b_{i2} K \cup \cdots \cup a_i b_{is} K
+    \]
+    Since the cosets of $H$ are disjoint, the cosets of $K$ obtained by this process are also disjoint. Thus, we have partitioned $G$ into $rs$ distinct left cosets of $K$, giving $[G : K] = rs = [G : H][H : K]$.
+}
+
+\Theorem{}{
+    Let $\phi : G \to  G'$ be a group homomorphism. Then the left and right cosets of $\text{Ker}(\phi)$ are identical. Furthermore, $a,b \in G$ are in the same coset of $\text{Ker}(\phi)$ if and only if $\phi(a) = \phi(b)$.
+}
+
+\Proof{
+    We first assume that $a$ and $b$ are in the same left cosets of $\text{Ker}(\phi)$ and show they are also in the same right cosets. Now, we've $a^{-1}b \in \text{Ker}(\phi)$. So, $\phi(a^{-1}b) = e$, the identity element. Since $\phi$ is a homomorphism, $\phi(a)^{-1} \phi(b) = e$, which implies that $\phi(a) = \phi(b)$. Therefore, $\phi(ab^{-1}) = \phi(a)\phi(b)^{-1} = \phi(a)\phi(a)^{-1} = e$. Thus, $ab^{-1} \in \text{Ker}(\phi)$, which says that $a$ and $b$ are in the same right coset. Here, we showed that if $a$ and $b$ are in the same left coset of $\text{Ker}(\phi))$, then $\phi(a) = \phi(b)$.
+
+    Now suppose that $\phi(a)=\phi(b)$. Then $\phi(b^{-1}a) = \phi(b)^{-1}\phi(a) = e$. Thus, $b^{-1}a \in \text{Ker}(\phi)$, which implies that $a$ and $b$ are in the same left coset.
+
+    To complete the proof, we need to show that if $a$ and $b$ are in the same right coset, then they are also in the same left coset. The proof is essentially the same as above.
+}
+
+\Corollary{}{
+    A homomorphism $\phi : G \to G'$ is injective if and only if $\text{Ker}(\phi)$ is the trivial subgroup of $G$.
+}
+
+\Proof{
+    We first assume that $\text{Ker}(\phi) = \{ e \}$. Every coset of $\text{Ker}(\phi)$ has only one element. Suppose that $\phi(a)=\phi(b)$. Then $a$ and $b$ are in the same coset of $\text{Ker}(\phi)$. Thus, $a=b$.
+
+    Now suppose that $\phi$ is injective. Then only the identity $e$ is mapped to the identity in $G'$. So, $\text{Ker}(\phi) = \{ e \}$.
+}

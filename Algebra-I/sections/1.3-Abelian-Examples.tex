@@ -1,0 +1,217 @@
+\subsection{Abelian Examples}
+
+\Definition{Addition Modulo $n$}{
+    Let $\Z_n = \{0, 1, 2, 3, \ldots, n-1\}$. We define the operation $+_n$ on $\Z_n$ by \[ 
+        a +_n b = \begin{cases}
+            a + b & \text{if } a + b < n \\
+            a + b - n & \text{if } a + b \geq n
+        \end{cases}
+    \] This operation is called \textbf{addition modulo $n$}.
+}
+
+For any $a, b \in \Z_n$, we have
+\begin{align*}
+    0 &\leq a + b \leq 2n - 2 \\
+    \text{so, } 0 &\leq a +_n b \leq n - 1
+\end{align*}
+Thus, $+_n$ is indeed an operation on $\Z_n$.
+
+\Example{Prove that $\langle \Z_n, +_n \rangle$ is an Abelian group}{
+    The identity element for $+_n$ is $0$, since for any $a \in \Z_n$, we have $0 +_n a = a$ and $a +_n 0 = a$. \\
+    The inverse of any element $a$ in $\Z_n$ is $n - a$, since we have $a +_n (n - a) = 0$ and $(n - a) +_n a = 0$. \\
+    Since addition of integers is commutative, we have that $+_n$ is commutative.
+
+    To prove the associativity is the tricky part of this problem. Let $a,b,c \in \Z_n$. Then we have:
+    \begin{align*}
+        (a +_n b) +_n c &= \begin{cases}
+            (a + b) +_n c & \text{if } a + b < n \\
+            (a + b - n) +_n c & \text{if } a + b \geq n
+        \end{cases} \\
+        &= \begin{cases}
+            a + (b + c) & \text{if } a + b < n \text{ and } b + c < n \\
+            a + (b + c - n) & \text{if } a + b < n \text{ and } b + c \geq n \\
+            (a + b - n) + c & \text{if } a + b \geq n \text{ and } (a+b-n)+c < n \\
+            (a + b - n) + (c - n) & \text{if } a + b \geq n \text{ and } (a+b-n)+c \geq n
+        \end{cases} \\
+        &= \begin{cases}
+            a + (b + c) & \text{if } a + b < n \text{ and } b + c < n \\
+            a + (b + c - n) & \text{if } a + b < n \text{ and } b + c \geq n \\
+            a + (b + c) - n& \text{if } a + b \geq n \text{ and } (a+b-n)+c < n \\
+            a + (b + c - n) - n & \text{if } a + b \geq n \text{ and } (a+b-n)+c \geq n
+        \end{cases} \\
+        &= a +_n (b +_n c)
+    \end{align*}
+    so that $+_n$ is associative. Hence, $\langle\Z_n, +_n\rangle$ is an Abelian group. \qed
+
+    Alternative proof of associativity: Let $a,b,c \in \Z_n$. Then we have:
+    \begin{align*}
+        (a +_n b) +_n c &= \left[ \left\{ (a + b) \pmod{n} \right\} + c \right] \pmod{n} \\
+                        &= (a + b + c) \pmod{n} \\
+                        &= (a + (b + c)) \pmod{n} \\
+                        &= \left[ a + \left\{ (b + c) \pmod{n} \right\} \right] \pmod{n} \\
+                        &= a +_n (b +_n c)
+    \end{align*}
+    Thus, $+_n$ is associative, and $\langle\Z_n, +_n\rangle$ is an Abelian group. \qed
+}
+
+\Note{
+    In the alternative proof, we're using this fact: \[
+        \quad  (x \pmod{n} + c) \pmod{n} = (x+c) \pmod{n}
+    \]
+    Proof: \\
+    Let $x \in \Z$. Then by the division algorithm, $\exists q \text{ s.t. } x = qn + r$, where $0 \leq r < n$. Then we have: \vspace{-1.0em}
+    \begin{align*}
+        (x \pmod{n} + c) \pmod{n} &= (r + c) \pmod{n} \\
+                                    &= ((qn + r) + c) \pmod{n} \\
+                                    &= (x + c) \pmod{n}
+    \end{align*}
+}
+
+\Lemma{}{
+    Completely different operations on sets can still define isomorphic groups.
+}
+
+\Example{Prove that $\Z_2 = \{ 0,1 \}$ is isomorphic with $\{ 1,-1 \}$ under multiplication}{
+    Let $f : \Z_2 \to \{ 1,-1 \}$ be defined by $f(0) = 1$ and $f(1) = -1$. Then $f$ is a bijection since $f(0) \neq f(1)$ and for each element in $\{ 1,-1 \}$, there is an element in $\Z_2$ that maps to it. To verify the homomorphism property, let $a,b \in \Z_2$. Then we have:
+    \begin{align*}
+        f(a +_2 b) &= f((a + b) \mod 2) \\
+                    &= (-1)^{(a + b) \mod 2} \\
+                    &= (-1)^a (-1)^b \\
+                    &= f(a) f(b)
+    \end{align*}
+    so that $f$ is a group homomorphism. Since $f$ is a bijection and a homomorphism, we conclude that $f$ is a group isomorphism, and hence $\Z_2$ and $\{ 1,-1 \}$ are isomorphic groups. \qed
+}
+
+\Example{Klein 4-group}{
+    The group $\Z_2 \times \Z_2$ is called the \textbf{Klein 4-group} and is denoted by $V$. The elements of $V$ are $(0,0), (0,1), (1,0)$, and $(1,1)$, and the operation on $V$ is defined by \[ 
+        (a,b) + (c,d) = ((a+c) \mod 2, (b+d) \mod 2)
+    \] for all $(a,b), (c,d) \in V$. The identity element for this operation is $(0,0)$, and the inverse of any element $(a,b)$ is itself since $(a,b)+(a,b)=(0,0)$. Since addition of integers is commutative, we have that the operation on $V$ is commutative. It can be verified that the operation on $V$ is associative as well. Hence, $\langle V,+\rangle$ is an Abelian group.
+}
+
+\Note{
+    Note that Klein 4-group $V$ is not isomorphic to $\Z_4$ since $\Z_4$ has an element of order $4$ (that is, you need to add it to itself $4$ times to get back to the identity), but in $V=\Z_2 \times \Z_2$, every non-identity element has order $2$.
+
+    However, $V$ is isomorphic to the group of symmetries of a non-square rectangle, which consists of the identity symmetry, the reflection across the vertical axis, the reflection across the horizontal axis, and the rotation by $\pi$ about the center of the rectangle.
+}
+
+\Example{$\langle \R_{2\pi},+_{2\pi} \rangle$}{
+    In the group $\langle \R_{2\pi},+_{2\pi} \rangle$, we are essentially equating $0$ with $2\pi$ in the sense that if $a$ and $b$ add to give $2\pi$, we know that $a +_{2\pi} b = 0$. Geometrically, we can think of this as taking a circle of radius $1$.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Complex Numbers and the Circle Group  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Complex Numbers and the Circle Group}
+
+\Definition{Complex Numbers}{
+    The set $\C$ of \textbf{complex numbers} is defined by \[ 
+        \C = \{a + bi \mid a, b \in \R\}
+    \] where $i$ is the imaginary unit satisfying $i^2 = -1$. A complex number can be regarded as a point in the Euclidean plane, where the point with Cartesian coordinates $(a, b)$ is labeled $a + bi$.
+}
+
+\Note[Multiplication of Complex Numbers]{
+    The product of $z_1 = a + bi$ and $z_2 = c + di$ is defined as \[ 
+        z_1 z_2 = (a + bi)(c + di) = (ac - bd) + (ad + bc)i
+    \] It is routine to check that multiplication of complex numbers satisfies commutativity, associativity, and distributivity.
+}
+
+\Note[Absolute Value and Polar Form]{
+    The \textbf{absolute value} of a complex number $a + bi$ is defined by \[ 
+        |a + bi| = \sqrt{a^2 + b^2}
+    \] This is the distance from $a + bi$ to the origin. We can describe a complex number $z$ in \textbf{polar form} as \[ 
+        z = |z|(\cos \theta + i \sin \theta)
+    \] where $\theta$ is the angle measured counterclockwise from the positive $x$-axis to the vector from $0$ to $z$.
+}
+
+\Note[Euler's Formula]{
+    Euler's formula states that $e^{i\theta} = \cos \theta + i \sin \theta$. Using this formula, we can express $z$ in polar form as $z = |z|e^{i\theta}$.
+}
+
+\Note[Geometric Interpretation of Complex Multiplication]{
+    If $z_1 = |z_1|e^{i\theta_1}$ and $z_2 = |z_2|e^{i\theta_2}$, then \[ 
+        z_1 z_2 = |z_1||z_2|e^{i(\theta_1 + \theta_2)} = |z_1||z_2|[\cos(\theta_1 + \theta_2) + i \sin(\theta_1 + \theta_2)]
+    \] Geometrically, we multiply complex numbers by multiplying their absolute values and adding their polar angles.
+}
+
+\Example{Find all solutions in $\C$ of the equation $z^2 = i$}{
+    Writing the equation $z^2 = i$ in polar form, we obtain \[ 
+        |z|^2(\cos 2\theta + i \sin 2\theta) = 1(0 + i)
+    \] Thus $|z|^2 = 1$, so $|z| = 1$. The angle $\theta$ for $z$ must satisfy $\cos 2\theta = 0$ and $\sin 2\theta = 1$. Consequently, $2\theta = \frac{\pi}{2} + n(2\pi)$, so $\theta = \frac{\pi}{4} + n\pi$ for an integer $n$. The values of $n$ yielding values $\theta$ where $0 \leq \theta < 2\pi$ are $0$ and $1$, yielding $\theta = \frac{\pi}{4}$ or $\theta = \frac{5\pi}{4}$. Our solutions are \[ 
+        z_1 = \cos \frac{\pi}{4} + i \sin \frac{\pi}{4} = \frac{1}{\sqrt{2}}(1 + i) \qquad \text{and} \qquad z_2 = \cos \frac{5\pi}{4} + i \sin \frac{5\pi}{4} = \frac{-1}{\sqrt{2}}(1 + i)
+    \] \qed
+}
+
+\Example{Find all solutions in $\C$ of the equation $z^4 = -16$}{
+    Writing the equation in polar form, we get \[ 
+        \lvert z \rvert^4 \left( \cos 4\theta + i \sin 4\theta \right) = 16 (-1 + 0i)
+    \]
+    Here, $|z|^4 = 16$, so $|z| = 2$. Also, $\cos 4\theta = -1$ and $\sin 4\theta = 0$, and so $4\theta = \pi + n(2\pi)$, so $\theta = (\pi/4) + n(\pi/2)$ for $n \in \Z$. Thus, for $0\leq\theta < 2\pi$, we get the values $\theta = \pi/4, 3\pi/4, 5\pi/4, \text{ and } 7\pi/4$.
+
+    Thus, the solutions of $z^4=-16$ are \[ 
+        \sqrt{2}(1+i), \quad \sqrt{2}(-1+i), \quad \sqrt{2}(-1-i), \quad \sqrt{2}(1-i)
+    \]
+}
+
+\Definition{The Circle Group}{
+    Let $U = \{z \in \C \mid |z| = 1\}$, so that $U$ is the circle in the Euclidean plane with center at the origin and radius $1$. We call $\langle U, \cdot \rangle$ the \textbf{circle group}.
+}
+
+\Theorem{The Circle Group is Abelian}{
+    $\langle U, \cdot \rangle$ is an Abelian group.
+}
+
+\Proof{
+    We first check that $U$ is closed under multiplication. Let $z_1, z_2 \in U$. Then $|z_1| = |z_2| = 1$, which implies that $|z_1 z_2| = |z_1||z_2| = 1$, showing $z_1 z_2 \in U$. \qed
+    
+    Since multiplication of complex numbers is associative and commutative in general, multiplication in $U$ is also associative and commutative, which verifies $\G_1$ and the condition for Abelian. \qed
+    
+    The number $1 \in U$ is the identity, verifying condition $\G_2$. \qed
+    
+    For each $a + bi \in U$, we have \[ 
+        (a + bi)(a - bi) = a^2 - (bi)^2 = a^2 + b^2 = |a + bi|^2 = 1
+    \] So the inverse of $a + bi$ is $a - bi$, which verifies condition $\G_3$. Thus, $U$ is an Abelian group under multiplication.
+}
+
+\Note[Isomorphism between $U$ and $\R_{2\pi}$]{
+    We can relabel points in $U$ as points in $\R_{2\pi}$ by simply relabeling $z$ as $\theta$ where $0 \leq \theta < 2\pi$. Let $f : U \to \R_{2\pi}$ be given by $f(z) = \theta$ according to this relabeling. Then for $z_1, z_2 \in U$, we have $f(z_1 z_2) = f(z_1) +_{2\pi} f(z_2)$ since multiplying in $U$ simply adds the corresponding angles: if $z_1 \leftrightarrow \theta_1$ and $z_2 \leftrightarrow \theta_2$, then $z_1 \cdot z_2 \leftrightarrow (\theta_1 +_{2\pi} \theta_2)$.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%  Roots of Unity  %
+%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Roots of Unity}
+
+\Definition{Roots of Unity}{
+    The elements of the set $U_n = \Set{z \in \C}{z^n = 1}$ are called the \textbf{$n^{\text{th}}$ roots of unity}. The elements of this set are the numbers \[ 
+        e^{\left( m \frac{2\pi}{n} \right)i} = \cos \left( m \frac{2\pi}{n} \right) + i \sin \left( m \frac{2\pi}{n} \right) \quad\text{ for } m = 0, 1, 2, \ldots, n-1
+    \]
+    The elements have absolute value $1$ and are evenly spaced around the unit circle in the complex plane.
+}
+
+\Lemma{}{
+    The $n^{\text{th}}$ roots of unity form an Abelian group under multiplication.
+}
+
+\Proof{
+    Let $z_1$ and $z_2$ be $n^{\text{th}}$ roots of unity. Then $z_1^n = z_2^n = 1$. We have \[
+        (z_1 z_2)^n = z_1^n z_2^n = 1 \cdot 1 = 1
+    \] so that $z_1 z_2$ is also an $n^{\text{th}}$ root of unity, and hence the set of $n^{\text{th}}$ roots of unity is closed under multiplication.
+
+    Since multiplication of complex numbers is associative, we have that multiplication in the set of $n^{\text{th}}$ roots of unity is associative, which verifies $\G_1$.
+
+    The number $1$ is an $n^{\text{th}}$ root of unity and serves as the identity element, verifying $\G_2$.
+
+    For each $n^{\text{th}}$ root of unity $z$, we have $z^{-1} = z^*$, where $z^*$ is the complex conjugate of $z$, since we have \[
+        z \cdot z^* = |z|^2 = 1
+    \] so that $z^*$ is the inverse of $z$, which verifies $\G_3$. Thus, the $n^{\text{th}}$ roots of unity form a group under multiplication.
+
+    Since multiplication of complex numbers is commutative, we have that multiplication in the set of $n^{\text{th}}$ roots of unity is commutative, which verifies the condition for Abelian. Thus, the $n^{\text{th}}$ roots of unity form an Abelian group under multiplication.
+}
+
+\Note[Isomorphism between $U_n$ and $\Z_n$]{
+    We can relabel the $n^{\text{th}}$ roots of unity as elements of $\Z_n$ by relabeling $e^{\left( m \frac{2\pi}{n} \right)i}$ as $m$. Let $f : U_n \to \Z_n$ be given by $f\left(e^{\left( m \frac{2\pi}{n} \right)i}\right) = m$. Then for $z_1, z_2 \in U_n$, we have $f(z_1 z_2) = f(z_1) +_n f(z_2)$ since multiplying in $U_n$ simply adds the corresponding angles: if $z_1 \leftrightarrow m_1$ and $z_2 \leftrightarrow m_2$, then $z_1 \cdot z_2 \leftrightarrow (m_1 +_n m_2)$.
+}

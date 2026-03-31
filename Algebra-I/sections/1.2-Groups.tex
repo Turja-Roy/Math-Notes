@@ -1,0 +1,214 @@
+\subsection{Groups}
+
+\Definition{Group}{
+    A \textbf{group} $\langle G,* \rangle$ is a set $G$, closed under a binary operation $*$, such that the following axioms are satisfied:
+    \begin{itemize}
+        \item[$\G_1$:] \textbf{(Associativity of $*$)} For all $a,b,c \in G$, we have \[ 
+                (a*b)*c = a*(b*c)
+            \]
+        \item[$\G_2$:] \textbf{(Identity element $e$ for $*$)} There is an element $e$ in $G$ such that for all $x \in G$, \[ 
+                e*x = x*e = x
+            \]
+        \item[$\G_3$:] \textbf{(Inverse $a'$ of $a$)} For each $a \in G$, there is an element $a'$ in $G$ such that \[ 
+                a*a' = a'*a = e
+            \]
+    \end{itemize}
+}
+
+\Example{}{
+    $\langle \R,+ \rangle$ is a group with identity element $0$ and the inverse of any real number $a$ is $-a$. However, $\langle \R,\cdot \rangle$ is not a group since $0$ has no multiplicative inverse.
+}
+
+\Definition{Abelian Group}{
+    A group $G$ is an \textbf{Abelian group} (or commutative group) if its binary operation is commutative. That is, \[ 
+        \forall a,b \in G, \quad a * b = b * a
+    \]
+}
+
+\Example{}{
+    $\langle \Z^+,+ \rangle$ is not a group since there is no identity element for $+$ in $\Z^+$.
+
+    The set of all nonnegative integers (including 0) is still not a group under $+$ since there is no inverse for any positive integer.
+
+    However, the sets $\Z, \Q, \R$, and $\C$ are all groups under $+$, and they are all Abelian groups since addition is commutative.
+}
+
+\Example{Linear Algebra}{
+    Axioms for a vector space $V$ pertaining just to vector addition can be summarized by asserting that $V$ under vector addition is an Abelian group. The identity element is the zero vector $\vec{0}$, and the inverse of a vector $\vec{v}$ is $-\vec{v}$.
+}
+
+\Definition{General Linear Group of Degree $n$}{
+    The group of all invertible $n \times n$ matrices under matrix multiplication is called the \textbf{general linear group of degree $n$} and is denoted by $GL_n(\R)$ or $GL(n,\R)$.
+}
+
+\Example{}{
+    The set $M_n(\R)$ of all $n \times n$ matrices under matrix multiplication is not a group. The $n \times n$ matrix with all entries $0$ has no inverse.
+
+    However, the set $GL_n(\R)$ of all invertible $n \times n$ matrices under matrix multiplication is a group. The identity element is the $n \times n$ identity matrix, and the inverse of an invertible matrix $A$ is its inverse $A^{-1}$.
+}
+
+\Definition{Isometry of a plane}{
+    An \textbf{isometry} of a plane is a function $f$ mapping the plane into itself such that for all points $P$ and $Q$ in the plane, the distance from $f(P)$ to $f(Q)$ is the same as the distance from $P$ to $Q$.
+
+    Isometries of the plane map the plane one-to-one and onto itself. Examples of isometries include translations, rotations, reflections, and glide reflections. The set of all isometries of a plane under composition of functions forms a group.
+}
+
+\Example{Isometries of a plane are not an Abelian group}{
+    To show that the group $T$ of isometries of a plane is not Abelian, we only need to find two isometries $\phi$ and $\theta$ such that $\phi\circ\theta \neq \theta\circ\phi$. The functions $\phi(x,y)=(-x,y)$ (reflection across the $y$-axis) and $\theta(x,y)=(-y,x)$ (rotation by $\pi/2$ about the origin) are such isometries since $\phi\circ\theta(x,y)=\phi(-y,x)=(y,x)$, but $\theta\circ\phi(x,y)=\theta(-x,y)=(y,-x)$, which implies that $\phi\circ\theta \neq \theta\circ\phi$. Hence, $T$ is not an Abelian group under composition of functions.
+}
+
+\Example{Show that the subset $S$ of $M_n(\R)$ consisting of all invertible $n \times n$ matrices under matrix multiplication is a group but not Abelian.}{
+    We start by showing that $S$ is closed under matrix multiplication. Let $A$ and $B$ be in $S$, so that both $A^{-1}$ and $B^{-1}$ exist and $AA^{-1} = BB^{-1} = I_n$. Then \[ 
+        (AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = AI_nA^{-1} = AA^{-1} = I_n
+    \]
+    so that $AB$ is invertible and consequently $AB \in S$.
+
+    Since matrix multiplication is associative and $I_n$ acts as the identity element, and since each element of $S$ has an inverse by definition of $S$, we see that $S$ is indeed a group. \qed
+
+    To prove that $S$ is not Abelian, we only need to find two invertible matrices $A$ and $B$ such that $AB \neq BA$. For example, let $A = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ and $B = \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix}$. Then we have:
+    \begin{align*}
+        AB &= \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix} \\
+        BA &= \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 1 & 2 \end{bmatrix}
+    \end{align*}
+    so that $AB \neq BA$. Hence, $S$ is not an Abelian group under matrix multiplication. \qed
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Elementary Properties of Groups  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Elementary Properties of Groups}
+
+\Theorem{Left and Right Cancellation Laws}{
+    If $G$ is a group with binary operation $*$, then the \textbf{left and right cancellation laws} hold in $G$, that is, \[
+        a * b = a * c \implies b = c \qquad \text{and} \qquad b * a = c * a \implies b = c
+    \]
+}
+
+\Proof{
+    Let $a*b = a*c$. Then by $\G_3$, there exists $a'$, and
+    \begin{align*}
+        a' * (a*b) &= a' * (a*c) \\
+        (a' * a) * b &= (a' * a) * c \qquad \text{(associativity)} \\
+        e * b &= e * c \qquad \text{(identity element)} \\
+        b &= c \qquad \text{(identity element)}
+    \end{align*}
+    Similarly, from $b * a = c * a$, we can deduce that $b = c$ upon multiplication on the right by $a'$ and use of the axioms for a group.
+}
+
+\Theorem{Uniqueness of Solutions to Linear Equations in Groups}{
+    If $\langle G,* \rangle$ is a group, and if $a$ and $b$ are elements of $G$, then the linear equations $a*x = b$ and $y*a = b$ have unique solutions $x$ and $y$ in $G$
+}
+
+\Proof{
+    Let $a$ and $b$ be elements of $G$. By $\G_3$, there is an element $a'$ such that $a*a' = e$. Then we have:
+    \begin{align*}
+        a*x &= b \\
+        (a*a')*x &= a'*b \qquad \text{(multiplying on the left by $a'$)} \\
+        e*x &= a'*b \qquad \text{(identity element)} \\
+        x &= a'*b
+    \end{align*}
+    so that $x = a'*b$ is a solution to the equation $a*x = b$. To show that this solution is unique, suppose that $x'$ is another solution to the equation, so that $a*x' = b$. Then we have:
+    \begin{align*}
+        a*x' &= b \\
+        (a*a')*x' &= a'*b \qquad \text{(multiplying on the left by $a'$)} \\
+        e*x' &= a'*b \qquad \text{(identity element)} \\
+        x' &= a'*b
+    \end{align*}
+    so that $x' = x$, and the solution to the equation $a*x = b$ is unique. A similar argument shows that the solution to the equation $y*a = b$ is also unique.
+}
+
+\Theorem{Uniqueness of Identity and Inverse Elements in Groups}{
+    If $\langle G,* \rangle$ is a group, there is only one element $e$ in $G$ such that \[ 
+        \forall x \in G, \quad e * x = x * e = x
+    \]
+    Likewise, for each $a \in G$, there is only one element $a'$ in $G$ such that \[ 
+        a * a' = a' * a = e
+    \]
+}
+
+\Proof{
+    Let $e$ and $e'$ be elements of $G$ such that for all $x \in G$, we have $e*x = x*e = x$ and $e'*x = x*e' = x$. Then we have:
+    \begin{align*}
+        e &= e * e' \qquad \text{(since $e'$ is an identity element)} \\
+          &= e' \qquad \text{(since $e$ is an identity element)}
+    \end{align*}
+    so that there is only one identity element in $G$.
+
+    Let $a$ be an element of $G$, and let $a'$ and $a''$ be elements of $G$ such that $a*a' = a'*a = e$ and $a*a'' = a''*a = e$. Then we have:
+    \begin{align*}
+        a' &= a' * e \qquad \text{(identity element)} \\
+           &= a' * (a * a'') \qquad \text{(since $a*a''=e$)} \\
+           &= (a' * a) * a'' \qquad \text{(associativity)} \\
+           &= e * a'' \qquad \text{(since $a'*a=e$)} \\
+           &= a'' \qquad \text{(identity element)}
+    \end{align*}
+    so that there is only one inverse for each element of $G$.
+}
+
+\Corollary{}{
+    Let $G$ be a group. For all $a,b \in G$, we have $(a*b)' = b'*a'$
+}
+
+\Proof{
+    Let $a$ and $b$ be elements of $G$. Then we have:
+    \begin{align*}
+        (a*b)*(b'*a') &= a*(b*b')*a' \qquad \text{(associativity)} \\
+                       &= a*e*a' \qquad \text{(since $b*b'=e$)} \\
+                       &= a*a' \qquad \text{(identity element)} \\
+                       &= e
+    \end{align*}
+    and
+    \begin{align*}
+        (b'*a')*(a*b) &= b'*(a'*a)*b \qquad \text{(associativity)} \\
+                       &= b'*e*b \qquad \text{since $a'*a=e$} \\
+                       &= b'*b \qquad \text{(identity element)} \\
+                       &= e
+    \end{align*}
+    so that $b'*a'$ is the inverse of $a*b$. Since the inverse of an element in a group is unique, we conclude that $(a*b)' = b'*a'$.
+}
+
+\Note{
+    We remark that binary algebraic structures with weaker axioms than those for a group have also been studied quite extensively. Of these weaker structures, the \textbf{semigroup}, a set with an associative binary operation, has had the most attention. A \textbf{monoid} is a semigroup that has an identity element for the binary operation. Note that every group is both a semigroup and a monoid.
+}
+
+\Note[Weakening the group axioms]{
+    We can weaken the group axioms by only requiring that there is a left identity element $e$ such that for all $x \in G$, we have $e*x = x$, and that for each $a \in G$, there is a left inverse $a'$ such that $a'*a = e$. However, it turns out that these weaker axioms are actually equivalent to the original group axioms. That is, if a set with a binary operation satisfies the weaker axioms, then it also satisfies the original group axioms, and hence is a group. To see this, let $G$ be a set with a binary operation $*$ such that there is a left identity element $e$ and that for each $a \in G$, there is a left inverse $a'$ such that $a'*a = e$. Then we have:
+    \begin{align*}
+        a*a' &= a*(a'*a)*a' \qquad \text{(associativity)} \\
+             &= (a*a')*a*a' \qquad \text{(associativity)} \\
+             &= e*a*a' \qquad \text{(since $a'*a=e$)} \\
+             &= a*a' \qquad \text{(identity element)}
+    \end{align*}
+    so that $a*a' = e$. Similarly, we can show that $a'*a = e$ for all $a \in G$. Hence, the weaker axioms imply the original group axioms, and we conclude that the weaker axioms are equivalent to the original group axioms.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%  Group Isomorphisms  %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Group Isomorphisms}
+
+\Definition{Group Isomorphism}{
+    Let $\langle G_1,*_1 \rangle$ and $\langle G_2,*_2 \rangle$ be groups and $f : G_1 \to G_2$. We say that $f$ is a \textbf{group isomorphism} if the following conditions are satisfied:
+    \begin{enumerate}
+        \item The function $f$ is a bijection (one-to-one and onto) from $G_1$ to $G_2$.
+        \item \textbf{(Homomorphism property):} For all $a,b \in G_1$, $f(a *_1 b) = f(a) *_2 f(b)$.
+    \end{enumerate}
+}
+
+\Note[Notation for isomorphisms]{
+    If there is a group isomorphism from $G_1$ to $G_2$, we say that $G_1$ and $G_2$ are \textbf{isomorphic} groups, and we write $G_1 \cong G_2$.
+}
+
+\Example{The set of even integers, $2\Z$, forms a group under addition. Prove that $\Z$ and $2\Z$ are isomorphic groups.}{
+    Let $f : \Z \to 2\Z$ be a bijection defined by $f(n) = 2n$.
+
+    To verify the first condition, let $a,b \in \Z$ and $f(a) = f(b)$. Then $2a = 2b$, which implies that $a = b$, so $f$ is one-to-one. To show that $f$ is onto, let $y \in 2\Z$. Since $y$ is even, $\exists c \in \Z \text{ s.t. } y = 2c$. Therefore, $y = 2c = f(c)$, so $f$ maps onto $2\Z$.
+
+    To verify the second condition, i.e., the homomorphism property, let $a,b \in \Z$. Then \[ 
+        f(a+b) = 2(a+b) = 2a + 2b = f(a) + f(b)
+    \] which shows that $f$ is a group homomorphism. Since $f$ is a bijection and a homomorphism, we conclude that $f$ is a group isomorphism, and hence $\Z$ and $2\Z$ are isomorphic groups. \qed
+}

@@ -1,0 +1,240 @@
+\subsection{Finitely Generated Abelian Groups}
+
+We can use known groups as building blocks to form more groups. A primary way to construct new groups from existing ones is through the direct product.
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%  Direct Products  %
+%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Direct Products}
+
+\Definition{Direct Product}{
+    Let $G_1, G_2, \ldots, G_n$ be groups. The \textbf{direct product} \[
+        \prod_{i=1}^n G_i = G_1 \times G_2 \times \cdots \times G_n
+    \]
+    is the set of all ordered $n$-tuples $(a_1, a_2, \ldots, a_n)$ and $(b_1, b_2, \ldots, b_n)$, where $a_i \in G_i$ and $b_i \in G_i$, equipped with the binary operation of multiplication by components: \[
+        (a_1, a_2, \ldots, a_n)(b_1, b_2, \ldots, b_n) = (a_1 b_1, a_2 b_2, \ldots, a_n b_n)
+    \]
+    This makes the Cartesian product a group. The identity is $(e_1, e_2, \ldots, e_n)$, and the inverse is $(a_1^{-1}, a_2^{-1}, \ldots, a_n^{-1})$.
+}
+
+\Proof{
+    We verify the group axioms:
+    \begin{itemize}
+        \item \textbf{Closure:} If $(a_1, a_2, \ldots, a_n)$ and $(b_1, b_2, \ldots, b_n)$ are in $G_1 \times G_2 \times \cdots \times G_n$, then $a_i b_i$ is in $G_i$ for each $i$, so their product is in the direct product.
+        \item \textbf{Associativity:} The operation is associative because each component operation is associative.
+        \item \textbf{Identity:} The tuple of identities $(e_1, e_2, \ldots, e_n)$ acts as the identity element.
+        \item \textbf{Inverses:} Each element has an inverse given by taking the inverse in each component.
+    \end{itemize}
+    Thus, the direct product is a group.
+}
+
+\Note{
+    If the groups are abelian and we use additive notation, the direct product is sometimes called the \textbf{direct sum} and denoted $\displaystyle \oplus\limits_{i-1}^{n} G_i = G_1 \oplus G_2 \oplus \cdots \oplus G_n$. If $G_i$ has $r_i$ elements, the direct product has $r_1 r_2 \cdots r_n$ elements.
+}
+
+\Example{$\Z_2 \times \Z_3$}{
+    Consider $\Z_2 \times \Z_3$, which has dimension $2 \times 3 = 6$. Let's test if it's cyclic by finding the multiples of $(1, 1)$:
+    \begin{align*}
+        1(1, 1) &= (1, 1) \\
+        2(1, 1) &= (1 +_2 1, 1 +_3 1) = (0, 2) \\
+        3(1, 1) &= 2(1, 1) + (1, 1) = (0, 2) + (1, 1) = (1, 0) \\
+        4(1, 1) &= 3(1, 1) + (1, 1) = (1, 0) + (1, 1) = (0, 1) \\
+        5(1, 1) &= 4(1, 1) + (1, 1) = (0, 1) + (1, 1) = (1, 2) \\
+        6(1, 1) &= 5(1, 1) + (1, 1) = (1, 2) + (1, 1) = (0, 0)
+    \end{align*}
+    Since $(1, 1)$ generates all 6 elements, $\Z_2 \times \Z_3$ is a cyclic group, isomorphic to $\Z_6$.
+}
+
+\Theorem{}{
+    The group $\Z_m \times \Z_n$ is cyclic and is isomorphic to $\Z_{mn}$ if and only if $m$ and $n$ are relatively prime (i.e., $\gcd(m, n) = 1$).
+}
+
+\Proof{
+    $(\Rightarrow)$ \textbf{If $\gcd(m,n)=1$, then $\Z_m\times\Z_n \cong \Z_{mn}$.} \\
+    The order of $(1,1)$ is the smallest positive integer $k$ such that $k(1,1) = (0,0)$. Since addition is componentwise, this requires: \[
+        m \mid k \quad \text{and} \quad n \mid k.
+    \]
+    The smallest such $k$ is $\mathrm{lcm}(m,n)$, so $\mathrm{ord}(1,1) = \mathrm{lcm}(m,n)$. Since $\gcd(m,n) = 1$, we have: \[
+        \mathrm{lcm}(m,n) = \frac{mn}{\gcd(m,n)} = mn.
+    \]
+    So $(1,1)$ has order $mn = |\Z_m \times \Z_n|$, meaning it generates the entire group. Thus $\Z_m \times \Z_n$ is cyclic of order $mn$, and by the Classification Theorem, $\Z_m \times \Z_n \cong \Z_{mn}$. \\~\\
+
+    $(\Leftarrow)$ \textbf{If $\Z_m\times\Z_n$ is cyclic, then $\gcd(m,n)=1$.} \\
+    We first show that every element of $\Z_m \times \Z_n$ has order dividing $\mathrm{lcm}(m,n)$. Let $L = \mathrm{lcm}(m,n)$. For any $(a,b)$: \[
+        L(a,b) = (La \bmod m,\ Lb \bmod n) = (0, 0),
+    \]
+    since $m \mid L$ and $n \mid L$. Hence $\mathrm{ord}(a,b)$ divides $L = \mathrm{lcm}(m,n)$ for every $(a,b)$. \\
+    Now suppose $\Z_m \times \Z_n$ is cyclic. Then some generator has order $mn$. But every element's order divides $\mathrm{lcm}(m,n)$, so: \[
+        mn \mid \mathrm{lcm}(m,n).
+    \]
+    Since $\mathrm{lcm}(m,n) \leq mn$ always, we must have $\mathrm{lcm}(m,n) = mn$, which gives: \[
+        \frac{mn}{\gcd(m,n)} = mn \implies \gcd(m,n) = 1.
+    \]
+    This completes the proof.
+}
+
+\Corollary{}{
+    The group $\displaystyle \prod_{i=1}^{n} \Z_{m_i}$ is cyclic and isomorphic to $\Z_{m_1 m_2 \dots n_n}$ if and only if the number $m_i$ for $i=1,...,n$ are such that the gcd of any two of them is $1$.
+}
+
+\Proof{
+    If $\gcd(m_i, m_j) = 1$ for all $i \neq j$, then we can apply the previous theorem repeatedly to conclude that $\Z_{m_1} \times \Z_{m_2} \times \cdots \times \Z_{m_n}$ is cyclic and isomorphic to $\Z_{m_1 m_2 \cdots m_n}$. Conversely, if the direct product is cyclic, then the order of any element divides the least common multiple of the $m_i$. Since there exists an element of order $m_1 m_2 \cdots m_n$, it must be that $\mathrm{lcm}(m_1, m_2, \ldots, m_n) = m_1 m_2 \cdots m_n$, which implies that $\gcd(m_i, m_j) = 1$ for all $i \neq j$.
+}
+
+\Definition{Least Common Multiple}{
+    Let $r_1, r_2, \ldots, r_n$ be positive integers. Their \textbf{least common multiple (lcm)} is the smallest positive integer that is a multiple of each $r_i$ for $i=1, 2, \ldots, n$. Formally, it is the positive generator of the cyclic group of all common multiples of the $r_i$.
+}
+
+\Theorem{Order of an Element in a Direct Product}{
+    Let $(a_1, a_2, \ldots, a_n) \in \prod_{i=1}^n G_i$. If $a_i$ is of finite order $r_i$ in $G_i$, then the order of the tuple $(a_1, a_2, \ldots, a_n)$ in the direct product is the least common multiple of all the $r_i$.
+}
+
+\Proof{
+    Let $L = \mathrm{lcm}(r_1, r_2, \ldots, r_n)$. We will show that $L$ is the smallest positive integer such that $L(a_1, a_2, \ldots, a_n) = (e_1, e_2, \ldots, e_n)$.
+
+    First, since $r_i$ is the order of $a_i$, we have $L = r_i \cdot q$ for some positive integer $q$. So, \[ 
+        La_i = r_i \cdot q \cdot a_i = q \cdot (r_i a_i) = q \cdot e_i = e_i
+    \]
+    This holds for each $i$, so componentwise, $L(a_1, a_2, \ldots, a_n) = (e_1, e_2, \ldots, e_n)$.
+
+    Now suppose there exists a positive integer $k < L$ such that $k(a_1, a_2, \ldots, a_n) = (e_1, e_2, \ldots, e_n)$. This implies that $k a_i = e_i$ for each $i$, which means that $r_i$ divides $k$ for each $i$. However, this contradicts the definition of $L$ as the least common multiple. Thus, no such $k$ exists and the order of $(a_1, a_2, \ldots, a_n)$ is indeed $\mathrm{lcm}(r_1, r_2, \ldots, r_n)$.
+}
+
+\Example{Finding Order}{
+    Find the order of $(8, 4, 10)$ in $\Z_{12} \times \Z_{60} \times \Z_{24}$.
+    \begin{itemize}
+        \item The order of $8$ in $\Z_{12}$ is $12 / \gcd(8, 12) = 12 / 4 = 3$.
+        \item The order of $4$ in $\Z_{60}$ is $60 / \gcd(4, 60) = 60 / 4 = 15$.
+        \item The order of $10$ in $\Z_{24}$ is $24 / \gcd(10, 24) = 24 / 2 = 12$.
+    \end{itemize}
+    The lcm of $3, 15$, and $12$ is $60$. Thus, the order of $(8, 4, 10)$ is $60$.
+}
+
+We can distinguish between an \textit{external} direct product (formed from independent groups) and an \textit{internal} direct product, where the group is formed by the product of its own subgroups $G_i$, defined by setting elements equal to identity in all components except the $i$-th. These structures are fundamentally isomorphic.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  The Structure of Finitely Generated Abelian Groups  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Structure of Finitely Generated Abelian Groups}
+
+The following profound theorem classifies all finitely generated abelian groups up to isomorphism. There are two standard ways to present it.
+
+\Theorem{Fundamental Theorem of Finitely Generated Abelian Groups (Primary Factor Version)}{
+    Every finitely generated Abelian group $G$ is isomorphic to a direct product of cyclic groups in the form \[
+        \Z_{(p_1)^{r_1}} \times \Z_{(p_2)^{r_2}} \times \cdots \times \Z_{(p_n)^{r_n}} \times \Z \times \Z \times \cdots \times \Z
+    \]
+    where the $p_i$ are primes, not necessarily distinct, and the $r_i$ are positive integers.
+    The direct product is unique except for possible rearrangement of the factors; that is, the number of factors of $\Z$ (called the \textbf{Betti number} of $G$) is unique, and the prime powers $(p_i)^{r_1}$ are unique.
+}
+
+\Proof{
+    \textit{(Better look at it later.)} \\
+    \textbf{Step 1: Decompose $G$ into torsion and free parts.} \\
+    Define the torsion subgroup \[
+        T(G) = \{ g \in G : ng = e \text{ for some } n \geq 1 \}.
+    \]
+    Since $G$ is Abelian, $T(G)$ is a subgroup of $G$. The quotient $G/T(G)$ is torsion-free and finitely generated, hence free, so $G/T(G) \cong \Z^k$ for some $k \geq 0$. This $k$ is called the \textbf{Betti number} of $G$. Since $\Z^k$ is free, the short exact sequence \[
+        0 \to T(G) \to G \to \Z^k \to 0
+    \]
+    splits, giving $G \cong T(G) \times \Z^k$. It remains to decompose $T(G)$.
+
+    \textbf{Step 2: Decompose $T(G)$ by primes.} \\
+    For each prime $p$, define the $p$-primary component \[
+        T_p = \{ g \in T(G) : p^r g = e \text{ for some } r \geq 1 \}.
+    \]
+    We claim $T(G) \cong \prod_p T_p$. To see this, note that any two elements of orders $p^a$ and $q^b$ with $p \neq q$ interact trivially: since $\gcd(p^a, q^b) = 1$, Bezout gives integers $x, y$ with $xp^a + yq^b = 1$, from which every element of $T(G)$ decomposes uniquely into its $p$-primary components.
+
+    \textbf{Step 3: Decompose each $T_p$ into cyclic groups.} \\
+    Fix a prime $p$. We show \[
+        T_p \cong \Z_{p^{r_1}} \times \Z_{p^{r_2}} \times \cdots \times
+        \Z_{p^{r_s}}
+    \]
+    for some positive integers $r_1 \geq r_2 \geq \cdots \geq r_s$. Take $g_1 \in T_p$ of maximum order $p^{r_1}$, so $\langle g_1 \rangle \cong \Z_{p^{r_1}}$. Since a cyclic subgroup of maximum order in a $p$-group is always a direct summand, there exists a subgroup $H \leq T_p$ such that $T_p = \langle g_1 \rangle \times H$. Applying the same argument to $H$ and repeating, the process terminates since $G$ is finitely generated, yielding the desired decomposition.
+
+    \textbf{Uniqueness.} \\
+    The Betti number $k$ is uniquely determined as the rank of the free group $G / T(G)$. The $p$-primary components $T_p$ are uniquely determined as subgroups of $T(G)$. Within each $T_p$, the multiset of exponents $\{r_1, \ldots, r_s\}$ is uniquely recovered from the sequence of quotients $p^i T_p / p^{i+1} T_p$. Hence the decomposition is unique up to rearrangement of factors. \hfill$\square$
+}
+
+\Example{(Classification by Primary Factors): Find all Abelian groups, up to isomorphism, of order 360.}{
+    First, observe that $360 = 2^3 \cdot 3^2 \cdot 5$. There will be no factors of $\Z$ since the group is finite.
+    We look for partitions of the prime powers $r_i$:
+    \begin{itemize}
+        \item For $2^3$, the partitions are $3$, $2+1$, $1+1+1$; corresponding to $\Z_8$, $\Z_4 \times \Z_2$, and $\Z_2 \times \Z_2 \times \Z_2$.
+        \item For $3^2$, the partitions are $2$, $1+1$; corresponding to $\Z_9$ and $\Z_3 \times \Z_3$.
+        \item For $5^1$, the partition is $1$; corresponding to $\Z_5$.
+    \end{itemize}
+    Combining these independent choices ($3 \times 2 \times 1 = 6$ total) yields six non-isomorphic groups:
+    \begin{enumerate}
+        \item $\Z_2 \times \Z_2 \times \Z_2 \times \Z_3 \times \Z_3 \times \Z_5$
+        \item $\Z_2 \times \Z_2 \times \Z_2 \times \Z_9 \times \Z_5$
+        \item $\Z_2 \times \Z_4 \times \Z_3 \times \Z_3 \times \Z_5$
+        \item $\Z_2 \times \Z_4 \times \Z_9 \times \Z_5$
+        \item $\Z_8 \times \Z_3 \times \Z_3 \times \Z_5$
+        \item $\Z_8 \times \Z_9 \times \Z_5$
+    \end{enumerate}
+}
+
+\Theorem{Invariant Factor Version}{
+    Every finitely generated abelian group is isomorphic to a direct product of cyclic groups of the form \[
+        \Z_{d_1} \times \Z_{d_2} \times \Z_{d_3} \times \cdots \times \Z_{d_k} \times \Z \times \Z \times \cdots \times \Z
+    \]
+    where each $d_i \geq 2$ is an integer and $d_i$ divides $d_{i+1}$ for $1 \leq i \leq k-1$. Furthermore, the representation is unique.
+}
+
+\Note{
+    The numbers $d_i$ are called the \textbf{invariant factors} (or \textbf{torsion coefficients}). Either version of the fundamental theorem can be derived from the other. Primary factors break the group down to prime-power building blocks, while invariant factors group them back up so that each cyclic component divides the next.
+}
+
+\Example{(Classification by Invariant Factors): Find all Abelian groups, up to isomorphism, of order 360.}{
+    Since $360 = 2^3 \cdot 3^2 \cdot 5$, the invariant factors must multiply to $360$. The possible sequences of invariant factors are:
+    \begin{itemize}
+        \item $d_1=360$ corresponding to $\Z_{360}$.
+        \item $d_1=2$, $d_2=180$ corresponding to $\Z_2 \times \Z_{180}$.
+        \item $d_1=3,d_2=120$ corresponding to $\Z_3 \times \Z_{120}$.
+        \item $d_1=6,d_2=60$ corresponding to $\Z_6 \times \Z_{60}$.
+        \item $d_1=2,d_2=2,d_3=90$ corresponding to $\Z_2 \times \Z_2 \times \Z_{90}$.
+        \item $d_1=2,d_2=6,d_3=30$ corresponding to $\Z_2 \times \Z_6 \times \Z_{30}$.
+    \end{itemize}
+    These six groups correspond exactly to the six groups found using the primary factor version, confirming that both classifications yield the same set of isomorphism classes.
+}
+
+
+%%%%%%%%%%%%%%%%%%
+%  Applications  %
+%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Applications}
+
+\Definition{Decomposable and Indecomposable Groups}{
+    A group $G$ is \textbf{decomposable} if it is isomorphic to a direct product of two proper non-trivial subgroups. Otherwise, $G$ is \textbf{indecomposable}.
+}
+
+\Theorem{}{
+    The finite indecomposable Abelian groups are exactly the cyclic groups with order a power of a prime, i.e., $\Z_{p^r}$ for some prime $p$ and positive integer $r$.
+}
+
+\Proof{
+    If $G$ is a finite indecomposable abelian group, then by the fundamental theorem, $G$ is isomorphic to a direct product of cyclic groups of prime power order. Since $G$ is indecomposable, it cannot be expressed as a direct product of two or more non-trivial groups, so there must be only one factor. Thus, $G \cong \Z_{p^r}$ for some prime $p$ and positive integer $r$. Conversely, any group of the form $\Z_{p^r}$ is indecomposable since it cannot be expressed as a direct product of smaller non-trivial groups.
+}
+
+\Theorem{}{
+    If $m$ divides the order of a finite Abelian group $G$, then $G$ has a subgroup of order $m$.
+}
+
+\Proof{
+    Let $|G| = n$ and suppose $m \mid n$. By the fundamental theorem, $G$ is isomorphic to a direct product of cyclic groups of prime power order. We can construct a subgroup of order $m$ by taking appropriate factors from the direct product decomposition. Since $m$ divides $n$, we can express $m$ as a product of prime powers that divide the orders of the cyclic factors in the decomposition of $G$. By selecting the corresponding subgroups from each factor, we can form a subgroup of $G$ with order $m$.
+}
+
+\Theorem{}{
+    If $m$ is a square-free positive integer (i.e., $m$ is not divisible by the square of any prime), every Abelian group of order $m$ is cyclic.
+}
+
+\Proof{
+    Let $m = p_1 p_2 \cdots p_k$ where the $p_i$ are distinct primes. By the fundamental theorem, any abelian group of order $m$ is isomorphic to a direct product of cyclic groups whose orders are powers of the primes dividing $m$. Since each prime divides $m$ only once, the only possible cyclic factors are $\Z_{p_i}$ for each prime $p_i$. Thus, any abelian group of order $m$ is isomorphic to $\Z_{p_1} \times \Z_{p_2} \times \cdots \times \Z_{p_k}$. Since the $p_i$ are distinct primes, this direct product is isomorphic to $\Z_m$, which is cyclic. Therefore, every abelian group of square-free order is cyclic.
+}
+
+

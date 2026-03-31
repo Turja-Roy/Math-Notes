@@ -1,0 +1,196 @@
+\subsection{Subgroups}
+
+\Definition{Subgroup}{
+    A subset $H$ of a group $G$ is called a \textbf{subgroup} of $G$ if $H$ is itself a group under the induced operation from $G$. We write $H \leq G$ to denote that $H$ is a subgroup of $G$.
+}
+
+\Definition{Improper and Trivial Subgroups}{
+    Every group $G$ has two obvious subgroups: $G$ itself and $\{e\}$, where $e$ is the identity element. The subgroup $G$ is called the \textbf{improper subgroup}, and all other subgroups are \textbf{proper subgroups}. The subgroup $\{e\}$ is the \textbf{trivial subgroup}, and all other subgroups are \textbf{nontrivial}.
+}
+
+\Example{}{
+    We have the chain of subgroups $\Z < \Q < \R < \C$ under addition. Each is a proper subgroup of the next.
+
+    The $n^{\text{th}}$ roots of unity $U_n$ form a subgroup of $U$ (the unit circle group), which in turn is a subgroup of $\C^*$ (the nonzero complex numbers under multiplication). That is, $U_n \leq U \leq \C^*$.
+
+    For any $n \geq 3$, the dihedral group $D_n$ is a subgroup of $S_{\Z_n}$, the symmetric group on $\Z_n$, since every symmetry of the regular $n$-gon is in particular a permutation of its vertices. That is, $D_n \leq S_{\Z_n}$.
+}
+
+\Note{
+    If $H \leq G$ and $a \in H$, then the identity element of $H$ must be the same as the identity element $e$ of $G$. This is because the equation $ax = a$ has a unique solution in $G$ (namely $e$), and since $H$ is itself a group, the solution in $H$ must be that same $e$. A similar argument shows that the inverse of $a$ in $H$ is the same as $a^{-1}$ in $G$.
+}
+
+\Example{}{
+    The group $\Z_4$ has only one nontrivial proper subgroup: $\{0, 2\}$. Note that $\{0, 3\}$ is \textit{not} a subgroup since it is not closed under $+_4$: $3 +_4 3 = 2 \notin \{0, 3\}$.
+
+    The Klein 4-group $V = \{e, a, b, c\}$ has three nontrivial proper subgroups: $\{e, a\}$, $\{e, b\}$, and $\{e, c\}$. Note that $\{e, a, b\}$ is not a subgroup since $ab = c \notin \{e, a, b\}$.
+}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm, every node/.style={font=\small}]
+    % Z_4 subgroup diagram
+        \node (Z4) at (0, 2) {$\Z_4$};
+        \node (02) at (0, 1) {$\{0, 2\}$};
+        \node (0a) at (0, 0) {$\{0\}$};
+        \draw (Z4) -- (02);
+        \draw (02) -- (0a);
+
+    % V subgroup diagram
+        \node (V) at (5, 2) {$V$};
+        \node (ea) at (3.5, 1) {$\{e, a\}$};
+        \node (eb) at (5, 1) {$\{e, b\}$};
+        \node (ec) at (6.5, 1) {$\{e, c\}$};
+        \node (e) at (5, 0) {$\{e\}$};
+        \draw (V) -- (ea);
+        \draw (V) -- (eb);
+        \draw (V) -- (ec);
+        \draw (ea) -- (e);
+        \draw (eb) -- (e);
+        \draw (ec) -- (e);
+    \end{tikzpicture}
+    \caption{Subgroup diagram for $\Z_4$ (left), Subgroup diagram for $V$ (right)}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%  Subgroup Tests  %
+%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Subgroup Tests}
+
+\Theorem{Two-Step Subgroup Test}{
+    A subset $H$ of a group $G$ is a subgroup of $G$ if and only if:
+    \begin{enumerate}
+        \item $H$ is closed under the binary operation of $G$: \[
+            a, b \in H \implies ab \in H
+        \]
+        \item For all $a \in H$, $a^{-1} \in H$: \[
+            a \in H \implies a^{-1} \in H
+        \]
+    \end{enumerate}
+}
+
+\Proof{
+    ($\Rightarrow$) If $H$ is a subgroup, then by definition it must satisfy the group properties. Therefore, for any $a,b \in H$, the product $ab$ must also be in $H$ (closure), and for any $a \in H$, its inverse $a^{-1}$ must also be in $H$ (inverses).
+
+    ($\Leftarrow$) If $H$ satisfies the two conditions, then it is closed under the operation and contains inverses. Since $H$ is nonempty, it contains an identity element (the identity of $G$). Associativity is inherited from $G$. Therefore, $H$ is a subgroup of $G$.
+}
+
+\Note{
+    Since $a \in H \implies a^{-1} \in H$, the identity element $e$ of $G$ must be in $H$. Because, if $a \in H$ and $a^{-1} \in H$, then by closure $aa^{-1} = e \in H$.
+}
+
+\Example{}{
+    Let $G$ be the multiplicative group of all invertible $n \times n$ complex matrices, and let $T = \{ A \in G \mid \det(A) = 1 \}$. We verify $T \leq G$ using the two-step test:
+    \begin{enumerate}
+        \item \textbf{Closure:} If $\det(A) = 1$ and $\det(B) = 1$, then $\det(AB) = \det(A)\det(B) = 1$, so $AB \in T$.
+        \item \textbf{Inverses:} If $\det(A) = 1$, then $\det(A^{-1}) = 1/\det(A) = 1$, so $A^{-1} \in T$.
+    \end{enumerate}
+    Hence, $T$ is a subgroup of $G$.
+}
+
+\Theorem{One-Step Subgroup Test}{
+    A nonempty subset $H$ of a group $G$ is a subgroup of $G$ if and only if for all $a, b \in H$, $ab^{-1} \in H$.
+}
+
+\Proof{
+    ($\Rightarrow$) If $H \leq G$, then $H$ is a group under the induced operation, so for all $a, b \in H$, we have $b^{-1} \in H$ and $ab^{-1} \in H$.
+
+    ($\Leftarrow$) If for all $a, b \in H$, we have $ab^{-1} \in H$, then we can verify the conditions of the two-step test:
+    \begin{enumerate}
+        \item \textbf{Closure:} If $a, b \in H$, then $ab^{-1} \in H$ by assumption. Since $b^{-1} \in H$, we can take $b^{-1}$ as the second element to get $a(b^{-1})^{-1} = ab \in H$.
+        \item \textbf{Inverses:} If $a \in H$, then taking $b = e$ gives $ae^{-1} = a \in H$. Taking $a = e$ gives $eb^{-1} = b^{-1} \in H$.
+    \end{enumerate}
+    Thus, $H$ satisfies the conditions of the two-step test, so $H \leq G$.
+}
+
+\Theorem{Finite Subgroup Test}{
+    Let $H$ be a finite nonempty subset of a group $G$. Then $H$ is a subgroup of $G$ if and only if $H$ is closed under the operation of $G$.
+}
+
+\Note{
+    This is a very convenient test for finite subsets: we only need to check closure! The identity and inverses come for free. The key idea is that if $a \in H$ and $H$ is finite, then the elements $a, a^2, a^3, \ldots$ cannot all be distinct, so $a^i = a^j$ for some $i > j$, giving $a^{i-j} = e \in H$. Then $a^{i-j-1} = a^{-1} \in H$.
+}
+
+\Example{}{
+    We can verify that $U_n$ is a subgroup of $\C^*$ using the finite subgroup test. Since $U_n$ has exactly $n$ elements and is finite, we only need to check closure: if $z_1^n = 1$ and $z_2^n = 1$, then $(z_1 z_2)^n = z_1^n z_2^n = 1$. Hence $U_n \leq \C^*$.
+}
+
+\Example{}{
+    The subset $H = \{\iota, \rho, \rho^2, \ldots, \rho^{n-1}\} \subset D_n$ consisting of all rotations is a subgroup of $D_n$. By the finite subgroup test, we only need to check closure: for $k, r \in \Z_n$, we have $\rho^k \rho^r = \rho^{k +_n r} \in H$. Therefore $H \leq D_n$.
+}
+
+\Theorem{Intersection of Subgroups}{
+    If $H$ and $K$ are subgroups of a group $G$, then $H \cap K$ is also a subgroup of $G$. More generally, the intersection of any nonempty collection of subgroups of $G$ is a subgroup of $G$.
+}
+
+\Proof{
+    We verify the conditions of the two-step test for $H \cap K$:
+    \begin{enumerate}
+        \item \textbf{Closure:} Let $a, b \in H \cap K$. Then $a, b \in H$ and $a, b \in K$. Since $H$ and $K$ are subgroups, $ab \in H$ and $ab \in K$, so $ab \in H \cap K$.
+        \item \textbf{Inverses:} If $a \in H \cap K$, then $a \in H$ and $a \in K$. Since $H$ and $K$ are subgroups, $a^{-1} \in H$ and $a^{-1} \in K$, so $a^{-1} \in H \cap K$.
+    \end{enumerate}
+    The generalization to an arbitrary collection $\{H_i \mid i \in I\}$ of subgroups follows by the same argument, replacing ``$H$ and $K$'' with ``all $H_i$''.
+}
+
+\Note{
+    The collection of subgroups of $G$ can be denoted as $\bigcap \limits_{i \in I} H_i$, where $I$ is an index set and each $H_i$ is a subgroup of $G$. The intersection $\bigcap \limits_{i \in I} H_i$ consists of all elements that are in every subgroup $H_i$. Since the intersection of subgroups is itself a subgroup, $\bigcap \limits_{i \in I} H_i$ is a subgroup of $G$.
+}
+
+\Note[Warning about unions]{
+    While the intersection of subgroups is always a subgroup, the \textit{union} of subgroups is generally \textbf{not} a subgroup. For example, in $\Z$, both $2\Z$ and $3\Z$ are subgroups, but $2\Z \cup 3\Z$ is not closed under addition since $2 + 3 = 5 \notin 2\Z \cup 3\Z$.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%  Cyclic Subgroups  %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Cyclic Subgroups}
+
+\Theorem{}{
+    Let $G$ be a group and let $a \in G$. Then \[
+        H = \langle a \rangle = \{a^n \mid n \in \Z\}
+    \]
+    is a subgroup of $G$ and is the smallest subgroup of $G$ that contains $a$. That is, every subgroup containing $a$ contains $H$.
+}
+
+\Proof{
+    We verify the conditions of the two-step subgroup test:
+    \begin{enumerate}
+        \item \textbf{Closure:} For $a^r, a^s \in H$, we have $a^r a^s = a^{r+s} \in H$.
+        \item \textbf{Inverses:} For $a^r \in H$, we have $a^{-r} \in H$ and $a^{-r} a^r = e$.
+    \end{enumerate}
+    Hence, $H \leq G$.
+
+    To see that $H$ is the smallest such subgroup, observe that any subgroup of $G$ containing $a$ must contain $a^n$ for all $n \in \Z$ (by closure, identity, and inverse axioms), and hence must contain $H$.
+}
+
+\Definition{Cyclic Subgroup Generated by $a$}{
+    The subgroup $\langle a \rangle = \{a^n \mid n \in \Z\}$ is called the \textbf{cyclic subgroup of $G$ generated by $a$}.
+}
+
+\Definition{Generator and Cyclic Group}{
+    An element $a$ of a group $G$ is a \textbf{generator} of $G$ if $\langle a \rangle = G$. A group $G$ is \textbf{cyclic} if there exists some element $a \in G$ such that $G = \langle a \rangle$.
+}
+
+\Example{}{
+    The group $\Z_4$ is cyclic with generators $1$ and $3$, since $\langle 1 \rangle = \langle 3 \rangle = \Z_4$. However, $V$ is not cyclic, because $\langle a \rangle = \{e, a\}$, $\langle b \rangle = \{e, b\}$, and $\langle c \rangle = \{e, c\}$ are all proper subgroups.
+}
+
+\Example{}{
+    The group $\Z$ under addition is cyclic, generated by $1$ (or $-1$). In $\Z$, the cyclic subgroup generated by $n$ is $n\Z = \{nk \mid k \in \Z\}$, which is the set of all multiples of $n$. For example, $\langle 3 \rangle = 3\Z = \{\ldots, -6, -3, 0, 3, 6, \ldots\}$.
+}
+
+\Example{}{
+    In $D_{10}$, consider $\langle \mu\rho^k \rangle$ for any $k \in \Z_{10}$. Since $(\mu\rho^k)^2 = \iota$, we have $\langle \mu\rho^k \rangle = \{\iota, \mu\rho^k\}$. On the other hand, since $\rho^{-1} = \rho^9$ and $\rho^{10} = \iota$, every negative power of $\rho$ is also a positive power, so $\langle \rho \rangle = \{\iota, \rho, \rho^2, \ldots, \rho^9\}$, which is the subgroup of all rotations.
+}
+
+\Definition{Order/Period of an Element}{
+    Let $a$ be an element of a group $G$. If the cyclic subgroup $\langle a \rangle$ is finite, then the \textbf{order (or period) of $a$} is $|\langle a \rangle|$. Otherwise, $a$ is said to have \textbf{infinite order}.
+}
+
+\Note{
+    We will see shortly that the order of $a$ is the smallest positive integer $n$ such that $a^n = e$, provided such an $n$ exists. If no such $n$ exists, then $a$ has infinite order.
+}

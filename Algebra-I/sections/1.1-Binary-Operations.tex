@@ -1,0 +1,96 @@
+\subsection{Binary Operations}
+
+\Definition{Binary Operation}{
+    A \textbf{binary operation} $*$ on a set $S$ is a function mapping $S \times S$ into $S$. For each $(a,b) \in S \times S$, we will denote the element $*(a,b)$ of $S$ by $a * b$.
+}
+
+\Note{
+    Binary refers to the fact that we are mapping \textit{pairs} of elements from $S$ into $S$. We could also define ternary operation as a function mapping triplets of elements of $S$ to $S$, but that is not relevant for our discussion of groups.
+}
+
+\Example{}{
+    Addition $(+)$ is a binary operator on the set $\R$. Multiplication $(\cdot)$ is also a binary operator on $\R$. However, division $(/)$ is not a binary operator on $\R$ since $a/b$ is not defined when $b = 0$. But, division is a binary operator on the set $\R^* = \R \setminus \{0\}$.
+
+    Note that we require an operation on a set $S$ to be defined for \textit{every} ordered pair $(a,b)$ of elements from $S$.
+}
+
+\Definition{Closure and Induced Operation}{
+    Let $*$ be an operation on $S$ and let $H$ be a subset of $S$. The subset $H$ is \textbf{closed under} $*$ if \[ 
+        \forall a,b \in H, a * b \in H
+    \]
+    In this case, the operation on $H$ given by restricting $*$ to $H$ is the \textbf{operation induced} of $*$ on $H$.
+}
+
+\Note{
+    If $*$ is an operation on $S$ and $H$ is a subset of $S$, then we can define an operation on $H$ by using the same rule as $*$, but only applying it to elements of $H$. For this to work, we need to make sure that when we apply the operation to any two elements of $H$, we get another element of $H$. If this is the case, then we say that $H$ is closed under $*$, and the operation we defined on $H$ is called the induced operation.
+}
+
+\Example{}{
+    The addition $+$ operation on $\R$ does not induce an operation on the set $\R^*$ of nonzero real numbers because $-2,2 \in \R^*$, but $2 + (-2) = 0 \not\in \R^*$. Thus, $\R^*$ is not closed under $+$, and so $+$ does not induce an operation on $\R^*$.
+
+    However, the multiplication $\cdot$ operation on $\R$ does induce an operation on $\R^*$ since for any $a,b \in \R^*$, we have $a \cdot b \in \R^*$. Thus, $\R^*$ is closed under $\cdot$.
+}
+
+\Example{
+    Let $+$ and $\cdot$ be the usual operations of addition and multiplication on the set $\Z$, and let $H = \{ n^2 \mid n \in \Z^+ \}$. Determine whether $H$ is closed under $+$ and $\cdot$.
+}{
+    For $+$, we need to only observe that $1^2 = 1$ and $2^2 = 4$ are in $H$, but that $1+4 = 5$ and $5 \not\in H$. This $H$ is not closed under addition.
+
+    For $*$, suppose that $r \in H$ and $s \in H$. Using that it means for $r$ and $s$ to be in $H$, we see that there must be integers $n$ and $m$ in $\Z^+$ such that $r=n^2$ and $s=m^2$. Consequently, $rs = n^2m^2 = (nm)^2$. By the characterization of elements in $H$ and the fact that $nm \in \Z^+$, this means that $rs \in H$, so $H$ is closed under multiplication.
+}
+
+\Example{}{
+    Let $F$ be the set of all real-valued functions $f$ having as domain $\R$. For each ordered pair $(f,g)$ of functions in $F$, we define for each $x \in \R$:
+    \begin{align*}
+        f+g \text{ by } (f+g)(x) &= f(x) + g(x) && \text{addition} \\
+        f-g \text{ by } (f-g)(x) &= f(x) - g(x) && \text{subtraction} \\
+        f\cdot g \text{ by } (f\cdot g)(x) &= f(x) \cdot g(x) && \text{multiplication} \\
+        f\circ g \text{ by } (f\circ g)(x) &= f(g(x)) && \text{composition}
+    \end{align*}
+    All four of these functions are again real valued with domain $\R$, so $F$ is closed under all four operations $+,-,\cdot,\text{ and }\circ$.
+}
+
+\Definition{Commutativity and Associativity}{
+    An operation $*$ on a set $S$ is \textbf{commutative} if and only if: \[ 
+        \forall a,b \in S, \quad a * b = b * a
+    \]
+    An operation $*$ on a set $S$ is \textbf{associative} if and only if: \[ 
+        \forall a,b,c \in S, \quad (a * b) * c = a * (b * c)
+    \]
+}
+
+\Theorem{Associativity of Composition}{
+    Let $S$ be a set and let $f,g$ and $h$ be functions mapping $S$ into $S$. Then \[ 
+        f \circ (g \circ h) = (f \circ g) \circ h
+    \]
+}
+
+\Proof{
+    Let $x \in S$. Then we have:
+    \begin{align*}
+        (f \circ (g \circ h))(x) &= f((g \circ h)(x)) \\
+                                 &= f(g(h(x))) \\
+                                 &= (f \circ g)(h(x)) \\
+                                 &= ((f \circ g) \circ h)(x)
+    \end{align*}
+}
+
+\Definition{Identity Element}{
+    Let $*$ be a binary operation on a set $S$. An element $e$ of $S$ is an \textbf{identity element} for $*$ if and only if: \[ 
+        \forall a \in S, \quad e * a = a * e = a
+    \]
+}
+
+\Theorem{Uniqueness of Identity Element}{
+    A set with binary operation $*$ has at most one identity element.
+}
+
+\Proof{
+    Let $e$ and $e'$ be identity elements for $*$. Consider the element $e*e'$. Since $e$ is an identity element, we have $e*e' = e'$. But $e*e'=e$ since $e'$ is an identity element. Thus, $e = e'$, so there is at most one identity element for $*$.
+}
+
+\Definition{Inverse Element}{
+    If $*$ is an operation on the set $S$, and $S$ has an identity element $e$, then for any $x \in S$, the \textbf{inverse} of $x$ is an element $x'$ such that \[ 
+        x * x' = x' * x = e
+    \]
+}

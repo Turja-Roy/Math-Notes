@@ -1,0 +1,563 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Homomorphisms and Factor Groups  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Homomorphisms and Factor Groups}
+
+
+%%%%%%%%%%%%%%%%%%%
+%  Factor Groups  %
+%%%%%%%%%%%%%%%%%%%
+
+\subsection{Factor Groups}
+
+Recall from our study of cosets that partitioning a group into left cosets of a subgroup can sometimes reveal interesting structure. We now investigate when the set of left cosets of a subgroup can itself be made into a group.
+
+When we arrange the head on top and on the left of a group table so that the elements are grouped into left cosets of a subgroup, we may or may not obtain a coherent group table for the cosets. For the cosets to form a group, we need a crucial condition: if $a_1, a_2$ are in the same left coset and $b_1, b_2$ are in the same left coset, then $a_1 b_1$ and $a_2 b_2$ must be in the same left coset. When this condition holds, we say the operation on the left cosets is \textit{induced} by the operation of $G$.
+
+\Example{}{
+    Consider the group $\Z_6$ with subgroup $\langle 3 \rangle = \{0, 3\}$. The left cosets are:
+    \begin{align*}
+        0 + \langle 3 \rangle &= \{0, 3\} \\
+        1 + \langle 3 \rangle &= \{1, 4\} \\
+        2 + \langle 3 \rangle &= \{2, 5\}
+    \end{align*}
+    Observe that if $a_1, a_2 \in 1 + \langle 3 \rangle$ and $b_1, b_2 \in 2 + \langle 3 \rangle$, then $a_1 +_6 b_1$ and $a_2 +_6 b_2$ are both in $0 + \langle 3 \rangle$. This is because:
+    \begin{align*}
+        1 +_6 2 &= 3 \in 0 + \langle 3 \rangle \\
+        1 +_6 5 &= 0 \in 0 + \langle 3 \rangle \\
+        4 +_6 2 &= 0 \in 0 + \langle 3 \rangle \\
+        4 +_6 5 &= 3 \in 0 + \langle 3 \rangle
+    \end{align*}
+    The coset operation $(aH)(bH) = (ab)H$ is well-defined, and the cosets form a group.
+}
+
+However, consider $D_3$ with subgroup $\langle \mu \rangle = \{\iota, \mu\}$. The left cosets are $\{\iota, \mu\}$ and $\{\rho, \mu\rho, \mu\rho^2\}$. When we compute the product of the coset $\{\rho\}$ times the coset $\{\rho\}$, we get the coset $\{\rho^2\}$. But if we choose different representatives from each coset, say $\mu\rho$ from the first and $\mu\rho^2$ from the second, we get $\mu\rho \cdot \mu\rho^2 = \mu(\rho\mu)\rho^2 = \mu(\mu\rho^2)\rho^2 = \mu^2 \rho^4 = \rho^2$, which gives the identity coset. This inconsistency means the operation is not well-defined.
+
+The key issue is that for coset multiplication to be well-defined, we need $gH = Hg$ for all $g \in G$. This leads us to the concept of a normal subgroup.
+
+\Definition{Normal Subgroup}{
+    Let $H$ be a subgroup of $G$. We say that $H$ is a \textbf{normal subgroup} of $G$ if $gH = Hg$ for all $g \in G$. If $H$ is a normal subgroup of $G$, we write $H \trianglelefteq G$.
+    
+    Equivalently, $H$ is normal if and only if $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$.
+}
+
+\Note{
+    If $G$ is abelian, then every subgroup is normal. In general, however, normality is a stronger condition than being a subgroup.
+}
+
+\Example{}{
+    The subgroup of even permutations $A_n \leq S_n$ is normal since $A_n$ is the kernel of the sign homomorphism $\text{sgn} : S_n \to \{1, -1\}$.
+}
+
+\Example{}{
+    Let $H = \{A \in GL(n, \R) \mid \det(A) = 1\}$. The determinant map satisfies $\det(AB) = \det(A)\det(B)$, so $\det : GL(n, \R) \to \R^*$ is a homomorphism. Thus $H = \ker(\det)$, and $H \trianglelefteq GL(n, \R)$. This subgroup is called the \textbf{special linear group}, denoted $SL(n, \R)$.
+}
+
+The following theorem characterizes when left coset multiplication is well-defined.
+
+\Theorem{Well-Defined Coset Multiplication}{
+    Let $H$ be a subgroup of $G$. Then left coset multiplication is well-defined by the equation
+    \[
+        (aH)(bH) = (ab)H
+    \]
+    if and only if $H$ is a normal subgroup of $G$.
+}
+
+\Proof{
+    Suppose first that $(aH)(bH) = (ab)H$ gives a well-defined binary operation on left cosets. Let $a \in G$. We want to show $aH \subseteq Ha$. Let $x \in aH$, so $x = ah_1$ for some $h_1 \in H$. Choosing representatives $x \in aH$ and $a^{-1} \in a^{-1}H$, we have
+    \[
+        (xH)(a^{-1}H) = (xa^{-1})H.
+    \]
+    Choosing representatives $a \in aH$ and $a^{-1} \in a^{-1}H$, we have $(aH)(a^{-1}H) = eH = H$. By well-definedness, $xa^{-1} = h_2 \in H$ for some $h_2$, so $x = h_2 a \in Ha$. Thus $aH \subseteq Ha$. A symmetric argument shows $Ha \subseteq aH$.
+    
+    Conversely, if $H$ is normal, then $Hb = bH$ for all $b \in G$. Suppose we compute $(aH)(bH)$. Choosing representatives $ah_1 \in aH$ and $bh_2 \in bH$, we obtain the coset $ah_1 bh_2 H$. Since $h_1 b \in Hb = bH$, we have $h_1 b = bh_3$ for some $h_3 \in H$. Then
+    \[
+        (ah_1)(bh_2) = a(h_1 b)h_2 = a(bh_3)h_2 = (ab)(h_3 h_2) \in (ab)H.
+    \]
+    Thus the coset is well-defined.
+}
+
+This theorem leads directly to the construction of factor groups.
+
+\Corollary{Factor Group Construction}{
+    Let $H$ be a normal subgroup of $G$. Then the cosets of $H$ form a group $G/H$ under the binary operation $(aH)(bH) = (ab)H$.
+}
+
+\Proof{
+    Associativity follows from associativity in $G$: $(aH)[(bH)(cH)] = (aH)[(bc)H] = [a(bc)]H = [(ab)c]H = [(ab)H](cH)$. The identity element is $eH = H$ since $(aH)(eH) = (ae)H = aH$. Finally, $(aH)(a^{-1}H) = (aa^{-1})H = eH$, so $a^{-1}H$ is the inverse of $aH$.
+}
+
+\Definition{Factor Group (Quotient Group)}{
+    The group $G/H$ in the preceding corollary is the \textbf{factor group} (or \textbf{quotient group}) of $G$ by $H$.
+}
+
+\Example{}{
+    Since $\Z$ is abelian, $n\Z$ is a normal subgroup. The factor group $\Z/n\Z$ consists of the cosets
+    \[
+        \Z/n\Z = \{k + n\Z \mid 0 \leq k < n\}.
+    \]
+    This group is isomorphic to $\Z_n$. In fact, $1 + n\Z$ generates $\Z/n\Z$, so it is cyclic.
+}
+
+\Example{}{
+    Consider the additive group $\R$ and the cyclic subgroup $\langle c \rangle$ where $c > 0$. Every coset of $\langle c \rangle$ contains exactly one element $x$ with $0 \leq x < c$. Working with these representatives, we compute addition modulo $c$, showing that $\R/\langle c \rangle$ is isomorphic to the circle group $U$ of complex numbers of magnitude 1.
+}
+
+Now we connect factor groups with homomorphisms. Recall that the kernel of any homomorphism is a normal subgroup. The following theorem shows the converse: every normal subgroup is the kernel of some homomorphism.
+
+\Theorem{Natural (Canonical) Homomorphism}{
+    Let $H$ be a normal subgroup of $G$. Then $\gamma : G \to G/H$ defined by $\gamma(x) = xH$ is a homomorphism with kernel $H$.
+}
+
+\Proof{
+    For $x, y \in G$, we have $\gamma(xy) = (xy)H = (xH)(yH) = \gamma(x)\gamma(y)$, so $\gamma$ is a homomorphism. Since $xH = H$ if and only if $x \in H$, the kernel of $\gamma$ is exactly $H$.
+}
+
+This fundamental connection between normal subgroups and homomorphisms leads to one of the most important theorems in group theory.
+
+\Theorem{Fundamental Homomorphism Theorem (First Isomorphism Theorem)}{
+    Let $\phi : G \to G'$ be a group homomorphism with kernel $H$. Then $\phi[G]$ is a group, and $\mu : G/H \to \phi[G]$ given by $\mu(gH) = \phi(g)$ is an isomorphism. If $\gamma : G \to G/H$ is the natural homomorphism, then $\phi = \mu \circ \gamma$.
+}
+
+\Proof{
+    We show $\mu$ is well-defined. If $g_1H = g_2H$, then $g_2 = g_1 h$ for some $h \in H$, so $\phi(g_2) = \phi(g_1 h) = \phi(g_1)\phi(h) = \phi(g_1)e' = \phi(g_1)$. Thus $\mu$ is well-defined.
+    
+    To show $\mu$ is a homomorphism:
+    \[
+        \mu((aH)(bH)) = \mu((ab)H) = \phi(ab) = \phi(a)\phi(b) = \mu(aH)\mu(bH).
+    \]
+    
+    Since $\phi$ maps onto $\phi[G]$, $\mu$ maps onto $\phi[G]$. To show $\mu$ is one-to-one, note that $\mu(aH) = e'$ if and only if $\phi(a) = e'$, which occurs if and only if $a \in H$. Thus $\ker(\mu) = \{H\}$, the trivial subgroup, so $\mu$ is injective.
+}
+
+\Note{
+    The Fundamental Homomorphism Theorem states that $\phi = \mu \circ \gamma$. This means: start with $g \in G$, map to $\gamma(g) = gH$, then map to $\mu(gH) = \phi(g)$. The map $\phi$ can be ``factored'' as the composition of the natural homomorphism followed by an isomorphism.
+}
+
+\Example{}{
+    Let $\phi : \Z \to \Z_n$ be defined by $\phi(m) = m \pmod{n}$ (the remainder when $m$ is divided by $n$). One can verify that $\phi$ is a homomorphism. The kernel is $n\Z$, so by the Fundamental Homomorphism Theorem, $\Z/\ker(\phi) = \Z/n\Z$ is isomorphic to $\Z_n$.
+}
+
+\Example{}{
+    Consider the projection map $\pi_1 : \Z_4 \times \Z_2 \to \Z_4$ defined by $\pi_1(x, y) = x$. This is a homomorphism onto $\Z_4$ with kernel $\{0\} \times \Z_2$. By the Fundamental Homomorphism Theorem, $(\Z_4 \times \Z_2)/(\{0\} \times \Z_2) \cong \Z_4$.
+}
+
+We conclude with an important characterization of normal subgroups in terms of inner automorphisms.
+
+\Definition{Inner Automorphism}{
+    An isomorphism $\phi : G \to G$ of a group with itself is an \textbf{automorphism} of $G$. The map $i_g : G \to G$ defined by $i_g(x) = gxg^{-1}$ for all $x \in G$ is the \textbf{inner automorphism} of $G$ by $g$.
+}
+
+\Theorem{Alternative Characterizations of Normal Subgroups}{
+    The following are equivalent conditions for a subgroup $H$ of $G$ to be normal:
+    \begin{enumerate}
+        \item $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$.
+        \item $gHg^{-1} = H$ for all $g \in G$.
+        \item There is a group homomorphism $\phi : G \to G'$ such that $\ker(\phi) = H$.
+        \item $gH = Hg$ for all $g \in G$.
+    \end{enumerate}
+}
+
+\Note{
+    Condition (2) shows that normal subgroups are precisely those subgroups that are invariant under all inner automorphisms of $G$. A subgroup $K = gHg^{-1}$ is called a \textit{conjugate} of $H$.
+}
+
+
+%====================================%
+%  Section 13: Factor-Group Computations  %
+%====================================%
+
+\subsection{Factor-Group Computations and Simple Groups}
+
+Factor groups can be challenging to grasp initially, but computation strengthens understanding. The key idea is that in the factor group $G/N$, the normal subgroup $N$ acts as the identity element. We can visualize collapsing each coset of $N$ to a single point.
+
+\Example{}{
+    Compute $\Z/\{0\}$. Since $\{0\}$ has only one element, every coset has only one element. Thus $\Z/\{0\} \cong \Z$; there is no collapsing at all.
+}
+
+\Example{}{
+    Compute $\R/n\R$ where $n > 0$. Since every real number can be written as $n(x/n)$ with $x/n \in \R$, we have $n\R = \R$. Thus the factor group has only one element (the identity), a trivial group.
+}
+
+These extremes---$G/\{e\} \cong G$ and $G/G \cong \{e\}$---are of little importance. When $N \neq \{e\}$ is a proper normal subgroup, $G/N$ is smaller than $G$ and often reveals simpler structure.
+
+\Example{}{
+    Since $|S_n| = 2|A_n|$, we have $A_n \trianglelefteq S_n$, and $S_n/A_n$ has order 2. Renaming the coset $A_n$ as ``even'' and $\sigma A_n$ (for any odd $\sigma$) as ``odd,'' the multiplication reflects the parity rules: even $\times$ even = even, even $\times$ odd = odd, odd $\times$ odd = even.
+}
+
+The following theorem shows that factoring out by a subgroup of a direct product often yields a simpler group.
+
+\Theorem{Direct Product Factorization}{
+    Let $G = H \times K$ be the direct product of groups $H$ and $K$. Then $H' = \{(h, e) \mid h \in H\}$ is a normal subgroup of $G$, and $G/H' \cong K$. Similarly, $K' = \{(e, k) \mid k \in K\}$ is normal and $G/K' \cong H$.
+}
+
+\Proof{
+    Consider the projection $\pi_2 : H \times K \to K$ defined by $\pi_2(h, k) = k$. This is a homomorphism with kernel $H'$, so $H' \trianglelefteq H \times K$. Since $\pi_2$ maps onto $K$, the Fundamental Homomorphism Theorem gives $(H \times K)/H' \cong K$.
+}
+
+\Example{}{
+    Compute $(\Z_4 \times \Z_6)/\langle (0, 2) \rangle$. Here $\langle (0, 2) \rangle = \{(0, 0), (0, 2), (0, 4)\}$ has order 3. The factor group has order $|\Z_4 \times \Z_6|/3 = 24/3 = 8$. 
+    
+    The subgroup $\langle (0, 2) \rangle$ collapses part of the $\Z_6$ factor (since $(0, 2)$ generates a subgroup of order 3 in $\Z_6$), leaving a factor isomorphic to $\Z_2$. The $\Z_4$ factor is unchanged. Thus the result is $\Z_4 \times \Z_2$.
+}
+
+\Example{}{
+    Compute $(\Z \times \Z)/\langle (1, 1) \rangle$. Visualize $\Z \times \Z$ as integer lattice points in the plane. The subgroup $\langle (1, 1) \rangle$ consists of points on the line $y = x$. Each coset corresponds to a line parallel to this. Choosing representatives on the $x$-axis gives a group isomorphic to $\Z$. Formally, the map $\phi : \Z \times \Z \to \Z$ defined by $\phi(a, b) = a - b$ is a homomorphism onto $\Z$ with kernel $\langle (1, 1) \rangle$. Thus $(\Z \times \Z)/\langle (1, 1) \rangle \cong \Z$.
+}
+
+\Theorem{Cyclic Factor Groups}{
+    If $G$ is a cyclic group and $N$ is a subgroup of $G$, then $G/N$ is cyclic.
+}
+
+\Proof{
+    Let $G = \langle a \rangle$ and let $N$ be a subgroup. Since $G$ is abelian, $N$ is normal. The cyclic subgroup generated by $aN$ in $G/N$ is
+    \[
+        \langle aN \rangle = \{(aN)^n \mid n \in \Z\} = \{a^n N \mid n \in \Z\}.
+    \]
+    Since $\{a^n \mid n \in \Z\} = G$, we have $\{a^n N \mid n \in \Z\} = \{gN \mid g \in G\}$, so $G/N = \langle aN \rangle$ is cyclic.
+}
+
+Now we explore simple groups, which are groups with no nontrivial proper normal subgroups.
+
+\Definition{Simple Group}{
+    A group is \textbf{simple} if it is nontrivial and has no proper nontrivial normal subgroup.
+}
+
+\Theorem{Simplicity of Alternating Groups}{
+    The alternating group $A_n$ is simple for $n \geq 5$.
+}
+
+\Note{
+    The proof of this theorem is involved and typically uses the action of $A_n$ on $\{1, 2, \ldots, n\}$. The key ideas are: (1) $A_n$ is generated by 3-cycles, (2) any nontrivial normal subgroup containing a 3-cycle must be all of $A_n$, and (3) no nontrivial element of $A_n$ (for $n \geq 5$) can be a product of disjoint cycles in a way that avoids generating $A_n$.
+}
+
+\Note{
+    Simple groups are the ``building blocks'' of finite group theory, analogous to prime numbers in number theory. Every finite group can be ``factored'' into simple groups, though the factors are not uniquely determined up to order (unlike prime factorization).
+}
+
+A maximal normal subgroup is one that is properly contained in $G$ but is not properly contained in any other proper normal subgroup.
+
+\Definition{Maximal Normal Subgroup}{
+    A \textbf{maximal normal subgroup} of $G$ is a normal subgroup $M \neq G$ such that there is no proper normal subgroup $N$ of $G$ with $M \subset N$.
+}
+
+\Theorem{Maximal Normal Subgroups and Simple Groups}{
+    $M$ is a maximal normal subgroup of $G$ if and only if $G/M$ is simple.
+}
+
+\Proof{
+    Let $M$ be maximal normal. Consider the natural homomorphism $\gamma : G \to G/M$. If $N$ is a nontrivial proper normal subgroup of $G/M$, then $\gamma^{-1}[N]$ is a proper normal subgroup of $G$ properly containing $M$ (by properties of homomorphisms and normal subgroups), contradicting maximality. Thus $G/M$ is simple.
+    
+    Conversely, if $G/M$ is simple and $N$ is a normal subgroup of $G$ with $M \subset N \subset G$, then $\gamma[N]$ is a normal subgroup of $G/M$. Since $N \neq G$, we have $\gamma[N] \neq G/M$; since $N \neq M$, $\gamma[N] \neq \{M\}$. This contradicts simplicity of $G/M$. Thus no such $N$ exists and $M$ is maximal.
+}
+
+We now discuss two important normal subgroups: the center and the commutator subgroup.
+
+\Definition{Center of a Group}{
+    The \textbf{center} of $G$, denoted $Z(G)$, is
+    \[
+        Z(G) = \{z \in G \mid zg = gz \text{ for all } g \in G\}.
+    \]
+}
+
+\Note{
+    $Z(G)$ is always a normal subgroup of $G$, and $G/Z(G)$ is abelian if and only if $Z(G) = G$. The center of $S_3$ is trivial ($\{\iota\}$).
+}
+
+\Definition{Commutator}{
+    An element of the form $aba^{-1}b^{-1}$ is a \textbf{commutator} in $G$.
+}
+
+\Definition{Commutator Subgroup}{
+    The \textbf{commutator subgroup} $C$ (or $[G, G]$) of $G$ is the subgroup generated by all commutators. It is the smallest normal subgroup of $G$ containing all commutators.
+}
+
+\Theorem{Commutator Subgroup Characterization}{
+    Let $G$ be a group with commutator subgroup $C$. Then:
+    \begin{enumerate}
+        \item $C \trianglelefteq G$.
+        \item $G/C$ is abelian.
+        \item If $N \trianglelefteq G$, then $G/N$ is abelian if and only if $C \leq N$.
+    \end{enumerate}
+}
+
+\Proof{
+    To show $C$ is normal, let $x = a_1 a_2 \cdots a_k$ be a product of commutators and let $g \in G$. Then
+    \[
+        g^{-1} x g = (g^{-1} a_1 g)(g^{-1} a_2 g) \cdots (g^{-1} a_k g).
+    \]
+    Each $g^{-1} a_i g$ can be expressed as a product of commutators (since $g^{-1} aba^{-1}b^{-1} g = (g^{-1} ag)(g^{-1} bg)(g^{-1} a^{-1}g)(g^{-1} b^{-1}g)$), so $g^{-1} x g \in C$. Thus $C \trianglelefteq G$.
+    
+    For (2): In $G/C$, we have $(aC)(bC) = abC = ab(ba^{-1}b^{-1}a)C = baC = (bC)(aC)$, so $G/C$ is abelian.
+    
+    For (3): If $G/N$ is abelian, then $(aN)(bN) = (bN)(aN)$, so $aba^{-1}b^{-1} \in N$ for all $a, b$, hence $C \leq N$. Conversely, if $C \leq N$, then $G/N$ is abelian by the same calculation.
+}
+
+\Example{}{
+    In $S_3$, one commutator is $(1, 2, 3)(2, 3)(1, 2, 3)^{-1}(2, 3)^{-1} = (1, 3, 2)$. The subgroup generated by this is $A_3$. Since $S_3/A_3 \cong \Z_2$ is abelian, the commutator subgroup of $S_3$ is $A_3$.
+}
+
+
+%=================================%
+%  Section 14: Group Action on a Set  %
+%=================================%
+
+\subsection{Group Action on a Set}
+
+Group actions provide a powerful way to study groups through their effects on sets. This framework connects many previous concepts and leads to deep results like Cauchy's Theorem.
+
+\Definition{Group Action}{
+    Let $X$ be a set and $G$ a group. An \textbf{action} of $G$ on $X$ is a map $G \times X \to X$ (written $g \cdot x$ or simply $gx$) such that:
+    \begin{enumerate}
+        \item $ex = x$ for all $x \in X$ (where $e$ is the identity in $G$).
+        \item $(g_1 g_2)x = g_1(g_2 x)$ for all $g_1, g_2 \in G$ and $x \in X$.
+    \end{enumerate}
+    Under these conditions, $X$ is a \textbf{$G$-set}.
+}
+
+\Example{}{
+    Let $G = GL(n, \R)$ and let $X = \R^n$ (column vectors). Matrix multiplication defines an action: for $A \in GL(n, \R)$ and $v \in \R^n$, $A \cdot v = Av$. The identity matrix acts as the identity, and $(AB)v = A(Bv)$.
+}
+
+\Example{}{
+    Let $G = D_n$ (dihedral group). Elements of $D_n$ permute the vertices $\{0, 1, 2, \ldots, n-1\}$ of a regular $n$-gon. For $\alpha \in D_n$ and $k \in \{0, 1, \ldots, n-1\}$, the action is $\alpha \cdot k = \alpha(k)$.
+}
+
+\Example{}{
+    Every group $G$ acts on itself by left multiplication: for $g \in G$ and $x \in G$, define $g \cdot x = gx$. If $H \leq G$, then $G$ is an $H$-set under this action.
+}
+
+\Example{}{
+    Any group $G$ acts on itself by conjugation: for $g \in G$ and $x \in G$, define $g \cdot x = gxg^{-1}$. This action satisfies $e \cdot x = x$ and $(gh) \cdot x = ghxg^{-1}h^{-1} = g(h \cdot x)h^{-1} = g \cdot (h \cdot x)$.
+}
+
+The following theorem shows that every group action is essentially a permutation action.
+
+\Theorem{Group Actions are Permutation Actions}{
+    Let $X$ be a $G$-set. For each $g \in G$, the map $\sigma_g : X \to X$ defined by $\sigma_g(x) = gx$ is a permutation of $X$. The map $\phi : G \to S_X$ defined by $\phi(g) = \sigma_g$ is a homomorphism.
+}
+
+\Proof{
+    To show $\sigma_g$ is a permutation, suppose $\sigma_g(x_1) = \sigma_g(x_2)$. Then $gx_1 = gx_2$, so $g^{-1}(gx_1) = g^{-1}(gx_2)$, giving $x_1 = x_2$. Thus $\sigma_g$ is injective. For surjectivity, if $y \in X$, then $y = g(g^{-1}y) = \sigma_g(g^{-1}y)$. Hence $\sigma_g$ is a permutation.
+    
+    For the homomorphism property:
+    \[
+        \phi(g_1 g_2)(x) = \sigma_{g_1 g_2}(x) = (g_1 g_2)x = g_1(g_2 x) = \sigma_{g_1}(\sigma_{g_2}(x)) = (\sigma_{g_1} \circ \sigma_{g_2})(x).
+    \]
+    Thus $\phi(g_1 g_2) = \phi(g_1)\phi(g_2)$.
+}
+
+\Note{
+    The kernel of $\phi$ is $\{g \in G \mid gx = x \text{ for all } x \in X\}$, the set of elements that fix every element of $X$. If this kernel is trivial, the action is \textit{faithful}.
+}
+
+Now we introduce two fundamental concepts associated with group actions.
+
+\Definition{Orbit}{
+    Let $X$ be a $G$-set and let $x \in X$. The \textbf{orbit} of $x$ under $G$ is
+    \[
+        Gx = \{gx \mid g \in G\}.
+    \]
+    The set of orbits partitions $X$.
+}
+
+\Definition{Isotropy Subgroup (Stabilizer)}{
+    Let $X$ be a $G$-set and let $x \in X$. The \textbf{isotropy subgroup} (or \textbf{stabilizer}) of $x$ is
+    \[
+        G_x = \{g \in G \mid gx = x\}.
+    \]
+}
+
+\Theorem{Isotropy Subgroup is a Subgroup}{
+    For any $x \in X$, the isotropy subgroup $G_x$ is a subgroup of $G$.
+}
+
+\Proof{
+    If $g_1, g_2 \in G_x$, then $(g_1 g_2)x = g_1(g_2 x) = g_1 x = x$, so $g_1 g_2 \in G_x$. The identity $e$ satisfies $ex = x$, so $e \in G_x$. If $g \in G_x$, then $gx = x$, so multiplying by $g^{-1}$ gives $x = g^{-1}x$, hence $g^{-1} \in G_x$.
+}
+
+\Theorem{Orbit-Stabilizer Theorem}{
+    Let $X$ be a $G$-set and let $x \in X$. Then $|Gx| = (G : G_x)$. In particular, if $|G|$ is finite, then $|Gx|$ divides $|G|$.
+}
+
+\Proof{
+    Define $\psi : Gx \to \text{set of left cosets of } G_x$ by $\psi(gx) = gG_x$. This is well-defined: if $gx = hx$, then $h^{-1}g x = x$, so $h^{-1}g \in G_x$, giving $gG_x = hG_x$.
+    
+    The map is injective: if $\psi(g_1 x) = \psi(g_2 x)$, then $g_1 G_x = g_2 G_x$, so $g_2 = g_1 g$ for some $g \in G_x$. Then $g_2 x = g_1(gx) = g_1 x$.
+    
+    Surjectivity is clear: any left coset $gG_x$ is the image of $gx$. Thus $|Gx| = (G : G_x)$.
+}
+
+\Example{}{
+    Let $G = D_4$ act on the vertices $\{0, 1, 2, 3\}$ of a square. The stabilizer of vertex $0$ is $G_0 = \{\iota, \mu\}$ (the identity and the reflection fixing $0$). The orbit has size $|Gx| = (G : G_x) = 8/2 = 4$, which checks out.
+}
+
+The orbits partition $X$ into disjoint cells. This gives us a counting formula.
+
+\Theorem{Orbit Decomposition}{
+    If $X$ is a $G$-set with orbits $O_1, O_2, \ldots, O_r$, then
+    \[
+        |X| = \sum_{i=1}^r |O_i|.
+    \]
+}
+
+Applications of group actions to finite groups yield powerful results.
+
+\Definition{$p$-Group}{
+    A \textbf{$p$-group} is a group in which every element has order a power of $p$ (where $p$ is prime). A \textbf{$p$-subgroup} of $G$ is a subgroup that is a $p$-group.
+}
+
+\Theorem{Cauchy's Theorem}{
+    Let $G$ be a finite group and let $p$ be a prime dividing $|G|$. Then $G$ has an element of order $p$ and hence a subgroup of order $p$.
+}
+
+\Proof Sketch{
+    Consider the set
+    \[
+        X = \{(g_0, g_1, \ldots, g_{p-1}) \mid g_i \in G \text{ and } g_0 g_1 \cdots g_{p-1} = e\}.
+    \]
+    There are $|G|^{p-1}$ such tuples. The cyclic group $\Z_p$ acts on $X$ by cyclic permutation:
+    \[
+        k \cdot (g_0, g_1, \ldots, g_{p-1}) = (g_k, g_{k+1}, \ldots, g_{k-1}).
+    \]
+    By a counting argument (orbit decomposition modulo $p$), $X$ has a nontrivial orbit. In a nontrivial orbit, all entries of the tuple are equal to some $a \in G$ with $a \neq e$ and $a^p = e$. Thus $a$ has order $p$.
+}
+
+\Theorem{Center of a $p$-Group}{
+    If $G$ is a finite $p$-group, then $Z(G) \neq \{e\}$.
+}
+
+\Proof{
+    Let $G$ act on itself by conjugation. The fixed points under this action are precisely $Z(G)$. By the orbit decomposition applied to $p$-groups, $|X| \equiv |X_G| \pmod{p}$. Since $|X| = |G|$ is divisible by $p$ and $|X_G| \geq 1$ (the identity is always fixed), $|X_G|$ must be divisible by $p$. Hence $Z(G)$ contains more than just the identity.
+}
+
+\Theorem{Groups of Order $p^2$ are Abelian}{
+    Every group of order $p^2$ is abelian.
+}
+
+\Proof{
+    Let $|G| = p^2$ with $Z(G) \neq \{e\}$. If $Z(G) = G$, we are done. Otherwise, $|Z(G)| = p$. Since $Z(G) \trianglelefteq G$, we can form $G/Z(G)$, which has order $p$ and is thus cyclic: $G/Z(G) = \langle aZ(G) \rangle$.
+    
+    Let $x, y \in G$. Then $x = a^i z_1$ and $y = a^j z_2$ for some $z_1, z_2 \in Z(G)$. Then
+    \[
+        xy = a^i z_1 a^j z_2 = a^{i+j} z_1 z_2 = a^j z_2 a^i z_1 = yx.
+    \]
+    Thus $G$ is abelian, contradicting $|Z(G)| < p^2$. Hence $Z(G) = G$.
+}
+
+\Note{
+    Up to isomorphism, there are exactly two groups of order $p^2$: $\Z_{p^2}$ and $\Z_p \times \Z_p$. For $p = 2$, these are $\Z_4$ and the Klein four-group $V_4$.
+}
+
+
+%========================================%
+%  Section 15: Applications of G-Sets to Counting  %
+%========================================%
+
+\subsection{Applications of G-Sets to Counting}
+
+Group actions provide elegant solutions to counting problems. The key insight is that when a group $G$ acts on a set $X$, the orbits correspond to ``essentially different'' configurations when symmetries are taken into account.
+
+Consider a problem: how many distinguishable dice can be made by marking six faces with one to six dots? There are $6! = 720$ ways to mark the faces. However, rotating the die yields the same configuration. The rotation group of a cube has 24 elements. Each orbit under this action corresponds to one distinguishable die.
+
+\Theorem{Burnside's Formula}{
+    Let $G$ be a finite group and $X$ a finite $G$-set. If $r$ is the number of orbits in $X$ under $G$, then
+    \[
+        r \cdot |G| = \sum_{g \in G} |X_g|,
+    \]
+    where $X_g = \{x \in X \mid gx = x\}$ is the set of elements fixed by $g$.
+}
+
+\Proof{
+    Count the set of pairs $P = \{(g, x) \mid gx = x\}$ in two ways.
+    
+    Fixing $g$, there are $|X_g|$ pairs, so $|P| = \sum_{g \in G} |X_g|$.
+    
+    Fixing $x$, there are $|G_x|$ pairs, so $|P| = \sum_{x \in X} |G_x|$.
+    
+    By the Orbit-Stabilizer Theorem, $|G_x| = |G|/|Gx|$. Thus
+    \[
+        \sum_{x \in X} |G_x| = \sum_{x \in X} \frac{|G|}{|Gx|} = |G| \sum_{x \in X} \frac{1}{|Gx|}.
+    \]
+    Each orbit $O$ contributes $\sum_{x \in O} 1/|O| = 1$ to this sum. With $r$ orbits, we get $|P| = r|G|$.
+}
+
+\Corollary{}{
+    If $G$ is a finite group and $X$ is a finite $G$-set, then
+    \[
+        \text{number of orbits} = \frac{1}{|G|} \sum_{g \in G} |X_g|.
+    \]
+}
+
+\Example{Counting Distinct Dice}{
+    Let $X$ be the set of 720 possible face markings of a die. The rotation group $G$ of a cube has $|G| = 24$. For any nontrivial rotation $g \neq e$, no marking is fixed (every face moves), so $|X_g| = 0$. For the identity, $|X_e| = 720$.
+    
+    By Burnside's formula:
+    \[
+        \text{distinct dice} = \frac{1}{24}(720 + 0 + 0 + \cdots + 0) = \frac{720}{24} = 30.
+    \]
+}
+
+\Example{Seating Arrangements at a Round Table}{
+    How many ways can 7 people be seated at a round table (where rotations are considered the same)?
+    
+    Here $|X| = 7!$ arrangements, and $G = \Z_7$ acts by cyclic rotation. Only the identity fixes any arrangement (since any nontrivial rotation moves everyone), so $|X_e| = 7!$ and $|X_g| = 0$ for $g \neq e$.
+    
+    \[
+        \text{distinct arrangements} = \frac{1}{7} \cdot 7! = 6! = 720.
+    \]
+}
+
+\Example{Painting a Triangle}{
+    How many distinguishable ways can the edges of an equilateral triangle be painted using 4 colors?
+    
+    The symmetry group is $S_3$ (order 6). There are $4^3 = 64$ total colorings.
+    
+    \begin{center}
+    \begin{tabular}{c|c|c}
+        $g$ & $|X_g|$ & Reason \\ \hline
+        $\iota$ & 64 & All colorings fixed \\
+        $(1,2,3)$ & 4 & All edges same color \\
+        $(1,3,2)$ & 4 & All edges same color \\
+        $(1,2)$ & $4^2 = 16$ & Edges 1,2 same; edge 3 free \\
+        $(1,3)$ & 16 & Edges 1,3 same; edge 2 free \\
+        $(2,3)$ & 16 & Edges 2,3 same; edge 1 free
+    \end{tabular}
+    \end{center}
+    
+    \[
+        \text{distinct colorings} = \frac{1}{6}(64 + 4 + 4 + 16 + 16 + 16) = \frac{120}{6} = 20.
+    \]
+}
+
+\Example{Painting a Triangle with Distinct Colors}{
+    Repeat the previous problem, but use all different colors (choosing 3 colors from 4).
+    
+    Now $|X| = 4 \cdot 3 \cdot 2 = 24$. The identity fixes all 24 colorings, while any nontrivial permutation changes the coloring, so $|X_g| = 0$ for $g \neq e$.
+    
+    \[
+        \text{distinct colorings} = \frac{1}{6}(24 + 0 + 0 + 0 + 0 + 0) = 4.
+    \]
+}
+
+\Note{
+    Burnside's formula reduces the problem of counting orbits to computing, for each group element, how many configurations it fixes. This often simplifies counting significantly.
+}
+
+\Example{Necklaces}{
+    How many distinguishable necklaces can be made with 7 beads of different colors (from a set of $n$ colors)?
+    
+    Here $G = D_7$ (order 14) acts on the $n^7$ colorings by rotations and reflections. The formula becomes:
+    \[
+        \text{necklaces} = \frac{1}{14}\left(n^7 + \sum_{k=0}^{6} n^{\gcd(7,k)} + 7n^{(7+1)/2}\right).
+    \]
+    For $n = 7$ colors and 7 beads:
+    \[
+        \text{necklaces} = \frac{1}{14}(7^7 + 6 \cdot 7 + 7 \cdot 7^4) = 360.
+    \]
+}
+
+\Note{
+    The theory of counting using group actions extends to \textbf{P\'olya's Enumeration Theorem}, which provides a systematic method for computing $|X_g|$ using cycle structures of permutations. The cycle index polynomial captures this information elegantly.
+}
